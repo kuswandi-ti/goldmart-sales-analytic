@@ -95,114 +95,6 @@ function getArrayAllPermission()
     ];
 }
 
-function setStatusKreditBadge($status)
-{
-    $status_kredit_badge = '';
-
-    switch ($status) {
-        case 'Berjalan':
-            $status_kredit_badge = 'danger';
-            break;
-
-        case 'Lunas':
-            $status_kredit_badge = 'success';
-            break;
-
-        default:
-            $status_kredit_badge = '';
-            break;
-    }
-    return $status_kredit_badge;
-}
-
-function setStatusKirimBarangBadge($status)
-{
-    $status_kirim_barang_badge = '';
-
-    switch ($status) {
-        case 'Belum Dikirim':
-            $status_kirim_barang_badge = 'danger';
-            break;
-
-        case 'Sudah Dikirim':
-            $status_kirim_barang_badge = 'success';
-            break;
-
-        default:
-            $status_kirim_barang_badge = '';
-            break;
-    }
-    return $status_kirim_barang_badge;
-}
-
-function setStatusBadge($status)
-{
-    return $status == 1 ? 'success' : 'danger';
-}
-
-function setStatusText($status)
-{
-    return $status == 1 ? __('Aktif') : __('Tidak Aktif');
-}
-
-function setApproveBadge($status)
-{
-    $status_badge = '';
-
-    switch ($status) {
-        case '0':
-            $status_badge = 'danger';
-            break;
-
-        case '1':
-            $status_badge = 'success';
-            break;
-
-        case '2':
-            $status_badge = 'dark';
-            break;
-
-        default:
-            $status_badge = '';
-            break;
-    }
-    return $status_badge;
-}
-
-function setApproveText($status)
-{
-    $status_text = '';
-
-    switch ($status) {
-        case '0':
-            $status_text = 'Belum Approve';
-            break;
-
-        case '1':
-            $status_text = 'Sudah Approve';
-            break;
-
-        case '2':
-            $status_text = 'Ditolak';
-            break;
-
-        default:
-            $status_text = '';
-            break;
-    }
-    return $status_text;
-}
-
-function setVerifyBadge($status)
-{
-    return $status == 1 ? 'success' : 'danger';
-}
-
-function setVerifyText($status)
-{
-    return $status == 1 ? __('Sudah Verify Email') : __('Belum Verify Email');
-}
-
 function saveDateTimeNow()
 {
     return Carbon::now()->addHour(7)->format('Y-m-d H:i:s');
@@ -271,5 +163,5 @@ function unformatAmount($str)
 function activePeriod(): ?String
 {
     $setting_system = SettingSystem::pluck('value', 'key')->toArray();
-    return $setting_system['tahun_periode_aktif'];
+    return $setting_system['tahun_periode_aktif_2'];
 }

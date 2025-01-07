@@ -17,6 +17,7 @@ class SettingSystemTableSeeder extends Seeder
 
         $input = [
             ['key' => 'site_title_2', 'value' => 'Goldmart Sales Analytic (GSA)', 'created_by' => $user],
+            ['key' => 'tahun_periode_aktif_2', 'value' => date('Y'), 'created_by' => $user],
         ];
         foreach ($input as $item) {
             SettingSystem::create($item);

@@ -1,11 +1,51 @@
-<!-- Footer Start -->
-<footer class="py-3 mt-auto text-center bg-white footer">
-    <div class="container">
-        <span class="text-muted"> Copyright © <span id="year"></span>
-            <a href="javascript:void(0);" class="text-dark fw-semibold">
-                {{ $setting_system['site_title'] ?? config('app.name') }}
-            </a>. All rights reserved
-        </span>
+<div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+        <!-- Footer Content -->
+        <div class="footer-nav position-relative shadow-sm footer-style-two">
+            <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+                <li class="{{ setSidebarActive(['dashboard.*']) }}">
+                    <a href="{{ route('dashboard.index') }}">
+                        <i class="bi bi-speedometer"></i>
+                        @if (setSidebarActive(['dashboard.*']) == 'active')
+                            <span></span>
+                        @else
+                            <span>{{ __('Dashboard') }}</span>
+                        @endif
+                    </a>
+                </li>
+
+                <li>
+                    <a href="pages.html">
+                        <i class="bi bi-clipboard-data"></i>
+                        <span>{{ __('Data') }}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="elements.html">
+                        <i class="bi bi-grid"></i>
+                        <span>{{ __('Input') }}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="chat-users.html">
+                        <i class="bi bi-bell"></i>
+                        <span>{{ __('Info') }}</span>
+                    </a>
+                </li>
+
+                <li class="{{ setSidebarActive(['setting.*']) }}">
+                    <a href="{{ route('setting.index') }}">
+                        <i class="bi bi-gear"></i>
+                        @if (setSidebarActive(['setting.*']) == 'active')
+                            <span></span>
+                        @else
+                            <span>{{ __('Pengaturan') }}</span>
+                        @endif
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-</footer>
-<!-- Footer End -->
+</div>
