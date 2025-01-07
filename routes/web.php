@@ -23,6 +23,7 @@ use App\Http\Controllers\PermissionController;
 */
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
+// Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 /** Auth Routes */
 Route::get('login', [AuthController::class, 'login'])->name('login');
