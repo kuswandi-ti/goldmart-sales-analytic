@@ -69,30 +69,36 @@ function capitalFirstLetter(string $text = null): ?string
     return $text != null ? Str::of($text)->ucfirst() : '';
 }
 
-function getArrayAllPermission()
+function getArraySalesPermission()
 {
     return [
-        ['guard_name' => 'web', 'name' => 'user approve', 'group_name' => 'User Permission'],
-        ['guard_name' => 'web', 'name' => 'user create', 'group_name' => 'User Permission'],
-        ['guard_name' => 'web', 'name' => 'user delete', 'group_name' => 'User Permission'],
-        ['guard_name' => 'web', 'name' => 'user index', 'group_name' => 'User Permission'],
-        ['guard_name' => 'web', 'name' => 'user restore', 'group_name' => 'User Permission'],
-        ['guard_name' => 'web', 'name' => 'user update', 'group_name' => 'User Permission'],
-        ['guard_name' => 'web', 'name' => 'role create', 'group_name' => 'Role Permission'],
-        ['guard_name' => 'web', 'name' => 'role delete', 'group_name' => 'Role Permission'],
-        ['guard_name' => 'web', 'name' => 'role index', 'group_name' => 'Role Permission'],
-        ['guard_name' => 'web', 'name' => 'role update', 'group_name' => 'Role Permission'],
-        ['guard_name' => 'web', 'name' => 'permission create', 'group_name' => 'Permission Permission'],
-        ['guard_name' => 'web', 'name' => 'permission delete', 'group_name' => 'Permission Permission'],
-        ['guard_name' => 'web', 'name' => 'permission index', 'group_name' => 'Permission Permission'],
-        ['guard_name' => 'web', 'name' => 'permission update', 'group_name' => 'Permission Permission'],
-        ['guard_name' => 'web', 'name' => 'kredit nasabah index', 'group_name' => 'Kredit Nasabah Permission'],
-        ['guard_name' => 'web', 'name' => 'kredit nasabah update', 'group_name' => 'Kredit Nasabah Permission'],
-        ['guard_name' => 'web', 'name' => 'setting system', 'group_name' => 'Setting System Permission'],
-        ['guard_name' => 'web', 'name' => 'nasabah index', 'group_name' => 'Nasabah Permission'],
-        ['guard_name' => 'web', 'name' => 'nasabah update', 'group_name' => 'Nasabah Permission'],
-        ['guard_name' => 'web', 'name' => 'external update', 'group_name' => 'External Permission'],
+        ['guard_name' => 'web', 'name' => 'customer visit create', 'group_name' => 'Customer Visit Permission'],
+        ['guard_name' => 'web', 'name' => 'customer visit delete', 'group_name' => 'Customer Visit Permission'],
+        ['guard_name' => 'web', 'name' => 'customer visit index', 'group_name' => 'Customer Visit Permission'],
+        ['guard_name' => 'web', 'name' => 'customer visit update', 'group_name' => 'Customer Visit Permission'],
+        ['guard_name' => 'web', 'name' => 'brand create', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'brand delete', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'brand index', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'brand update', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang create', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang delete', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang index', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang update', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga create', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga delete', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga index', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga update', 'group_name' => 'Range Harga Permission'],
     ];
+}
+
+function setStatusBadge($status)
+{
+    return $status == 1 ? 'success' : 'danger';
+}
+
+function setStatusText($status)
+{
+    return $status == 1 ? __('Aktif') : __('Tidak Aktif');
 }
 
 function saveDateTimeNow()

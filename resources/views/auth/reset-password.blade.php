@@ -32,11 +32,10 @@
                     </div>
                     <div class="col-xl-6 col-md-6 pe-sm-0">
                         <div class="text-center">
-                            {{-- <img src="{{ url(config('common.path_template') . 'assets/images/gds.png') }}" alt="" class="desktop-dark img-fluid rounded" width="220"> --}}
-                            <img src="{{ url(config('common.path_template') . 'assets/images/dashboard.jpg') }}"
-                                        alt="logo" class="desktop-dark img-fluid rounded mb-2" width="350">
+                            <img src="{{ url(config('common.path_template') . 'assets/images/sales-illustration.webp') }}"
+                                alt="logo" class="desktop-dark img-fluid rounded mb-2" width="300">
                             <p class="fw-semibold">
-                                {{ $setting_system['site_title'] ?? config('app.name') }}
+                                {{ $setting_system['site_title_2'] ?? config('app.name') }}
                             </p>
                         </div>
 
@@ -57,7 +56,8 @@
                                 <div class="mt-3 row gy-3">
                                     <div class="mt-0 col-xl-12">
                                         <label for="email">{{ __('Email') }} <x-fill-field /></label>
-                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                                        <input type="email" name="email"
+                                            class="form-control @error('email') is-invalid @enderror"
                                             value="{{ request()->email }}" required>
                                         <input type="hidden" value="{{ request()->token }}" name="token">
                                         @error('email')
@@ -85,7 +85,8 @@
                                     <div class="mt-0 col-xl-12">
                                         <label for="password">{{ __('Konfirmasi Password Baru') }} <x-fill-field /></label>
                                         <input type="password" name="password_confirmation"
-                                            class="form-control @error('password_confirmation') is-invalid @enderror" required>
+                                            class="form-control @error('password_confirmation') is-invalid @enderror"
+                                            required>
                                         @error('password_confirmation')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

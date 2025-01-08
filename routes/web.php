@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KreditNasabahController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\TipeBarangController;
+use App\Http\Controllers\KreditNasabahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +57,14 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     /** Permission Routes */
     Route::get('permission/data', [PermissionController::class, 'data'])->name('permission.data');
     Route::resource('permission', PermissionController::class);
+
+    /** Brand Routes */
+    Route::get('brand/data', [BrandController::class, 'data'])->name('brand.data');
+    Route::resource('brand', BrandController::class);
+
+    /** Tipe Barang Routes */
+    Route::get('tipebarang/data', [TipeBarangController::class, 'data'])->name('tipebarang.data');
+    Route::resource('tipebarang', TipeBarangController::class);
 
     /** Nasabah Routes */
     Route::get('nasabah/data', [NasabahController::class, 'data'])->name('nasabah.data');

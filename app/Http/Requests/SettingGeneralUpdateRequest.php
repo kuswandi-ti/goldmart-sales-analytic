@@ -23,16 +23,8 @@ class SettingGeneralUpdateRequest extends FormRequest
     {
         return [
             'company_name' => ['required', 'string', 'max:255'],
-            'site_title' => ['required', 'string', 'max:255'],
+            'site_title_2' => ['required', 'string', 'max:255'],
             'company_email' => ['required', 'string', 'max:255'],
-            // 'company_phone' => ['required', 'string', 'max:255'],
-            // 'company_address' => ['required', 'string', 'max:255'],
-            // 'default_date_format' => ['required'],
-            // 'default_time_format' => ['required'],
-            // 'default_currency' => ['required'],
-            // 'default_language' => ['required'],
-            // 'company_logo' => ['nullable', 'image', 'max:3000'],
-            // 'company_favicon' => ['nullable', 'image', 'max:3000'],
         ];
     }
 }

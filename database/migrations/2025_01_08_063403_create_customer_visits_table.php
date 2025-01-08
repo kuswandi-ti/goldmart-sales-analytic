@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('format_dates', function (Blueprint $table) {
+        Schema::create('customer_visit', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('text');
+            $table->date('tgl_visit');
+            $table->string('nama_customer')->nullable();
+            $table->string('parameter_1');
+            $table->string('parameter_2');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('format_dates');
+        Schema::dropIfExists('customer_visit');
     }
 };

@@ -53,7 +53,14 @@
                 {{-- INPUT DATA - BEGIN --}}
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
-                @if (canAccess(['nasabah index', 'kredit nasabah index']))
+                @if (canAccess([
+                        'nasabah index',
+                        'kredit nasabah index',
+                        'brand index',
+                        'tipe barang index',
+                        'range harga index',
+                        'customer visit index',
+                    ]))
                     <li class="mt-4 slide__category"><span class="category-name">{{ __('Data') }}</span></li>
                 @endif
                 <!-- End::slide__category -->
@@ -81,6 +88,28 @@
                         </a>
                     </li>
                 @endif
+                @if (canAccess(['brand index']))
+                    <li class="slide {{ setSidebarActive(['brand.*']) }}">
+                        <a href="{{ route('brand.index') }}"
+                            class="side-menu__item {{ setSidebarActive(['brand.*']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxl-microsoft'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Brand') }}</span>
+                        </a>
+                    </li>
+                @endif
+                @if (canAccess(['tipe barang index']))
+                    <li class="slide {{ setSidebarActive(['tipebarang.*']) }}">
+                        <a href="{{ route('tipebarang.index') }}"
+                            class="side-menu__item {{ setSidebarActive(['tipebarang.*']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxs-diamond'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Tipe Barang') }}</span>
+                        </a>
+                    </li>
+                @endif
                 <!-- End::slide -->
                 {{-- ======================================================================================================= --}}
                 {{-- INPUT DATA - END --}}
@@ -90,7 +119,7 @@
                 {{-- PENGATURAN - BEGIN --}}
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
-                @if (canAccess(['user index', 'role index', 'permission index', 'setting system']))
+                @if (canAccess(['user index', 'role index', 'permission index', 'setting info perusahaan', 'setting lainnya']))
                     <li class="mt-4 slide__category"><span class="category-name">{{ __('Pengaturan') }}</span>
                     </li>
                 @endif
@@ -142,7 +171,7 @@
                         </ul>
                     </li>
                 @endif
-                @if (canAccess(['setting system']))
+                @if (canAccess(['setting info perusahaan', 'setting lainnya']))
                     <li class="slide {{ setSidebarActive(['setting.*']) }}">
                         <a href="{{ route('setting.index') }}"
                             class="side-menu__item {{ setSidebarActive(['setting.*']) }}">

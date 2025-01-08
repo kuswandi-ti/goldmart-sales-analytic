@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kredit_detail', function (Blueprint $table) {
+        Schema::create('range_harga', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_kredit_nasabah');
-            $table->decimal('gramasi', 20, 2)->default(0);
-            $table->string('no_seri')->nullable();
-            $table->text('image')->nullable();
+            $table->string('nama');
+            $table->string('slug');
+            $table->decimal('harga_min', 20, 2)->default(0);
+            $table->decimal('harga_max', 20, 2)->default(0);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kredit_detail');
+        Schema::dropIfExists('range_harga');
     }
 };

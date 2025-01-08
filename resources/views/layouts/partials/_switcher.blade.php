@@ -1,7 +1,7 @@
 <!-- Start Switcher -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="switcher-canvas" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
+        <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">{{ __('Switcher') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -9,22 +9,22 @@
             <div class="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
                 <button class="nav-link active" id="switcher-home-tab" data-bs-toggle="tab"
                     data-bs-target="#switcher-home" type="button" role="tab" aria-controls="switcher-home"
-                    aria-selected="true">Theme Styles</button>
+                    aria-selected="true">{{ __('Theme Styles') }}</button>
                 <button class="nav-link" id="switcher-profile-tab" data-bs-toggle="tab"
                     data-bs-target="#switcher-profile" type="button" role="tab" aria-controls="switcher-profile"
-                    aria-selected="false">Theme Colors</button>
+                    aria-selected="false">{{ __('Theme Colors') }}</button>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="border-0 tab-pane fade show active" id="switcher-home" role="tabpanel"
                 aria-labelledby="switcher-home-tab" tabindex="0">
                 <div class="">
-                    <p class="switcher-style-head">Theme Color Mode:</p>
+                    <p class="switcher-style-head">{{ __('Theme Color Mode:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-light-theme">
-                                    Light
+                                    {{ __('Light') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="theme-style"
                                     id="switcher-light-theme" checked>
@@ -33,7 +33,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-dark-theme">
-                                    Dark
+                                    {{ __('Dark') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="theme-style"
                                     id="switcher-dark-theme">
@@ -42,12 +42,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <p class="switcher-style-head">Directions:</p>
+                    <p class="switcher-style-head">{{ __('Directions:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-ltr">
-                                    LTR
+                                    {{ __('LTR') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="direction" id="switcher-ltr"
                                     checked>
@@ -56,7 +56,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-rtl">
-                                    RTL
+                                    {{ __('RTL') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="direction" id="switcher-rtl">
                             </div>
@@ -64,12 +64,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <p class="switcher-style-head">Navigation Styles:</p>
+                    <p class="switcher-style-head">{{ __('Navigation Styles:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-vertical">
-                                    Vertical
+                                    {{ __('Vertical') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="navigation-style"
                                     id="switcher-vertical" checked>
@@ -78,7 +78,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-horizontal">
-                                    Horizontal
+                                    {{ __('Horizontal') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="navigation-style"
                                     id="switcher-horizontal">
@@ -87,12 +87,12 @@
                     </div>
                 </div>
                 <div class="navigation-menu-styles">
-                    <p class="switcher-style-head">Vertical &amp; Horizontal Menu Styles:</p>
+                    <p class="switcher-style-head">{{ __('Vertical') }} &amp; {{ __('Horizontal Menu Styles:') }}</p>
                     <div class="row switcher-style gx-0 gy-2">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-menu-click">
-                                    Menu Click
+                                    {{ __('Menu Click') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="navigation-menu-styles"
                                     id="switcher-menu-click">
@@ -101,7 +101,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-menu-hover">
-                                    Menu Hover
+                                    {{ __('Menu Hover') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="navigation-menu-styles"
                                     id="switcher-menu-hover">
@@ -110,7 +110,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-icon-click">
-                                    Icon Click
+                                    {{ __('Icon Click') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="navigation-menu-styles"
                                     id="switcher-icon-click">
@@ -119,7 +119,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-icon-hover">
-                                    Icon Hover
+                                    {{ __('Icon Hover') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="navigation-menu-styles"
                                     id="switcher-icon-hover">
@@ -128,12 +128,12 @@
                     </div>
                 </div>
                 <div class="sidemenu-layout-styles">
-                    <p class="switcher-style-head">Sidemenu Layout Styles:</p>
+                    <p class="switcher-style-head">{{ __('Sidemenu Layout Styles:') }}</p>
                     <div class="row switcher-style gx-0 gy-2">
                         <div class="col-sm-6">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-default-menu">
-                                    Default Menu
+                                    {{ __('Default Menu') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
                                     id="switcher-default-menu" checked>
@@ -142,7 +142,7 @@
                         <div class="col-sm-6">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-closed-menu">
-                                    Closed Menu
+                                    {{ __('Closed Menu') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
                                     id="switcher-closed-menu">
@@ -151,7 +151,7 @@
                         <div class="col-sm-6">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-icontext-menu">
-                                    Icon Text
+                                    {{ __('Icon Text') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
                                     id="switcher-icontext-menu">
@@ -160,7 +160,7 @@
                         <div class="col-sm-6">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-icon-overlay">
-                                    Icon Overlay
+                                    {{ __('Icon Overlay') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
                                     id="switcher-icon-overlay">
@@ -169,7 +169,7 @@
                         <div class="col-sm-6">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-detached">
-                                    Detached
+                                    {{ __('Detached') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
                                     id="switcher-detached">
@@ -178,7 +178,7 @@
                         <div class="col-sm-6">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-double-menu">
-                                    Double Menu
+                                    {{ __('Double Menu') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
                                     id="switcher-double-menu">
@@ -187,12 +187,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <p class="switcher-style-head">Page Styles:</p>
+                    <p class="switcher-style-head">{{ __('Page Styles:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-regular">
-                                    Regular
+                                    {{ __('Regular') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="page-styles"
                                     id="switcher-regular" checked>
@@ -201,7 +201,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-classic">
-                                    Classic
+                                    {{ __('Classic') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="page-styles"
                                     id="switcher-classic">
@@ -210,12 +210,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <p class="switcher-style-head">Layout Width Styles:</p>
+                    <p class="switcher-style-head">{{ __('Layout Width Styles:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-full-width">
-                                    Full Width
+                                    {{ __('Full Width') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="layout-width"
                                     id="switcher-full-width" checked>
@@ -224,7 +224,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-boxed">
-                                    Boxed
+                                    {{ __('Boxed') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="layout-width"
                                     id="switcher-boxed">
@@ -233,12 +233,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <p class="switcher-style-head">Menu Positions:</p>
+                    <p class="switcher-style-head">{{ __('Menu Positions:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-menu-fixed">
-                                    Fixed
+                                    {{ __('Fixed') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="menu-positions"
                                     id="switcher-menu-fixed" checked>
@@ -247,7 +247,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-menu-scroll">
-                                    Scrollable
+                                    {{ __('Scrollable') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="menu-positions"
                                     id="switcher-menu-scroll">
@@ -256,12 +256,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <p class="switcher-style-head">Header Positions:</p>
+                    <p class="switcher-style-head">{{ __('Header Positions:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-header-fixed">
-                                    Fixed
+                                    {{ __('Fixed') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="header-positions"
                                     id="switcher-header-fixed" checked>
@@ -270,7 +270,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-header-scroll">
-                                    Scrollable
+                                    {{ __('Scrollable') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="header-positions"
                                     id="switcher-header-scroll">
@@ -279,7 +279,7 @@
                         <div class="col-4 rounded-header">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-header-rounded">
-                                    Rounded
+                                    {{ __('Rounded') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="header-positions"
                                     id="switcher-header-rounded">
@@ -288,12 +288,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <p class="switcher-style-head">Loader:</p>
+                    <p class="switcher-style-head">{{ __('Loader:') }}</p>
                     <div class="row switcher-style gx-0">
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-loader-enable">
-                                    Enable
+                                    {{ __('Enable') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="page-loader"
                                     id="switcher-loader-enable">
@@ -302,7 +302,7 @@
                         <div class="col-4">
                             <div class="form-check switch-select">
                                 <label class="form-check-label" for="switcher-loader-disable">
-                                    Disable
+                                    {{ __('Disable') }}
                                 </label>
                                 <input class="form-check-input" type="radio" name="page-loader"
                                     id="switcher-loader-disable" checked>
@@ -315,7 +315,7 @@
                 aria-labelledby="switcher-profile-tab" tabindex="0">
                 <div>
                     <div class="theme-colors">
-                        <p class="switcher-style-head">Menu Colors:</p>
+                        <p class="switcher-style-head">{{ __('Menu Colors:') }}</p>
                         <div class="pb-2 d-flex switcher-style">
                             <div class="form-check switch-select me-3">
                                 <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
@@ -328,11 +328,12 @@
                                     id="switcher-menu-dark" checked>
                             </div>
                         </div>
-                        <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Menu dynamically
-                            change from below Theme Primary color picker</div>
+                        <div class="px-4 pb-3 text-muted fs-11">
+                            {{ __('Note:If you want to change color Menu dynamically change from below Theme Primary color picker') }}
+                        </div>
                     </div>
                     <div class="theme-colors">
-                        <p class="switcher-style-head">Header &amp; Bredcrumb Colors:</p>
+                        <p class="switcher-style-head">{{ __('Header') }} &amp; {{ __('Bredcrumb Colors:') }}</p>
                         <div class="pb-2 d-flex switcher-style">
                             <div class="form-check switch-select me-3">
                                 <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
@@ -355,11 +356,12 @@
                                     name="header-colors" id="switcher-header-transparent">
                             </div>
                         </div>
-                        <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Header dynamically
-                            change from below Theme Primary color picker</div>
+                        <div class="px-4 pb-3 text-muted fs-11">
+                            {{ __('Note:If you want to change color Header dynamically change from below Theme Primary color picker') }}
+                        </div>
                     </div>
                     <div class="theme-colors">
-                        <p class="switcher-style-head">Header Colors:</p>
+                        <p class="switcher-style-head">{{ __('Header Colors:') }}</p>
                         <div class="pb-2 d-flex switcher-style">
                             <div class="form-check switch-select me-3">
                                 <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
@@ -387,11 +389,12 @@
                                     name="header-colors" id="switcher-default-header-transparent">
                             </div>
                         </div>
-                        <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Header dynamically
-                            change from below Theme Primary color picker</div>
+                        <div class="px-4 pb-3 text-muted fs-11">
+                            {{ __('Note:If you want to change color Header dynamically change from below Theme Primary color picker') }}
+                        </div>
                     </div>
                     <div class="theme-colors">
-                        <p class="switcher-style-head">Theme Primary:</p>
+                        <p class="switcher-style-head">{{ __('Theme Primary:') }}</p>
                         <div class="flex-wrap d-flex align-items-center switcher-style">
                             <div class="form-check switch-select me-3">
                                 <input class="form-check-input color-input color-primary-1" type="radio"
@@ -420,7 +423,7 @@
                         </div>
                     </div>
                     <div class="theme-colors">
-                        <p class="switcher-style-head">Theme Background:</p>
+                        <p class="switcher-style-head">{{ __('Theme Background:') }}</p>
                         <div class="flex-wrap d-flex align-items-center switcher-style">
                             <div class="form-check switch-select me-3">
                                 <input class="form-check-input color-input color-bg-1" type="radio"
@@ -449,7 +452,7 @@
                         </div>
                     </div>
                     <div class="mb-3 menu-image">
-                        <p class="switcher-style-head">Menu With Background Image:</p>
+                        <p class="switcher-style-head">{{ __('Menu With Background Image:') }}</p>
                         <div class="flex-wrap d-flex align-items-center switcher-style">
                             <div class="m-2 form-check switch-select">
                                 <input class="form-check-input bgimage-input bg-img1" type="radio"
@@ -476,7 +479,7 @@
                 </div>
             </div>
             <div class="d-grid canvas-footer">
-                <a href="javascript:void(0);" id="reset-all" class="btn btn-danger">Reset</a>
+                <a href="javascript:void(0);" id="reset-all" class="btn btn-danger">{{ __('Reset') }}</a>
             </div>
         </div>
     </div>

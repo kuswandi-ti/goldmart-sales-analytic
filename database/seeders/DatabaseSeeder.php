@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call(MainDataSeeder::class);
+        $this->call(MainDataSeeder::class);
         $this->call(SettingSystemTableSeeder::class);
+        $this->call(BrandAndTipeBarangTableSeeder::class);
+        $this->call(RangeHargaTableSeeder::class);
     }
 }

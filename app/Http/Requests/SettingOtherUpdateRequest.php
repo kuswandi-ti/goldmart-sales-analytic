@@ -22,9 +22,7 @@ class SettingOtherUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'decimal_digit_amount' => ['required', 'numeric'],
-            // 'decimal_digit_percent' => ['required', 'numeric'],
-            'tahun_periode_aktif' => ['required', 'numeric'],
+            'tahun_periode_aktif_2' => ['required', 'numeric'],
         ];
     }
 }

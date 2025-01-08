@@ -62,6 +62,25 @@ class DashboardController extends Controller
         }
         $total_nilai_pelunasan_graph = array_map('intval', $total_nilai_pelunasan_graph);
 
+        $total_emas_graph = array();
+        $gramasis = DB::table('gramasi')
+            ->orderBy('gramasi')
+            ->get();
+        foreach($gramasis as $key) {
+            $total_emas_graph[] = DB::table('kredit_detail')
+                ->select(DB::raw('COUNT(kredit_detail.gramasi) AS count_gramasi'))
+                ->join('kredit_nasabah', function($join) {
+			        $join->on('kredit_detail.id_kredit_nasabah', '=', 'kredit_nasabah.id');
+			    })
+                ->where('kredit_detail.gramasi', $key->gramasi)
+                ->where('kredit_nasabah.status_kredit', 'Berjalan')
+                ->where('kredit_nasabah.tahun', activePeriod())
+                ->groupBy(DB::raw('kredit_detail.gramasi'))
+                ->pluck('count_gramasi')
+                ->first();
+        }
+        $total_emas_graph = array_map('intval', $total_emas_graph);
+
         // dd($total_nilai_pelunasan_graph);
 
         return view(
@@ -73,7 +92,8 @@ class DashboardController extends Controller
                 'total_sudah_lunas',
                 'total_belum_lunas',
                 'total_nilai_kredit_graph',
-                'total_nilai_pelunasan_graph'
+                'total_nilai_pelunasan_graph',
+                'total_emas_graph'
             )
         );
     }

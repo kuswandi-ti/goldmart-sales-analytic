@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nasabah', function (Blueprint $table) {
+        Schema::create('customer_visit_detail', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
-            $table->string('nama');
-            $table->string('email')->nullable();
-            $table->string('no_tlp')->nullable();
-            $table->text('alamat')->nullable();
+            $table->bigInteger('id_visit');
+            $table->string('parameter_1');
+            $table->string('parameter_2');
+            $table->decimal('qty', 20, 2)->default(0);
+            $table->decimal('nominal', 20, 2)->default(0);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nasabah');
+        Schema::dropIfExists('customer_visit_detail');
     }
 };

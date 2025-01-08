@@ -21,72 +21,28 @@ class MainDataSeeder extends Seeder
     {
         $default_user = 'System';
 
-        $create_role_super_admin = 'Super Admin';
-        $create_role_admin = 'Admin';
-        $create_role_user = 'User';
+        $create_role_user = 'Sales';
 
         /** Reset Cached Roles and Permissions */
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         /** Create Permission */
-        $permissions = getArrayAllPermission();
+        $permissions = getArraySalesPermission();
         foreach ($permissions as $permission) {
             Permission::create($permission);
         }
 
         /** Create Role */
-        $role_super_admin = Role::create([
-            'guard_name' => 'web',
-            'name' => $create_role_super_admin,
-        ]);
-
-        $role_admin = Role::create([
-            'guard_name' => 'web',
-            'name' => $create_role_admin,
-        ]);
-
-        $role_user = Role::create([
+        $role_sales = Role::create([
             'guard_name' => 'web',
             'name' => $create_role_user,
         ]);
 
         /** Create User */
-        $user_super_admin = User::create([
-            'name' => 'Super Admin',
-            'slug' => Str::slug('Super Admin'),
-            'email' => 'superadmin@mail.com',
-            'email_verified_at' => saveDateTimeNow(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            // 'image' => config('common.no_image'),
-            'join_date' => saveDateNow(),
-            'approved' => 1,
-            'approved_at' => saveDateTimeNow(),
-            'approved_by' => $default_user,
-            'status' => 1,
-            'remember_token' => Str::random(10),
-            'created_by' => $default_user,
-        ]);
-
-        $user_admin = User::create([
-            'name' => 'Admin',
-            'slug' => Str::slug('Admin'),
-            'email' => 'admin@mail.com',
-            'email_verified_at' => saveDateTimeNow(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            // 'image' => config('common.no_image'),
-            'join_date' => saveDateNow(),
-            'approved' => 1,
-            'approved_at' => saveDateTimeNow(),
-            'approved_by' => $default_user,
-            'status' => 1,
-            'remember_token' => Str::random(10),
-            'created_by' => $default_user,
-        ]);
-
-        $user_user = User::create([
-            'name' => 'User',
-            'slug' => Str::slug('User'),
-            'email' => 'user@mail.com',
+        $user_sales = User::create([
+            'name' => 'Sales 1',
+            'slug' => Str::slug('Sales 1'),
+            'email' => 'sales1@goldmart.co.id',
             'email_verified_at' => saveDateTimeNow(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             // 'image' => config('common.no_image'),
@@ -100,8 +56,6 @@ class MainDataSeeder extends Seeder
         ]);
 
         /** Assign Role to User */
-        $user_super_admin->assignRole($role_super_admin);
-        $user_admin->assignRole($role_admin);
-        $user_user->assignRole($role_user);
+        $user_sales->assignRole($role_sales);
     }
 }

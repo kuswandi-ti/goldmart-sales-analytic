@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('setting_systems', function (Blueprint $table) {
+        Schema::create('tipe_barang', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
-            $table->longText('value')->nullable();
+            $table->bigInteger('id_brand');
+            $table->string('nama');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('setting_systems');
+        Schema::dropIfExists('tipe_barang');
     }
 };

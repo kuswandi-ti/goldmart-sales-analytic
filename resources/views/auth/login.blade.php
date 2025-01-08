@@ -17,18 +17,13 @@
                                         <img src="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
                                             alt="logo" class="desktop-dark img-fluid rounded" width="200"
                                             height="200">
-                                        {{-- <img src="{{ url(config('common.path_template') . 'assets/images/dashboard.jpg') }}"
-                                            alt="logo" class="desktop-dark img-fluid rounded" width="350"> --}}
                                     </div>
-                                    {{-- <h6 class="mt-4 fs-15 op-9 text-fixed-white">
-                                        {{ __('Login') }}
-                                    </h6> --}}
                                     <div class="mt-3 d-flex">
                                         <p class="mb-0 fw-normal fs-14 op-7 text-fixed-white text-center">
                                             {{ __('Selamat datang kembali di ') }}
-                                            <strong>{{ $setting_system['site_title'] ?? config('app.name') }}</strong><br><br>
+                                            <strong>{{ $setting_system['site_title_2'] ?? config('app.name') }}</strong><br><br>
                                             {{ __('Masukkan email dan password akun anda agar bisa menggunakan fasilitas-fasilitas menu yang ada di sistem') }}
-                                            <strong>{{ $setting_system['site_title'] ?? config('app.name') }}</strong>
+                                            <strong>{{ $setting_system['site_title_2'] ?? config('app.name') }}</strong>
                                         </p>
                                     </div>
                                 </div>
@@ -37,11 +32,10 @@
                     </div>
                     <div class="col-xl-6 col-md-6 pe-sm-0">
                         <div class="text-center">
-                            {{-- <img src="{{ url(config('common.path_template') . 'assets/images/gds.png') }}" alt="" class="desktop-dark img-fluid rounded" width="220"> --}}
-                            <img src="{{ url(config('common.path_template') . 'assets/images/dashboard.jpg') }}"
-                                alt="logo" class="desktop-dark img-fluid rounded mb-2 mt-4" width="350">
+                            <img src="{{ url(config('common.path_template') . 'assets/images/sales-illustration.webp') }}"
+                                alt="logo" class="desktop-dark img-fluid rounded mb-2 mt-4" width="300">
                             <p class="fw-semibold">
-                                {{ $setting_system['site_title'] ?? config('app.name') }}
+                                {{ $setting_system['site_title_2'] ?? config('app.name') }}
                             </p>
                         </div>
 
@@ -53,11 +47,6 @@
                             <p class="mb-4 text-muted op-7 fw-normal">
                                 {{ __('Selamat datang di sistem kami') }}
                             </p>
-
-                            {{-- <div class="alert alert-solid-warning alert-dismissible fade show">
-                                Email : <strong>superadmin@mail.com</strong><br>
-                                Password : <strong>password</strong>
-                            </div> --}}
 
                             <x-web-alert-message />
 
@@ -111,13 +100,6 @@
                                     </div>
                                 </div>
                             </form>
-
-                            {{-- <div class="text-center ">
-                                <p class="mt-4 mb-0 fs-12 text-muted">
-                                    {{ __('Anda belum terdaftar sebagai user ?') }} <br>
-                                    {{ __('Silahkan hubungi admin') }}
-                                </p>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
