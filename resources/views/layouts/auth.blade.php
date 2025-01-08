@@ -1,57 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light"
+    data-header-styles="light" data-menu-styles="light" data-toggled="close" style="--primary-rgb: 0, 128, 172;">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Affan - PWA Mobile HTML Template">
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <meta name="theme-color" content="#0134d4">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>{{ $setting_system['site_title'] ?? config('app.name') }} &mdash; @yield('page_title')</title>
+
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+    <meta name="keywords"
+        content="simple admin panel template html css,admin panel html,bootstrap 5 admin template,admin,bootstrap dashboard,bootstrap 5 admin panel template,html and css,admin panel,admin panel html template,simple html template,bootstrap admin template,admin dashboard,admin dashboard template,admin panel template,template dashboard">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Title -->
-    <title>{{ $setting_system['site_title_2'] ?? config('app.name') }} &mdash; @yield('page_title')</title>
 
     <!-- Favicon -->
     <link rel="icon"
         href="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
         type="image/png">
-    <link rel="apple-touch-icon"
-        href="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}">
-    <link rel="apple-touch-icon" sizes="152x152"
-        href="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}">
-    <link rel="apple-touch-icon" sizes="167x167"
-        href="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}">
-    <link rel="apple-touch-icon" sizes="180x180"
-        href="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}">
 
-    <!-- Style CSS -->
-    @include('layouts.partials._styles')
+    <!-- Main Theme Js -->
+    <script src="{{ url(config('common.path_template') . 'assets/js/authentication-main.js') }}"></script>
 
-    <!-- Web App Manifest -->
-    @include('layouts.partials._manifest')
+    <!-- Bootstrap Css -->
+    <link id="style"
+        href="{{ url(config('common.path_template') . 'assets/libs/bootstrap/css/bootstrap.min.css') }}"
+        rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="{{ url(config('common.path_template') . 'assets/css/styles.min.css') }}" rel="stylesheet">
+
+    <!-- Icons Css -->
+    {{-- <link href="{{ url(config('common.path_template') . 'assets/css/icons.min.css') }}" rel="stylesheet"> --}}
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="spinner-grow text-primary" role="status">
-            <span class="visually-hidden">{{ __('Loading...') }}</span>
+    <div class="page error-bg" id="particles-js">
+        <div class="error-page ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Internet Connection Status -->
-    <div class="internet-connection-status" id="internetStatus"></div>
+    <!-- Bootstrap JS -->
+    <script src="{{ url(config('common.path_template') . 'assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    @yield('content')
-
-    <!-- All JavaScript Files -->
-    @include('layouts.partials._scripts')
+    <!-- Show Password JS -->
+    <script src="{{ url(config('common.path_template') . 'assets/js/show-password.js') }}"></script>
 </body>
 
 </html>
