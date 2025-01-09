@@ -11,6 +11,11 @@ class RangeHarga extends Model
 
     protected $table = 'range_harga';
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +23,7 @@ class RangeHarga extends Model
      */
     protected $fillable = [
         'nama',
+        'slug',
         'harga_min',
         'harga_max',
         'created_by',

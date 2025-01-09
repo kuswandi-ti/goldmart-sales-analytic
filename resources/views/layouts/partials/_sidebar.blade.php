@@ -53,41 +53,12 @@
                 {{-- INPUT DATA - BEGIN --}}
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
-                @if (canAccess([
-                        'nasabah index',
-                        'kredit nasabah index',
-                        'brand index',
-                        'tipe barang index',
-                        'range harga index',
-                        'customer visit index',
-                    ]))
+                @if (canAccess(['brand index', 'tipe barang index', 'range harga index', 'customer visit index']))
                     <li class="mt-4 slide__category"><span class="category-name">{{ __('Data') }}</span></li>
                 @endif
                 <!-- End::slide__category -->
 
                 <!-- Start::slide -->
-                @if (canAccess(['nasabah index']))
-                    <li class="slide {{ setSidebarActive(['nasabah.*']) }}">
-                        <a href="{{ route('nasabah.index') }}"
-                            class="side-menu__item {{ setSidebarActive(['nasabah.*']) }}">
-                            <span class="side-menu__icon">
-                                <i class='bx bxs-donate-heart'></i>
-                            </span>
-                            <span class="side-menu__label">{{ __('Nasabah') }}</span>
-                        </a>
-                    </li>
-                @endif
-                @if (canAccess(['kredit nasabah index']))
-                    <li class="slide {{ setSidebarActive(['kreditnasabah.*']) }}">
-                        <a href="{{ route('kreditnasabah.index') }}"
-                            class="side-menu__item {{ setSidebarActive(['kreditnasabah.*']) }}">
-                            <span class="side-menu__icon">
-                                <i class='bx bxs-credit-card'></i>
-                            </span>
-                            <span class="side-menu__label">{{ __('Kredit Nasabah') }}</span>
-                        </a>
-                    </li>
-                @endif
                 @if (canAccess(['brand index']))
                     <li class="slide {{ setSidebarActive(['brand.*']) }}">
                         <a href="{{ route('brand.index') }}"
@@ -107,6 +78,17 @@
                                 <i class='bx bxs-diamond'></i>
                             </span>
                             <span class="side-menu__label">{{ __('Tipe Barang') }}</span>
+                        </a>
+                    </li>
+                @endif
+                @if (canAccess(['range harga index']))
+                    <li class="slide {{ setSidebarActive(['rangeharga.*']) }}">
+                        <a href="{{ route('rangeharga.index') }}"
+                            class="side-menu__item {{ setSidebarActive(['rangeharga.*']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bx-collapse-horizontal'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Range Harga') }}</span>
                         </a>
                     </li>
                 @endif

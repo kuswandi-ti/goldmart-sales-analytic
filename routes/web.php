@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RangeHargaController;
 use App\Http\Controllers\TipeBarangController;
 use App\Http\Controllers\KreditNasabahController;
 
@@ -65,6 +66,10 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     /** Tipe Barang Routes */
     Route::get('tipebarang/data', [TipeBarangController::class, 'data'])->name('tipebarang.data');
     Route::resource('tipebarang', TipeBarangController::class);
+
+    /** Range Harga Routes */
+    Route::get('rangeharga/data', [RangeHargaController::class, 'data'])->name('rangeharga.data');
+    Route::resource('rangeharga', RangeHargaController::class);
 
     /** Nasabah Routes */
     Route::get('nasabah/data', [NasabahController::class, 'data'])->name('nasabah.data');

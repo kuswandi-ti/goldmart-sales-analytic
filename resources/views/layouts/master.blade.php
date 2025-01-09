@@ -122,6 +122,13 @@
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
 
+            $('body').on('keyup', '.zero-default', function(e) {
+                if (!$(this).val()) {
+                    e.preventDefault();
+                    $(this).val(0);
+                }
+            });
+
             $('.custom-file-input').on('change', function() {
                 let filename = $(this)
                     .val()
