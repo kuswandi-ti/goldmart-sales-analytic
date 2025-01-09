@@ -17,9 +17,36 @@
 
     <div class="row">
         <div class="col-xxl-12 col-xl-12">
-            <div class="card custom-card">
+            {{-- <div class="card custom-card">
+                <div class="card-title">
+                        Top Selling Products
+                    </div>
                 <div class="card-body">
                     <div id="kreditstatistic1"></div>
+                </div>
+            </div> --}}
+            <div class="card custom-card overflow-hidden">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        Top Selling Products
+                    </div>
+                    <div class="dropdown">
+                        <a href="javascript:void(0);" class="btn-outline-light btn btn-sm text-muted" data-bs-toggle="dropdown" aria-expanded="false">
+                            View All<i class="ri-arrow-down-s-line align-middle ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu mb-0" role="menu" style="">
+                            <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
+                            <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card-body p-0">
+                            <div id="kreditstatistic1"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

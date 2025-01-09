@@ -53,7 +53,7 @@
                 {{-- INPUT DATA - BEGIN --}}
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
-                @if (canAccess(['brand index', 'tipe barang index', 'range harga index']))
+                @if (canAccess(['brand index', 'tipe barang index', 'range harga index', 'customer visit index', 'customer visit create']))
                     <li class="mt-4 slide__category"><span class="category-name">{{ __('Data') }}</span></li>
                 @endif
                 <!-- End::slide__category -->
@@ -92,26 +92,41 @@
                         </a>
                     </li>
                 @endif
-                <!-- End::slide -->
-
-                <!-- Start::slide__category -->
-                @if (canAccess(['customer visit index']))
-                    <li class="mt-4 slide__category"><span class="category-name">{{ __('Transaksi') }}</span></li>
-                @endif
-
-                <!-- Start::slide -->
-                @if (canAccess(['customer visit index']))
-                    <li class="slide {{ setSidebarActive(['customervisit.*']) }}">
-                        <a href="{{ route('customervisit.index') }}"
+                @if (canAccess(['customer visit index', 'customer visit create']))
+                    <li
+                        class="slide has-sub {{ setSidebarActive(['customervisit.*']) }} {{ setSidebarOpen(['customervisit.*']) }}">
+                        <a href="javascript:void(0);"
                             class="side-menu__item {{ setSidebarActive(['customervisit.*']) }}">
-                            <span class="side-menu__icon">
+                            <span class=" side-menu__icon">
                                 <i class='bx bx-category'></i>
                             </span>
                             <span class="side-menu__label">{{ __('Customer Visit') }}</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
                         </a>
+                        <ul class="slide-menu child1 {{ setSidebarActive(['customervisit.*']) }}">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">{{ __('Customer Visit') }}</a>
+                            </li>
+                            @if (canAccess(['customer visit index']))
+                                <li class="slide {{ setSidebarActive(['customervisit.*']) }}">
+                                    <a href="{{ route('customervisit.index') }}"
+                                        class="side-menu__item {{ setSidebarActive(['customervisit.*']) }}">
+                                        {{ __('List Data') }}
+                                    </a>
+                                </li>
+                            @endif
+                            @if (canAccess(['customer visit create']))
+                                <li class="slide {{ setSidebarActive(['customervisit.*']) }}">
+                                    <a href="{{ route('customervisit.create') }}"
+                                        class="side-menu__item {{ setSidebarActive(['customervisit.*']) }}">
+                                        {{ __('Input Data') }}
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
                     </li>
                 @endif
-                <!-- End::slide__category -->
+                <!-- End::slide -->
                 {{-- ======================================================================================================= --}}
                 {{-- INPUT DATA - END --}}
                 {{-- ======================================================================================================= --}}
