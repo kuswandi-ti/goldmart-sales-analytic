@@ -71,6 +71,10 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('rangeharga/data', [RangeHargaController::class, 'data'])->name('rangeharga.data');
     Route::resource('rangeharga', RangeHargaController::class);
 
+    /** Customer Visit Routes */
+    Route::get('customervisit/data', [CustomerVisitController::class, 'data'])->name('customervisit.data');
+    Route::resource('customervisit', CustomerVisitController::class);
+
     /** Nasabah Routes */
     Route::get('nasabah/data', [NasabahController::class, 'data'])->name('nasabah.data');
     Route::resource('nasabah', NasabahController::class);

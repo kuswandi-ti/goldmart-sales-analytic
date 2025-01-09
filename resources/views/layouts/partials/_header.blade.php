@@ -30,6 +30,15 @@
         <!-- Start::header-content-right -->
         <div class="header-content-right">
             <!-- Start::header-element -->
+            <div class="header-element">
+                <!-- Start::header-link|layout-setting -->
+                <a aria-label="anchor" href="{{ route('dashboard.index') }}" class="header-link">
+                    <!-- Start::header-link-icon -->
+                    <i class="bx bx-category bx-flip-horizontal header-link-icon ionicon"></i>
+                    <!-- End::header-link-icon -->
+                </a>
+                <!-- End::header-link|layout-setting -->
+            </div>
             <div class="header-element header-theme-mode">
                 <!-- Start::header-link|layout-setting -->
                 <a aria-label="anchor" href="javascript:void(0);" class="header-link layout-setting">

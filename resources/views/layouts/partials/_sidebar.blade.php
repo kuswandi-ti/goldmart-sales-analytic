@@ -53,7 +53,7 @@
                 {{-- INPUT DATA - BEGIN --}}
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
-                @if (canAccess(['brand index', 'tipe barang index', 'range harga index', 'customer visit index']))
+                @if (canAccess(['brand index', 'tipe barang index', 'range harga index']))
                     <li class="mt-4 slide__category"><span class="category-name">{{ __('Data') }}</span></li>
                 @endif
                 <!-- End::slide__category -->
@@ -93,6 +93,25 @@
                     </li>
                 @endif
                 <!-- End::slide -->
+
+                <!-- Start::slide__category -->
+                @if (canAccess(['customer visit index']))
+                    <li class="mt-4 slide__category"><span class="category-name">{{ __('Transaksi') }}</span></li>
+                @endif
+
+                <!-- Start::slide -->
+                @if (canAccess(['customer visit index']))
+                    <li class="slide {{ setSidebarActive(['customervisit.*']) }}">
+                        <a href="{{ route('customervisit.index') }}"
+                            class="side-menu__item {{ setSidebarActive(['customervisit.*']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bx-category'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Customer Visit') }}</span>
+                        </a>
+                    </li>
+                @endif
+                <!-- End::slide__category -->
                 {{-- ======================================================================================================= --}}
                 {{-- INPUT DATA - END --}}
                 {{-- ======================================================================================================= --}}
