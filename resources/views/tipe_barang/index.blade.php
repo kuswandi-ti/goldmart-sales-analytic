@@ -26,7 +26,7 @@
                             </p>
                         </div>
                     </div>
-                    @can('tipe_barang create')
+                    @can('tipe barang create')
                         <div class="d-flex" role="search">
                             <a href="{{ route('tipebarang.create') }}" class="btn btn-primary">
                                 {{ __('Baru') }}

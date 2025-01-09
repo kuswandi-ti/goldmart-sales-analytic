@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\TipeBarang;
 use Illuminate\Http\Request;
+use App\Http\Requests\TipeBarangRequest;
 
 class TipeBarangController extends Controller
 {
@@ -28,15 +30,27 @@ class TipeBarangController extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::orderBy('nama')->pluck('nama', 'id');
+
+        return view('tipe_barang.create', compact('brands'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TipeBarangRequest $request)
     {
-        //
+        $store = TipeBarang::create([
+            'nama' => $request->nama,
+            'id_brand' => $request->brand,
+            'created_by' => auth()->user()->name,
+        ]);
+
+        if ($store) {
+            return redirect()->route('tipebarang.index')->with('success', __('Data tipe barang berhasil dibuat'));
+        } else {
+            return redirect()->route('tipebarang.index')->with('error', __('Data tipe barang gagal dibuat'));
+        }
     }
 
     /**
@@ -50,17 +64,29 @@ class TipeBarangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(TipeBarang $tipebarang)
     {
-        //
+        $brands = Brand::orderBy('nama')->pluck('nama', 'id');
+
+        return view('tipe_barang.edit', compact('tipebarang', 'brands'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TipeBarang $tipebarang, Request $request)
     {
-        //
+        $update = $tipebarang->update([
+            'nama' => $request->nama,
+            'id_brand' => $request->brand,
+            'updated_by' => auth()->user()->name,
+        ]);
+
+        if ($update) {
+            return redirect()->route('tipebarang.index')->with('success', __('Data tipebarang berhasil diperbarui'));
+        } else {
+            return redirect()->route('tipebarang.index')->with('error', __('Data tipebarang gagal diperbarui'));
+        }
     }
 
     /**

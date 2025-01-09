@@ -24,17 +24,15 @@ class TipeBarangRequest extends FormRequest
         switch ($this->method()) {
             case 'POST':
                 return [
-                    'id_brand' => ['required', 'string', 'max:255'],
                     'nama' => ['required', 'string', 'max:255', 'unique:tipe_barang,id'],
                 ];
                 break;
 
             case 'PATCH':
             case 'PUT':
-                $tipebarang_id = $this->route('tipebarang');
+                $id = $this->route('tipebarang');
                 return [
-                    'id_brand' => ['required', 'string', 'max:255', 'unique:tipe_barang,id,' . $tipebarang_id],
-                    'nama' => ['required', 'string', 'max:255'],
+                    'nama' => ['required', 'string', 'max:255', 'unique:tipe_barang,id,' . $id],
                 ];
                 break;
         }

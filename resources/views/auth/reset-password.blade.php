@@ -33,7 +33,7 @@
                     <div class="col-xl-6 col-md-6 pe-sm-0">
                         <div class="text-center">
                             <img src="{{ url(config('common.path_template') . 'assets/images/sales-illustration.webp') }}"
-                                alt="logo" class="desktop-dark img-fluid rounded mb-2" width="300">
+                                alt="logo" class="desktop-dark img-fluid rounded mb-2" width="250">
                             <p class="fw-semibold">
                                 {{ $setting_system['site_title_2'] ?? config('app.name') }}
                             </p>
