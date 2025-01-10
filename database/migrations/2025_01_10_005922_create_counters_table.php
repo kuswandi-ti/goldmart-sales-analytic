@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -12,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_visit', function (Blueprint $table) {
+        Schema::create('counter', function (Blueprint $table) {
             $table->id();
-            $table->string('no_dokumen', 50);
-            $table->date('tgl_visit')->default(new Expression('(CURDATE())'));
-            $table->string('nama_customer')->nullable();
-            $table->string('parameter_1');
-            $table->string('parameter_2');
-            $table->string('keterangan')->nullable();
+            $table->string('kode_transaksi');
+            $table->integer('bulan')->default(0);
+            $table->integer('tahun')->default(0);
+            $table->integer('nomor_terakhir')->default(0);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_visit');
+        Schema::dropIfExists('counter');
     }
 };

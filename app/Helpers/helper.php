@@ -171,3 +171,49 @@ function activePeriod(): ?String
     $setting_system = SettingSystem::pluck('value', 'key')->toArray();
     return $setting_system['tahun_periode_aktif_2'];
 }
+
+function left($text, $length)
+{
+    return substr($text, 0, $length);
+}
+
+function right($text, $length)
+{
+    return substr($text, -$length);
+}
+
+/**
+ * Create document number
+ *
+ * @param  string $kode_transaksi = Code of Transaction
+ * @param  int $bulan = Month of Transaction
+ * @param  int $tahun = Year of Transaction
+ * @param  int $nomor_terakhir = Current increment of document number transaction
+ * @return string
+ */
+function create_doc_no($kode_transaksi, $bulan, $tahun)
+{
+    $count = DB::table('counter')
+                    ->where([['kode_transaksi', $kode_transaksi], ['bulan', intval($bulan)], ['tahun', $tahun]])
+                    ->max('nomor_terakhir');
+    if ($count == 0) {
+        $current_no = 1;
+        DB::table('counter')->insert([
+            [
+                'kode_transaksi' => $kode_transaksi,
+                'bulan' => intval($trx_month),
+                'tahun' => $tahun,
+                'nomor_terakhir' => $current_no,
+            ]
+        ]);
+    } else {
+        $current_no = $count + 1;
+        DB::table('counter')
+                ->where([['kode_transaksi', $kode_transaksi], ['bulan', intval($bulan)], ['tahun', $tahun]])
+                ->update(['nomor_terakhir' => $nomor_terakhir]
+        );
+    }
+
+    // Format Doc : XX-MMYY-XXXX
+    return $kode_transaksi . '-' . right('0000' . $bulan, 2) . right($tahun, 2) . '-' . right('0000' . $current_no, 4);
+}

@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RangeHargaController;
 use App\Http\Controllers\TipeBarangController;
+use App\Http\Controllers\CustomerVisitController;
 use App\Http\Controllers\KreditNasabahController;
 
 /*
@@ -72,6 +73,11 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::resource('rangeharga', RangeHargaController::class);
 
     /** Customer Visit Routes */
+    Route::get('customervisit/input', [CustomerVisitController::class, 'input'])->name('customervisit.input');
+    Route::get('customervisit/param1', [CustomerVisitController::class, 'param1'])->name('customervisit.param1');
+    Route::get('customervisit/param2', [CustomerVisitController::class, 'param2'])->name('customervisit.param2');
+    Route::get('customervisit/param3', [CustomerVisitController::class, 'param3'])->name('customervisit.param3');
+    Route::get('customervisit/param4', [CustomerVisitController::class, 'param4'])->name('customervisit.param4');
     Route::get('customervisit/data', [CustomerVisitController::class, 'data'])->name('customervisit.data');
     Route::resource('customervisit', CustomerVisitController::class);
 

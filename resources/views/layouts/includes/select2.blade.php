@@ -18,7 +18,7 @@
 @push('scripts')
     <script>
         $(".select2").select2({
-            placeholder: "{{ __('Pilih salah satu ...') }}",
+            // placeholder: "{{ __('Pilih salah satu ...') }}",
             allowClear: true,
             dir: "ltr"
         });

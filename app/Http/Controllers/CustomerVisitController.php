@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\RangeHarga;
+use App\Models\TipeBarang;
 use Illuminate\Http\Request;
 
 class CustomerVisitController extends Controller
@@ -60,5 +63,38 @@ class CustomerVisitController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function input()
+    {
+        return view('customer_visit.input');
+    }
+
+    public function param1()
+    {
+        return view('customer_visit.param1');
+    }
+
+    public function param2()
+    {
+        $brand = Brand::orderBy('nama', 'ASC')->get();
+        $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+        $range_harga = RangeHarga::orderBy('nama', 'ASC')->get();
+
+        return view('customer_visit.param2', compact('brand', 'tipe_barang', 'range_harga'));
+    }
+
+    public function param3()
+    {
+        $brand = Brand::orderBy('nama', 'ASC')->get();
+        $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+        return view('customer_visit.param3', compact('brand', 'tipe_barang'));
+    }
+
+    public function param4()
+    {
+        $brand = Brand::orderBy('nama', 'ASC')->get();
+        $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+        return view('customer_visit.param4', compact('brand', 'tipe_barang'));
     }
 }
