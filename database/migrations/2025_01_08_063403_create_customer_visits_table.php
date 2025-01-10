@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('no_dokumen', 50);
             $table->date('tgl_visit')->default(new Expression('(CURDATE())'));
             $table->string('nama_customer')->nullable();
-            $table->string('parameter_1');
-            $table->string('parameter_2');
+            $table->string('parameter_1')->nullable();
+            $table->string('parameter_2')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();

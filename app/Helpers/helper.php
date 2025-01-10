@@ -88,6 +88,16 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'range harga delete', 'group_name' => 'Range Harga Permission'],
         ['guard_name' => 'web', 'name' => 'range harga index', 'group_name' => 'Range Harga Permission'],
         ['guard_name' => 'web', 'name' => 'range harga update', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'sales person create', 'group_name' => 'Sales Person Permission'],
+        ['guard_name' => 'web', 'name' => 'sales person delete', 'group_name' => 'Sales Person Permission'],
+        ['guard_name' => 'web', 'name' => 'sales person index', 'group_name' => 'Sales Person Permission'],
+        ['guard_name' => 'web', 'name' => 'sales person restore', 'group_name' => 'Sales Person Permission'],
+        ['guard_name' => 'web', 'name' => 'sales person update', 'group_name' => 'Sales Person Permission'],
+        ['guard_name' => 'web', 'name' => 'store create', 'group_name' => 'Store Permission'],
+        ['guard_name' => 'web', 'name' => 'store delete', 'group_name' => 'Store Permission'],
+        ['guard_name' => 'web', 'name' => 'store index', 'group_name' => 'Store Permission'],
+        ['guard_name' => 'web', 'name' => 'store restore', 'group_name' => 'Store Permission'],
+        ['guard_name' => 'web', 'name' => 'store update', 'group_name' => 'Store Permission'],
     ];
 }
 
@@ -214,6 +224,8 @@ function create_doc_no($kode_transaksi, $bulan, $tahun)
         );
     }
 
+    return $current_no;
+
     // Format Doc : XX-MMYY-XXXX
-    return $kode_transaksi . '-' . right('0000' . $bulan, 2) . right($tahun, 2) . '-' . right('0000' . $current_no, 4);
+    // return $kode_transaksi . '-' . right('0000' . $bulan, 2) . right($tahun, 2) . '-' . right('0000' . $current_no, 4);
 }

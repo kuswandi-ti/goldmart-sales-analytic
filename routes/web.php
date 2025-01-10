@@ -81,6 +81,11 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('customervisit/data', [CustomerVisitController::class, 'data'])->name('customervisit.data');
     Route::resource('customervisit', CustomerVisitController::class);
 
+    /** Store Routes */
+    Route::get('store/data', [StoreController::class, 'data'])->name('store.data');
+    Route::get('store/restore/{store}', [StoreController::class, 'restore'])->name('store.restore');
+    Route::resource('store', StoreController::class);
+
     /** Nasabah Routes */
     Route::get('nasabah/data', [NasabahController::class, 'data'])->name('nasabah.data');
     Route::resource('nasabah', NasabahController::class);

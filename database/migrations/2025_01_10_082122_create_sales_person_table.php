@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_visit_detail', function (Blueprint $table) {
+        Schema::create('sales_person', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_visit');
-            $table->string('parameter_1')->nullable();
-            $table->string('parameter_2')->nullable();
-            $table->string('parameter_3')->nullable();
-            $table->decimal('qty', 20, 2)->default(0);
-            $table->decimal('nominal', 20, 2)->default(0);
+            $table->string('kode', 50);
+            $table->string('slug');
+            $table->string('nama');
+            $table->boolean('status_aktif')->default(0)->comment('1 = Aktif, 0 = Non Aktif');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_visit_detail');
+        Schema::dropIfExists('sales_person');
     }
 };
