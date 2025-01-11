@@ -94,9 +94,6 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     /** Setting Routes */
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     Route::put('general-setting', [SettingController::class, 'generalSettingUpdate'])->name('general_setting.update');
-    Route::put('email-setting', [SettingController::class, 'emailSettingUpdate'])->name('email_setting.update');
-    Route::put('fee-setting', [SettingController::class, 'feeSettingUpdate'])->name('fee_setting.update');
-    Route::put('transaction-setting', [SettingController::class, 'transactionSettingUpdate'])->name('transaction_setting.update');
     Route::put('other-setting', [SettingController::class, 'otherSettingUpdate'])->name('other_setting.update');
 });
 
