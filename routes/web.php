@@ -6,7 +6,6 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\StoreController;
-use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DashboardController;
@@ -14,7 +13,6 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RangeHargaController;
 use App\Http\Controllers\TipeBarangController;
 use App\Http\Controllers\CustomerVisitController;
-use App\Http\Controllers\KreditNasabahController;
 use App\Http\Controllers\SalesPersonController;
 
 /*
@@ -92,18 +90,6 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('salesperson/data', [SalesPersonController::class, 'data'])->name('salesperson.data');
     Route::get('salesperson/restore/{salesperson}', [SalesPersonController::class, 'restore'])->name('salesperson.restore');
     Route::resource('salesperson', SalesPersonController::class);
-
-    /** Nasabah Routes */
-    Route::get('nasabah/data', [NasabahController::class, 'data'])->name('nasabah.data');
-    Route::resource('nasabah', NasabahController::class);
-
-    /** Kredit Nasabah Routes */
-    Route::get('kreditnasabah/detail/show_detail/{id}', [KreditNasabahController::class, 'show_detail'])->name('kreditnasabah.show_detail');
-    Route::get('kreditnasabah/detail/detail_data/{filter}', [KreditNasabahController::class, 'detail_data'])->name('kreditnasabah.detail_data');
-    Route::get('kreditnasabah/detail/{filter}', [KreditNasabahController::class, 'detail'])->name('kreditnasabah.detail');
-    Route::get('kreditnasabah/data', [KreditNasabahController::class, 'data'])->name('kreditnasabah.data');
-    Route::get('kreditnasabah/datalunas', [KreditNasabahController::class, 'data_lunas'])->name('kreditnasabah.datalunas');
-    Route::resource('kreditnasabah', KreditNasabahController::class);
 
     /** Setting Routes */
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
