@@ -19,7 +19,7 @@ class AuthCheck
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Anda tidak bisa mengakses halaman yang dituju. Silahkan login terlebih dahulu');
         } else {
-            if (Auth::user()->status == 0) {
+            if (Auth::user()->status_aktif == 0) {
                 Auth::logout();
                 return redirect()->route('login')
                     ->with('error', 'Akun anda tidak aktif. Silahkan hubungi admin');

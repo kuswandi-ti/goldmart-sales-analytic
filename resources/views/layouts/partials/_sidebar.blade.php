@@ -54,6 +54,8 @@
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
                 @if (canAccess([
+                        'store index',
+                        'sales person index',
                         'brand index',
                         'tipe barang index',
                         'range harga index',
@@ -65,6 +67,28 @@
                 <!-- End::slide__category -->
 
                 <!-- Start::slide -->
+                @if (canAccess(['store index']))
+                    <li class="slide {{ setSidebarActive(['store.*']) }}">
+                        <a href="{{ route('store.index') }}"
+                            class="side-menu__item {{ setSidebarActive(['store.*']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxs-store'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Store') }}</span>
+                        </a>
+                    </li>
+                @endif
+                @if (canAccess(['sales person index']))
+                    <li class="slide {{ setSidebarActive(['salesperson.*']) }}">
+                        <a href="{{ route('salesperson.index') }}"
+                            class="side-menu__item {{ setSidebarActive(['salesperson.*']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxs-user-voice'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Sales') }}</span>
+                        </a>
+                    </li>
+                @endif
                 @if (canAccess(['brand index']))
                     <li class="slide {{ setSidebarActive(['brand.*']) }}">
                         <a href="{{ route('brand.index') }}"

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\RangeHargaController;
 use App\Http\Controllers\TipeBarangController;
 use App\Http\Controllers\CustomerVisitController;
 use App\Http\Controllers\KreditNasabahController;
+use App\Http\Controllers\SalesPersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +87,11 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('store/data', [StoreController::class, 'data'])->name('store.data');
     Route::get('store/restore/{store}', [StoreController::class, 'restore'])->name('store.restore');
     Route::resource('store', StoreController::class);
+
+    /** Sales Person Routes */
+    Route::get('salesperson/data', [SalesPersonController::class, 'data'])->name('salesperson.data');
+    Route::get('salesperson/restore/{salesperson}', [SalesPersonController::class, 'restore'])->name('salesperson.restore');
+    Route::resource('salesperson', SalesPersonController::class);
 
     /** Nasabah Routes */
     Route::get('nasabah/data', [NasabahController::class, 'data'])->name('nasabah.data');

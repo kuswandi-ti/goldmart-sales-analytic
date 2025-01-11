@@ -91,29 +91,30 @@
                                 @enderror
                             </div>
                             <div class="col-xl-6">
-                                <label for="join_date" class="form-label text-default">{{ __('Tanggal Bergabung') }}
+                                <label for="sales_person" class="form-label text-default">{{ __('Sales') }}
                                     <x-all-not-null /></label>
-                                <div class="input-group">
-                                    <div class="input-group-text text-muted">
-                                        <i class="ri-calendar-line"></i>
+                                <select
+                                    class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"
+                                    name="sales_person" id="sales_person" required>
+                                    <option value="-">{{ __('Non Sales') }}</option>
+                                    @foreach ($sales_person as $key => $value)
+                                        <option value="{{ $key }}"
+                                            {{ old('sales_person') == $key ? 'selected' : ($user->id_sales_person == $key ? 'selected' : '') }}>
+                                            {{ $value }}</option>
+                                    @endforeach
+                                </select>
+                                @error('sales_person')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
                                     </div>
-                                    <input type="text"
-                                        class="form-control flatpickr @error('join_date') is-invalid @enderror"
-                                        name="join_date" value="{{ old('join_date') ?? ($user->join_date ?? '') }}"
-                                        placeholder="{{ __('Tanggal Bergabung') }}" required>
-                                    @error('join_date')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
                     @can('user update')
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Simpan') }}
+                                {{ __('Perbarui') }}
                             </button>
                         </div>
                     @endcan

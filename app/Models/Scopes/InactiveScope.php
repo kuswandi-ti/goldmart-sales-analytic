@@ -13,6 +13,6 @@ class InactiveScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $builder->where('status', 0);
+        $builder->where('status_aktif', 0);
     }
 }

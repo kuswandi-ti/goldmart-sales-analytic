@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Models\SettingSystem;
+use Illuminate\Support\Facades\DB;
 
 function canAccess(array $permissions)
 {
@@ -192,6 +193,12 @@ function right($text, $length)
     return substr($text, -$length);
 }
 
+function docNoStore(): ?String
+{
+    $setting_system = SettingSystem::pluck('value', 'key')->toArray();
+    return $setting_system['kode_dokumen_store'];
+}
+
 /**
  * Create document number
  *
@@ -201,17 +208,17 @@ function right($text, $length)
  * @param  int $nomor_terakhir = Current increment of document number transaction
  * @return string
  */
-function create_doc_no($kode_transaksi, $bulan, $tahun)
+function last_doc_no($kode_transaksi, $bulan, $tahun)
 {
     $count = DB::table('counter')
-                    ->where([['kode_transaksi', $kode_transaksi], ['bulan', intval($bulan)], ['tahun', $tahun]])
-                    ->max('nomor_terakhir');
+        ->where([['kode_transaksi', $kode_transaksi], ['bulan', intval($bulan)], ['tahun', $tahun]])
+        ->max('nomor_terakhir');
     if ($count == 0) {
         $current_no = 1;
         DB::table('counter')->insert([
             [
                 'kode_transaksi' => $kode_transaksi,
-                'bulan' => intval($trx_month),
+                'bulan' => intval($bulan),
                 'tahun' => $tahun,
                 'nomor_terakhir' => $current_no,
             ]
@@ -219,9 +226,10 @@ function create_doc_no($kode_transaksi, $bulan, $tahun)
     } else {
         $current_no = $count + 1;
         DB::table('counter')
-                ->where([['kode_transaksi', $kode_transaksi], ['bulan', intval($bulan)], ['tahun', $tahun]])
-                ->update(['nomor_terakhir' => $nomor_terakhir]
-        );
+            ->where([['kode_transaksi', $kode_transaksi], ['bulan', intval($bulan)], ['tahun', $tahun]])
+            ->update(
+                ['nomor_terakhir' => $current_no]
+            );
     }
 
     return $current_no;

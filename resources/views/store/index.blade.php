@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('page_title')
-    {{ __('User') }}
+    {{ __('Store') }}
 @endsection
 
 @section('section_header_title')
-    {{ __('User') }}
+    {{ __('Store') }}
 @endsection
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data User') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Store') }}</li>
 @endsection
 
 @section('page_content')
@@ -20,15 +20,15 @@
                 <div class="flex-wrap card-header d-flex align-items-center flex-xxl-nowrap">
                     <div class="flex-fill">
                         <div class="card-title">
-                            {{ __('Daftar Data User') }}
+                            {{ __('Daftar Data Store') }}
                             <p class="subtitle text-muted fs-12 fw-normal">
-                                {{ __('Menampilkan semua data user') }}
+                                {{ __('Menampilkan semua data store') }}
                             </p>
                         </div>
                     </div>
-                    @can('user create')
+                    @can('store create')
                         <div class="d-flex" role="search">
-                            <a href="{{ route('user.create') }}" class="btn btn-primary">
+                            <a href="{{ route('store.create') }}" class="btn btn-primary">
                                 {{ __('Baru') }}
                             </a>
                         </div>
@@ -41,8 +41,9 @@
                                 <tr>
                                     <th scope="col" width="5%">{{ __('Nomor') }}</th>
                                     <th scope="col" width="12%">{{ __('Aksi') }}</th>
+                                    <th scope="col">{{ __('Kode') }}</th>
                                     <th scope="col">{{ __('Nama') }}</th>
-                                    <th scope="col">{{ __('Role') }}</th>
+                                    <th scope="col">{{ __('Kota') }}</th>
                                     <th scope="col" width="10%">{{ __('Status Aktif') }}</th>
                                 </tr>
                             </thead>
@@ -74,7 +75,7 @@
                 sSearch: '',
             },
             ajax: {
-                url: '{{ route('user.data') }}',
+                url: '{{ route('store.data') }}',
             },
             columns: [{
                 data: 'DT_RowIndex',
@@ -85,11 +86,15 @@
                 searchable: false,
                 sortable: false,
             }, {
-                data: 'name',
+                data: 'kode',
                 searchable: true,
                 sortable: true,
             }, {
-                data: 'role',
+                data: 'nama',
+                searchable: true,
+                sortable: true,
+            }, {
+                data: 'kota',
                 searchable: true,
                 sortable: true,
             }, {

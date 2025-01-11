@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('kode', 50);
             $table->string('slug');
             $table->string('nama');
-            $table->boolean('status_aktif')->default(0)->comment('1 = Aktif, 0 = Non Aktif');
+            $table->bigInteger('id_store')->nullable();
+            $table->string('kode_store')->nullable();
+            $table->string('nama_store')->nullable();
+            $table->string('kota_store')->nullable();
+            $table->boolean('status_aktif')->default(1)->comment('1 = Aktif, 0 = Non Aktif');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();
