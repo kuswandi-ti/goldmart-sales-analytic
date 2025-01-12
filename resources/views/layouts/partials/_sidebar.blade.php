@@ -26,6 +26,15 @@
                 </svg>
             </div>
             <ul class="main-menu">
+                <li class="mt-4 slide__category">
+                    <span class="category-name badge bg-danger">
+                        <strong>{{ Session::get('sess_nama_store') }}</strong>
+                    </span>
+                    <span class="category-name badge bg-danger">
+                        <strong>{{ Session::get('sess_kota_store') }}</strong>
+                    </span>
+                </li>
+
                 {{-- ======================================================================================================= --}}
                 {{-- DASHBOARD - BEGIN --}}
                 {{-- ======================================================================================================= --}}

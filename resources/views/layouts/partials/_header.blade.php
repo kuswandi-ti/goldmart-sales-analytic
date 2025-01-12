@@ -19,12 +19,9 @@
 
             <div class="main-header-center header-link">
                 <a aria-label="anchor" href="javascript:void(0);" class="header-link">
-                    {{-- <span class="text-light">{{ __('Periode Aktif') }}</span>
+                    <span class="text-light">{{ __('Periode Aktif') }}</span>
                     <span class="text-light">&nbsp; : &nbsp;</span>
-                    <span class="badge bg-danger pulse pulse-secondary"><strong>{{ activePeriod() }}</strong></span> --}}
-                    <span class="badge bg-danger pulse pulse-secondary"><strong>{{ Session::get('sess_nama_store') }}</strong></span>
-                    <span class="text-light">&nbsp;&nbsp;</span>
-                    <span class="badge bg-warning pulse pulse-secondary"><strong>{{ Session::get('sess_kota_store') }}</strong></span>
+                    <span class="badge bg-danger pulse pulse-secondary"><strong>{{ activePeriod() }}</strong></span>
                 </a>
             </div>
         </div>
@@ -37,7 +34,7 @@
                 <!-- Start::header-link|layout-setting -->
                 <a aria-label="anchor" href="{{ route('customervisit.create') }}" class="header-link">
                     <!-- Start::header-link-icon -->
-                    <i class="bx bx-category bx-flip-horizontal header-link-icon ionicon"></i>
+                    <i class="bx bx-category header-link-icon ionicon"></i>
                     <!-- End::header-link-icon -->
                 </a>
                 <!-- End::header-link|layout-setting -->
