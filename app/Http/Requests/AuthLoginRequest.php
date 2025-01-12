@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
 class AuthLoginRequest extends FormRequest
@@ -59,6 +61,26 @@ class AuthLoginRequest extends FormRequest
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
+            ]);
+        } else {
+            $query = User::select(
+                'users.id_sales_person AS id_sales_person',
+                'users.kode_sales AS kode_sales',
+                'users.nama_sales AS nama_sales',
+                'sales_person.id_store AS id_store',
+                'sales_person.kode_store AS kode_store',
+                'sales_person.nama_store AS nama_store',
+                'sales_person.kota_store AS kota_store'
+            )
+                ->leftJoin('sales_person', 'users.id_sales_person', '=', 'sales_person.id')
+                ->where('users.email', $this->email)
+                ->first();
+
+            Session::put([
+                'sess_id_store' => $query['id_store'],
+                'sess_kode_store' => $query['kode_store'],
+                'sess_nama_store' => $query['nama_store'],
+                'sess_kota_store' => $query['kota_store'],
             ]);
         }
     }

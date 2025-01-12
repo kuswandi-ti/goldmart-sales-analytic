@@ -102,12 +102,11 @@
                                 @enderror
                             </div>
                             <div class="col-xl-6">
-                                <label for="sales_person" class="form-label text-default">{{ __('Sales') }}
+                                <label for="sales_person" class="form-label text-default">{{ __('Sales Person') }}
                                     <x-all-not-null /></label>
                                 <select
                                     class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"
                                     name="sales_person" id="sales_person" required>
-                                    <option value="0">{{ __('Non Sales') }}</option>
                                     @foreach ($sales_person as $key => $value)
                                         <option value="{{ $key }}" {{ old('sales_person') == $key ? 'selected' : '' }}>
                                             {{ $value }}</option>

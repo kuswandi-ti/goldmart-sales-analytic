@@ -49,8 +49,8 @@ class RolePermissionTableSeeder extends Seeder
             'approved_at' => saveDateTimeNow(),
             'approved_by' => $default_user,
             'remember_token' => Str::random(10),
-            'id_sales_person' => 1,
-            'kode_sales' => 'SLS001',
+            'id_sales_person' => 2,
+            'kode_sales' => 'SLS002',
             'nama_sales' => 'Sales Kantor Pusat',
             'created_by' => $default_user,
         ]);
@@ -67,8 +67,8 @@ class RolePermissionTableSeeder extends Seeder
             'approved_at' => saveDateTimeNow(),
             'approved_by' => $default_user,
             'remember_token' => Str::random(10),
-            'id_sales_person' => 2,
-            'kode_sales' => 'SLS002',
+            'id_sales_person' => 3,
+            'kode_sales' => 'SLS003',
             'nama_sales' => 'Sales Jakarta',
             'created_by' => $default_user,
         ]);
@@ -85,8 +85,8 @@ class RolePermissionTableSeeder extends Seeder
             'approved_at' => saveDateTimeNow(),
             'approved_by' => $default_user,
             'remember_token' => Str::random(10),
-            'id_sales_person' => 3,
-            'kode_sales' => 'SLS003',
+            'id_sales_person' => 4,
+            'kode_sales' => 'SLS004',
             'nama_sales' => 'Sales Bekasi',
             'created_by' => $default_user,
         ]);

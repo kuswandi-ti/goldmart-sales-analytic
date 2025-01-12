@@ -19,9 +19,12 @@
 
             <div class="main-header-center header-link">
                 <a aria-label="anchor" href="javascript:void(0);" class="header-link">
-                    <span class="text-light">{{ __('Periode Aktif') }}</span>
+                    {{-- <span class="text-light">{{ __('Periode Aktif') }}</span>
                     <span class="text-light">&nbsp; : &nbsp;</span>
-                    <span class="badge bg-danger pulse pulse-secondary"><strong>{{ activePeriod() }}</strong></span>
+                    <span class="badge bg-danger pulse pulse-secondary"><strong>{{ activePeriod() }}</strong></span> --}}
+                    <span class="badge bg-danger pulse pulse-secondary"><strong>{{ Session::get('sess_nama_store') }}</strong></span>
+                    <span class="text-light">&nbsp;&nbsp;</span>
+                    <span class="badge bg-warning pulse pulse-secondary"><strong>{{ Session::get('sess_kota_store') }}</strong></span>
                 </a>
             </div>
         </div>

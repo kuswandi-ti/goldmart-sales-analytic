@@ -25,6 +25,10 @@ class SalesPerson extends Model
         'kode',
         'slug',
         'nama',
+        'id_store',
+        'kode_store',
+        'nama_store',
+        'kota_store',
         'status_aktif',
         'created_by',
         'updated_by',
@@ -35,4 +39,14 @@ class SalesPerson extends Model
         'deleted_at',
         'restored_at',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status_aktif', 1);
+    }
+
+    public function scopeNonActive($query)
+    {
+        return $query->where('status_aktif', 0);
+    }
 }

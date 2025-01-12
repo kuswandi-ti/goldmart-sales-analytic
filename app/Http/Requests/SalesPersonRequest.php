@@ -11,7 +11,7 @@ class SalesPersonRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,19 @@ class SalesPersonRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'nama' => ['required', 'string', 'max:255'],
+                ];
+                break;
+
+            case 'PATCH':
+            case 'PUT':
+                return [
+                    'nama' => ['required', 'string', 'max:255', 'unique:sales_person,nama,' . $this->salesperson->id],
+                ];
+                break;
+        }
     }
 }

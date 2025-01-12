@@ -20,16 +20,20 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <nav class="nav nav-tabs flex-column nav-style-5" role="tablist">
-                        <a class="nav-link active" data-bs-toggle="tab" role="tab" aria-current="page" href="#tab1"
-                            aria-selected="true">
-                            <i class="align-middle bx bx-info-circle me-2 fs-18"></i>
-                            {{ __('Informasi Perusahaan') }}
-                        </a>
-                        <a class="mt-3 nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#tab3"
-                            aria-selected="false" tabindex="-1">
-                            <i class="align-middle bx bx-cog me-2 fs-18"></i>
-                            {{ __('Lainnya') }}
-                        </a>
+                        @can('setting info perusahaan')
+                            <a class="nav-link active" data-bs-toggle="tab" role="tab" aria-current="page" href="#tab1"
+                                aria-selected="true">
+                                <i class="align-middle bx bx-info-circle me-2 fs-18"></i>
+                                {{ __('Informasi Perusahaan') }}
+                            </a>
+                        @endcan
+                        @can('setting lainnya')
+                            <a class="mt-3 nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#tab3"
+                                aria-selected="false" tabindex="-1">
+                                <i class="align-middle bx bx-cog me-2 fs-18"></i>
+                                {{ __('Lainnya') }}
+                            </a>
+                        @endcan
                     </nav>
                 </div>
                 <div class="col-xl-9 col-lg-8">

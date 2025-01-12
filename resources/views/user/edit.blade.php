@@ -91,7 +91,7 @@
                                 @enderror
                             </div>
                             <div class="col-xl-6">
-                                <label for="sales_person" class="form-label text-default">{{ __('Sales') }}
+                                <label for="sales_person" class="form-label text-default">{{ __('Sales Person') }}
                                     <x-all-not-null /></label>
                                 <select
                                     class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"

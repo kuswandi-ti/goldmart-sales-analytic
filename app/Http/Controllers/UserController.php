@@ -34,8 +34,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('name', '!=', 'Super Admin')->orderBy('name')->pluck('name', 'name');
-        $sales_person = SalesPerson::orderBy('nama')->pluck('nama', 'id');
+        $roles = Role::where('name', '!=', 'Super Admin')
+            ->orderBy('name')
+            ->pluck('name', 'name');
+        $sales_person = SalesPerson::active()
+            ->orderBy('nama')
+            ->pluck('nama', 'id');
 
         return view('user.create', compact('roles', 'sales_person'));
     }
@@ -92,7 +96,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::where('name', '!=', 'Super Admin')->orderBy('name')->pluck('name', 'id');
-        $sales_person = SalesPerson::orderBy('nama')->pluck('nama', 'id');
+        $sales_person = SalesPerson::active()
+            ->orderBy('nama')
+            ->pluck('nama', 'id');
 
         return view('user.edit', compact('user', 'roles', 'sales_person'));
     }

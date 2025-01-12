@@ -36,4 +36,14 @@ class Store extends Model
         'deleted_at',
         'restored_at',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status_aktif', 1);
+    }
+
+    public function scopeNonActive($query)
+    {
+        return $query->where('status_aktif', 0);
+    }
 }

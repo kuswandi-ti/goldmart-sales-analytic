@@ -20,6 +20,7 @@ class SettingSystemTableSeeder extends Seeder
             ['key' => 'tahun_periode_aktif_2', 'value' => date('Y'), 'created_by' => $user],
             ['key' => 'kode_dokumen_customer_visit', 'value' => 'CVI', 'created_by' => $user],
             ['key' => 'kode_dokumen_store', 'value' => 'STR', 'created_by' => $user],
+            ['key' => 'kode_dokumen_sales_person', 'value' => 'SLS', 'created_by' => $user],
         ];
         foreach ($input as $item) {
             SettingSystem::create($item);

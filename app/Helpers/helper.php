@@ -199,6 +199,12 @@ function docNoStore(): ?String
     return $setting_system['kode_dokumen_store'];
 }
 
+function docNoSalesPerson(): ?String
+{
+    $setting_system = SettingSystem::pluck('value', 'key')->toArray();
+    return $setting_system['kode_dokumen_sales_person'];
+}
+
 /**
  * Create document number
  *

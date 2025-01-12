@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\StoreTableSeeder;
 use Database\Seeders\RangeHargaTableSeeder;
@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(KotaTableSeeder::class);
         $this->call(SalesPersonTableSeeder::class);
         $this->call(StoreTableSeeder::class);
+        $this->call(CounterTableSeeder::class);
     }
 }

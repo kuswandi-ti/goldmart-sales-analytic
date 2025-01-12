@@ -83,6 +83,8 @@ class AuthController extends Controller
 
     public function logout(Request $request): RedirectResponse
     {
+        Session::flush();
+
         Auth::logout();
 
         $request->session()->invalidate();

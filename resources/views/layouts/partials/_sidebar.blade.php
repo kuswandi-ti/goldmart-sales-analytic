@@ -85,7 +85,7 @@
                             <span class="side-menu__icon">
                                 <i class='bx bxs-user-voice'></i>
                             </span>
-                            <span class="side-menu__label">{{ __('Sales') }}</span>
+                            <span class="side-menu__label">{{ __('Sales Person') }}</span>
                         </a>
                     </li>
                 @endif
