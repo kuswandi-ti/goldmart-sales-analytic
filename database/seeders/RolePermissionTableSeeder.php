@@ -36,6 +36,7 @@ class RolePermissionTableSeeder extends Seeder
             'guard_name' => 'web',
             'name' => $create_role_sales,
         ]);
+        $role_sales->givePermissionTo(['customer visit create', 'customer visit index']);
 
         $sales_kantor_pusat = User::create([
             'name' => 'User Sales Kantor Pusat',

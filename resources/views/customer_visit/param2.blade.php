@@ -66,30 +66,37 @@
                                         </div>
                                     </div>
                                     <div class="mb-4 col-sm-10" id="div-brand" style="display: none">
-                                        @foreach ($brand as $item)
-                                            <div class="row">
-                                                <div class="col-sm-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" value="{{ $item->nama }}"
-                                                            type="checkbox" role="switch" name="brands[]"
-                                                            id="{{ $item->id }}">
-                                                        <label class="form-check-label"
-                                                            for="{{ $item->id }}">{{ $item->nama }}</label>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-2 col-sm-10">
-                                                    <select
-                                                        class="js-example-placeholder-single js-states form-control select2"
-                                                        name="tipebarang[]">
-                                                        <option value="0">{{ __('Pilih Tipe Barang') }}</option>
-                                                        @foreach ($tipe_barang->where('id_brand', $item->id) as $data)
-                                                            <option value="{{ $data->nama }}">
-                                                                {{ $data->nama }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                        <div class="table-responsive">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{ __('Brand') }}</th>
+                                                        <th scope="col">{{ __('Tipe Barang') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($brand as $item)
+                                                        <tr>
+                                                            <td width="35%">
+                                                                <input type="text" class="form-control"
+                                                                    name="brand[]"
+                                                                    value="{{ $item->nama }}" readonly>
+                                                            </td>
+                                                            <td>
+                                                                <select
+                                                                    class="js-example-placeholder-single js-states form-control select2"
+                                                                    name="tipe_barang[]" multiple>
+                                                                    @foreach ($tipe_barang->where('id_brand', $item->id) as $data)
+                                                                        <option value="{{ $data->nama }}">
+                                                                            {{ $data->nama }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </li>

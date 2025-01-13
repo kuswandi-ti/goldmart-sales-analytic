@@ -47,7 +47,7 @@ class CustomerVisitController extends Controller
         $tahun = date('y');
 
         // XXX-MMYY-XXXX
-        $no_dokumen = docNoCustomerVisit() . '-' . $bulan . $tahun . '-' . right('0000' . last_doc_no(docNoCustomerVisit(), $bulan, $tahun), 4);
+        $no_dokumen = docNoCustomerVisit() . '-' . $bulan . $tahun . '-' . right('0000' . last_doc_no(docNoCustomerVisit(), $bulan, date('Y')), 4);
 
         // Header
         $store = CustomerVisit::create([
@@ -91,25 +91,33 @@ class CustomerVisitController extends Controller
                     }
                     // Jika Barang
                     if ($params[$i] == 'Barang') {
-                        $brands = $request->brands;
-                        // Jika ada brand yg diceklis
-                        if (count($brands) > 0) {
-                            for ($j = 0; $j < count($brands); $j++) {
-                                // Jika ada tipe barang yg diinput
-                                $tipebarang = $request->tipebarang;
-                                // if (count($tipebarangs) > 0) {
-                                //     for ($k = 0; $k < count($brands); $k++) {
-
-                                //     }
-                                // }
-                                CustomerVisitDetail::create([
-                                    'id_visit' => $store->id,
-                                    'parameter_1' => $params[$i],
-                                    'parameter_2' => $brands[$j],
-                                    'parameter_3' => $tipebarang[$j],
-                                    'created_by' => auth()->user()->name,
-                                ]);
+                        $brand = $request->brand;
+                        for ($j = 0; $j < count($brand); $j++) {
+                            $tipe_barang = json_encode($request->tipe_barang);
+                            dd($tipe_barang);
+                            if (!empty($tipe_barang)) {
+                                for ($k = 0; $k < count($tipe_barang); $k++) {
+                                    CustomerVisitDetail::create([
+                                        'id_visit' => $store->id,
+                                        'parameter_1' => $params[$i],
+                                        'parameter_2' => $brand[$j],
+                                        'parameter_3' => $tipe_barang[$k],
+                                        'created_by' => auth()->user()->name,
+                                    ]);
+                                }
                             }
+
+
+
+                            // if (count($tipe_barang) > 0) {
+                            //     CustomerVisitDetail::create([
+                            //         'id_visit' => $store->id,
+                            //         'parameter_1' => $params[$i],
+                            //         'parameter_2' => $brand[$j],
+                            //         'parameter_3' => $tipe_barang[$j],
+                            //         'created_by' => auth()->user()->name,
+                            //     ]);
+                            // }
                         }
                     }
                 }

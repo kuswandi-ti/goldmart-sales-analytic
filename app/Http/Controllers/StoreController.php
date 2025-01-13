@@ -42,7 +42,7 @@ class StoreController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $kode = docNoStore() . right('0000' . last_doc_no(docNoStore(), date('m'), date('y')), 3);
+        $kode = docNoStore() . right('0000' . last_doc_no(docNoStore(), date('m'), date('Y')), 3);
         $store = Store::create([
             'kode' => $kode,
             'slug' => Str::slug($kode),

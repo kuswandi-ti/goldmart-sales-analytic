@@ -52,7 +52,7 @@ class SalesPersonController extends Controller
             ->where('id', $request->store)
             ->first();
 
-        $kode = docNoSalesPerson() . right('0000' . last_doc_no(docNoSalesPerson(), date('m'), date('y')), 3);
+        $kode = docNoSalesPerson() . right('0000' . last_doc_no(docNoSalesPerson(), date('m'), date('Y')), 3);
 
         $store = SalesPerson::create([
             'kode' => $kode,
