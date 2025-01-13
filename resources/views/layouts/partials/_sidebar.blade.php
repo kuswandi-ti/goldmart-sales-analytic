@@ -28,10 +28,10 @@
             <ul class="main-menu">
                 <li class="mt-4 slide__category">
                     <span class="category-name badge bg-danger">
-                        <strong>{{ Session::get('sess_nama_store') }}</strong>
+                        <strong>{{ getSession(5) }}</strong>
                     </span>
                     <span class="category-name badge bg-danger">
-                        <strong>{{ Session::get('sess_kota_store') }}</strong>
+                        <strong>{{ getSession(6) }}</strong>
                     </span>
                 </li>
 

@@ -118,6 +118,21 @@
         };
 
         $(document).ready(function() {
+            const timeout = 300000; // 900000 ms = 15 minutes
+            var idleTimer = null;
+            $('*').bind(
+                'mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick',
+                function() {
+                    clearTimeout(idleTimer);
+
+                    idleTimer = setTimeout(function() {
+                        document.getElementById('form-logout').submit();
+                    }, timeout);
+                });
+            $("body").trigger("mousemove");
+        });
+
+        $(document).ready(function() {
             $('body').on('keyup', '.number-only', function(e) {
                 this.value = this.value.replace(/[^0-9]/g, '');
             });

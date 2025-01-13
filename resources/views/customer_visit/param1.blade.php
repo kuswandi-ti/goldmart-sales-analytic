@@ -24,6 +24,9 @@
             <form method="POST" action="{{ route('customervisit.store') }}">
                 @csrf
 
+                <input type="hidden" name="choice_param" value="param1">
+                <input type="hidden" name="proses_param" value="0">
+
                 <div class="card custom-card">
                     <div class="flex-wrap card-header d-flex align-items-center flex-xxl-nowrap">
                         <div class="flex-fill">
@@ -113,7 +116,8 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-10 mb-3" id="div-keterangan" style="display: none">
-                                        <input type="text" class="form-control @error('keterangan') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('keterangan') is-invalid @enderror"
                                             name="keterangan" id="keterangan" value="{{ old('keterangan') }}"
                                             placeholder="{{ __('Keterangan Others') }}">
                                     </div>

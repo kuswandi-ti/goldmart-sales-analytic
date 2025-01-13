@@ -77,6 +77,9 @@ class AuthLoginRequest extends FormRequest
                 ->first();
 
             Session::put([
+                'sess_id_sales_person' => $query['id_sales_person'],
+                'sess_kode_sales' => $query['kode_sales'],
+                'sess_nama_sales' => $query['nama_sales'],
                 'sess_id_store' => $query['id_store'],
                 'sess_kode_store' => $query['kode_store'],
                 'sess_nama_store' => $query['nama_store'],

@@ -17,10 +17,18 @@ class CustomerVisit extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'no_dokumen',
         'tgl_visit',
         'nama_customer',
         'parameter_1',
         'parameter_2',
+        'id_sales_person',
+        'kode_sales',
+        'nama_sales',
+        'id_store',
+        'kode_store',
+        'nama_store',
+        'kota_store',
         'created_by',
         'updated_by',
         'deleted_by',

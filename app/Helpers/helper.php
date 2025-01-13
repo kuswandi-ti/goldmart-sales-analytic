@@ -205,6 +205,32 @@ function docNoSalesPerson(): ?String
     return $setting_system['kode_dokumen_sales_person'];
 }
 
+function docNoCustomerVisit(): ?String
+{
+    $setting_system = SettingSystem::pluck('value', 'key')->toArray();
+    return $setting_system['kode_dokumen_customer_visit'];
+}
+
+function paramCustomerVisit($param): ?String
+{
+    $params = array("Lihat", "Tanya", "Coba", "Beli");
+    return $params[$param];
+}
+
+function getSession($param): ?String
+{
+    $params = array(
+        Session::get('sess_id_sales_person'),
+        Session::get('sess_kode_sales'),
+        Session::get('sess_nama_sales'),
+        Session::get('sess_id_store'),
+        Session::get('sess_kode_store'),
+        Session::get('sess_nama_store'),
+        Session::get('sess_kota_store'),
+    );
+    return $params[$param];
+}
+
 /**
  * Create document number
  *

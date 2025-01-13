@@ -20,6 +20,13 @@ return new class extends Migration
             $table->string('parameter_1')->nullable();
             $table->string('parameter_2')->nullable();
             $table->string('keterangan')->nullable();
+            $table->bigInteger('id_sales_person')->nullable();
+            $table->string('kode_sales')->nullable();
+            $table->string('nama_sales')->nullable();
+            $table->bigInteger('id_store')->nullable();
+            $table->string('kode_store')->nullable();
+            $table->string('nama_store')->nullable();
+            $table->string('kota_store')->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();

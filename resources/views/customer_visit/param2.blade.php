@@ -24,6 +24,9 @@
             <form method="POST" action="{{ route('customervisit.store') }}">
                 @csrf
 
+                <input type="hidden" name="choice_param" value="param2">
+                <input type="hidden" name="proses_param" value="1">
+
                 <div class="card custom-card">
                     <div class="flex-wrap card-header d-flex align-items-center flex-xxl-nowrap">
                         <div class="flex-fill">
@@ -77,9 +80,10 @@
                                                 <div class="mb-2 col-sm-10">
                                                     <select
                                                         class="js-example-placeholder-single js-states form-control select2"
-                                                        name="tipebarang[]" multiple="multiple">
+                                                        name="tipebarang[]">
+                                                        <option value="0">{{ __('Pilih Tipe Barang') }}</option>
                                                         @foreach ($tipe_barang->where('id_brand', $item->id) as $data)
-                                                            <option value="{{ $data->id }}">
+                                                            <option value="{{ $data->nama }}">
                                                                 {{ $data->nama }}</option>
                                                         @endforeach
                                                     </select>

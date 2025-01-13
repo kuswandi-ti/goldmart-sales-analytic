@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('parameter_1')->nullable();
             $table->string('parameter_2')->nullable();
             $table->string('parameter_3')->nullable();
+            $table->string('keterangan')->nullable();
             $table->decimal('qty', 20, 2)->default(0);
             $table->decimal('nominal', 20, 2)->default(0);
             $table->timestamps();
