@@ -112,6 +112,28 @@ function setStatusText($status)
     return $status == 1 ? __('Aktif') : __('Tidak Aktif');
 }
 
+function setParamBadge($param_text)
+{
+    switch ($param_text) {
+        case "Lihat":
+            return 'primary';
+            break;
+        case "Tanya":
+            return 'warning';
+            break;
+        case "Coba":
+            return 'danger';
+            break;
+        case "Beli":
+            return 'success';
+            break;
+        default:
+            echo 'primary';
+    }
+
+    return $status == 1 ? 'success' : 'danger';
+}
+
 function saveDateTimeNow()
 {
     return Carbon::now()->addHour(7)->format('Y-m-d H:i:s');

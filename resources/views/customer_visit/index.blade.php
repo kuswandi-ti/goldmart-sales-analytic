@@ -44,7 +44,7 @@
                                     <th scope="col">{{ __('No Dokumen Visit') }}</th>
                                     <th scope="col">{{ __('Tgl Visit') }}</th>
                                     <th scope="col">{{ __('Parameter') }}</th>
-                                    <th scope="col">{{ __('Sales') }}</th>
+                                    <th scope="col">{{ __('Sales Person') }}</th>
                                     <th scope="col">{{ __('Store') }}</th>
                                     <th scope="col">{{ __('Kota') }}</th>
                                 </tr>
