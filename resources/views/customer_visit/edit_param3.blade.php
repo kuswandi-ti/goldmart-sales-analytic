@@ -192,6 +192,8 @@
     </div>
 @endsection
 
+@include('layouts.includes.select2')
+
 @push('scripts')
     <script>
         $(function() {

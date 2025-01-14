@@ -124,7 +124,7 @@
                                             <label class="form-check-label" for="chk-barang">{{ __('Barang') }}</label>
                                         </div>
                                     </div>
-                                    {{-- <div class="mb-4 col-sm-10" id="div-brand" style="display: none">
+                                    <div class="mb-4 col-sm-10" id="div-brand" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table width="100%">
                                                 <thead>
@@ -139,7 +139,8 @@
                                                                 class="js-example-placeholder-single js-states form-control select2"
                                                                 name="goldmart[]" multiple>
                                                                 @foreach ($tipe_barang->where('id_brand', 1) as $data)
-                                                                    <option value="{{ $data->nama }}">
+                                                                    <option value="{{ $data->nama }}"
+                                                                        {{ in_array($data->nama, $customer_visit_detail_parameter_3_barang_goldmart) ? 'selected' : '' }}>
                                                                         {{ $data->nama }}</option>
                                                                 @endforeach
                                                             </select>
@@ -162,7 +163,8 @@
                                                                 class="js-example-placeholder-single js-states form-control select2"
                                                                 name="goldmaster[]" multiple>
                                                                 @foreach ($tipe_barang->where('id_brand', 2) as $data)
-                                                                    <option value="{{ $data->nama }}">
+                                                                    <option value="{{ $data->nama }}"
+                                                                        {{ in_array($data->nama, $customer_visit_detail_parameter_3_barang_goldmaster) ? 'selected' : '' }}>
                                                                         {{ $data->nama }}</option>
                                                                 @endforeach
                                                             </select>
@@ -171,7 +173,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </li>
                             <li class="list-group-item">
@@ -185,15 +187,16 @@
                                                 for="chk-range-harga">{{ __('Range Harga') }}</label>
                                         </div>
                                     </div>
-                                    {{-- <div class="mb-4 col-sm-10" id="div-range-harga" style="display: none">
+                                    <div class="mb-4 col-sm-10" id="div-range-harga" style="display: none">
                                         <select class="js-example-placeholder-single js-states form-control select2"
                                             name="rangeharga[]" multiple="multiple">
                                             @foreach ($range_harga as $data)
-                                                <option value="{{ $data->nama }}">
+                                                <option value="{{ $data->nama }}"
+                                                    {{ in_array($data->nama, $customer_visit_detail_parameter_2_range_harga) ? 'selected' : '' }}>
                                                     {{ $data->nama }}</option>
                                             @endforeach
                                         </select>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </li>
                             <li class="list-group-item">
@@ -235,7 +238,7 @@
                                     <div class="col-sm-10 mb-3" id="div-others" style="display: none">
                                         <input type="text"
                                             class="form-control @error('keterangan') is-invalid @enderror"
-                                            name="keterangan" id="keterangan" value="{{ old('keterangan') }}"
+                                            name="keterangan" id="keterangan" value="{{ old('keterangan') ?? ($customer_visit_detail_parameter_2_others->parameter_2 ?? '') }}"
                                             placeholder="{{ __('Keterangan Others') }}">
                                     </div>
                                 </div>
@@ -254,6 +257,8 @@
         </div>
     </div>
 @endsection
+
+@include('layouts.includes.select2')
 
 @push('scripts')
     <script>

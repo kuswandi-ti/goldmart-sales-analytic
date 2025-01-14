@@ -298,7 +298,7 @@ class CustomerVisitController extends Controller
                             if (count($goldmart) > 0) {
                                 for ($j = 0; $j < count($goldmart); $j++) {
                                     CustomerVisitDetail::create([
-                                        'id_visit' => $store->id,
+                                        'id_visit' => $id,
                                         'parameter_1' => $params[$i],
                                         'parameter_2' => 'Goldmart',
                                         'parameter_3' => $goldmart[$j],
@@ -473,7 +473,7 @@ class CustomerVisitController extends Controller
             ->where('id_visit', $id)
             ->get();
         $customer_visit_detail_parameter_1 = [];
-        foreach($query as $key => $value){
+        foreach ($query as $key => $value) {
             $customer_visit_detail_parameter_1[] = $value->parameter_1;
         }
 
@@ -481,7 +481,6 @@ class CustomerVisitController extends Controller
             ->where('id_visit', $id)
             ->where('parameter_1', 'Others')
             ->first();
-
 
         return view('customer_visit.edit_param1', compact('customer_visit', 'customer_visit_detail_parameter_1', 'customer_visit_detail_parameter_2'));
     }
@@ -495,18 +494,61 @@ class CustomerVisitController extends Controller
             ->where('id_visit', $id)
             ->get();
         $customer_visit_detail_parameter_1 = [];
-        foreach($query as $key => $value){
+        foreach ($query as $key => $value) {
             $customer_visit_detail_parameter_1[] = $value->parameter_1;
         }
 
-        // // Parameter 2
-        // $customer_visit_detail_parameter_2 = CustomerVisitDetail::select('parameter_2')
-        //     ->where('id_visit', $id)
-        //     ->where('parameter_1', 'Others')
-        //     ->first();
+        $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+        $range_harga = RangeHarga::orderBy('nama', 'ASC')->get();
 
+        // Parameter 3 - Barang - Goldmart
+        $query = CustomerVisitDetail::select('parameter_3')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Barang')
+            ->where('parameter_2', 'Goldmart')
+            ->get();
+        $customer_visit_detail_parameter_3_barang_goldmart = [];
+        foreach ($query as $key => $value) {
+            $customer_visit_detail_parameter_3_barang_goldmart[] = $value->parameter_3;
+        }
 
-        return view('customer_visit.edit_param2', compact('customer_visit', 'customer_visit_detail_parameter_1'));
+        // Parameter 3 - Barang - Goldmaster
+        $query = CustomerVisitDetail::select('parameter_3')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Barang')
+            ->where('parameter_2', 'Goldmaster')
+            ->get();
+        $customer_visit_detail_parameter_3_barang_goldmaster = [];
+        foreach ($query as $key => $value) {
+            $customer_visit_detail_parameter_3_barang_goldmaster[] = $value->parameter_3;
+        }
+
+        // Parameter 2 - Range Harga
+        $query = CustomerVisitDetail::select('parameter_2')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Range Harga')
+            ->get();
+        $customer_visit_detail_parameter_2_range_harga = [];
+        foreach ($query as $key => $value) {
+            $customer_visit_detail_parameter_2_range_harga[] = $value->parameter_2;
+        }
+
+        // Parameter 2 - Others
+        $customer_visit_detail_parameter_2_others = CustomerVisitDetail::select('parameter_2')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Others')
+            ->first();
+
+        return view('customer_visit.edit_param2', compact(
+            'customer_visit',
+            'tipe_barang',
+            'range_harga',
+            'customer_visit_detail_parameter_1',
+            'customer_visit_detail_parameter_3_barang_goldmart',
+            'customer_visit_detail_parameter_3_barang_goldmaster',
+            'customer_visit_detail_parameter_2_range_harga',
+            'customer_visit_detail_parameter_2_others',
+        ));
     }
 
     public function editParam3(string $id)
@@ -518,16 +560,9 @@ class CustomerVisitController extends Controller
             ->where('id_visit', $id)
             ->get();
         $customer_visit_detail_parameter_1 = [];
-        foreach($query as $key => $value){
+        foreach ($query as $key => $value) {
             $customer_visit_detail_parameter_1[] = $value->parameter_1;
         }
-
-        // // Parameter 2
-        // $customer_visit_detail_parameter_2 = CustomerVisitDetail::select('parameter_2')
-        //     ->where('id_visit', $id)
-        //     ->where('parameter_1', 'Others')
-        //     ->first();
-
 
         return view('customer_visit.edit_param3', compact('customer_visit', 'customer_visit_detail_parameter_1'));
     }
@@ -541,7 +576,7 @@ class CustomerVisitController extends Controller
             ->where('id_visit', $id)
             ->get();
         $customer_visit_detail_parameter_1 = [];
-        foreach($query as $key => $value){
+        foreach ($query as $key => $value) {
             $customer_visit_detail_parameter_1[] = $value->parameter_1;
         }
 
