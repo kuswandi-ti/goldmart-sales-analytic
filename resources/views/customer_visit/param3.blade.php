@@ -24,6 +24,9 @@
             <form method="POST" action="{{ route('customervisit.store') }}">
                 @csrf
 
+                <input type="hidden" name="choice_param" value="param3">
+                <input type="hidden" name="proses_param" value="2">
+
                 <div class="card custom-card">
                     <div class="flex-wrap card-header d-flex align-items-center flex-xxl-nowrap">
                         <div class="flex-fill">
@@ -44,30 +47,74 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        @foreach ($brand as $item)
-                                            <div class="row">
-                                                <div class="col-sm-2">
-                                                    <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger"
-                                                            value="{{ $item->nama }}" type="checkbox" role="switch"
-                                                            name="brands[]" id="{{ $item->id }}">
-                                                        <label class="form-check-label"
-                                                            for="{{ $item->id }}">{{ $item->nama }}</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-10 mb-3" id="div-tipe-barang">
-                                                    <select
-                                                        class="js-example-placeholder-single js-states form-control select2"
-                                                        name="tipebarang[]" multiple="multiple">
-                                                        @foreach ($tipe_barang->where('id_brand', $item->id) as $data)
-                                                            <option value="{{ $data->id }}">
-                                                                {{ $data->nama }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                    <div class="col-sm-2">
+                                        <div class="mb-3 form-check-lg form-switch">
+                                            <input class="form-check-input form-checked-danger" value="Goldmart"
+                                                type="checkbox" role="switch" name="param[]" id="chk-goldmart">
+                                            <label class="form-check-label" for="chk-goldmart">{{ __('Goldmart') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 col-sm-10" id="div-goldmart" style="display: none">
+                                        <div class="table-responsive mb-2">
+                                            <table width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{ __('Goldmart') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="50%">
+                                                            <select
+                                                                class="js-example-placeholder-single js-states form-control select2"
+                                                                name="goldmart[]" multiple="multiple">
+                                                                @foreach ($tipe_barang->where('id_brand', 1) as $data)
+                                                                    <option value="{{ $data->nama }}">
+                                                                        {{ $data->nama }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="mb-3 form-check-lg form-switch">
+                                            <input class="form-check-input form-checked-danger" value="Goldmaster"
+                                                type="checkbox" role="switch" name="param[]" id="chk-goldmaster">
+                                            <label class="form-check-label"
+                                                for="chk-goldmaster">{{ __('Goldmaster') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 col-sm-10" id="div-goldmaster" style="display: none">
+                                        <div class="table-responsive mb-2">
+                                            <table width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{ __('Goldmaster') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="50%">
+                                                            <select
+                                                                class="js-example-placeholder-single js-states form-control select2"
+                                                                name="goldmaster[]" multiple="multiple">
+                                                                @foreach ($tipe_barang->where('id_brand', 2) as $data)
+                                                                    <option value="{{ $data->nama }}">
+                                                                        {{ $data->nama }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -90,5 +137,23 @@
 @include('layouts.includes.select2')
 
 @push('scripts')
-    <script></script>
+    <script>
+        $(function() {
+            $("#chk-goldmart").click(function() {
+                if ($(this).is(":checked")) {
+                    $("#div-goldmart").show();
+                } else {
+                    $("#div-goldmart").hide();
+                }
+            });
+
+            $("#chk-goldmaster").click(function() {
+                if ($(this).is(":checked")) {
+                    $("#div-goldmaster").show();
+                } else {
+                    $("#div-goldmaster").hide();
+                }
+            });
+        });
+    </script>
 @endpush

@@ -78,47 +78,132 @@ class CustomerVisitController extends Controller
                 }
             }
         }
+
         if ($choice_param == 'param2') {
             if (count($params) > 0) {
                 for ($i = 0; $i < count($params); $i++) {
                     // Jika Promo
-                    if ($params[$i] == 'Promo') {
+                    if ($params[$i] == 'Promo' || $params[$i] == 'Buy Back' || $params[$i] == 'Reparasi' ||  $params[$i] == 'Others') {
                         CustomerVisitDetail::create([
                             'id_visit' => $store->id,
                             'parameter_1' => $params[$i],
+                            'parameter_2' => ($params[$i] == "Others" ? $request->keterangan : ''),
                             'created_by' => auth()->user()->name,
                         ]);
                     }
+
                     // Jika Barang
                     if ($params[$i] == 'Barang') {
-                        $brand = $request->brand;
-                        for ($j = 0; $j < count($brand); $j++) {
-                            $tipe_barang = json_encode($request->tipe_barang);
-                            dd($tipe_barang);
-                            if (!empty($tipe_barang)) {
-                                for ($k = 0; $k < count($tipe_barang); $k++) {
-                                    CustomerVisitDetail::create([
-                                        'id_visit' => $store->id,
-                                        'parameter_1' => $params[$i],
-                                        'parameter_2' => $brand[$j],
-                                        'parameter_3' => $tipe_barang[$k],
-                                        'created_by' => auth()->user()->name,
-                                    ]);
-                                }
+                        // Goldmart
+                        $goldmart = $request->goldmart;
+                        if (count($goldmart) > 0) {
+                            for ($j = 0; $j < count($goldmart); $j++) {
+                                CustomerVisitDetail::create([
+                                    'id_visit' => $store->id,
+                                    'parameter_1' => $params[$i],
+                                    'parameter_2' => 'Goldmart',
+                                    'parameter_3' => $goldmart[$j],
+                                    'created_by' => auth()->user()->name,
+                                ]);
                             }
-
-
-
-                            // if (count($tipe_barang) > 0) {
-                            //     CustomerVisitDetail::create([
-                            //         'id_visit' => $store->id,
-                            //         'parameter_1' => $params[$i],
-                            //         'parameter_2' => $brand[$j],
-                            //         'parameter_3' => $tipe_barang[$j],
-                            //         'created_by' => auth()->user()->name,
-                            //     ]);
-                            // }
                         }
+
+                        // Goldmaster
+                        $goldmaster = $request->goldmaster;
+                        if (count($goldmaster) > 0) {
+                            for ($j = 0; $j < count($goldmaster); $j++) {
+                                CustomerVisitDetail::create([
+                                    'id_visit' => $store->id,
+                                    'parameter_1' => $params[$i],
+                                    'parameter_2' => 'Goldmaster',
+                                    'parameter_3' => $goldmaster[$j],
+                                    'created_by' => auth()->user()->name,
+                                ]);
+                            }
+                        }
+                    }
+
+                    // Jika Range Harga
+                    if ($params[$i] == 'Range Harga') {
+                        $rangeharga = $request->rangeharga;
+                        if (count($rangeharga) > 0) {
+                            for ($j = 0; $j < count($rangeharga); $j++) {
+                                CustomerVisitDetail::create([
+                                    'id_visit' => $store->id,
+                                    'parameter_1' => $params[$i],
+                                    'parameter_2' => $rangeharga[$j],
+                                    'created_by' => auth()->user()->name,
+                                ]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if ($choice_param == 'param3') {
+            // Goldmart
+            $goldmart = $request->goldmart;
+            if (count($goldmart) > 0) {
+                for ($j = 0; $j < count($goldmart); $j++) {
+                    CustomerVisitDetail::create([
+                        'id_visit' => $store->id,
+                        'parameter_1' => 'Goldmart',
+                        'parameter_2' => $goldmart[$j],
+                        'created_by' => auth()->user()->name,
+                    ]);
+                }
+            }
+
+            // Goldmaster
+            $goldmaster = $request->goldmaster;
+            if (count($goldmaster) > 0) {
+                for ($j = 0; $j < count($goldmaster); $j++) {
+                    CustomerVisitDetail::create([
+                        'id_visit' => $store->id,
+                        'parameter_1' => 'Goldmaster',
+                        'parameter_2' => $goldmaster[$j],
+                        'created_by' => auth()->user()->name,
+                    ]);
+                }
+            }
+        }
+
+        if ($choice_param == 'param4') {
+            // Goldmart
+            $tipe_barang_goldmart = $request->tipe_barang_goldmart;
+            $nominal_goldmart = $request->nominal_goldmart;
+            $qty_goldmart = $request->qty_goldmart;
+            if (count($tipe_barang_goldmart) > 0) {
+                for ($i = 0; $i < count($tipe_barang_goldmart); $i++) {
+                    if ($nominal_goldmart[$i] > 0 || $qty_goldmart[$i]) {
+                        CustomerVisitDetail::create([
+                            'id_visit' => $store->id,
+                            'parameter_1' => 'Goldmart',
+                            'parameter_2' => $tipe_barang_goldmart[$i],
+                            'qty' => $qty_goldmart[$i],
+                            'nominal' => $nominal_goldmart[$i],
+                            'created_by' => auth()->user()->name,
+                        ]);
+                    }
+                }
+            }
+
+            // Goldmaster
+            $tipe_barang_goldmaster = $request->tipe_barang_goldmaster;
+            $nominal_goldmaster = $request->nominal_goldmaster;
+            $qty_goldmaster = $request->qty_goldmaster;
+            if (count($tipe_barang_goldmaster) > 0) {
+                for ($i = 0; $i < count($tipe_barang_goldmaster); $i++) {
+                    if ($nominal_goldmaster[$i] > 0 || $qty_goldmaster[$i]) {
+                        CustomerVisitDetail::create([
+                            'id_visit' => $store->id,
+                            'parameter_1' => 'Goldmaster',
+                            'parameter_2' => $tipe_barang_goldmaster[$i],
+                            'qty' => $qty_goldmaster[$i],
+                            'nominal' => $nominal_goldmaster[$i],
+                            'created_by' => auth()->user()->name,
+                        ]);
                     }
                 }
             }

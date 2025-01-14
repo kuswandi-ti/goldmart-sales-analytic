@@ -24,6 +24,9 @@
             <form method="POST" action="{{ route('customervisit.store') }}">
                 @csrf
 
+                <input type="hidden" name="choice_param" value="param4">
+                <input type="hidden" name="proses_param" value="3">
+
                 <div class="card custom-card">
                     <div class="flex-wrap card-header d-flex align-items-center flex-xxl-nowrap">
                         <div class="flex-fill">
@@ -44,54 +47,92 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        @foreach ($brand as $item)
-                                            <div class="row">
-                                                <div class="mb-2 col-sm-2">
-                                                    <div class="form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger"
-                                                            value="{{ $item->nama }}" type="checkbox" role="switch"
-                                                            name="brands[]" id="{{ $item->id }}">
-                                                        <label class="form-check-label"
-                                                            for="{{ $item->id }}">{{ $item->nama }}</label>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-4 col-sm-10">
-                                                    <div class="table-responsive">
-                                                        <table>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">{{ __('Tipe Barang') }}</th>
-                                                                    <th scope="col">{{ __('Nominal') }}</th>
-                                                                    <th scope="col">{{ __('Qty') }}</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach ($tipe_barang->where('id_brand', $item->id) as $data)
-                                                                    <tr>
-                                                                        <td>
-                                                                            <input type="text" class="form-control"
-                                                                                name="tipe_barang[]"
-                                                                                value="{{ $data->nama }}" readonly>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="number"
-                                                                                class="form-control number-only zero-default"
-                                                                                name="nominal[]" value="0">
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="number"
-                                                                                class="form-control number-only zero-default"
-                                                                                name="qty[]" value="0">
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                    <div class="col-sm-2">
+                                        <div class="mb-3 form-check-lg form-switch">
+                                            <input class="form-check-input form-checked-danger" value="Goldmart"
+                                                type="checkbox" role="switch" name="param[]" id="chk-goldmart">
+                                            <label class="form-check-label" for="chk-goldmart">{{ __('Goldmart') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 col-sm-10" id="div-goldmart" style="display: none">
+                                        <div class="table-responsive mb-2">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{ __('Tipe Barang') }}</th>
+                                                        <th scope="col">{{ __('Qty') }}</th>
+                                                        <th scope="col">{{ __('Nominal') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($tipe_barang->where('id_brand', 1) as $data)
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control"
+                                                                    name="tipe_barang_goldmart[]"
+                                                                    value="{{ $data->nama }}" readonly>
+                                                            </td>
+                                                            <td>
+                                                                <input type="number"
+                                                                    class="form-control number-only zero-default"
+                                                                    name="qty_goldmart[]" value="0">
+                                                            </td>
+                                                            <td>
+                                                                <input type="number"
+                                                                    class="form-control number-only zero-default"
+                                                                    name="nominal_goldmart[]" value="0">
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="mb-3 form-check-lg form-switch">
+                                            <input class="form-check-input form-checked-danger" value="Goldmaster"
+                                                type="checkbox" role="switch" name="param[]" id="chk-goldmaster">
+                                            <label class="form-check-label"
+                                                for="chk-goldmaster">{{ __('Goldmaster') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 col-sm-10" id="div-goldmaster" style="display: none">
+                                        <div class="table-responsive mb-2">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{ __('Tipe Barang') }}</th>
+                                                        <th scope="col">{{ __('Qty') }}</th>
+                                                        <th scope="col">{{ __('Nominal') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($tipe_barang->where('id_brand', 2) as $data)
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control"
+                                                                    name="tipe_barang_goldmaster[]"
+                                                                    value="{{ $data->nama }}" readonly>
+                                                            </td>
+                                                            <td>
+                                                                <input type="number"
+                                                                    class="form-control number-only zero-default"
+                                                                    name="qty_goldmaster[]" value="0">
+                                                            </td>
+                                                            <td>
+                                                                <input type="number"
+                                                                    class="form-control number-only zero-default"
+                                                                    name="nominal_goldmaster[]" value="0">
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -114,5 +155,23 @@
 @include('layouts.includes.select2')
 
 @push('scripts')
-    <script></script>
+    <script>
+        $(function() {
+            $("#chk-goldmart").click(function() {
+                if ($(this).is(":checked")) {
+                    $("#div-goldmart").show();
+                } else {
+                    $("#div-goldmart").hide();
+                }
+            });
+
+            $("#chk-goldmaster").click(function() {
+                if ($(this).is(":checked")) {
+                    $("#div-goldmaster").show();
+                } else {
+                    $("#div-goldmaster").hide();
+                }
+            });
+        });
+    </script>
 @endpush

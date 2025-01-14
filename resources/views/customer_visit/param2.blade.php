@@ -66,34 +66,49 @@
                                         </div>
                                     </div>
                                     <div class="mb-4 col-sm-10" id="div-brand" style="display: none">
-                                        <div class="table-responsive">
-                                            <table>
+                                        <div class="table-responsive mb-2">
+                                            <table width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">{{ __('Brand') }}</th>
-                                                        <th scope="col">{{ __('Tipe Barang') }}</th>
+                                                        <th scope="col">{{ __('Goldmart') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($brand as $item)
-                                                        <tr>
-                                                            <td width="35%">
-                                                                <input type="text" class="form-control"
-                                                                    name="brand[]"
-                                                                    value="{{ $item->nama }}" readonly>
-                                                            </td>
-                                                            <td>
-                                                                <select
-                                                                    class="js-example-placeholder-single js-states form-control select2"
-                                                                    name="tipe_barang[]" multiple>
-                                                                    @foreach ($tipe_barang->where('id_brand', $item->id) as $data)
-                                                                        <option value="{{ $data->nama }}">
-                                                                            {{ $data->nama }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
+                                                    <tr>
+                                                        <td width="50%">
+                                                            <select
+                                                                class="js-example-placeholder-single js-states form-control select2"
+                                                                name="goldmart[]" multiple>
+                                                                @foreach ($tipe_barang->where('id_brand', 1) as $data)
+                                                                    <option value="{{ $data->nama }}">
+                                                                        {{ $data->nama }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{ __('Goldmaster') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="50%">
+                                                            <select
+                                                                class="js-example-placeholder-single js-states form-control select2"
+                                                                name="goldmaster[]" multiple>
+                                                                @foreach ($tipe_barang->where('id_brand', 2) as $data)
+                                                                    <option value="{{ $data->nama }}">
+                                                                        {{ $data->nama }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -114,7 +129,7 @@
                                         <select class="js-example-placeholder-single js-states form-control select2"
                                             name="rangeharga[]" multiple="multiple">
                                             @foreach ($range_harga as $data)
-                                                <option value="{{ $data->id }}">
+                                                <option value="{{ $data->nama }}">
                                                     {{ $data->nama }}</option>
                                             @endforeach
                                         </select>
