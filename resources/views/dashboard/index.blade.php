@@ -16,33 +16,63 @@
     <x-web-alert-message />
 
     <div class="row">
+        <div class="col-xxl-6 col-sm-6">
+            <div class="col card-background">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Sales (Value)') }}</p>
+                                <h3 class="mb-0">Rp. 1.000.000.000</h3>
+                            </div>
+                            <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
+                                <i class="bx bxs-badge-dollar fs-20"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <span class="badge bg-primary-transparent rounded-pill">{{ __('Tahun') }}
+                                {{ activePeriod() }}
+                            </span>
+                            <a href="javascript:void(0);"
+                                class="text-muted fs-11 ms-auto text-decoration-underline mt-auto">{{ __('Lihat Detail') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xxl-6 col-sm-6">
+            <div class="col card-background">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Sales (Pcs)') }}</p>
+                                <h3 class="mb-0">2.000</h3>
+                            </div>
+                            <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
+                                <i class="bx bx-package fs-20"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <span class="badge bg-warning-transparent rounded-pill">{{ __('Tahun') }}
+                                {{ activePeriod() }}
+                            </span>
+                            <a href="javascript:void(0);"
+                                class="text-muted fs-11 ms-auto text-decoration-underline mt-auto">{{ __('Lihat Detail') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="col-xxl-12 col-xl-12">
-            {{-- <div class="card custom-card">
-                <div class="card-title">
-                        Top Selling Products
-                    </div>
-                <div class="card-body">
-                    <div id="kreditstatistic1"></div>
-                </div>
-            </div> --}}
             <div class="card custom-card overflow-hidden">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        Top Selling Products
-                    </div>
-                    <div class="dropdown">
-                        <a href="javascript:void(0);" class="btn-outline-light btn btn-sm text-muted" data-bs-toggle="dropdown" aria-expanded="false">
-                            View All<i class="ri-arrow-down-s-line align-middle ms-1"></i>
-                        </a>
-                        <ul class="dropdown-menu mb-0" role="menu" style="">
-                            <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
-                            <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-xl-12">
+                        <br>
                         <div class="card-body p-0">
                             <div id="kreditstatistic1"></div>
                         </div>
@@ -75,23 +105,23 @@
 
         Highcharts.chart('kreditstatistic1', {
             chart: {
-                type: 'line',
+                type: 'column',
                 zooming: {
                     type: 'x'
                 }
             },
             title: {
-                text: 'Statistik Pelunasan Kredit<br>{{ activePeriod() }}'
+                text: 'Statistik Penjualan Barang (pcs)<br>{{ activePeriod() }}'
             },
             subtitle: {
-                text: 'Source: <a href="https://www.goldmart.co.id/" target="_blank">goldmart</a>'
+                text: 'Source: <a href="https://www.goldmart.co.id/" target="_blank">goldmart<br><br><br></a>'
             },
             xAxis: {
                 title: {
-                    text: 'Bulan'
+                    text: 'Tipe'
                 },
-                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-                    'October', 'November', 'December'
+                categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
+                    'Oktober', 'November', 'Desember'
                 ]
             },
             yAxis: {
@@ -101,28 +131,19 @@
             },
             plotOptions: {
                 series: {
-                    allowPointSelect: true,
-                    label: {
-                        connectorAllowed: false
-                    },
-                },
-                line: {
+                    borderWidth: 0,
                     dataLabels: {
-                        enabled: true
-                    },
-                    animation: {
-                        defer: 900
-                    },
-                    enableMouseTracking: true
-                },
+                        enabled: true,
+                    }
+                }
             },
             series: [{
-                name: 'Total Kredit',
-                data: total_nilai_kredit_graph,
+                name: 'Goldmart',
+                data: [1, 20, 3, 4, 50, 1, 20, 3, 4, 50, 25, 42],
                 lineWidth: 4
             }, {
-                name: 'Total Pelunasan',
-                data: total_nilai_pelunasan_graph,
+                name: 'Goldmaster',
+                data: [10, 50, 70, 40, 10, 9, 30, 56, 71, 25, 71, 25],
                 lineWidth: 4
             }],
             responsive: {
@@ -143,43 +164,55 @@
 
         Highcharts.chart('kreditstatistic2', {
             chart: {
-                type: 'column',
+                type: 'line',
                 zooming: {
                     type: 'x'
                 }
             },
             title: {
-                text: 'Statistik Total Emas (Belum Pelunasan)<br>{{ $setting_system['tahun_periode_aktif'] }}'
+                text: 'Statistik Penjualan Barang (pcs)<br>{{ activePeriod() }}'
             },
             subtitle: {
-                text: 'Source: <a href="https://www.goldmart.co.id/" target="_blank">goldmart</a>'
+                text: 'Source: <a href="https://www.goldmart.co.id/" target="_blank">goldmart<br><br><br></a>'
             },
             xAxis: {
                 title: {
-                    text: 'Gramasi'
+                    text: 'Tipe'
                 },
-                categories: ['0,5', '1', '2', '3', '5', '10', '25', '50', '100']
+                categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
+                    'Oktober', 'November', 'Desember'
+                ]
             },
             yAxis: {
                 title: {
-                    text: 'Jumlah'
+                    text: 'Rupiah'
                 }
             },
             plotOptions: {
                 series: {
+                    borderWidth: 0,
                     dataLabels: {
-                        enabled: true
+                        enabled: true,
                     }
                 },
-                column: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
                     animation: {
                         defer: 900
-                    }
+                    },
+                    enableMouseTracking: true
                 },
             },
             series: [{
-                name: 'Total Emas',
-                data: total_emas_graph
+                name: 'Goldmart',
+                data: [1, 20, 3, 4, 50, 1, 20, 3, 4, 50, 25, 42],
+                lineWidth: 4
+            }, {
+                name: 'Goldmaster',
+                data: [10, 50, 70, 40, 10, 9, 30, 56, 71, 25, 71, 25],
+                lineWidth: 4
             }],
             responsive: {
                 rules: [{

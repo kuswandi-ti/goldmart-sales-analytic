@@ -13,6 +13,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RangeHargaController;
 use App\Http\Controllers\TipeBarangController;
 use App\Http\Controllers\CustomerVisitController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SalesPersonController;
 
 /*
@@ -94,6 +95,11 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('salesperson/data', [SalesPersonController::class, 'data'])->name('salesperson.data');
     Route::get('salesperson/restore/{salesperson}', [SalesPersonController::class, 'restore'])->name('salesperson.restore');
     Route::resource('salesperson', SalesPersonController::class);
+
+    /** Report Routes */
+    Route::get('report/salesperperson', [ReportController::class, 'reportSalesPerPerson'])->name('report.salesperperson');
+    Route::get('report/salesperstore', [ReportController::class, 'reportSalesPerStore'])->name('report.salesperstore');
+    Route::get('report/salesallstore', [ReportController::class, 'reportSalesAllStore'])->name('report.salesallstore');
 
     /** Setting Routes */
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');

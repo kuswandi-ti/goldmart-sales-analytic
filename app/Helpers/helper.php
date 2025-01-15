@@ -100,6 +100,9 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'store index', 'group_name' => 'Store Permission'],
         ['guard_name' => 'web', 'name' => 'store restore', 'group_name' => 'Store Permission'],
         ['guard_name' => 'web', 'name' => 'store update', 'group_name' => 'Store Permission'],
+        ['guard_name' => 'web', 'name' => 'report sales per person', 'group_name' => 'Report Permission'],
+        ['guard_name' => 'web', 'name' => 'report sales per store', 'group_name' => 'Report Permission'],
+        ['guard_name' => 'web', 'name' => 'report sales all store', 'group_name' => 'Report Permission'],
     ];
 }
 

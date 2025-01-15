@@ -172,6 +172,56 @@
                 {{-- ======================================================================================================= --}}
 
                 {{-- ======================================================================================================= --}}
+                {{-- REPORT - BEGIN --}}
+                {{-- ======================================================================================================= --}}
+                <!-- Start::slide__category -->
+                @if (canAccess(['report sales per person', 'report sales per store', 'report sales all store']))
+                    <li class="mt-4 slide__category"><span class="category-name">{{ __('Report') }}</span>
+                    </li>
+                @endif
+                <!-- End::slide__category -->
+
+                <!-- Start::slide -->
+                @if (canAccess(['report sales per person']))
+                    <li class="slide {{ setSidebarActive(['report.salesperperson']) }}">
+                        <a href="{{ route('report.salesperperson') }}"
+                            class="side-menu__item {{ setSidebarActive(['report.salesperperson']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxs-report'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Sales Per Person') }}</span>
+                        </a>
+                    </li>
+                @endif
+                @if (canAccess(['report sales per store']))
+                    <li class="slide {{ setSidebarActive(['report.salesperstore']) }}">
+                        <a href="{{ route('report.salesperstore') }}"
+                            class="side-menu__item {{ setSidebarActive(['report.salesperstore']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxs-report'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Sales Per Store') }}</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (canAccess(['report sales all store']))
+                    <li class="slide {{ setSidebarActive(['report.salesallstore']) }}">
+                        <a href="{{ route('report.salesallstore') }}"
+                            class="side-menu__item {{ setSidebarActive(['report.salesallstore']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxs-report'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Sales All Store') }}</span>
+                        </a>
+                    </li>
+                @endif
+                <!-- End::slide -->
+                {{-- ======================================================================================================= --}}
+                {{-- REPORT - END --}}
+                {{-- ======================================================================================================= --}}
+
+                {{-- ======================================================================================================= --}}
                 {{-- PENGATURAN - BEGIN --}}
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
