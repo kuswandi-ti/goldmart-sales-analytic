@@ -112,7 +112,7 @@
                                             <label class="form-check-label" for="chk-goldmart">{{ __('Goldmart') }}</label>
                                         </div>
                                     </div>
-                                    {{-- <div class="mb-4 col-sm-10" id="div-goldmart" style="display: none">
+                                    <div class="mb-4 col-sm-10" id="div-goldmart" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table>
                                                 <thead>
@@ -131,21 +131,39 @@
                                                                     value="{{ $data->nama }}" readonly>
                                                             </td>
                                                             <td>
-                                                                <input type="number"
-                                                                    class="form-control number-only zero-default"
-                                                                    name="qty_goldmart[]" value="0">
+                                                                @if (count($customer_visit_detail_parameter_2_goldmart->where('parameter_2', $data->nama)) > 0)
+                                                                    @foreach ($customer_visit_detail_parameter_2_goldmart->where('parameter_2', $data->nama) as $row)
+                                                                        <input type="text"
+                                                                            class="form-control number-only zero-default"
+                                                                            name="qty_goldmart[]"
+                                                                            value="{{ formatAmount($row->qty) ?? 0 }}">
+                                                                    @endforeach
+                                                                @else
+                                                                    <input type="text"
+                                                                        class="form-control number-only zero-default"
+                                                                        name="qty_goldmart[]" value="0">
+                                                                @endif
                                                             </td>
                                                             <td>
-                                                                <input type="number"
-                                                                    class="form-control number-only zero-default"
-                                                                    name="nominal_goldmart[]" value="0">
+                                                                @if (count($customer_visit_detail_parameter_2_goldmart->where('parameter_2', $data->nama)) > 0)
+                                                                    @foreach ($customer_visit_detail_parameter_2_goldmart->where('parameter_2', $data->nama) as $row)
+                                                                        <input type="text"
+                                                                            class="form-control number-only zero-default"
+                                                                            name="nominal_goldmart[]"
+                                                                            value="{{ formatAmount($row->nominal) ?? 0 }}">
+                                                                    @endforeach
+                                                                @else
+                                                                    <input type="text"
+                                                                        class="form-control number-only zero-default"
+                                                                        name="nominal_goldmart[]" value="0">
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </li>
                             <li class="list-group-item">
@@ -159,7 +177,7 @@
                                                 for="chk-goldmaster">{{ __('Goldmaster') }}</label>
                                         </div>
                                     </div>
-                                    {{-- <div class="mb-4 col-sm-10" id="div-goldmaster" style="display: none">
+                                    <div class="mb-4 col-sm-10" id="div-goldmaster" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table>
                                                 <thead>
@@ -178,21 +196,39 @@
                                                                     value="{{ $data->nama }}" readonly>
                                                             </td>
                                                             <td>
-                                                                <input type="number"
-                                                                    class="form-control number-only zero-default"
-                                                                    name="qty_goldmaster[]" value="0">
+                                                                @if (count($customer_visit_detail_parameter_2_goldmaster->where('parameter_2', $data->nama)) > 0)
+                                                                    @foreach ($customer_visit_detail_parameter_2_goldmaster->where('parameter_2', $data->nama) as $row)
+                                                                        <input type="text"
+                                                                            class="form-control number-only zero-default"
+                                                                            name="qty_goldmaster[]"
+                                                                            value="{{ formatAmount($row->qty) ?? 0 }}">
+                                                                    @endforeach
+                                                                @else
+                                                                    <input type="text"
+                                                                        class="form-control number-only zero-default"
+                                                                        name="qty_goldmaster[]" value="0">
+                                                                @endif
                                                             </td>
                                                             <td>
-                                                                <input type="number"
-                                                                    class="form-control number-only zero-default"
-                                                                    name="nominal_goldmaster[]" value="0">
+                                                                @if (count($customer_visit_detail_parameter_2_goldmaster->where('parameter_2', $data->nama)) > 0)
+                                                                    @foreach ($customer_visit_detail_parameter_2_goldmaster->where('parameter_2', $data->nama) as $row)
+                                                                        <input type="text"
+                                                                            class="form-control number-only zero-default"
+                                                                            name="nominal_goldmaster[]"
+                                                                            value="{{ formatAmount($row->nominal) ?? 0 }}">
+                                                                    @endforeach
+                                                                @else
+                                                                    <input type="text"
+                                                                        class="form-control number-only zero-default"
+                                                                        name="nominal_goldmaster[]" value="0">
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </li>
                         </ul>

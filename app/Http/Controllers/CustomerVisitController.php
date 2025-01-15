@@ -190,8 +190,8 @@ class CustomerVisitController extends Controller
                                 'id_visit' => $store->id,
                                 'parameter_1' => 'Goldmart',
                                 'parameter_2' => $tipe_barang_goldmart[$i],
-                                'qty' => $qty_goldmart[$i],
-                                'nominal' => $nominal_goldmart[$i],
+                                'qty' => unformatAmount($qty_goldmart[$i]),
+                                'nominal' => unformatAmount($nominal_goldmart[$i]),
                                 'created_by' => auth()->user()->name,
                             ]);
                         }
@@ -211,8 +211,8 @@ class CustomerVisitController extends Controller
                                 'id_visit' => $store->id,
                                 'parameter_1' => 'Goldmaster',
                                 'parameter_2' => $tipe_barang_goldmaster[$i],
-                                'qty' => $qty_goldmaster[$i],
-                                'nominal' => $nominal_goldmaster[$i],
+                                'qty' => unformatAmount($qty_goldmaster[$i]),
+                                'nominal' => unformatAmount($nominal_goldmaster[$i]),
                                 'created_by' => auth()->user()->name,
                             ]);
                         }
@@ -386,8 +386,8 @@ class CustomerVisitController extends Controller
                                 'id_visit' => $id,
                                 'parameter_1' => 'Goldmart',
                                 'parameter_2' => $tipe_barang_goldmart[$i],
-                                'qty' => $qty_goldmart[$i],
-                                'nominal' => $nominal_goldmart[$i],
+                                'qty' => unformatAmount($qty_goldmart[$i]),
+                                'nominal' => unformatAmount($nominal_goldmart[$i]),
                                 'created_by' => auth()->user()->name,
                             ]);
                         }
@@ -407,8 +407,8 @@ class CustomerVisitController extends Controller
                                 'id_visit' => $id,
                                 'parameter_1' => 'Goldmaster',
                                 'parameter_2' => $tipe_barang_goldmaster[$i],
-                                'qty' => $qty_goldmaster[$i],
-                                'nominal' => $nominal_goldmaster[$i],
+                                'qty' => unformatAmount($qty_goldmaster[$i]),
+                                'nominal' => unformatAmount($nominal_goldmaster[$i]),
                                 'created_by' => auth()->user()->name,
                             ]);
                         }
@@ -429,7 +429,29 @@ class CustomerVisitController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $customer_visit = CustomerVisit::findOrFail($id);
+            $destroy = $customer_visit->delete();
+
+            if ($destroy) {
+                CustomerVisitDetail::where('id_visit', $id)
+                    ->delete();
+                return response([
+                    'status' => 'success',
+                    'message' => __('Data user berhasil dihapus')
+                ]);
+            } else {
+                return response([
+                    'status' => 'error',
+                    'message' => __('Data user gagal dihapus')
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return response([
+                'status' => 'error',
+                'message' => __('Data user gagal dihapus')
+            ]);
+        }
     }
 
     public function input()
@@ -564,7 +586,35 @@ class CustomerVisitController extends Controller
             $customer_visit_detail_parameter_1[] = $value->parameter_1;
         }
 
-        return view('customer_visit.edit_param3', compact('customer_visit', 'customer_visit_detail_parameter_1'));
+        $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+
+        // Parameter 2 - Goldmart
+        $query = CustomerVisitDetail::select('parameter_2')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Goldmart')
+            ->get();
+        $customer_visit_detail_parameter_2_goldmart = [];
+        foreach ($query as $key => $value) {
+            $customer_visit_detail_parameter_2_goldmart[] = $value->parameter_2;
+        }
+
+        // Parameter 2 - Goldmaster
+        $query = CustomerVisitDetail::select('parameter_2')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Goldmaster')
+            ->get();
+        $customer_visit_detail_parameter_2_goldmaster = [];
+        foreach ($query as $key => $value) {
+            $customer_visit_detail_parameter_2_goldmaster[] = $value->parameter_2;
+        }
+
+        return view('customer_visit.edit_param3', compact(
+            'customer_visit',
+            'tipe_barang',
+            'customer_visit_detail_parameter_1',
+            'customer_visit_detail_parameter_2_goldmart',
+            'customer_visit_detail_parameter_2_goldmaster',
+        ));
     }
 
     public function editParam4(string $id)
@@ -580,14 +630,27 @@ class CustomerVisitController extends Controller
             $customer_visit_detail_parameter_1[] = $value->parameter_1;
         }
 
-        // // Parameter 2
-        // $customer_visit_detail_parameter_2 = CustomerVisitDetail::select('parameter_2')
-        //     ->where('id_visit', $id)
-        //     ->where('parameter_1', 'Others')
-        //     ->first();
+        $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
 
+        // Parameter 2 - Goldmart
+        $customer_visit_detail_parameter_2_goldmart = CustomerVisitDetail::select('parameter_2', 'qty', 'nominal')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Goldmart')
+            ->get();
 
-        return view('customer_visit.edit_param4', compact('customer_visit', 'customer_visit_detail_parameter_1'));
+        // Parameter 2 - Goldmaster
+        $customer_visit_detail_parameter_2_goldmaster = CustomerVisitDetail::select('parameter_2', 'qty', 'nominal')
+            ->where('id_visit', $id)
+            ->where('parameter_1', 'Goldmaster')
+            ->get();
+
+        return view('customer_visit.edit_param4', compact(
+            'customer_visit',
+            'tipe_barang',
+            'customer_visit_detail_parameter_1',
+            'customer_visit_detail_parameter_2_goldmart',
+            'customer_visit_detail_parameter_2_goldmaster',
+        ));
     }
 
     public function data(Request $request)
@@ -600,31 +663,42 @@ class CustomerVisitController extends Controller
                 return '<h6><span class="badge bg-' . setParamBadge($query->parameter_1) . '">' . $query->parameter_1 . '</span></h6>';
             })
             ->addColumn('action', function ($query) {
+                if ($query->parameter_1 == 'Lihat') {
+                    $link = 'customervisit.edit.param1';
+                } elseif ($query->parameter_1 == 'Tanya') {
+                    $link = 'customervisit.edit.param2';
+                } elseif ($query->parameter_1 == 'Coba') {
+                    $link = 'customervisit.edit.param3';
+                } elseif ($query->parameter_1 == 'Beli') {
+                    $link = 'customervisit.edit.param4';
+                }
                 if (canAccess(['customer visit update'])) {
-                    if ($query->parameter_1 == 'Lihat') {
-                        $link = 'customervisit.edit.param1';
-                    } elseif ($query->parameter_1 == 'Tanya') {
-                        $link = 'customervisit.edit.param2';
-                    } elseif ($query->parameter_1 == 'Coba') {
-                        $link = 'customervisit.edit.param3';
-                    } elseif ($query->parameter_1 == 'Beli') {
-                        $link = 'customervisit.edit.param4';
-                    }
                     $update = '
                             <li>
-                                <a class="edit dropdown-item border-bottom" href="' . route($link, $query) . '" data-toggle="tooltip" data-id="' . $query->id . '">
+                                <a class="dropdown-item border-bottom" href="' . route($link, $query) . '">
                                     <i class="bx bx-edit-alt fs-20"></i> ' . __("Perbarui") . '
                                 </a>
                             </li>
                         ';
                 }
-                if (canAccess(['customer visit update'])) {
+                if (canAccess(['customer visit delete'])) {
+                    $delete = '
+                            <li>
+                                <a class="dropdown-item border-bottom delete_item" href="' . route('customervisit.destroy', $query->id) . '">
+                                    <i class="bx bx-trash fs-20"></i> ' . __("Hapus") . '
+                                </a>
+                            </li>
+                        ';
+                }
+                if (canAccess(['customer visit update', 'customer visit delete', 'customer visit restore'])) {
                     return '<div class="dropdown">
                                 <button class="btn btn-outline-primary btn-sm btn-wave waves-effect waves-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bx bx-cog fs-16"></i>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">' .
-                        (!empty($update) ? $update : '') . '
+                        (!empty($update) ? $update : '') .
+                        (!empty($restore) ? $restore : '') .
+                        (!empty($delete) ? $delete : '') . '
                                 </ul>
                             </div>';
                 } else {

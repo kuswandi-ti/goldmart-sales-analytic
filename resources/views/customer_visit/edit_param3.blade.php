@@ -112,7 +112,7 @@
                                             <label class="form-check-label" for="chk-goldmart">{{ __('Goldmart') }}</label>
                                         </div>
                                     </div>
-                                    {{-- <div class="mb-4 col-sm-10" id="div-goldmart" style="display: none">
+                                    <div class="mb-4 col-sm-10" id="div-goldmart" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table width="100%">
                                                 <thead>
@@ -127,7 +127,8 @@
                                                                 class="js-example-placeholder-single js-states form-control select2"
                                                                 name="goldmart[]" multiple="multiple">
                                                                 @foreach ($tipe_barang->where('id_brand', 1) as $data)
-                                                                    <option value="{{ $data->nama }}">
+                                                                    <option value="{{ $data->nama }}"
+                                                                        {{ in_array($data->nama, $customer_visit_detail_parameter_2_goldmart) ? 'selected' : '' }}>
                                                                         {{ $data->nama }}</option>
                                                                 @endforeach
                                                             </select>
@@ -136,7 +137,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </li>
                             <li class="list-group-item">
@@ -150,7 +151,7 @@
                                                 for="chk-goldmaster">{{ __('Goldmaster') }}</label>
                                         </div>
                                     </div>
-                                    {{-- <div class="mb-4 col-sm-10" id="div-goldmaster" style="display: none">
+                                    <div class="mb-4 col-sm-10" id="div-goldmaster" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table width="100%">
                                                 <thead>
@@ -165,7 +166,8 @@
                                                                 class="js-example-placeholder-single js-states form-control select2"
                                                                 name="goldmaster[]" multiple="multiple">
                                                                 @foreach ($tipe_barang->where('id_brand', 2) as $data)
-                                                                    <option value="{{ $data->nama }}">
+                                                                    <option value="{{ $data->nama }}"
+                                                                        {{ in_array($data->nama, $customer_visit_detail_parameter_2_goldmaster) ? 'selected' : '' }}>
                                                                         {{ $data->nama }}</option>
                                                                 @endforeach
                                                             </select>
@@ -174,7 +176,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </li>
                         </ul>

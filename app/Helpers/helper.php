@@ -76,6 +76,7 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'customer visit create', 'group_name' => 'Customer Visit Permission'],
         ['guard_name' => 'web', 'name' => 'customer visit delete', 'group_name' => 'Customer Visit Permission'],
         ['guard_name' => 'web', 'name' => 'customer visit index', 'group_name' => 'Customer Visit Permission'],
+        ['guard_name' => 'web', 'name' => 'customer visit restore', 'group_name' => 'Customer Visit Permission'],
         ['guard_name' => 'web', 'name' => 'customer visit update', 'group_name' => 'Customer Visit Permission'],
         // ['guard_name' => 'web', 'name' => 'brand create', 'group_name' => 'Brand Permission'],
         // ['guard_name' => 'web', 'name' => 'brand delete', 'group_name' => 'Brand Permission'],
