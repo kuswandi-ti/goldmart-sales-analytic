@@ -78,10 +78,10 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('customervisit/param2', [CustomerVisitController::class, 'param2'])->name('customervisit.param2');
     Route::get('customervisit/param3', [CustomerVisitController::class, 'param3'])->name('customervisit.param3');
     Route::get('customervisit/param4', [CustomerVisitController::class, 'param4'])->name('customervisit.param4');
-    Route::get('customervisit/{id}/editparam1', [CustomerVisitController::class, 'editParam1'])->name('customervisit.edit.param1');
-    Route::get('customervisit/{id}/editparam2', [CustomerVisitController::class, 'editParam2'])->name('customervisit.edit.param2');
-    Route::get('customervisit/{id}/editparam3', [CustomerVisitController::class, 'editParam3'])->name('customervisit.edit.param3');
-    Route::get('customervisit/{id}/editparam4', [CustomerVisitController::class, 'editParam4'])->name('customervisit.edit.param4');
+    Route::get('customervisit/{id}/{action}/param1', [CustomerVisitController::class, 'actionParam1'])->name('customervisit.action.param1');
+    Route::get('customervisit/{id}/{action}/param2', [CustomerVisitController::class, 'actionParam2'])->name('customervisit.action.param2');
+    Route::get('customervisit/{id}/{action}/param3', [CustomerVisitController::class, 'actionParam3'])->name('customervisit.action.param3');
+    Route::get('customervisit/{id}/{action}/param4', [CustomerVisitController::class, 'actionParam4'])->name('customervisit.action.param4');
     Route::get('customervisit/data', [CustomerVisitController::class, 'data'])->name('customervisit.data');
     Route::resource('customervisit', CustomerVisitController::class);
 

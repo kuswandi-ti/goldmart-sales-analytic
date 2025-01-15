@@ -487,7 +487,347 @@ class CustomerVisitController extends Controller
         return view('customer_visit.param4', compact('brand', 'tipe_barang'));
     }
 
-    public function editParam1(string $id)
+    // public function editParam1(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $customer_visit_detail_parameter_2 = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Others')
+    //         ->first();
+
+    //     return view('customer_visit.edit_param1', compact(
+    //         'customer_visit',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_2'
+    //     ));
+    // }
+
+    // public function editParam2(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     // Parameter 1
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+    //     $range_harga = RangeHarga::orderBy('nama', 'ASC')->get();
+
+    //     // Parameter 3 - Barang - Goldmart
+    //     $query = CustomerVisitDetail::select('parameter_3')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Barang')
+    //         ->where('parameter_2', 'Goldmart')
+    //         ->get();
+    //     $customer_visit_detail_parameter_3_barang_goldmart = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_3_barang_goldmart[] = $value->parameter_3;
+    //     }
+
+    //     // Parameter 3 - Barang - Goldmaster
+    //     $query = CustomerVisitDetail::select('parameter_3')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Barang')
+    //         ->where('parameter_2', 'Goldmaster')
+    //         ->get();
+    //     $customer_visit_detail_parameter_3_barang_goldmaster = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_3_barang_goldmaster[] = $value->parameter_3;
+    //     }
+
+    //     // Parameter 2 - Range Harga
+    //     $query = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Range Harga')
+    //         ->get();
+    //     $customer_visit_detail_parameter_2_range_harga = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_2_range_harga[] = $value->parameter_2;
+    //     }
+
+    //     // Parameter 2 - Others
+    //     $customer_visit_detail_parameter_2_others = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Others')
+    //         ->first();
+
+    //     return view('customer_visit.edit_param2', compact(
+    //         'customer_visit',
+    //         'tipe_barang',
+    //         'range_harga',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_3_barang_goldmart',
+    //         'customer_visit_detail_parameter_3_barang_goldmaster',
+    //         'customer_visit_detail_parameter_2_range_harga',
+    //         'customer_visit_detail_parameter_2_others',
+    //     ));
+    // }
+
+    // public function editParam3(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     // Parameter 1
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+
+    //     // Parameter 2 - Goldmart
+    //     $query = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmart')
+    //         ->get();
+    //     $customer_visit_detail_parameter_2_goldmart = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_2_goldmart[] = $value->parameter_2;
+    //     }
+
+    //     // Parameter 2 - Goldmaster
+    //     $query = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmaster')
+    //         ->get();
+    //     $customer_visit_detail_parameter_2_goldmaster = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_2_goldmaster[] = $value->parameter_2;
+    //     }
+
+    //     return view('customer_visit.edit_param3', compact(
+    //         'customer_visit',
+    //         'tipe_barang',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_2_goldmart',
+    //         'customer_visit_detail_parameter_2_goldmaster',
+    //     ));
+    // }
+
+    // public function editParam4(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     // Parameter 1
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+
+    //     // Parameter 2 - Goldmart
+    //     $customer_visit_detail_parameter_2_goldmart = CustomerVisitDetail::select('parameter_2', 'qty', 'nominal')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmart')
+    //         ->get();
+
+    //     // Parameter 2 - Goldmaster
+    //     $customer_visit_detail_parameter_2_goldmaster = CustomerVisitDetail::select('parameter_2', 'qty', 'nominal')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmaster')
+    //         ->get();
+
+    //     return view('customer_visit.edit_param4', compact(
+    //         'customer_visit',
+    //         'tipe_barang',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_2_goldmart',
+    //         'customer_visit_detail_parameter_2_goldmaster',
+    //     ));
+    // }
+
+    // public function showParam1(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $customer_visit_detail_parameter_2 = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Others')
+    //         ->first();
+
+    //     return view('customer_visit.show_param1', compact(
+    //         'customer_visit',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_2'
+    //     ));
+    // }
+
+    // public function showParam2(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     // Parameter 1
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+    //     $range_harga = RangeHarga::orderBy('nama', 'ASC')->get();
+
+    //     // Parameter 3 - Barang - Goldmart
+    //     $query = CustomerVisitDetail::select('parameter_3')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Barang')
+    //         ->where('parameter_2', 'Goldmart')
+    //         ->get();
+    //     $customer_visit_detail_parameter_3_barang_goldmart = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_3_barang_goldmart[] = $value->parameter_3;
+    //     }
+
+    //     // Parameter 3 - Barang - Goldmaster
+    //     $query = CustomerVisitDetail::select('parameter_3')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Barang')
+    //         ->where('parameter_2', 'Goldmaster')
+    //         ->get();
+    //     $customer_visit_detail_parameter_3_barang_goldmaster = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_3_barang_goldmaster[] = $value->parameter_3;
+    //     }
+
+    //     // Parameter 2 - Range Harga
+    //     $query = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Range Harga')
+    //         ->get();
+    //     $customer_visit_detail_parameter_2_range_harga = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_2_range_harga[] = $value->parameter_2;
+    //     }
+
+    //     // Parameter 2 - Others
+    //     $customer_visit_detail_parameter_2_others = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Others')
+    //         ->first();
+
+    //     return view('customer_visit.show_param2', compact(
+    //         'customer_visit',
+    //         'tipe_barang',
+    //         'range_harga',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_3_barang_goldmart',
+    //         'customer_visit_detail_parameter_3_barang_goldmaster',
+    //         'customer_visit_detail_parameter_2_range_harga',
+    //         'customer_visit_detail_parameter_2_others',
+    //     ));
+    // }
+
+    // public function showParam3(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     // Parameter 1
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+
+    //     // Parameter 2 - Goldmart
+    //     $query = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmart')
+    //         ->get();
+    //     $customer_visit_detail_parameter_2_goldmart = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_2_goldmart[] = $value->parameter_2;
+    //     }
+
+    //     // Parameter 2 - Goldmaster
+    //     $query = CustomerVisitDetail::select('parameter_2')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmaster')
+    //         ->get();
+    //     $customer_visit_detail_parameter_2_goldmaster = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_2_goldmaster[] = $value->parameter_2;
+    //     }
+
+    //     return view('customer_visit.show_param3', compact(
+    //         'customer_visit',
+    //         'tipe_barang',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_2_goldmart',
+    //         'customer_visit_detail_parameter_2_goldmaster',
+    //     ));
+    // }
+
+    // public function showParam4(string $id)
+    // {
+    //     $customer_visit = CustomerVisit::find($id);
+
+    //     // Parameter 1
+    //     $query = CustomerVisitDetail::select('parameter_1')
+    //         ->where('id_visit', $id)
+    //         ->get();
+    //     $customer_visit_detail_parameter_1 = [];
+    //     foreach ($query as $key => $value) {
+    //         $customer_visit_detail_parameter_1[] = $value->parameter_1;
+    //     }
+
+    //     $tipe_barang = TipeBarang::orderBy('nama', 'ASC')->get();
+
+    //     // Parameter 2 - Goldmart
+    //     $customer_visit_detail_parameter_2_goldmart = CustomerVisitDetail::select('parameter_2', 'qty', 'nominal')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmart')
+    //         ->get();
+
+    //     // Parameter 2 - Goldmaster
+    //     $customer_visit_detail_parameter_2_goldmaster = CustomerVisitDetail::select('parameter_2', 'qty', 'nominal')
+    //         ->where('id_visit', $id)
+    //         ->where('parameter_1', 'Goldmaster')
+    //         ->get();
+
+    //     return view('customer_visit.show_param4', compact(
+    //         'customer_visit',
+    //         'tipe_barang',
+    //         'customer_visit_detail_parameter_1',
+    //         'customer_visit_detail_parameter_2_goldmart',
+    //         'customer_visit_detail_parameter_2_goldmaster',
+    //     ));
+    // }
+
+    public function actionParam1(string $id, string $action)
     {
         $customer_visit = CustomerVisit::find($id);
 
@@ -504,10 +844,22 @@ class CustomerVisitController extends Controller
             ->where('parameter_1', 'Others')
             ->first();
 
-        return view('customer_visit.edit_param1', compact('customer_visit', 'customer_visit_detail_parameter_1', 'customer_visit_detail_parameter_2'));
+        if ($action == 'show') {
+            return view('customer_visit.show_param1', compact(
+                'customer_visit',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_2'
+            ));
+        } elseif ($action == 'edit') {
+            return view('customer_visit.edit_param1', compact(
+                'customer_visit',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_2'
+            ));
+        }
     }
 
-    public function editParam2(string $id)
+    public function actionParam2(string $id, string $action)
     {
         $customer_visit = CustomerVisit::find($id);
 
@@ -561,19 +913,32 @@ class CustomerVisitController extends Controller
             ->where('parameter_1', 'Others')
             ->first();
 
-        return view('customer_visit.edit_param2', compact(
-            'customer_visit',
-            'tipe_barang',
-            'range_harga',
-            'customer_visit_detail_parameter_1',
-            'customer_visit_detail_parameter_3_barang_goldmart',
-            'customer_visit_detail_parameter_3_barang_goldmaster',
-            'customer_visit_detail_parameter_2_range_harga',
-            'customer_visit_detail_parameter_2_others',
-        ));
+        if ($action == 'show') {
+            return view('customer_visit.show_param2', compact(
+                'customer_visit',
+                'tipe_barang',
+                'range_harga',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_3_barang_goldmart',
+                'customer_visit_detail_parameter_3_barang_goldmaster',
+                'customer_visit_detail_parameter_2_range_harga',
+                'customer_visit_detail_parameter_2_others',
+            ));
+        } elseif ($action == 'edit') {
+            return view('customer_visit.edit_param2', compact(
+                'customer_visit',
+                'tipe_barang',
+                'range_harga',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_3_barang_goldmart',
+                'customer_visit_detail_parameter_3_barang_goldmaster',
+                'customer_visit_detail_parameter_2_range_harga',
+                'customer_visit_detail_parameter_2_others',
+            ));
+        }
     }
 
-    public function editParam3(string $id)
+    public function actionParam3(string $id, string $action)
     {
         $customer_visit = CustomerVisit::find($id);
 
@@ -608,16 +973,26 @@ class CustomerVisitController extends Controller
             $customer_visit_detail_parameter_2_goldmaster[] = $value->parameter_2;
         }
 
-        return view('customer_visit.edit_param3', compact(
-            'customer_visit',
-            'tipe_barang',
-            'customer_visit_detail_parameter_1',
-            'customer_visit_detail_parameter_2_goldmart',
-            'customer_visit_detail_parameter_2_goldmaster',
-        ));
+        if ($action == 'show') {
+            return view('customer_visit.show_param3', compact(
+                'customer_visit',
+                'tipe_barang',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_2_goldmart',
+                'customer_visit_detail_parameter_2_goldmaster',
+            ));
+        } elseif ($action == 'edit') {
+            return view('customer_visit.edit_param3', compact(
+                'customer_visit',
+                'tipe_barang',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_2_goldmart',
+                'customer_visit_detail_parameter_2_goldmaster',
+            ));
+        }
     }
 
-    public function editParam4(string $id)
+    public function actionParam4(string $id, string $action)
     {
         $customer_visit = CustomerVisit::find($id);
 
@@ -644,13 +1019,23 @@ class CustomerVisitController extends Controller
             ->where('parameter_1', 'Goldmaster')
             ->get();
 
-        return view('customer_visit.edit_param4', compact(
-            'customer_visit',
-            'tipe_barang',
-            'customer_visit_detail_parameter_1',
-            'customer_visit_detail_parameter_2_goldmart',
-            'customer_visit_detail_parameter_2_goldmaster',
-        ));
+        if ($action == 'show') {
+            return view('customer_visit.show_param4', compact(
+                'customer_visit',
+                'tipe_barang',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_2_goldmart',
+                'customer_visit_detail_parameter_2_goldmaster',
+            ));
+        } elseif ($action == 'edit') {
+            return view('customer_visit.edit_param4', compact(
+                'customer_visit',
+                'tipe_barang',
+                'customer_visit_detail_parameter_1',
+                'customer_visit_detail_parameter_2_goldmart',
+                'customer_visit_detail_parameter_2_goldmaster',
+            ));
+        }
     }
 
     public function data(Request $request)
@@ -664,18 +1049,18 @@ class CustomerVisitController extends Controller
             })
             ->addColumn('action', function ($query) {
                 if ($query->parameter_1 == 'Lihat') {
-                    $link = 'customervisit.edit.param1';
+                    $link = 'customervisit.action.param1';
                 } elseif ($query->parameter_1 == 'Tanya') {
-                    $link = 'customervisit.edit.param2';
+                    $link = 'customervisit.action.param2';
                 } elseif ($query->parameter_1 == 'Coba') {
-                    $link = 'customervisit.edit.param3';
+                    $link = 'customervisit.action.param3';
                 } elseif ($query->parameter_1 == 'Beli') {
-                    $link = 'customervisit.edit.param4';
+                    $link = 'customervisit.action.param4';
                 }
                 if (canAccess(['customer visit update'])) {
                     $update = '
                             <li>
-                                <a class="dropdown-item border-bottom" href="' . route($link, $query) . '">
+                                <a class="dropdown-item border-bottom" href="' . route($link, ['id' => $query->id, 'action' => 'edit']) . '">
                                     <i class="bx bx-edit-alt fs-20"></i> ' . __("Perbarui") . '
                                 </a>
                             </li>
@@ -690,6 +1075,13 @@ class CustomerVisitController extends Controller
                             </li>
                         ';
                 }
+                $view = '
+                            <li>
+                                <a class="edit dropdown-item border-bottom" href="' . route($link, ['id' => $query->id, 'action' => 'show']) . '" data-toggle="tooltip" data-id="' . $query->id . '">
+                                    <i class="bx bx-show fs-20"></i> ' . __("Lihat") . '
+                                </a>
+                            </li>
+                        ';
                 if (canAccess(['customer visit update', 'customer visit delete', 'customer visit restore'])) {
                     return '<div class="dropdown">
                                 <button class="btn btn-outline-primary btn-sm btn-wave waves-effect waves-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -697,12 +1089,20 @@ class CustomerVisitController extends Controller
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">' .
                         (!empty($update) ? $update : '') .
+                        (!empty($view) ? $view : '') .
                         (!empty($restore) ? $restore : '') .
                         (!empty($delete) ? $delete : '') . '
                                 </ul>
                             </div>';
                 } else {
-                    return '<span class="badge rounded-pill bg-outline-danger">' . __("Tidak ada akses") . '</span>';
+                    return '<div class="dropdown">
+                                <button class="btn btn-outline-primary btn-sm btn-wave waves-effect waves-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bx bx-cog fs-16"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">' .
+                        (!empty($view) ? $view : '') . '
+                                </ul>
+                            </div>';
                 }
             })
             ->rawColumns(['action'])
