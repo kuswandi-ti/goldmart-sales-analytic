@@ -11,27 +11,30 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $total_nasabah = DB::table('nasabah')
-            ->select(DB::raw('COUNT(DISTINCT id) as total_nasabah'))
-            ->first();
-        $total_nilai_kredit = DB::table('kredit_nasabah')
-            ->select(DB::raw('SUM(total_nilai_kredit) AS total_nilai_kredit'))
-            ->where('tahun', activePeriod())
-            ->first();
-        $total_margin_keuntungan = DB::table('kredit_nasabah')
-            ->select(DB::raw('SUM(margin_keuntungan) AS total_margin_keuntungan'))
-            ->where('tahun', activePeriod())
-            ->first();
-        $total_sudah_lunas = DB::table('kredit_nasabah')
-            ->select(DB::raw('SUM(total_nilai_kredit) AS total_pelunasan'))
-            ->where('status_kredit', '=', 'Lunas')
-            ->where('tahun', activePeriod())
-            ->first();
-        $total_belum_lunas = DB::table('kredit_nasabah')
-            ->select(DB::raw('SUM(total_nilai_kredit) AS total_belum_lunas'))
-            ->where('status_kredit', '=', 'Berjalan')
-            ->where('tahun', activePeriod())
-            ->first();
+        $penjualan_hari_ini = DB::table('customer_visit')
+            ->select(DB::raw('customer_visit_detail.parameter_1,
+                customer_visit_detail.parameter_2,
+                SUM(customer_visit_detail.qty) AS qty,
+                SUM(customer_visit_detail.nominal) AS nominal'))
+            ->leftJoin('customer_visit_detail', 'customer_visit.id', '=', 'customer_visit_detail.id_visit')
+            ->where('customer_visit.tgl_visit', saveDateNow())
+            ->where('customer_visit.parameter_1', 'Beli')
+            ->where('customer_visit.id_sales_person', getSession(0))
+            ->groupBy(['customer_visit_detail.parameter_1', 'customer_visit_detail.parameter_2'])
+            ->get();
+
+        $penjualan_bulan_ini = DB::table('customer_visit')
+            ->select(DB::raw('customer_visit_detail.parameter_1,
+                customer_visit_detail.parameter_2,
+                SUM(customer_visit_detail.qty) AS qty,
+                SUM(customer_visit_detail.nominal) AS nominal'))
+            ->leftJoin('customer_visit_detail', 'customer_visit.id', '=', 'customer_visit_detail.id_visit')
+            ->whereYear('customer_visit.tgl_visit', activePeriod())
+            ->whereMonth('customer_visit.tgl_visit', date('m'))
+            ->where('customer_visit.parameter_1', 'Beli')
+            ->where('customer_visit.id_sales_person', getSession(0))
+            ->groupBy(['customer_visit_detail.parameter_1', 'customer_visit_detail.parameter_2'])
+            ->get();
 
         $total_nilai_kredit_graph = array();
         for ($i = 0; $i < 12; $i++) {
@@ -66,12 +69,12 @@ class DashboardController extends Controller
         $gramasis = DB::table('gramasi')
             ->orderBy('gramasi')
             ->get();
-        foreach($gramasis as $key) {
+        foreach ($gramasis as $key) {
             $total_emas_graph[] = DB::table('kredit_detail')
                 ->select(DB::raw('COUNT(kredit_detail.gramasi) AS count_gramasi'))
-                ->join('kredit_nasabah', function($join) {
-			        $join->on('kredit_detail.id_kredit_nasabah', '=', 'kredit_nasabah.id');
-			    })
+                ->join('kredit_nasabah', function ($join) {
+                    $join->on('kredit_detail.id_kredit_nasabah', '=', 'kredit_nasabah.id');
+                })
                 ->where('kredit_detail.gramasi', $key->gramasi)
                 ->where('kredit_nasabah.status_kredit', 'Berjalan')
                 ->where('kredit_nasabah.tahun', activePeriod())
@@ -86,11 +89,8 @@ class DashboardController extends Controller
         return view(
             'dashboard.index',
             compact(
-                'total_nasabah',
-                'total_nilai_kredit',
-                'total_margin_keuntungan',
-                'total_sudah_lunas',
-                'total_belum_lunas',
+                'penjualan_hari_ini',
+                'penjualan_bulan_ini',
                 'total_nilai_kredit_graph',
                 'total_nilai_pelunasan_graph',
                 'total_emas_graph'

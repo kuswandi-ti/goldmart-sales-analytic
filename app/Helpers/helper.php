@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Models\SettingSystem;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 function canAccess(array $permissions)
 {
@@ -103,6 +104,7 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'report sales per person', 'group_name' => 'Report Permission'],
         ['guard_name' => 'web', 'name' => 'report sales per store', 'group_name' => 'Report Permission'],
         ['guard_name' => 'web', 'name' => 'report sales all store', 'group_name' => 'Report Permission'],
+        ['guard_name' => 'web', 'name' => 'dashboard gsa', 'group_name' => 'Dashboard Permission'],
     ];
 }
 
