@@ -32,7 +32,7 @@
             <!-- Start::header-element -->
             <div class="header-element">
                 <!-- Start::header-link|layout-setting -->
-                <a aria-label="anchor" href="{{ route('customervisit.create') }}" class="header-link">
+                <a aria-label="anchor" href="{{ route('customervisit.input') }}" class="header-link">
                     <!-- Start::header-link-icon -->
                     <i class="bx bx-category header-link-icon ionicon"></i>
                     <!-- End::header-link-icon -->
