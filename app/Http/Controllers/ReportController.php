@@ -14,6 +14,41 @@ class ReportController extends Controller
 
     public function reportSalesPerPerson(Request $request)
     {
+        $req = $request->f;
+        switch ($req) {
+            case 'all':
+                $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
+                break;
+
+            case 'daily':
+                $where = 'customer_visit.tgl_visit = "' . $request->efd . '"';
+                break;
+
+            case 'weekly':
+                $where = 'WEEK(customer_visit.tgl_visit) = ' . $request->efw .
+                    ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
+                break;
+
+            case 'monthly':
+                $where = 'MONTH(customer_visit.tgl_visit) = ' . $request->efm .
+                    ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
+                break;
+
+            case 'quarterly':
+                $where = 'QUARTER(customer_visit.tgl_visit) = ' . $request->efq .
+                    ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
+                break;
+
+            case 'yearly':
+                $where = 'YEAR(customer_visit.tgl_visit) = ' . $request->efy;
+                break;
+
+            default:
+                $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
+                break;
+        }
+        // dd($where);
+
         // Untuk data yg tampil di tabel
         $data_table = DB::table('sales_person')
             ->leftJoin('customer_visit', 'sales_person.id', '=', 'customer_visit.id_sales_person')
@@ -26,8 +61,7 @@ class ReportController extends Controller
                 SUM(COALESCE(customer_visit_detail.qty, 0)) AS total_qty,
                 SUM(COALESCE(customer_visit_detail.nominal, 0)) AS total_nominal'))
             ->whereRaw('customer_visit.parameter_1 = "Beli"
-                AND YEAR(customer_visit.tgl_visit) = ' . activePeriod() .
-                ' OR customer_visit.tgl_visit IS NULL')
+                AND ' . $where . ' OR customer_visit.tgl_visit IS NULL')
             ->groupBy([
                 'sales_person.kode',
                 'sales_person.nama',
@@ -46,8 +80,7 @@ class ReportController extends Controller
                 SUM(COALESCE(customer_visit_detail.qty, 0)) AS total_qty,
                 SUM(COALESCE(customer_visit_detail.nominal, 0)) AS total_nominal'))
             ->whereRaw('customer_visit.parameter_1 = "Beli"
-                AND YEAR(customer_visit.tgl_visit) = ' . activePeriod() .
-                ' OR customer_visit.tgl_visit IS NULL')
+                AND ' . $where . ' OR customer_visit.tgl_visit IS NULL')
             ->groupBy([
                 'sales_person.nama',
             ])

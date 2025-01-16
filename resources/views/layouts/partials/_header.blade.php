@@ -30,15 +30,17 @@
         <!-- Start::header-content-right -->
         <div class="header-content-right">
             <!-- Start::header-element -->
-            <div class="header-element">
-                <!-- Start::header-link|layout-setting -->
-                <a aria-label="anchor" href="{{ route('customervisit.input') }}" class="header-link">
-                    <!-- Start::header-link-icon -->
-                    <i class="bx bx-category header-link-icon ionicon"></i>
-                    <!-- End::header-link-icon -->
-                </a>
-                <!-- End::header-link|layout-setting -->
-            </div>
+            @can('customer visit create')
+                <div class="header-element">
+                    <!-- Start::header-link|layout-setting -->
+                    <a aria-label="anchor" href="{{ route('customervisit.input') }}" class="header-link">
+                        <!-- Start::header-link-icon -->
+                        <i class="bx bx-category header-link-icon ionicon"></i>
+                        <!-- End::header-link-icon -->
+                    </a>
+                    <!-- End::header-link|layout-setting -->
+                </div>
+            @endcan
             <div class="header-element header-theme-mode">
                 <!-- Start::header-link|layout-setting -->
                 <a aria-label="anchor" href="javascript:void(0);" class="header-link layout-setting">
