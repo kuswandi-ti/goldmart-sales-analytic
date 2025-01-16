@@ -26,6 +26,7 @@
                     </div>
                     <form action="{{ route('report.salesperperson') }}" method="GET" id="form-search">
                         @csrf
+
                         <div class="dropdown d-flex">
                             <button type="submit"
                                 class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2">
@@ -124,8 +125,8 @@
                                     <td scope="col" class="fw-semibold">{{ __('Sales Person') }}</td>
                                     <td scope="col" class="fw-semibold">{{ __('Nama Store') }}</td>
                                     <td scope="col" class="fw-semibold">{{ __('Kota Store') }}</td>
-                                    <td scope="col" align="right" class="fw-semibold">{{ __('Total (Pcs)') }}</td>
-                                    <td scope="col" align="right" class="fw-semibold">{{ __('Total (Value)') }}</td>
+                                    <td scope="col" align="right" class="fw-semibold">{{ __('Total (Qty)') }}</td>
+                                    <td scope="col" align="right" class="fw-semibold">{{ __('Total (Rp.)') }}</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -138,8 +139,8 @@
                                     @foreach ($data_table as $row)
                                         @php
                                             $no = $no + 1;
-                                            $sum_qty = $sum_qty + $row->qty;
-                                            $sum_nominal = $sum_nominal + $row->nominal;
+                                            $sum_qty = $sum_qty + $row->total_qty;
+                                            $sum_nominal = $sum_nominal + $row->total_nominal;
                                         @endphp
                                         <tr>
                                             <td class="text-center">
@@ -155,10 +156,10 @@
                                                 <span>{{ $row->kota_store }}</span>
                                             </td>
                                             <td align="right">
-                                                <span>{{ formatAmount($row->qty) }}</span>
+                                                <span>{{ formatAmount($row->total_qty) }}</span>
                                             </td>
                                             <td align="right">
-                                                <span>{{ formatAmount($row->nominal) }}</span>
+                                                <span>{{ formatAmount($row->total_nominal) }}</span>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -333,68 +334,68 @@
         });
 
         $(document).ready(function() {
-            $("#filter-all").click(function() {
-                $("#div-filter").hide();
-            });
+            // $("#filter-all").click(function() {
+            //     $("#div-filter").hide();
+            // });
 
-            $("#filter-daily").click(function() {
-                $("#div-filter").show();
-                $("#div-filter-daily").show();
-                $("#div-filter-weekly").hide();
-                $("#div-filter-monthly").hide();
-                $("#div-filter-quarterly").hide();
-                $("#div-filter-yearly").hide();
-            });
+            // $("#filter-daily").click(function() {
+            //     $("#div-filter").show();
+            //     $("#div-filter-daily").show();
+            //     $("#div-filter-weekly").hide();
+            //     $("#div-filter-monthly").hide();
+            //     $("#div-filter-quarterly").hide();
+            //     $("#div-filter-yearly").hide();
+            // });
 
-            $("#filter-weekly").click(function() {
-                $("#div-filter").show();
-                $("#div-filter-daily").hide();
-                $("#div-filter-weekly").show();
-                $("#div-filter-monthly").hide();
-                $("#div-filter-quarterly").hide();
-                $("#div-filter-yearly").hide();
-            });
+            // $("#filter-weekly").click(function() {
+            //     $("#div-filter").show();
+            //     $("#div-filter-daily").hide();
+            //     $("#div-filter-weekly").show();
+            //     $("#div-filter-monthly").hide();
+            //     $("#div-filter-quarterly").hide();
+            //     $("#div-filter-yearly").hide();
+            // });
 
-            $("#filter-monthly").click(function() {
-                $("#div-filter").show();
-                $("#div-filter-daily").hide();
-                $("#div-filter-weekly").hide();
-                $("#div-filter-monthly").show();
-                $("#div-filter-quarterly").hide();
-                $("#div-filter-yearly").hide();
-            });
+            // $("#filter-monthly").click(function() {
+            //     $("#div-filter").show();
+            //     $("#div-filter-daily").hide();
+            //     $("#div-filter-weekly").hide();
+            //     $("#div-filter-monthly").show();
+            //     $("#div-filter-quarterly").hide();
+            //     $("#div-filter-yearly").hide();
+            // });
 
-            $("#filter-quarterly").click(function() {
-                $("#div-filter").show();
-                $("#div-filter-daily").hide();
-                $("#div-filter-weekly").hide();
-                $("#div-filter-monthly").hide();
-                $("#div-filter-quarterly").show();
-                $("#div-filter-yearly").hide();
-            });
+            // $("#filter-quarterly").click(function() {
+            //     $("#div-filter").show();
+            //     $("#div-filter-daily").hide();
+            //     $("#div-filter-weekly").hide();
+            //     $("#div-filter-monthly").hide();
+            //     $("#div-filter-quarterly").show();
+            //     $("#div-filter-yearly").hide();
+            // });
 
-            $("#filter-yearly").click(function() {
-                $("#div-filter").show();
-                $("#div-filter-daily").hide();
-                $("#div-filter-weekly").hide();
-                $("#div-filter-monthly").hide();
-                $("#div-filter-quarterly").hide();
-                $("#div-filter-yearly").show();
-            });
+            // $("#filter-yearly").click(function() {
+            //     $("#div-filter").show();
+            //     $("#div-filter-daily").hide();
+            //     $("#div-filter-weekly").hide();
+            //     $("#div-filter-monthly").hide();
+            //     $("#div-filter-quarterly").hide();
+            //     $("#div-filter-yearly").show();
+            // });
 
-            $("#li-filter-daily").click(function() {
-                $("#filter-daily").addClass('active');
-                $("#filter-weekly").removeClass('active');
-                $("#dropdownMenuButton1").text('Daily');
-                $("#main-filter").val('daily');
-            });
+            // $("#li-filter-daily").click(function() {
+            //     $("#filter-daily").addClass('active');
+            //     $("#filter-weekly").removeClass('active');
+            //     $("#dropdownMenuButton1").text('Daily');
+            //     $("#main-filter").val('daily');
+            // });
 
-            $("#li-filter-weekly").click(function() {
-                $("#filter-daily").removeClass('active');
-                $("#filter-weekly").addClass('active');
-                $("#dropdownMenuButton1").text('Weekly');
-                $("#main-filter").val('weekly');
-            });
+            // $("#li-filter-weekly").click(function() {
+            //     $("#filter-daily").removeClass('active');
+            //     $("#filter-weekly").addClass('active');
+            //     $("#dropdownMenuButton1").text('Weekly');
+            //     $("#main-filter").val('weekly');
+            // });
         });
     </script>
 @endpush
