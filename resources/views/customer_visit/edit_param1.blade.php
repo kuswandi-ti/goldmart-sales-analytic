@@ -1,21 +1,21 @@
 @extends('layouts.master')
 
 @section('page_title')
-    {{ __('Customer Visit (Lihat)') }}
+    {{ __('Customer Visit (Melihat)') }}
 @endsection
 
 @section('section_header_title')
-    {{ __('Customer Visit (Lihat)') }}
+    {{ __('Customer Visit (Melihat)') }}
 @endsection
 
 @section('section_header_breadcrumb')
     @parent
     <li class="breadcrumb-item">
         <a href="{{ route('rangeharga.index') }}" class="text-white-50">
-            {{ __('Customer Visit (Lihat)') }}
+            {{ __('Customer Visit (Melihat)') }}
         </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Memperbarui Data Customer Visit (Lihat)') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Memperbarui Data Customer Visit (Melihat)') }}</li>
 @endsection
 
 @section('page_content')
@@ -32,9 +32,9 @@
                     <div class="flex-wrap card-header d-flex align-items-center flex-xxl-nowrap">
                         <div class="flex-fill">
                             <div class="card-title">
-                                {{ __('Memperbarui Data Customer Visit (Lihat)') }}
+                                {{ __('Memperbarui Data Customer Visit (Melihat)') }}
                                 <p class="subtitle text-muted fs-12 fw-normal">
-                                    {{ __('Silahkan input data untuk proses memperbarui data customer visit (lihat)') }}
+                                    {{ __('Silahkan input data untuk proses memperbarui data customer visit (melihat)') }}
                                 </p>
                             </div>
                         </div>

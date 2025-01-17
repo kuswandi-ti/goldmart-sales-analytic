@@ -6,15 +6,15 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RangeHargaController;
 use App\Http\Controllers\TipeBarangController;
-use App\Http\Controllers\CustomerVisitController;
-use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SalesPersonController;
+use App\Http\Controllers\CustomerVisitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,10 +96,10 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('salesperson/restore/{salesperson}', [SalesPersonController::class, 'restore'])->name('salesperson.restore');
     Route::resource('salesperson', SalesPersonController::class);
 
-    /** Report Routes */
-    Route::get('report/salesperperson', [ReportController::class, 'reportSalesPerPerson'])->name('report.salesperperson');
-    Route::get('report/salesperstore', [ReportController::class, 'reportSalesPerStore'])->name('report.salesperstore');
-    Route::get('report/salesallstore', [ReportController::class, 'reportSalesAllStore'])->name('report.salesallstore');
+    /** Laporan Routes */
+    Route::get('laporan/salesperperson', [LaporanController::class, 'laporanPenjualanPerPerson'])->name('laporan.penjualanperperson');
+    Route::get('laporan/salesperstore', [LaporanController::class, 'laporanPenjualanPerStore'])->name('laporan.penjualanperstore');
+    Route::get('laporan/salesallstore', [LaporanController::class, 'laporanPenjualanAllStore'])->name('laporan.penjualanallstore');
 
     /** Setting Routes */
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');

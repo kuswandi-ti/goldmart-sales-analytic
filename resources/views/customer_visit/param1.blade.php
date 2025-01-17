@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('page_title')
-    {{ __('Customer Visit (Lihat)') }}
+    {{ __('Customer Visit (Melihat)') }}
 @endsection
 
 @section('section_header_title')
-    {{ __('Customer Visit (Lihat)') }}
+    {{ __('Customer Visit (Melihat)') }}
 @endsection
 
 @section('section_header_breadcrumb')
@@ -15,7 +15,7 @@
             {{ __('Customer Visit Input') }}
         </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Menambah Data Customer Visit (Lihat)') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Menambah Data Customer Visit (Melihat)') }}</li>
 @endsection
 
 @section('page_content')
@@ -31,9 +31,9 @@
                     <div class="flex-wrap card-header d-flex align-items-center flex-xxl-nowrap">
                         <div class="flex-fill">
                             <div class="card-title">
-                                {{ __('Menambah Data Customer Visit (Lihat)') }}
+                                {{ __('Menambah Data Customer Visit (Melihat)') }}
                                 <p class="subtitle text-muted fs-12 fw-normal">
-                                    {{ __('Silahkan input data untuk proses menambah data customer visit (lihat)') }}
+                                    {{ __('Silahkan input data untuk proses menambah data customer visit (melihat)') }}
                                 </p>
                             </div>
                         </div>

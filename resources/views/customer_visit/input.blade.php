@@ -33,7 +33,7 @@
                         </div>
                         <div>
                             <p class="card-text text-info mb-1 fs-14 fw-semibold">
-                                {{ __('Lihat') }}
+                                {{ __('Melihat') }}
                             </p>
                             <div class="card-title text-muted fs-11 mb-0">
                                 {{ __('Pilih menu ini jika customer yang datang hanya untuk melihat produk') }}

@@ -19,6 +19,10 @@ class CustomerVisit extends Model
     protected $fillable = [
         'no_dokumen',
         'tgl_visit',
+        'tahun',
+        'bulan',
+        'week',
+        'quarter',
         'nama_customer',
         'parameter_1',
         'parameter_2',
@@ -38,4 +42,9 @@ class CustomerVisit extends Model
         'deleted_at',
         'restored_at',
     ];
+
+    public function scopePeriodeAktif($query)
+    {
+        return $query->where('tahun', activePeriod());
+    }
 }

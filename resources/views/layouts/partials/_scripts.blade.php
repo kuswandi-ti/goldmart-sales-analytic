@@ -37,3 +37,5 @@
 
 <!-- Custom JS -->
 <script src="{{ url(config('common.path_template') . 'assets/js/custom.js') }}"></script>
+
+<script src="{{ asset(config('common.path_template') . 'assets/mycustom.js') }}"></script>

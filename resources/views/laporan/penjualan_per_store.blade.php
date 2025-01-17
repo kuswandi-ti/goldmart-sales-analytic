@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('page_title')
-    {{ __('Report Sales all Store') }}
+    {{ __('Laporan Penjualan per Store') }}
 @endsection
 
 @section('section_header_title')
-    {{ __('Report Sales all Store') }}
+    {{ __('Laporan Penjualan per Store') }}
 @endsection
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Report Sales all Store') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Laporan Penjualan per Store') }}</li>
 @endsection
 
 @section('page_content')
@@ -19,100 +19,85 @@
             <div class="card custom-card">
                 <div class="card-header  justify-content-between">
                     <div class="card-title">
-                        {{ __('Daftar Data Report Sales all Store') }}
+                        {{ __('Daftar Data Laporan Penjualan per Store') }}
                         <p class="subtitle text-muted fs-12 fw-normal">
-                            {{ __('Menampilkan semua data sales all store') }}
+                            {{ __('Menampilkan semua data penjualan per store') }}
                         </p>
                     </div>
-                    <form action="{{ route('report.salesallstore') }}" method="GET" id="form-search">
+                    <form action="{{ route('laporan.penjualanperstore') }}" method="GET" id="form-search">
                         @csrf
 
-                        <div class="dropdown d-flex">
+                        <div class="dropdown d-flex mt-3">
+                            <div class="me-2" id="div-filter">
+                                <div class="input-group" id="div-filter-daily"
+                                    style="width: 200px; display: {{ request()->get('f') == 'daily' ? '' : 'none' }};">
+                                    <div class="input-group-text text-muted">
+                                        <i class="ri-calendar-line"></i>
+                                    </div>
+                                    <input type="text" class="form-control flatpickr" name="efd"
+                                        value="{{ request()->get('f') == 'daily' ? request()->get('efd') : date('Y-m-d') }}">
+                                </div>
+                                <div id="div-filter-weekly"
+                                    style="width: 100px; display: {{ request()->get('f') == 'weekly' ? '' : 'none' }};">
+                                    <select class='js-example-placeholder-single js-states form-control select2'
+                                        name='efw'>
+                                        @for ($i = 1; $i <= 53; $i++)
+                                            <option value={{ $i }}
+                                                {{ request()->get('efw') == $i ? 'selected' : '' }}>{{ $i }}
+                                            </option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div id="div-filter-monthly"
+                                    style="width: 200px; display: {{ request()->get('f') == 'monthly' ? '' : 'none' }};">
+                                    <select class='js-example-placeholder-single js-states form-control select2'
+                                        name='efm'>
+                                        @for ($i = 1; $i < 12; $i++)
+                                            <option value={{ $i }}
+                                                {{ request()->get('efm') == $i ? 'selected' : '' }}>{{ formatMonth($i) }}
+                                            </option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div id="div-filter-quarterly"
+                                    style="width: 100px; display: {{ request()->get('f') == 'quarterly' ? '' : 'none' }};">
+                                    <select class='js-example-placeholder-single js-states form-control select2'
+                                        name='efq'>
+                                        @for ($i = 1; $i <= 4; $i++)
+                                            <option value={{ $i }}
+                                                {{ request()->get('efq') == $i ? 'selected' : '' }}>{{ $i }}
+                                            </option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div id="div-filter-yearly"
+                                    style="width: 100px; display: {{ request()->get('f') == 'yearly' ? '' : 'none' }};">
+                                    <input type="text" class="form-control" name="efy"
+                                        value="{{ request()->get('f') == 'yearly' ? request()->get('efy') : activePeriod() }}">
+                                </div>
+                            </div>
+
+                            <div class="me-2" style="width: 150px;">
+                                <select class = "form-select" name='f' style="height: 100%;">
+                                    <option value="all" {{ request()->get('f') == 'all' ? 'selected' : '' }}
+                                        id="filter-all">{{ __('Semua Data') }}</option>
+                                    <option value="daily" {{ request()->get('f') == 'daily' ? 'selected' : '' }}
+                                        id="filter-daily">{{ __('Daily') }}</option>
+                                    <option value="weekly" {{ request()->get('f') == 'weekly' ? 'selected' : '' }}
+                                        id="filter-weekly">{{ __('Weekly') }}</option>
+                                    <option value="monthly" {{ request()->get('f') == 'monthly' ? 'selected' : '' }}
+                                        id="filter-monthly">{{ __('Monthly') }}</option>
+                                    <option value="quarterly" {{ request()->get('f') == 'quarterly' ? 'selected' : '' }}
+                                        id="filter-quarterly">{{ __('Quarterly') }}</option>
+                                    <option value="yearly" {{ request()->get('f') == 'yearly' ? 'selected' : '' }}
+                                        id="filter-yearly">{{ __('Yearly') }}</option>
+                                </select>
+                            </div>
+
                             <button type="submit"
                                 class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2">
                                 {{ __('Submit') }}
                             </button>
-
-                            <input type="hidden" value="" id="main-filter" name="main_filter">
-
-                            <div class="me-2" id="div-filter">
-                                <div class="input-group" id="div-filter-daily" style="width: 200px; display: none;">
-                                    <div class="input-group-text text-muted">
-                                        <i class="ri-calendar-line"></i>
-                                    </div>
-                                    <input type="text" class="form-control flatpickr" name="elem_filter_daily"
-                                        value="{{ old('filter_daily') ?? date('Y-m-d') }}">
-                                </div>
-                                <div id="div-filter-weekly" style="width: 100px; display: none;">
-                                    @php
-                                        echo "<select class='js-example-placeholder-single js-states form-control select2' name='elem_filter_weekly'>";
-                                        for ($i = 1; $i <= 53; $i++) {
-                                            echo "<option value='$i'>$i</option>";
-                                        }
-                                        echo '</select>';
-                                    @endphp
-                                </div>
-                                <div id="div-filter-monthly" style="width: 200px; display: none;">
-                                    @php
-                                        echo "<select class='js-example-placeholder-single js-states form-control select2' name='elem_filter_monthly'>";
-                                        for ($i = 1; $i <= 12; $i++) {
-                                            echo "<option value='$i'>" . formatMonth($i) . '</option>';
-                                        }
-                                        echo '</select>';
-                                    @endphp
-                                </div>
-                                <div id="div-filter-quarterly" style="width: 100px; display: none;">
-                                    @php
-                                        echo "<select class='js-example-placeholder-single js-states form-control select2' name='elem_filter_quarterly'>";
-                                        for ($i = 1; $i <= 4; $i++) {
-                                            echo "<option value='$i'>$i</option>";
-                                        }
-                                        echo '</select>';
-                                    @endphp
-                                </div>
-                                <div id="div-filter-yearly" style="width: 100px; display: none;">
-                                    <input type="text" class="form-control" name="elem_filter_yearly"
-                                        value="{{ old('filter_yearly') ?? activePeriod() }}">
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);"
-                                class="btn dropdown-toggle btn-sm btn-wave waves-effect waves-light btn-primary d-flex align-items-center"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="ri-calendar-2-line me-1"></i>{{ __('Semua Data') }}
-                            </a>
-                            <ul class="dropdown-menu mb-0" role="menu">
-                                <li class="border-bottom" id="filter-all">
-                                    <a class="dropdown-item" href="javascript:void(0);">
-                                        {{ __('Semua Data') }}
-                                    </a>
-                                </li>
-                                <li class="border-bottom" id="li-filter-daily">
-                                    <a class="dropdown-item {{ request()->get('main_filter') == 'daily' ? 'active' : '' }}"
-                                        href="javascript:void(0);" id="filter-daily">
-                                        {{ __('Daily') }}
-                                    </a>
-                                </li>
-                                <li class="border-bottom" id="li-filter-weekly">
-                                    <a class="dropdown-item" href="javascript:void(0);" id="filter-weekly">
-                                        {{ __('Weekly') }}
-                                    </a>
-                                </li>
-                                <li class="border-bottom" id="li-filter-monthly">
-                                    <a class="dropdown-item" href="javascript:void(0);" id="filter-monthly">
-                                        {{ __('Monthly') }}
-                                    </a>
-                                </li>
-                                <li class="border-bottom" id="li-filter-quarterly">
-                                    <a class="dropdown-item" href="javascript:void(0);" id="filter-quarterly">
-                                        {{ __('Quarterly') }}
-                                    </a>
-                                </li>
-                                <li id="li-filter-yearly">
-                                    <a class="dropdown-item" href="javascript:void(0);" id="filter-yearly">
-                                        {{ __('Yearly') }}
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </form>
                 </div>
@@ -223,6 +208,23 @@
         var data_qty_graph = {{ Js::from($data_qty_graph) }};
         var data_nominal_graph = {{ Js::from($data_nominal_graph) }};
 
+        var f = {{ Js::from(request()->get('f')) }}
+        var e = '';
+
+        if (f == 'all' || !f) {
+            e = 'Semua Data';
+        } else if (f == 'daily') {
+            e = 'Tanggal ' + {{ Js::from(request()->get('efd')) }};
+        } else if (f == 'weekly') {
+            e = 'Minggu ke ' + {{ Js::from(request()->get('efw')) }};
+        } else if (f == 'monthly') {
+            e = 'Bulan ' + months[{{ Js::from(request()->get('efm')) }} - 1];
+        } else if (f == 'quarterly') {
+            e = 'Quarter ke ' + {{ Js::from(request()->get('efq')) }};
+        } else if (f == 'yearly') {
+            e = 'Tahun ' + {{ Js::from(request()->get('efy')) }};
+        }
+
         Highcharts.chart('kreditstatistic1', {
             chart: {
                 type: 'column',
@@ -231,10 +233,10 @@
                 }
             },
             title: {
-                text: 'Statistik Penjualan per Store (Qty)'
+                text: 'Grafik Penjualan per Store (Qty)'
             },
             subtitle: {
-                text: 'Tahun {{ activePeriod() }}'
+                text: e
             },
             xAxis: {
                 title: {
@@ -284,10 +286,10 @@
                 }
             },
             title: {
-                text: 'Statistik Penjualan per Store (Rp.)'
+                text: 'Grafik Penjualan per Store (Rp.)'
             },
             subtitle: {
-                text: 'Tahun {{ activePeriod() }}'
+                text: e
             },
             xAxis: {
                 title: {
@@ -330,7 +332,54 @@
         });
 
         $(document).ready(function() {
+            $("#filter-all").click(function() {
+                $("#div-filter").hide();
+            });
 
+            $("#filter-daily").click(function() {
+                $("#div-filter").show();
+                $("#div-filter-daily").show();
+                $("#div-filter-weekly").hide();
+                $("#div-filter-monthly").hide();
+                $("#div-filter-quarterly").hide();
+                $("#div-filter-yearly").hide();
+            });
+
+            $("#filter-weekly").click(function() {
+                $("#div-filter").show();
+                $("#div-filter-daily").hide();
+                $("#div-filter-weekly").show();
+                $("#div-filter-monthly").hide();
+                $("#div-filter-quarterly").hide();
+                $("#div-filter-yearly").hide();
+            });
+
+            $("#filter-monthly").click(function() {
+                $("#div-filter").show();
+                $("#div-filter-daily").hide();
+                $("#div-filter-weekly").hide();
+                $("#div-filter-monthly").show();
+                $("#div-filter-quarterly").hide();
+                $("#div-filter-yearly").hide();
+            });
+
+            $("#filter-quarterly").click(function() {
+                $("#div-filter").show();
+                $("#div-filter-daily").hide();
+                $("#div-filter-weekly").hide();
+                $("#div-filter-monthly").hide();
+                $("#div-filter-quarterly").show();
+                $("#div-filter-yearly").hide();
+            });
+
+            $("#filter-yearly").click(function() {
+                $("#div-filter").show();
+                $("#div-filter-daily").hide();
+                $("#div-filter-weekly").hide();
+                $("#div-filter-monthly").hide();
+                $("#div-filter-quarterly").hide();
+                $("#div-filter-yearly").show();
+            });
         });
     </script>
 @endpush

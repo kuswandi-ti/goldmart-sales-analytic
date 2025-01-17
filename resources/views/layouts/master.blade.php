@@ -94,7 +94,7 @@
                 cancelButton: 'btn btn-success'
             },
             buttonsStyling: false
-        })
+        });
 
         $.ajaxSetup({
             headers: {
@@ -105,12 +105,12 @@
         function preview(target, image) {
             $(target)
                 .attr('src', window.URL.createObjectURL(image))
-                .show()
-        }
+                .show();
+        };
 
         function truncateString(text, length = 10, prefix = '...') {
             return jQuery.trim(text).substring(0, length).trim(this) + prefix;
-        }
+        };
 
         window.formatAmount = function(num, digit = 2) {
             var rounded = (Math.round(num * 100) / 100).toFixed(digit);
@@ -148,13 +148,12 @@
                 let filename = $(this)
                     .val()
                     .split('\\')
-                    .pop()
+                    .pop();
                 $(this)
                     .next('.custom-file-label')
                     .addClass('selected')
                     .html(filename)
-            })
-
+            });
 
             $('body').on('click', '.logout', function(e) {
                 e.preventDefault();
@@ -170,8 +169,8 @@
                     if (result.value === true) {
                         $('#form-logout').submit()
                     }
-                })
-            })
+                });
+            });
 
             $('body').on('click', '.delete_item', function(e) {
                 e.preventDefault();
@@ -203,7 +202,7 @@
                                         'Error!',
                                         data.message,
                                         'error'
-                                    )
+                                    );
                                 }
                             },
                             error: function(xhr, status, error) {
@@ -211,8 +210,8 @@
                             }
                         });
                     }
-                })
-            })
+                });
+            });
 
             $('body').on('click', '.approve', function(e) {
                 e.preventDefault();
@@ -244,7 +243,7 @@
                                         'Error!',
                                         data.message,
                                         'error'
-                                    )
+                                    );
                                 }
                             },
                             error: function(xhr, status, error) {
@@ -252,8 +251,8 @@
                             }
                         });
                     }
-                })
-            })
+                });
+            });
 
             $('body').on('click', '.reject', function(e) {
                 e.preventDefault();
@@ -285,7 +284,7 @@
                                         'Error!',
                                         data.message,
                                         'error'
-                                    )
+                                    );
                                 }
                             },
                             error: function(xhr, status, error) {
@@ -293,8 +292,8 @@
                             }
                         });
                     }
-                })
-            })
+                });
+            });
 
             $('body').on('click', '.deactivate', function(e) {
                 e.preventDefault();
@@ -326,7 +325,7 @@
                                         'Error!',
                                         data.message,
                                         'error'
-                                    )
+                                    );
                                 }
                             },
                             error: function(xhr, status, error) {
@@ -334,8 +333,8 @@
                             }
                         });
                     }
-                })
-            })
+                });
+            });
         });
     </script>
 </body>

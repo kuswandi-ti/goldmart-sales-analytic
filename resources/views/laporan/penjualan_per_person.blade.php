@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('page_title')
-    {{ __('Report Sales per Person') }}
+    {{ __('Laporan Penjualan per Person') }}
 @endsection
 
 @section('section_header_title')
-    {{ __('Report Sales per Person') }}
+    {{ __('Laporan Penjualan per Person') }}
 @endsection
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Report Sales per Person') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Laporan Penjualan per Person') }}</li>
 @endsection
 
 @section('page_content')
@@ -19,45 +19,59 @@
             <div class="card custom-card">
                 <div class="card-header  justify-content-between">
                     <div class="card-title">
-                        {{ __('Daftar Data Report Sales per Person') }}
+                        {{ __('Daftar Data Laporan Penjualan per Person') }}
                         <p class="subtitle text-muted fs-12 fw-normal">
-                            {{ __('Menampilkan semua data sales per person') }}
+                            {{ __('Menampilkan semua data penjualan per person') }}
                         </p>
                     </div>
-                    <form action="{{ route('report.salesperperson') }}" method="GET" id="form-search">
+                    <form action="{{ route('laporan.penjualanperperson') }}" method="GET" id="form-search">
                         @csrf
 
                         <div class="dropdown d-flex mt-3">
                             <div class="me-2" id="div-filter">
-                                <div class="input-group" id="div-filter-daily" style="width: 200px; display: {{ request()->get('f') == 'daily' ? '' : 'none' }};">
+                                <div class="input-group" id="div-filter-daily"
+                                    style="width: 200px; display: {{ request()->get('f') == 'daily' ? '' : 'none' }};">
                                     <div class="input-group-text text-muted">
                                         <i class="ri-calendar-line"></i>
                                     </div>
                                     <input type="text" class="form-control flatpickr" name="efd"
                                         value="{{ request()->get('f') == 'daily' ? request()->get('efd') : date('Y-m-d') }}">
                                 </div>
-                                <div id="div-filter-weekly" style="width: 100px; display: {{ request()->get('f') == 'weekly' ? '' : 'none' }};">
-                                    <select class='js-example-placeholder-single js-states form-control select2' name='efw'>
+                                <div id="div-filter-weekly"
+                                    style="width: 100px; display: {{ request()->get('f') == 'weekly' ? '' : 'none' }};">
+                                    <select class='js-example-placeholder-single js-states form-control select2'
+                                        name='efw'>
                                         @for ($i = 1; $i <= 53; $i++)
-                                            <option value={{ $i }} {{ request()->get('efw') == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                            <option value={{ $i }}
+                                                {{ request()->get('efw') == $i ? 'selected' : '' }}>{{ $i }}
+                                            </option>
                                         @endfor
                                     </select>
                                 </div>
-                                <div id="div-filter-monthly" style="width: 200px; display: {{ request()->get('f') == 'monthly' ? '' : 'none' }};">
-                                    <select class='js-example-placeholder-single js-states form-control select2' name='efm'>
+                                <div id="div-filter-monthly"
+                                    style="width: 200px; display: {{ request()->get('f') == 'monthly' ? '' : 'none' }};">
+                                    <select class='js-example-placeholder-single js-states form-control select2'
+                                        name='efm'>
                                         @for ($i = 1; $i < 12; $i++)
-                                            <option value={{ $i }} {{ request()->get('efm') == $i ? 'selected' : '' }}>{{ formatMonth($i) }}</option>
+                                            <option value={{ $i }}
+                                                {{ request()->get('efm') == $i ? 'selected' : '' }}>{{ formatMonth($i) }}
+                                            </option>
                                         @endfor
                                     </select>
                                 </div>
-                                <div id="div-filter-quarterly" style="width: 100px; display: {{ request()->get('f') == 'quarterly' ? '' : 'none' }};">
-                                    <select class='js-example-placeholder-single js-states form-control select2' name='efq'>
+                                <div id="div-filter-quarterly"
+                                    style="width: 100px; display: {{ request()->get('f') == 'quarterly' ? '' : 'none' }};">
+                                    <select class='js-example-placeholder-single js-states form-control select2'
+                                        name='efq'>
                                         @for ($i = 1; $i <= 4; $i++)
-                                            <option value={{ $i }} {{ request()->get('efq') == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                            <option value={{ $i }}
+                                                {{ request()->get('efq') == $i ? 'selected' : '' }}>{{ $i }}
+                                            </option>
                                         @endfor
                                     </select>
                                 </div>
-                                <div id="div-filter-yearly" style="width: 100px; display: {{ request()->get('f') == 'yearly' ? '' : 'none' }};">
+                                <div id="div-filter-yearly"
+                                    style="width: 100px; display: {{ request()->get('f') == 'yearly' ? '' : 'none' }};">
                                     <input type="text" class="form-control" name="efy"
                                         value="{{ request()->get('f') == 'yearly' ? request()->get('efy') : activePeriod() }}">
                                 </div>
@@ -65,12 +79,18 @@
 
                             <div class="me-2" style="width: 150px;">
                                 <select class = "form-select" name='f' style="height: 100%;">
-                                    <option value="all" {{ request()->get('f') == 'all' ? 'selected' : '' }} id="filter-all">{{ __('Semua Data') }}</option>
-                                    <option value="daily" {{ request()->get('f') == 'daily' ? 'selected' : '' }} id="filter-daily">{{ __('Daily') }}</option>
-                                    <option value="weekly" {{ request()->get('f') == 'weekly' ? 'selected' : '' }} id="filter-weekly">{{ __('Weekly') }}</option>
-                                    <option value="monthly" {{ request()->get('f') == 'monthly' ? 'selected' : '' }} id="filter-monthly">{{ __('Monthly') }}</option>
-                                    <option value="quarterly" {{ request()->get('f') == 'quarterly' ? 'selected' : '' }} id="filter-quarterly">{{ __('Quarterly') }}</option>
-                                    <option value="yearly" {{ request()->get('f') == 'yearly' ? 'selected' : '' }} id="filter-yearly">{{ __('Yearly') }}</option>
+                                    <option value="all" {{ request()->get('f') == 'all' ? 'selected' : '' }}
+                                        id="filter-all">{{ __('Semua Data') }}</option>
+                                    <option value="daily" {{ request()->get('f') == 'daily' ? 'selected' : '' }}
+                                        id="filter-daily">{{ __('Daily') }}</option>
+                                    <option value="weekly" {{ request()->get('f') == 'weekly' ? 'selected' : '' }}
+                                        id="filter-weekly">{{ __('Weekly') }}</option>
+                                    <option value="monthly" {{ request()->get('f') == 'monthly' ? 'selected' : '' }}
+                                        id="filter-monthly">{{ __('Monthly') }}</option>
+                                    <option value="quarterly" {{ request()->get('f') == 'quarterly' ? 'selected' : '' }}
+                                        id="filter-quarterly">{{ __('Quarterly') }}</option>
+                                    <option value="yearly" {{ request()->get('f') == 'yearly' ? 'selected' : '' }}
+                                        id="filter-yearly">{{ __('Yearly') }}</option>
                                 </select>
                             </div>
 
@@ -192,6 +212,23 @@
         var data_qty_graph = {{ Js::from($data_qty_graph) }};
         var data_nominal_graph = {{ Js::from($data_nominal_graph) }};
 
+        var f = {{ Js::from(request()->get('f')) }}
+        var e = '';
+
+        if (f == 'all' || !f) {
+            e = 'Semua Data';
+        } else if (f == 'daily') {
+            e = 'Tanggal ' + {{ Js::from(request()->get('efd')) }};
+        } else if (f == 'weekly') {
+            e = 'Minggu ke ' + {{ Js::from(request()->get('efw')) }};
+        } else if (f == 'monthly') {
+            e = 'Bulan ' + months[{{ Js::from(request()->get('efm')) }} - 1];
+        } else if (f == 'quarterly') {
+            e = 'Quarter ke ' + {{ Js::from(request()->get('efq')) }};
+        } else if (f == 'yearly') {
+            e = 'Tahun ' + {{ Js::from(request()->get('efy')) }};
+        }
+
         Highcharts.chart('kreditstatistic1', {
             chart: {
                 type: 'column',
@@ -200,10 +237,10 @@
                 }
             },
             title: {
-                text: 'Statistik Penjualan per Person (Qty)'
+                text: 'Grafik Penjualan per Person (Qty)'
             },
             subtitle: {
-                text: 'Tahun {{ activePeriod() }}'
+                text: e
             },
             xAxis: {
                 title: {
@@ -253,10 +290,10 @@
                 }
             },
             title: {
-                text: 'Statistik Penjualan per Person (Rp.)'
+                text: 'Grafik Penjualan per Person (Rp.)'
             },
             subtitle: {
-                text: 'Tahun {{ activePeriod() }}'
+                text: e
             },
             xAxis: {
                 title: {

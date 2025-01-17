@@ -16,6 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('no_dokumen', 50);
             $table->date('tgl_visit')->default(new Expression('(CURDATE())'));
+            $table->integer('tahun');
+            $table->integer('bulan');
+            $table->integer('week')->default(0);
+            $table->integer('quarter')->default(0);
             $table->string('nama_customer')->nullable();
             $table->string('parameter_1')->nullable();
             $table->string('parameter_2')->nullable();
