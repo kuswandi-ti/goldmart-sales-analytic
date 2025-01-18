@@ -19,7 +19,7 @@
 
     <!-- Favicon -->
     <link rel="icon"
-        href="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
+        href="{{ !empty($setting_system['company_logo_2']) ? url(config('common.path_storage') . $setting_system['company_logo_2']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
         type="image/png">
 
     @include('layouts.partials._styles')
