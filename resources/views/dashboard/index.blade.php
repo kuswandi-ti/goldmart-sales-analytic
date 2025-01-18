@@ -22,7 +22,7 @@
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Semua Penjualan (Rp.)') }}</p>
-                                <h3 class="mb-0">{{ formatAmount($total_sales_value->total_sales_value) }}</h3>
+                                <h3 class="mb-0">{{ formatAmount($total_sales_value->total_sales_value ?? 0) }}</h3>
                             </div>
                             <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
                                 <i class="bx bxs-dollar-circle fs-20"></i>
@@ -48,7 +48,7 @@
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Semua Penjualan (Qty)') }}</p>
-                                <h3 class="mb-0">{{ formatAmount($total_sales_pcs->total_sales_pcs) }}</h3>
+                                <h3 class="mb-0">{{ formatAmount($total_sales_pcs->total_sales_pcs ?? 0) }}</h3>
                             </div>
                             <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
                                 <i class="bx bx-package fs-20"></i>
@@ -74,7 +74,7 @@
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Visit') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_visit->total_customer_visit }}</h3>
+                                <h3 class="mb-0">{{ $total_customer_visit->total_customer_visit ?? 0 }}</h3>
                             </div>
                             <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
                                 <i class="bx bx-category fs-20"></i>
@@ -100,7 +100,7 @@
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Beli') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_beli->total_customer_beli }}</h3>
+                                <h3 class="mb-0">{{ $total_customer_beli->total_customer_beli ?? 0 }}</h3>
                             </div>
                             <div class="avatar avatar-md br-4 bg-success-transparent ms-auto">
                                 <i class="bx bxs-cart fs-20"></i>
