@@ -47,14 +47,14 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="mb-3 form-check-lg form-switch">
                                             <input class="form-check-input form-checked-danger" value="Goldmart"
                                                 type="checkbox" role="switch" name="param[]" id="chk-goldmart">
                                             <label class="form-check-label" for="chk-goldmart">{{ __('Goldmart') }}</label>
                                         </div>
                                     </div>
-                                    <div class="mb-4 col-sm-10" id="div-goldmart" style="display: none">
+                                    <div class="mb-4 col-sm-8" id="div-goldmart" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table width="100%">
                                                 <thead>
@@ -83,7 +83,7 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="mb-3 form-check-lg form-switch">
                                             <input class="form-check-input form-checked-danger" value="Goldmaster"
                                                 type="checkbox" role="switch" name="param[]" id="chk-goldmaster">
@@ -91,7 +91,7 @@
                                                 for="chk-goldmaster">{{ __('Goldmaster') }}</label>
                                         </div>
                                     </div>
-                                    <div class="mb-4 col-sm-10" id="div-goldmaster" style="display: none">
+                                    <div class="mb-4 col-sm-8" id="div-goldmaster" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table width="100%">
                                                 <thead>

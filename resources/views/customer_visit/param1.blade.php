@@ -108,14 +108,14 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <div class="mb-2 form-check-lg form-switch">
                                             <input class="form-check-input form-checked-danger" value="Others"
                                                 type="checkbox" role="switch" name="param[]" id="chk-others">
                                             <label class="form-check-label" for="chk-others">{{ __('Others') }}</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-9 mb-3" id="div-keterangan" style="display: none">
+                                    <div class="col-sm-8 mb-3" id="div-keterangan" style="display: none">
                                         <input type="text"
                                             class="form-control @error('keterangan') is-invalid @enderror"
                                             name="keterangan" id="keterangan" value="{{ old('keterangan') }}"

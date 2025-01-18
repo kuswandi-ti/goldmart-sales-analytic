@@ -47,7 +47,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="mb-3 form-check-lg form-switch">
                                             <input class="form-check-input form-checked-danger" value="Promo"
                                                 type="checkbox" role="switch" name="param[]" id="chk-promo">
@@ -58,14 +58,14 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="mb-3 form-check-lg form-switch">
                                             <input class="form-check-input form-checked-danger" value="Barang"
                                                 type="checkbox" role="switch" name="param[]" id="chk-barang">
                                             <label class="form-check-label" for="chk-barang">{{ __('Barang') }}</label>
                                         </div>
                                     </div>
-                                    <div class="mb-4 col-sm-10" id="div-brand" style="display: none">
+                                    <div class="mb-4 col-sm-8" id="div-brand" style="display: none">
                                         <div class="table-responsive mb-2">
                                             <table width="100%">
                                                 <thead>
@@ -117,7 +117,7 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="mb-3 form-check-lg form-switch">
                                             <input class="form-check-input form-checked-danger" value="Range Harga"
                                                 type="checkbox" role="switch" name="param[]" id="chk-range-harga">
@@ -125,7 +125,7 @@
                                                 for="chk-range-harga">{{ __('Range Harga') }}</label>
                                         </div>
                                     </div>
-                                    <div class="mb-4 col-sm-10" id="div-range-harga" style="display: none">
+                                    <div class="mb-4 col-sm-8" id="div-range-harga" style="display: none">
                                         <select class="js-example-placeholder-single js-states form-control select2"
                                             name="rangeharga[]" multiple="multiple">
                                             @foreach ($range_harga as $data)
@@ -161,14 +161,14 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="mb-3 form-check-lg form-switch">
                                             <input class="form-check-input form-checked-danger" value="Others"
                                                 type="checkbox" role="switch" name="param[]" id="chk-others">
                                             <label class="form-check-label" for="chk-others">{{ __('Others') }}</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-10 mb-3" id="div-others" style="display: none">
+                                    <div class="col-sm-8 mb-3" id="div-others" style="display: none">
                                         <input type="text"
                                             class="form-control @error('keterangan') is-invalid @enderror"
                                             name="keterangan" id="keterangan" value="{{ old('keterangan') }}"
