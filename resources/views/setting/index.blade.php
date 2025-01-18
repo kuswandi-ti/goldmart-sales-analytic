@@ -179,7 +179,7 @@
                                                                                             <div
                                                                                                 class="mb-2 file-format-icon">
                                                                                                 <div class="text-center">
-                                                                                                    <img src="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
+                                                                                                    <img src="{{ !empty($setting_system['company_logo_2']) ? url(config('common.path_storage') . $setting_system['company_logo_2']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
                                                                                                         class="rounded img-fluid preview-path_image_company_logo"
                                                                                                         width="200"
                                                                                                         height="200">
@@ -201,7 +201,7 @@
                                                                                                         onchange="preview('.preview-path_image_company_logo', this.files[0])">
                                                                                                     <input type="hidden"
                                                                                                         name="old_image_company_logo"
-                                                                                                        value="{{ $setting_system['company_logo'] ?? '' }}">
+                                                                                                        value="{{ $setting_system['company_logo_2'] ?? '' }}">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -219,7 +219,7 @@
                                                                                             <div
                                                                                                 class="mb-2 file-format-icon">
                                                                                                 <div class="text-center">
-                                                                                                    <img src="{{ !empty($setting_system['company_logo_desktop']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
+                                                                                                    <img src="{{ !empty($setting_system['company_logo_desktop_2']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop_2']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
                                                                                                         class="rounded img-fluid preview-path_image_company_logo_desktop"
                                                                                                         width="125"
                                                                                                         height="33">
@@ -241,7 +241,7 @@
                                                                                                         onchange="preview('.preview-path_image_company_logo_desktop', this.files[0])">
                                                                                                     <input type="hidden"
                                                                                                         name="old_image_company_logo_desktop"
-                                                                                                        value="{{ $setting_system['company_logo_desktop'] ?? '' }}">
+                                                                                                        value="{{ $setting_system['company_logo_desktop_2'] ?? '' }}">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -259,7 +259,7 @@
                                                                                             <div
                                                                                                 class="mb-2 file-format-icon">
                                                                                                 <div class="text-center">
-                                                                                                    <img src="{{ !empty($setting_system['company_logo_toggle']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
+                                                                                                    <img src="{{ !empty($setting_system['company_logo_toggle_2']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle_2']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
                                                                                                         class="rounded img-fluid preview-path_image_company_logo_toggle"
                                                                                                         width="38"
                                                                                                         height="33">
@@ -281,7 +281,7 @@
                                                                                                         onchange="preview('.preview-path_image_company_logo_toggle', this.files[0])">
                                                                                                     <input type="hidden"
                                                                                                         name="old_image_company_logo_toggle"
-                                                                                                        value="{{ $setting_system['company_logo_toggle'] ?? '' }}">
+                                                                                                        value="{{ $setting_system['company_logo_toggle_2'] ?? '' }}">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>

@@ -3,13 +3,13 @@
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
         <a href="{{ route('dashboard.index') }}" class="header-logo">
-            <img src="{{ !empty($setting_system['company_logo_dekstop']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
+            <img src="{{ !empty($setting_system['company_logo_dekstop_2']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop_2']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
                 alt="logo" class="desktop-logo" width="125" height="33">
-            <img src="{{ !empty($setting_system['company_logo_toggle']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
+            <img src="{{ !empty($setting_system['company_logo_toggle_2']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle_2']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
                 alt="logo" class="toggle-logo" width="38" height="33">
-            <img src="{{ !empty($setting_system['company_logo_desktop']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
+            <img src="{{ !empty($setting_system['company_logo_desktop_2']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop_2']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
                 alt="logo" class="desktop-dark" width="125" height="33">
-            <img src="{{ !empty($setting_system['company_logo_toggle']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
+            <img src="{{ !empty($setting_system['company_logo_toggle_2']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle_2']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
                 alt="logo" class="toggle-dark" width="38" height="33">
         </a>
     </div>
