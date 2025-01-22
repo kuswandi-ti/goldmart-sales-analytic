@@ -96,7 +96,6 @@
                                 <select
                                     class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"
                                     name="sales_person" id="sales_person" required>
-                                    <option value="-">{{ __('Non Sales') }}</option>
                                     @foreach ($sales_person as $key => $value)
                                         <option value="{{ $key }}"
                                             {{ old('sales_person') == $key ? 'selected' : ($user->id_sales_person == $key ? 'selected' : '') }}>
