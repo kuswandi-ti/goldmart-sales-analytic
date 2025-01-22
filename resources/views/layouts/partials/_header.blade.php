@@ -17,13 +17,38 @@
             </div>
             <!-- End::header-element -->
 
-            <div class="main-header-center header-link">
-                <a aria-label="anchor" href="javascript:void(0);" class="header-link">
-                    <span class="text-light">{{ __('Periode Aktif') }}</span>
-                    <span class="text-light">&nbsp; : &nbsp;</span>
-                    <span class="badge bg-danger pulse pulse-secondary"><strong>{{ activePeriod() }}</strong></span>
-                </a>
-            </div>
+            <a aria-label="anchor" href="javascript:void(0);" class="header-link dropdown-toggle"
+                data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                <span class="text-light">{{ __('Periode Aktif') }}</span>
+                <span class="text-light">&nbsp; : &nbsp;</span>
+                <span class="badge bg-danger pulse pulse-secondary"><strong>{{ activePeriod() }}</strong></span>
+            </a>
+            @can('setting lainnya')
+                <form method="POST" action="{{ route('other_setting.update') }}">
+                    @csrf
+                    @method('PUT')
+                    <ul class="main-header-dropdown dropdown-menu border-0" data-popper-placement="none">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center">
+                                <input type="text"
+                                    class="form-control me-2 number-only default-number @error('tahun_periode_aktif_2') is-invalid @enderror"
+                                    name="tahun_periode_aktif_2" id="tahun_periode_aktif_2"
+                                    value="{{ old('tahun_periode_aktif_2') ?? (!empty(activePeriod()) ? activePeriod() : '0') }}"
+                                    placeholder="{{ __('Tahun Periode Aktif') }}" aria-describedby="basic-addon2"
+                                    size="4" required>
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Update') }}
+                                </button>
+                                @error('tahun_periode_aktif')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </a>
+                        </li>
+                    </ul>
+                </form>
+            @endcan
         </div>
         <!-- End::header-content-left -->
 

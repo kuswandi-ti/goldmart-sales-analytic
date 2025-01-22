@@ -32,6 +32,8 @@ GSA, per 22 Januari 2025
    - resources\views\customer_visit\param4.blade.php
    - resources\views\customer_visit\edit_param4.blade.php
    - resources\views\customer_visit\show_param4.blade.php
+   - resources\views\layout\partials\_header.blade.php
+   - app\Http\Controllers\SettingController.php
 
 
 GDS, per 22 Januari 2025
@@ -49,3 +51,4 @@ Database, per 22 Januari 2025
    - Hapus semua data di tabel kota. Klik kanan tabel kota, pilih Empty table(s).
    - Import ulang data di tabel kota menggunakan file kota.sql.
 2. Tambahkan kolom `nik` di tabel `sales_person` tipe data VARCHAR(50) -> setelah kolom nama
+3. Tambahkan data di tabel permissions menggunakan file permissions.sql

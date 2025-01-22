@@ -74,12 +74,12 @@
                                                             </td>
                                                             <td>
                                                                 <input type="number"
-                                                                    class="form-control number-only zero-default"
+                                                                    class="form-control number-only empty-default"
                                                                     name="qty_goldmart[]" value="">
                                                             </td>
                                                             <td>
                                                                 <input type="number"
-                                                                    class="form-control number-only zero-default"
+                                                                    class="form-control number-only empty-default"
                                                                     name="nominal_goldmart[]" value="">
                                                             </td>
                                                         </tr>
@@ -120,12 +120,12 @@
                                                             </td>
                                                             <td>
                                                                 <input type="number"
-                                                                    class="form-control number-only zero-default"
+                                                                    class="form-control number-only empty-default"
                                                                     name="qty_goldmaster[]" value="">
                                                             </td>
                                                             <td>
                                                                 <input type="number"
-                                                                    class="form-control number-only zero-default"
+                                                                    class="form-control number-only empty-default"
                                                                     name="nominal_goldmaster[]" value="">
                                                             </td>
                                                         </tr>

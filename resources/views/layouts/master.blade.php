@@ -154,6 +154,13 @@
                 }
             });
 
+            $('body').on('keyup', '.empty-default', function(e) {
+                if (!$(this).val()) {
+                    e.preventDefault();
+                    $(this).val('');
+                }
+            });
+
             $('.custom-file-input').on('change', function() {
                 let filename = $(this)
                     .val()
