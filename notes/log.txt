@@ -45,5 +45,7 @@ GDS, per 22 Januari 2025
 
 Database, per 22 Januari 2025
 =============================
-1. Tambahkan kolom `slug` di tabel `kota` tipe data VARCHAR(255) -> setelah kolom nama
+1. - Tambahkan kolom `slug` di tabel `kota` tipe data VARCHAR(255) -> setelah kolom nama
+   - Hapus semua data di tabel kota. Klik kanan tabel kota, pilih Empty table(s).
+   - Import ulang data di tabel kota menggunakan file kota.sql.
 2. Tambahkan kolom `nik` di tabel `sales_person` tipe data VARCHAR(50) -> setelah kolom nama
