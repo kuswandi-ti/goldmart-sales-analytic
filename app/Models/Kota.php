@@ -11,6 +11,11 @@ class Kota extends Model
 
     protected $table = 'kota';
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +23,7 @@ class Kota extends Model
      */
     protected $fillable = [
         'nama',
+        'slug',
         'created_by',
         'updated_by',
         'deleted_by',

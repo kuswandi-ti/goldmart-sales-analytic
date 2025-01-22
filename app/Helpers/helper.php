@@ -93,6 +93,10 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'laporan penjualan per store', 'group_name' => 'Report Permission'],
         ['guard_name' => 'web', 'name' => 'laporan penjualan all store', 'group_name' => 'Report Permission'],
         ['guard_name' => 'web', 'name' => 'dashboard gsa', 'group_name' => 'Dashboard Permission'],
+        ['guard_name' => 'web', 'name' => 'kota create', 'group_name' => 'Kota Permission'],
+        ['guard_name' => 'web', 'name' => 'kota delete', 'group_name' => 'Kota Permission'],
+        ['guard_name' => 'web', 'name' => 'kota index', 'group_name' => 'Kota Permission'],
+        ['guard_name' => 'web', 'name' => 'kota update', 'group_name' => 'Kota Permission'],
     ];
 }
 

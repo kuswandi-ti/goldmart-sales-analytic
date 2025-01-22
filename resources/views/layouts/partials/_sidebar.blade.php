@@ -63,6 +63,7 @@
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
                 @if (canAccess([
+                        'kota index',
                         'store index',
                         'sales person index',
                         'brand index',
@@ -76,6 +77,17 @@
                 <!-- End::slide__category -->
 
                 <!-- Start::slide -->
+                @if (canAccess(['kota index']))
+                    <li class="slide {{ setSidebarActive(['kotas.*']) }}">
+                        <a href="{{ route('kotas.index') }}"
+                            class="side-menu__item {{ setSidebarActive(['kotas.*']) }}">
+                            <span class="side-menu__icon">
+                                <i class='bx bxs-map-alt'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Kota') }}</span>
+                        </a>
+                    </li>
+                @endif
                 @if (canAccess(['store index']))
                     <li class="slide {{ setSidebarActive(['store.*']) }}">
                         <a href="{{ route('store.index') }}"

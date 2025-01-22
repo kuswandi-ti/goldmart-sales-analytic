@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
@@ -85,6 +86,10 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('customervisit/{id}/{action}/param4', [CustomerVisitController::class, 'actionParam4'])->name('customervisit.action.param4');
     Route::get('customervisit/data', [CustomerVisitController::class, 'data'])->name('customervisit.data');
     Route::resource('customervisit', CustomerVisitController::class);
+
+    /** Kota Routes */
+    Route::get('kotas/data', [KotaController::class, 'data'])->name('kotas.data');
+    Route::resource('kotas', KotaController::class);
 
     /** Store Routes */
     Route::get('store/data', [StoreController::class, 'data'])->name('store.data');
