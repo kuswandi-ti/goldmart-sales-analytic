@@ -56,12 +56,12 @@
                                 <div class="mt-3 row gy-3">
                                     <div class="mt-0 col-xl-12">
                                         <label for="email" class="form-label text-default">
-                                            {{ __('Email') }} <x-all-not-null />
+                                            {{ __('Email / NIK') }} <x-all-not-null />
                                         </label>
-                                        <input type="email"
+                                        <input type="text"
                                             class="form-control form-control-lg @error('email') is-invalid @enderror"
                                             name="email" id="email" value="{{ old('email') }}"
-                                            placeholder="{{ __('Email') }}" required autofocus>
+                                            placeholder="{{ __('Email / NIK') }}" required autofocus>
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

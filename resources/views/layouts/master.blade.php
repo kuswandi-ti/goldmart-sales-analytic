@@ -132,6 +132,16 @@
             $("body").trigger("mousemove");
         });
 
+        function IsEmail(email) {
+            const regex =
+                /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(email)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
         $(document).ready(function() {
             $('body').on('keyup', '.number-only', function(e) {
                 this.value = this.value.replace(/[^0-9]/g, '');

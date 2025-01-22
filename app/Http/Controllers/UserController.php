@@ -39,7 +39,7 @@ class UserController extends Controller
             ->pluck('name', 'name');
         $sales_person = SalesPerson::active()
             ->orderBy('nama')
-            ->pluck('nama', 'id');
+            ->get();
 
         return view('user.create', compact('roles', 'sales_person'));
     }
@@ -52,13 +52,12 @@ class UserController extends Controller
         $query = SalesPerson::select('id', 'kode', 'nama')
             ->where('id', $request->sales_person)
             ->first();
-        // $kode_sales = SalesPerson::where('id', $id_sales_person)->valueOrFail('kode');
 
         $store = User::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'email' => $request->email,
-            'username' => Str::slug($request->name),
+            'username' => $request->email,
             'password' => bcrypt($request->password),
             'join_date' => saveDateNow(),
             'email_verified_at' => saveDateTimeNow(),
@@ -98,7 +97,7 @@ class UserController extends Controller
         $roles = Role::where('name', '!=', 'Super Admin')->orderBy('name')->pluck('name', 'id');
         $sales_person = SalesPerson::active()
             ->orderBy('nama')
-            ->pluck('nama', 'id');
+            ->get();
 
         return view('user.edit', compact('user', 'roles', 'sales_person'));
     }
@@ -116,6 +115,7 @@ class UserController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'email' => $request->email,
+            'username' => $request->email,
             'id_sales_person' => $query['id'],
             'kode_sales' => $query['kode'],
             'nama_sales' => $query['nama'],

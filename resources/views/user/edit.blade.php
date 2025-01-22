@@ -58,11 +58,31 @@
                         </div>
                         <div class="mb-4 row gy-4">
                             <div class="col-xl-12">
-                                <label for="email"
-                                    class="form-label text-default">{{ __('Email (sebagai identifikasi saat login)') }}
+                                <label for="sales_person" class="form-label text-default">{{ __('Sales Person') }}
                                     <x-all-not-null /></label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') ?? ($user->email ?? '') }}"
+                                <select
+                                    class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"
+                                    name="sales_person" id="sales_person" required>
+                                    @foreach ($sales_person as $data)
+                                        <option value="{{ $data->id }}"
+                                            {{ old('sales_person') == $data->id ? 'selected' : ($user->id_sales_person == $data->id ? 'selected' : '') }}
+                                            data-nik={{ $data->nik }}>
+                                            {{ $data->nama }}</option>
+                                    @endforeach
+                                </select>
+                                @error('sales_person')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-4 row gy-4">
+                            <div class="col-xl-12">
+                                <label for="email" class="form-label text-default">{{ __('Email') }}
+                                    <x-all-not-null /></label>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" id="email" value="{{ old('email') ?? ($user->email ?? '') }}"
                                     placeholder="{{ __('Email') }}" required>
                                 @error('email')
                                     <div class="invalid-feedback">
@@ -72,7 +92,7 @@
                             </div>
                         </div>
                         <div class="mb-4 row gy-4">
-                            <div class="col-xl-6">
+                            <div class="col-xl-12">
                                 <label for="role" class="form-label text-default">{{ __('Role') }}
                                     <x-all-not-null /></label>
                                 <select
@@ -85,24 +105,6 @@
                                     @endforeach
                                 </select>
                                 @error('role')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-xl-6">
-                                <label for="sales_person" class="form-label text-default">{{ __('Sales Person') }}
-                                    <x-all-not-null /></label>
-                                <select
-                                    class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"
-                                    name="sales_person" id="sales_person" required>
-                                    @foreach ($sales_person as $key => $value)
-                                        <option value="{{ $key }}"
-                                            {{ old('sales_person') == $key ? 'selected' : ($user->id_sales_person == $key ? 'selected' : '') }}>
-                                            {{ $value }}</option>
-                                    @endforeach
-                                </select>
-                                @error('sales_person')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -125,3 +127,28 @@
 
 @include('layouts.includes.select2')
 @include('layouts.includes.flatpickr')
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            let email = $('#email').val();
+            if (IsEmail(email) === false) {
+                $('#email').attr('readonly', true);
+            } else {
+                $('#email').removeAttr("readonly");
+            }
+
+            $('#sales_person').change(function() {
+                var nik = $("#sales_person option:selected").data("nik");
+                if (nik.length > 0) {
+                    $('#email').val(nik);
+                    $('#email').attr('readonly', true);
+                } else {
+                    $('#email').val("");
+                    $('#email').removeAttr("readonly");
+                    $('#email').focus();
+                }
+            });
+        });
+    </script>
+@endpush

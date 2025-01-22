@@ -57,11 +57,33 @@
                         </div>
                         <div class="mb-4 row gy-4">
                             <div class="col-xl-12">
-                                <label for="email"
-                                    class="form-label text-default">{{ __('Email (sebagai identifikasi saat login)') }}
+                                <label for="sales_person" class="form-label text-default">{{ __('Sales Person') }}
                                     <x-all-not-null /></label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" placeholder="{{ __('Email') }}" required>
+                                <select
+                                    class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"
+                                    name="sales_person" id="sales_person" required>
+                                    @foreach ($sales_person as $data)
+                                        <option value="{{ $data->id }}"
+                                            {{ old('sales_person') == $data->id ? 'selected' : '' }}
+                                            data-nik={{ $data->nik }}>
+                                            {{ $data->nama }}</option>
+                                    @endforeach
+                                </select>
+                                @error('sales_person')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-4 row gy-4">
+                            <div class="col-xl-12">
+                                <label for="email"
+                                    class="form-label text-default">{{ __('Email / NIK (sebagai identifikasi saat login)') }}
+                                    <x-all-not-null /></label>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" id="email" value="{{ old('email') }}"
+                                    placeholder="{{ __('Email / NIK') }}" required>
                                 @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -74,8 +96,7 @@
                                 <label for="password" class="form-label text-default">{{ __('Password') }}
                                     <x-all-not-null /></label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password" placeholder="{{ __('Password') }}"
-                                    required>
+                                    name="password" placeholder="{{ __('Password') }}" required>
                                 @error('password')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -84,7 +105,7 @@
                             </div>
                         </div>
                         <div class="mb-4 row gy-4">
-                            <div class="col-xl-6">
+                            <div class="col-xl-12">
                                 <label for="role" class="form-label text-default">{{ __('Role') }}
                                     <x-all-not-null /></label>
                                 <select
@@ -96,23 +117,6 @@
                                     @endforeach
                                 </select>
                                 @error('role')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-xl-6">
-                                <label for="sales_person" class="form-label text-default">{{ __('Sales Person') }}
-                                    <x-all-not-null /></label>
-                                <select
-                                    class="js-example-placeholder-single js-states form-control select2 @error('sales_person') is-invalid @enderror"
-                                    name="sales_person" id="sales_person" required>
-                                    @foreach ($sales_person as $key => $value)
-                                        <option value="{{ $key }}" {{ old('sales_person') == $key ? 'selected' : '' }}>
-                                            {{ $value }}</option>
-                                    @endforeach
-                                </select>
-                                @error('sales_person')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -139,26 +143,17 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $(".default-number").keyup(
-                function() {
-                    var simpanan_pokok = $("#simpanan_pokok").val();
-                    var simpanan_wajib = $("#simpanan_wajib").val();
-                    var simpanan_sukarela = $("#simpanan_sukarela").val();
-                    var simpanan_sukarela_tetap = $("#simpanan_sukarela_tetap").val();
-
-                    if (simpanan_pokok.length == 0) {
-                        $("#simpanan_pokok").val(0);
-                    }
-                    if (simpanan_wajib.length == 0) {
-                        $("#simpanan_wajib").val(0);
-                    }
-                    if (simpanan_sukarela.length == 0) {
-                        $("#simpanan_sukarela").val(0);
-                    }
-                    if (simpanan_sukarela_tetap.length == 0) {
-                        $("#simpanan_sukarela_tetap").val(0);
-                    }
-                });
+            $('#sales_person').change(function() {
+                var nik = $("#sales_person option:selected").data("nik");
+                if (nik.length > 0) {
+                    $('#email').val(nik);
+                    $('#email').attr('readonly', true);
+                } else {
+                    $('#email').val("");
+                    $('#email').removeAttr("readonly");
+                    $('#email').focus();
+                }
+            });
         });
     </script>
 @endpush
