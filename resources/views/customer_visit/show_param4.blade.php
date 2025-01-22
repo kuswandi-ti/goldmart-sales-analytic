@@ -110,7 +110,7 @@
                                                 <tr>
                                                     <th scope="col">{{ __('Tipe Barang') }}</th>
                                                     <th scope="col">{{ __('Qty') }}</th>
-                                                    <th scope="col">{{ __('Nominal') }}</th>
+                                                    <th scope="col">{{ __('Nominal (Rp.)') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -127,13 +127,13 @@
                                                                     <input type="text"
                                                                         class="form-control number-only zero-default"
                                                                         name="qty_goldmart[]"
-                                                                        value="{{ formatAmount($row->qty) ?? 0 }}"
+                                                                        value="{{ formatAmount($row->qty) ?? '' }}"
                                                                         disabled>
                                                                 @endforeach
                                                             @else
                                                                 <input type="text"
                                                                     class="form-control number-only zero-default"
-                                                                    name="qty_goldmart[]" value="0" disabled>
+                                                                    name="qty_goldmart[]" value="" disabled>
                                                             @endif
                                                         </td>
                                                         <td>
@@ -142,13 +142,13 @@
                                                                     <input type="text"
                                                                         class="form-control number-only zero-default"
                                                                         name="nominal_goldmart[]"
-                                                                        value="{{ formatAmount($row->nominal) ?? 0 }}"
+                                                                        value="{{ formatAmount($row->nominal) ?? '' }}"
                                                                         disabled>
                                                                 @endforeach
                                                             @else
                                                                 <input type="text"
                                                                     class="form-control number-only zero-default"
-                                                                    name="nominal_goldmart[]" value="0" disabled>
+                                                                    name="nominal_goldmart[]" value="" disabled>
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -178,7 +178,7 @@
                                                 <tr>
                                                     <th scope="col">{{ __('Tipe Barang') }}</th>
                                                     <th scope="col">{{ __('Qty') }}</th>
-                                                    <th scope="col">{{ __('Nominal') }}</th>
+                                                    <th scope="col">{{ __('Nominal (Rp.)') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -195,13 +195,13 @@
                                                                     <input type="text"
                                                                         class="form-control number-only zero-default"
                                                                         name="qty_goldmaster[]"
-                                                                        value="{{ formatAmount($row->qty) ?? 0 }}"
+                                                                        value="{{ formatAmount($row->qty) ?? '' }}"
                                                                         disabled>
                                                                 @endforeach
                                                             @else
                                                                 <input type="text"
                                                                     class="form-control number-only zero-default"
-                                                                    name="qty_goldmaster[]" value="0" disabled>
+                                                                    name="qty_goldmaster[]" value="" disabled>
                                                             @endif
                                                         </td>
                                                         <td>
@@ -210,13 +210,13 @@
                                                                     <input type="text"
                                                                         class="form-control number-only zero-default"
                                                                         name="nominal_goldmaster[]"
-                                                                        value="{{ formatAmount($row->nominal) ?? 0 }}"
+                                                                        value="{{ formatAmount($row->nominal) ?? '' }}"
                                                                         disabled>
                                                                 @endforeach
                                                             @else
                                                                 <input type="text"
                                                                     class="form-control number-only zero-default"
-                                                                    name="nominal_goldmaster[]" value="0" disabled>
+                                                                    name="nominal_goldmaster[]" value="" disabled>
                                                             @endif
                                                         </td>
                                                     </tr>

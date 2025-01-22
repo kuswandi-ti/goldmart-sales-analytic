@@ -61,7 +61,7 @@
                                                     <tr>
                                                         <th scope="col">{{ __('Tipe Barang') }}</th>
                                                         <th scope="col">{{ __('Qty') }}</th>
-                                                        <th scope="col">{{ __('Nominal') }}</th>
+                                                        <th scope="col">{{ __('Nominal (Rp.)') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -75,12 +75,12 @@
                                                             <td>
                                                                 <input type="number"
                                                                     class="form-control number-only zero-default"
-                                                                    name="qty_goldmart[]" value="0">
+                                                                    name="qty_goldmart[]" value="">
                                                             </td>
                                                             <td>
                                                                 <input type="number"
                                                                     class="form-control number-only zero-default"
-                                                                    name="nominal_goldmart[]" value="0">
+                                                                    name="nominal_goldmart[]" value="">
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -107,7 +107,7 @@
                                                     <tr>
                                                         <th scope="col">{{ __('Tipe Barang') }}</th>
                                                         <th scope="col">{{ __('Qty') }}</th>
-                                                        <th scope="col">{{ __('Nominal') }}</th>
+                                                        <th scope="col">{{ __('Nominal (Rp.)') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -121,12 +121,12 @@
                                                             <td>
                                                                 <input type="number"
                                                                     class="form-control number-only zero-default"
-                                                                    name="qty_goldmaster[]" value="0">
+                                                                    name="qty_goldmaster[]" value="">
                                                             </td>
                                                             <td>
                                                                 <input type="number"
                                                                     class="form-control number-only zero-default"
-                                                                    name="nominal_goldmaster[]" value="0">
+                                                                    name="nominal_goldmaster[]" value="">
                                                             </td>
                                                         </tr>
                                                     @endforeach

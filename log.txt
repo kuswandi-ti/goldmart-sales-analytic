@@ -1,0 +1,42 @@
+GSA, per 22 Januari 2025
+=============================
+1. Request Update
+   - Menghilangkan nama Non Sales duplikat saat edit data user
+   - Membuat input data Kota
+   - Menambahkan kolom NIK di data Sales Person
+   - Bisa login menggunakan NIK atau Email
+   - Menghilangkan 0 (di awal angka) saat input qty & nominal di parameter Beli
+   - Menambahkan text Rupiah di bagian nominal di parameter Beli
+2. File Update
+   - resources\view\user\edit.blade.php
+   - app\Helpers\helper.php
+   - app\Http\Controllers\KotaController.php
+   - app\Http\Requests\KotaRequest.php
+   - app\Models\Kota.php
+   - database\migrations\2025_01_11_053740_create_kotas_table.php
+   - database\seeders\KotaTableSeeder.php
+   - resources\views\kota (semua file)
+   - resources\views\layouts\partials\_sidebar.php
+   - routes\web.php
+   - app\Http\Controllers\SalesPersonController.php
+   - app\Http\Requests\SalesPersonRequest.php
+   - app\Models\SalesPerson.php
+   - database\migrations\2025_01_10_082122_create_sales_person_table.php
+   - resources\views\sales_person (semua file)
+   - app\Http\Controllers\UserController.php
+   - app\Http\Requests\AuthLoginRequest.php
+   - resources\views\auth\login.blade.php
+   - resources\views\layouts\master.blade.php
+   - resources\views\user\create.blade.php
+   - resources\views\user\edit.blade.php
+   - resources\views\customer_visit\param4.blade.php
+   - resources\views\customer_visit\edit_param4.blade.php
+   - resources\views\customer_visit\show_param4.blade.php
+
+GDS, per 22 Januari 2025
+=============================
+1. Request Update
+   - Dibuatkan pop up untuk mengubah Periode Aktif
+2. File Update
+  - resources\views\layout\partials\_header.blade.php
+  - app\Http\Controllers\SettingController.php
