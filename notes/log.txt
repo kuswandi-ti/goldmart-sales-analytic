@@ -33,6 +33,7 @@ GSA, per 22 Januari 2025
    - resources\views\customer_visit\edit_param4.blade.php
    - resources\views\customer_visit\show_param4.blade.php
 
+
 GDS, per 22 Januari 2025
 =============================
 1. Request Update
@@ -40,3 +41,9 @@ GDS, per 22 Januari 2025
 2. File Update
   - resources\views\layout\partials\_header.blade.php
   - app\Http\Controllers\SettingController.php
+
+
+Database, per 22 Januari 2025
+=============================
+1. Tambahkan kolom `slug` di tabel `kota` tipe data VARCHAR(255)
+2. Tambahkan kolom `nik` di tabel `sales_person` tipe data VARCHAR(50)
