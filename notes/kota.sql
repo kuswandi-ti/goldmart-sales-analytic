@@ -1,0 +1,27 @@
+-- Dumping data for table db_goldmart.kota: ~24 rows (approximately)
+DELETE FROM `kota`;
+INSERT INTO `kota` (`id`, `nama`, `slug`, `created_at`, `updated_at`, `deleted_at`, `restored_at`, `created_by`, `updated_by`, `deleted_by`, `restored_by`) VALUES
+	(1, 'JAKARTA', 'jakarta', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(2, 'BOGOR', 'bogor', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(3, 'DEPOK', 'depok', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(4, 'TANGERANG', 'tangerang', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(5, 'BEKASI', 'bekasi', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(6, 'CIANJUR', 'cianjur', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(7, 'BANDUNG', 'bandung', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(8, 'SERANG', 'serang', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(9, 'SEMARANG', 'semarang', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(10, 'SURAKARTA', 'surakarta', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(11, 'SURABAYA', 'surabaya', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(12, 'MALANG', 'malang', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(13, 'BANDAR LAMPUNG', 'bandar-lampung', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(14, 'PALEMBANG', 'palembang', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(15, 'MEDAN', 'medan', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(16, 'PADANG', 'padang', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(17, 'PEKANBARU', 'pekanbaru', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(18, 'BATAM', 'batam', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(19, 'BALI', 'bali', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(20, 'MAKASSAR', 'makassar', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(21, 'SAMARINDA', 'samarinda', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(22, 'PONTIANAK', 'pontianak', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(23, 'BANJARMASIN', 'banjarmasin', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL),
+	(24, 'MANADO', 'manado', '2025-01-21 23:06:39', '2025-01-21 23:06:39', NULL, NULL, 'Super Admin', NULL, NULL, NULL);
