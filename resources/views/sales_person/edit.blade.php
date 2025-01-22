@@ -72,6 +72,20 @@
                         </div>
                         <div class="mb-4 row gy-4">
                             <div class="col-xl-12">
+                                <label for="nik" class="form-label text-default">{{ __('NIK Sales Person') }}
+                                    <x-all-not-null /></label>
+                                <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"
+                                    value="{{ old('nik') ?? ($salesperson->nik ?? '') }}"
+                                    placeholder="{{ __('NIK Sales Person') }}" required>
+                                @error('nik')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-4 row gy-4">
+                            <div class="col-xl-12">
                                 <label for="store" class="form-label text-default">{{ __('Store') }}
                                     <x-all-not-null /></label>
                                 <select

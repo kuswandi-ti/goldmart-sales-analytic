@@ -43,6 +43,7 @@
                                     <th scope="col" width="12%">{{ __('Aksi') }}</th>
                                     <th scope="col">{{ __('Kode Sales') }}</th>
                                     <th scope="col">{{ __('Nama Sales') }}</th>
+                                    <th scope="col">{{ __('NIK') }}</th>
                                     <th scope="col">{{ __('Store') }}</th>
                                     <th scope="col">{{ __('Kota') }}</th>
                                     <th scope="col" width="10%">{{ __('Status Aktif') }}</th>
@@ -92,6 +93,10 @@
                 sortable: true,
             }, {
                 data: 'nama',
+                searchable: true,
+                sortable: true,
+            }, {
+                data: 'nik',
                 searchable: true,
                 sortable: true,
             }, {

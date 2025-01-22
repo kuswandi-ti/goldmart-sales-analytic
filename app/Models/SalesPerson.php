@@ -25,6 +25,7 @@ class SalesPerson extends Model
         'kode',
         'slug',
         'nama',
+        'nik',
         'id_store',
         'kode_store',
         'nama_store',

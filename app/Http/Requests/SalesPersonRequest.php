@@ -25,13 +25,15 @@ class SalesPersonRequest extends FormRequest
             case 'POST':
                 return [
                     'nama' => ['required', 'string', 'max:255'],
+                    'nik' => ['required', 'string', 'max:50', 'unique:sales_person,nik'],
                 ];
                 break;
 
             case 'PATCH':
             case 'PUT':
                 return [
-                    'nama' => ['required', 'string', 'max:255', 'unique:sales_person,nama,' . $this->salesperson->id],
+                    'nama' => ['required', 'string', 'max:255'],
+                    'nik' => ['required', 'string', 'max:50', 'unique:sales_person,nik,' . $this->salesperson->id],
                 ];
                 break;
         }

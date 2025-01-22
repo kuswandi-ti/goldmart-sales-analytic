@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('kode', 50);
             $table->string('slug');
             $table->string('nama');
+            $table->string('nik', 50);
             $table->bigInteger('id_store')->nullable();
             $table->string('kode_store')->nullable();
             $table->string('nama_store')->nullable();

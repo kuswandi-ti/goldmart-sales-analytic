@@ -52,12 +52,13 @@ class SalesPersonController extends Controller
             ->where('id', $request->store)
             ->first();
 
-        $kode = docNoSalesPerson() . right('0000' . last_doc_no(docNoSalesPerson(), date('m'), date('Y')), 3);
+        $kode = docNoSalesPerson() . right('0000' . last_doc_no(docNoSalesPerson(), date('m'), date('Y')), 4);
 
         $store = SalesPerson::create([
             'kode' => $kode,
             'slug' => Str::slug($kode),
             'nama' => $request->nama,
+            'nik' => $request->nik,
             'id_store' => $query['id'],
             'kode_store' => $query['kode'],
             'nama_store' => $query['nama'],
@@ -106,6 +107,7 @@ class SalesPersonController extends Controller
 
         $update = $salesperson->update([
             'nama' => $request->nama,
+            'nik' => $request->nik,
             'id_store' => $query['id'],
             'kode_store' => $query['kode'],
             'nama_store' => $query['nama'],
