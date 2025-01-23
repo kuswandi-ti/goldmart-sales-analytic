@@ -1,0 +1,20 @@
+GSA, per 23 Januari 2025
+=============================
+1. Request Update
+   - Perbaikan saat create & edit user
+   - Seeder Sales Person & User Sales
+2. File Update
+   - database\seeders\RolePermissionTableSeeder.php
+   - database\seeders\SalesPersonTableSeeder.php
+   - resources\views\users (semua file)
+
+
+GDS, per 23 Januari 2025
+=============================
+1. Request Update
+2. File Update
+  - database\seeders\RolePermissionTableSeeder.php
+
+
+Database, per 23 Januari 2025
+=============================

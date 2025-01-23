@@ -65,7 +65,7 @@
                                     @foreach ($sales_person as $data)
                                         <option value="{{ $data->id }}"
                                             {{ old('sales_person') == $data->id ? 'selected' : '' }}
-                                            data-nik={{ $data->nik }}>
+                                            data-nik="{{ $data->nik }} ">
                                             {{ $data->nama }}</option>
                                     @endforeach
                                 </select>
@@ -146,7 +146,7 @@
             $('#sales_person').change(function() {
                 var nik = $("#sales_person option:selected").data("nik");
                 if (nik.length > 0) {
-                    $('#email').val(nik);
+                    $('#email').val($.trim(nik));
                     $('#email').attr('readonly', true);
                 } else {
                     $('#email').val("");

@@ -41,8 +41,8 @@ class RolePermissionTableSeeder extends Seeder
         $sales_kantor_pusat = User::create([
             'name' => 'User Sales Kantor Pusat',
             'slug' => Str::slug('User Sales Kantor Pusat'),
-            'email' => 'usersaleskantorpusat@mail.com',
-            'username' => 'usersaleskantorpusat',
+            'email' => '111',
+            'username' => '111',
             'email_verified_at' => saveDateTimeNow(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'join_date' => saveDateNow(),
@@ -59,8 +59,8 @@ class RolePermissionTableSeeder extends Seeder
         $sales_jakarta = User::create([
             'name' => 'User Sales Jakarta',
             'slug' => Str::slug('User Sales Jakarta'),
-            'email' => 'usersalesjakarta@mail.com',
-            'username' => 'usersalesjakarta',
+            'email' => '222',
+            'username' => '222',
             'email_verified_at' => saveDateTimeNow(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'join_date' => saveDateNow(),
@@ -77,8 +77,8 @@ class RolePermissionTableSeeder extends Seeder
         $sales_bekasi = User::create([
             'name' => 'User Sales Bekasi',
             'slug' => Str::slug('User Sales Bekasi'),
-            'email' => 'usersalesbekasi@mail.com',
-            'username' => 'usersalesbekasi',
+            'email' => '333',
+            'username' => '333',
             'email_verified_at' => saveDateTimeNow(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'join_date' => saveDateNow(),
