@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="gradient"
-    data-menu-styles="dark" style="--primary-rgb: 0, 128, 172;">
+{{-- <html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="gradient"
+    data-menu-styles="dark" style="--primary-rgb: 0, 128, 172;"> --}}
+<html lang="en" dir="ltr" data-nav-layout="vertical" style="--primary-rgb: 0, 128, 172;">
 
 <head>
     <!-- Meta Data -->
@@ -53,7 +54,10 @@
             <ol class="breadcrumb">
                 @section('section_header_breadcrumb')
                     <li class="breadcrumb-item">
-                        <a href="{{ route('dashboard.index') }}" class="text-white-50">
+                        {{-- <a href="{{ route('dashboard.index') }}" class="text-white-50">
+                            {{ __('Dashboard') }}
+                        </a> --}}
+                        <a href="{{ route('dashboard.index') }}" class="text-dark">
                             {{ __('Dashboard') }}
                         </a>
                     </li>

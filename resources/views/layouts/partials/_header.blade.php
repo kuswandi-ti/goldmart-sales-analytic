@@ -19,8 +19,10 @@
 
             <a aria-label="anchor" href="javascript:void(0);" class="header-link dropdown-toggle"
                 data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                <span class="text-light">{{ __('Periode Aktif') }}</span>
-                <span class="text-light">&nbsp; : &nbsp;</span>
+                {{-- <span class="text-light">{{ __('Periode Aktif') }}</span>
+                <span class="text-light">&nbsp; : &nbsp;</span> --}}
+                <span class="text-dark">{{ __('Periode Aktif') }}</span>
+                <span class="text-dark">&nbsp; : &nbsp;</span>
                 <span class="badge bg-danger pulse pulse-secondary"><strong>{{ activePeriod() }}</strong></span>
             </a>
             @can('setting lainnya')
@@ -66,7 +68,7 @@
                     <!-- End::header-link|layout-setting -->
                 </div>
             @endcan
-            <div class="header-element header-theme-mode">
+            {{-- <div class="header-element header-theme-mode">
                 <!-- Start::header-link|layout-setting -->
                 <a aria-label="anchor" href="javascript:void(0);" class="header-link layout-setting">
                     <!-- Start::header-link-icon -->
@@ -77,7 +79,7 @@
                     <!-- End::header-link-icon -->
                 </a>
                 <!-- End::header-link|layout-setting -->
-            </div>
+            </div> --}}
             <!-- End::header-element -->
 
             <!-- Start::header-element -->
@@ -93,7 +95,9 @@
                                     width="28" height="28">
                             </div>
                             <div class="my-auto ms-2 d-none d-xl-flex">
-                                <h6 class="mb-0 font-weight-semibold fs-13 user-name d-sm-block d-none">
+                                {{-- <h6 class="mb-0 font-weight-semibold fs-13 user-name d-sm-block d-none">
+                                    {{ auth()->user()->name }}</h6> --}}
+                                <h6 class="mb-0 font-weight-semibold fs-13 user-name d-sm-block d-none text-dark">
                                     {{ auth()->user()->name }}</h6>
                             </div>
                         </div>
@@ -122,14 +126,14 @@
             <!-- End::header-element -->
 
             <!-- Start::header-element -->
-            <div class="header-element">
+            {{-- <div class="header-element">
                 <!-- Start::header-link|switcher-icon -->
                 <a aria-label="anchor" href="javascript:void(0);" class="header-link switcher-icon ms-1"
                     data-bs-toggle="offcanvas" data-bs-target="#switcher-canvas">
                     <i class="bx bx-cog bx-spin header-link-icon"></i>
                 </a>
                 <!-- End::header-link|switcher-icon -->
-            </div>
+            </div> --}}
             <!-- End::header-element -->
         </div>
         <!-- End::header-content-right -->

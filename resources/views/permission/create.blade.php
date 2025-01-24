@@ -10,12 +10,14 @@
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item">
+    {{-- <li class="breadcrumb-item">
         <a href="{{ route('permission.index') }}" class="text-white-50">
             {{ __('Permission') }}
         </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Menambah Data Permission') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Menambah Data Permission') }}</li> --}}
+    <x-breadcrumb-item url="{{ route('permission.index') }}" title="{{ __('Permission') }}" />
+    <x-breadcrumb-active title="{{ __('Menambah Data Permission') }}" />
 @endsection
 
 @section('page_content')

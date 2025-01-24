@@ -10,12 +10,14 @@
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item">
+    {{-- <li class="breadcrumb-item">
         <a href="{{ route('brand.index') }}" class="text-white-50">
             {{ __('Brand') }}
         </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Memperbarui Data Brand') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Memperbarui Data Brand') }}</li> --}}
+    <x-breadcrumb-item url="{{ route('brand.index') }}" title="{{ __('Brand') }}" />
+    <x-breadcrumb-active title="{{ __('Memperbarui Data Brand') }}" />
 @endsection
 
 @section('page_content')

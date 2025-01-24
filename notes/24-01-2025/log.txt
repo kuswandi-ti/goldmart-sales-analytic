@@ -1,0 +1,30 @@
+GSA, per 24 Januari 2025
+=============================
+1.  Request Update
+    -   Menambahkan permission brand, tipe barang, dan range harga
+    -   Mengubah template menjadi warna putih
+
+2.  File Update
+    -   app\Helpers\helper.php
+    -   app\Http\Controllers\RangeHargaController.php
+    -   app\View\Components\BreadcrumbActive.php
+    -   app\View\Components\BreadcrumbItem.php
+    -   public\template\assets\css\styles.css
+    -   resources\views\brand (semua file)
+    -   resources\views\components\breadcrumb-active.blade.php
+    -   resources\views\components\breadcrumb-item.blade.php
+    -   resources\views\kota (semua file)
+    -   resources\views\layouts\partials\_header.blade.php
+    -   resources\views\layouts\master.blade.php
+    -   resources\views\permission (semua file)
+    -   resources\views\profile (semua file)
+    -   resources\views\range_harga (semua file)
+    -   resources\views\role (semua file)
+    -   resources\views\sales_person (semua file)
+    -   resources\views\setting (semua file)
+    -   resources\views\store (semua file)
+    -   resources\views\tipe_barang (semua file)
+    -   resources\views\user (semua file)
+
+3.  Database
+    -   Tambahkan data di tabel permissions menggunakan file permissions.sql

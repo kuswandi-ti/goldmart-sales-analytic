@@ -10,7 +10,8 @@
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Permission') }}</li>
+    {{-- <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Permission') }}</li> --}}
+    <x-breadcrumb-active title="{{ __('Daftar Data Permission') }}" />
 @endsection
 
 @section('page_content')

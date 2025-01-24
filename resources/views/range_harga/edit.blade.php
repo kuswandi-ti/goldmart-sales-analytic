@@ -10,12 +10,14 @@
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item">
+    {{-- <li class="breadcrumb-item">
         <a href="{{ route('rangeharga.index') }}" class="text-white-50">
             {{ __('Range Harga') }}
         </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Memperbarui Data Range Harga') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('Memperbarui Data Range Harga') }}</li> --}}
+    <x-breadcrumb-item url="{{ route('rangeharga.index') }}" title="{{ __('Range Harga') }}" />
+    <x-breadcrumb-active title="{{ __('Memperbarui Data Range Harga') }}" />
 @endsection
 
 @section('page_content')
@@ -60,10 +62,10 @@
                             <div class="col-xl-6">
                                 <label for="harga_min" class="form-label text-default">{{ __('Harga Min.') }}
                                     <x-all-not-null /></label>
-                                <input type="number"
+                                <input type="text"
                                     class="form-control number-only zero-default @error('harga_min') is-invalid @enderror"
                                     name="harga_min" id="harga_min"
-                                    value="{{ old('harga_min') ?? (!empty($rangeharga) ? $rangeharga->harga_min : 0) }}"
+                                    value="{{ old('harga_min') ?? (!empty($rangeharga) ? formatAmount($rangeharga->harga_min) : 0) }}"
                                     placeholder="{{ __('Harga Min.') }}" required>
                                 @error('harga_min')
                                     <div class="invalid-feedback">
@@ -74,10 +76,10 @@
                             <div class="col-xl-6">
                                 <label for="harga_max" class="form-label text-default">{{ __('Harga Max.') }}
                                     <x-all-not-null /></label>
-                                <input type="number"
+                                <input type="text"
                                     class="form-control number-only zero-default @error('harga_max') is-invalid @enderror"
                                     name="harga_max"
-                                    value="{{ old('harga_max') ?? (!empty($rangeharga) ? $rangeharga->harga_max : 0) }}"
+                                    value="{{ old('harga_max') ?? (!empty($rangeharga) ? formatAmount($rangeharga->harga_max) : 0) }}"
                                     placeholder="{{ __('Harga Max.') }}" required>
                                 @error('harga_max')
                                     <div class="invalid-feedback">

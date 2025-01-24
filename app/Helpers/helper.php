@@ -97,6 +97,18 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'kota delete', 'group_name' => 'Kota Permission'],
         ['guard_name' => 'web', 'name' => 'kota index', 'group_name' => 'Kota Permission'],
         ['guard_name' => 'web', 'name' => 'kota update', 'group_name' => 'Kota Permission'],
+        ['guard_name' => 'web', 'name' => 'brand create', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'brand delete', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'brand index', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'brand update', 'group_name' => 'Brand Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang create', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang delete', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang index', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'tipe barang update', 'group_name' => 'Tipe Barang Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga create', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga delete', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga index', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'range harga update', 'group_name' => 'Range Harga Permission'],
     ];
 }
 

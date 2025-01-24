@@ -41,8 +41,8 @@ class RangeHargaController extends Controller
         $store = RangeHarga::create([
             'nama' => $request->nama,
             'slug' => Str::slug($request->nama),
-            'harga_min' => $request->harga_min,
-            'harga_max' => $request->harga_max,
+            'harga_min' => unformatAmount($request->harga_min),
+            'harga_max' => unformatAmount($request->harga_max),
             'created_by' => auth()->user()->name,
         ]);
 
@@ -77,8 +77,8 @@ class RangeHargaController extends Controller
         $update = $rangeharga->update([
             'nama' => $request->nama,
             'slug' => Str::slug($request->nama),
-            'harga_min' => $request->harga_min,
-            'harga_max' => $request->harga_max,
+            'harga_min' => unformatAmount($request->harga_min),
+            'harga_max' => unformatAmount($request->harga_max),
             'updated_by' => auth()->user()->name,
         ]);
 

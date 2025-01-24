@@ -10,7 +10,8 @@
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Sales Person') }}</li>
+    {{-- <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Sales Person') }}</li> --}}
+    <x-breadcrumb-active title="{{ __('Daftar Data Sales Person') }}" />
 @endsection
 
 @section('page_content')
