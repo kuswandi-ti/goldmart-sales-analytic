@@ -3,7 +3,7 @@
     <div class="container">
         <span class="text-muted"> {{ __('Copyright') }} © <span id="year"></span>
             <a href="javascript:void(0);" class="text-dark fw-semibold">
-                {{ $setting_system['site_title_2'] ?? config('app.name') }}
+                {{ $setting_system['site_title'] ?? config('app.name') }}
             </a>. {{ __('All rights reserved') }}
         </span>
     </div>

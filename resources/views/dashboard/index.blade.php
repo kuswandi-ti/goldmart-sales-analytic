@@ -849,6 +849,8 @@
     @endcan
 @endsection
 
+<x-web-sweet-alert />
+
 @push('scripts_vendor')
     <script src="{{ asset(config('common.path_template') . 'assets/libs/highcharts/highcharts.js') }}"></script>
     <script src="{{ asset(config('common.path_template') . 'assets/libs/highcharts/exporting.js') }}"></script>
@@ -857,17 +859,15 @@
 
 @push('scripts')
     <script>
-        var total_lihat_graph = {{ Js::from($total_lihat_graph) }};
-        var total_tanya_graph = {{ Js::from($total_tanya_graph) }};
-        var total_coba_graph = {{ Js::from($total_coba_graph) }};
-        var total_beli_graph = {{ Js::from($total_beli_graph) }};
+        var total_nominal_goldmart_graph = {{ Js::from($total_nominal_goldmart_graph) }};
+        var total_nominal_goldmaster_graph = {{ Js::from($total_nominal_goldmaster_graph) }};
 
         Highcharts.chart('graph1', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Grafik Parameter Customer Visit'
+                text: 'Grafik Data Penjualan'
             },
             subtitle: {
                 text: ''
@@ -878,13 +878,13 @@
                 ],
                 crosshair: true,
                 accessibility: {
-                    description: 'Countries'
+                    description: 'Bulan'
                 }
             },
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Jumlah'
+                    text: 'Rp.'
                 }
             },
             plotOptions: {
@@ -903,21 +903,12 @@
                 }
             },
             series: [{
-                    name: 'Lihat',
-                    data: total_lihat_graph
+                    name: 'Goldmart',
+                    data: total_nominal_goldmart_graph
+                },{
+                    name: 'Goldmaster',
+                    data: total_nominal_goldmaster_graph
                 },
-                {
-                    name: 'Tanya',
-                    data: total_tanya_graph
-                },
-                {
-                    name: 'Coba',
-                    data: total_coba_graph
-                },
-                {
-                    name: 'Beli',
-                    data: total_beli_graph
-                }
             ]
         });
     </script>

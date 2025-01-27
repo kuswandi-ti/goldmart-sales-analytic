@@ -74,6 +74,22 @@ function capitalFirstLetter(string $text = null): ?string
 function getArraySalesPermission()
 {
     return [
+        ['guard_name' => 'web', 'name' => 'user approve', 'group_name' => 'User Permission'],
+        ['guard_name' => 'web', 'name' => 'user create', 'group_name' => 'User Permission'],
+        ['guard_name' => 'web', 'name' => 'user delete', 'group_name' => 'User Permission'],
+        ['guard_name' => 'web', 'name' => 'user index', 'group_name' => 'User Permission'],
+        ['guard_name' => 'web', 'name' => 'user restore', 'group_name' => 'User Permission'],
+        ['guard_name' => 'web', 'name' => 'user update', 'group_name' => 'User Permission'],
+        ['guard_name' => 'web', 'name' => 'role create', 'group_name' => 'Role Permission'],
+        ['guard_name' => 'web', 'name' => 'role delete', 'group_name' => 'Role Permission'],
+        ['guard_name' => 'web', 'name' => 'role index', 'group_name' => 'Role Permission'],
+        ['guard_name' => 'web', 'name' => 'role update', 'group_name' => 'Role Permission'],
+        ['guard_name' => 'web', 'name' => 'permission create', 'group_name' => 'Permission Permission'],
+        ['guard_name' => 'web', 'name' => 'permission delete', 'group_name' => 'Permission Permission'],
+        ['guard_name' => 'web', 'name' => 'permission index', 'group_name' => 'Permission Permission'],
+        ['guard_name' => 'web', 'name' => 'permission update', 'group_name' => 'Permission Permission'],
+        ['guard_name' => 'web', 'name' => 'setting info perusahaan', 'group_name' => 'Setting System Permission'],
+        ['guard_name' => 'web', 'name' => 'setting lainnya', 'group_name' => 'Setting System Permission'],
         ['guard_name' => 'web', 'name' => 'customer visit create', 'group_name' => 'Customer Visit Permission'],
         ['guard_name' => 'web', 'name' => 'customer visit delete', 'group_name' => 'Customer Visit Permission'],
         ['guard_name' => 'web', 'name' => 'customer visit index', 'group_name' => 'Customer Visit Permission'],
@@ -89,9 +105,6 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'store index', 'group_name' => 'Store Permission'],
         ['guard_name' => 'web', 'name' => 'store restore', 'group_name' => 'Store Permission'],
         ['guard_name' => 'web', 'name' => 'store update', 'group_name' => 'Store Permission'],
-        ['guard_name' => 'web', 'name' => 'laporan penjualan per person', 'group_name' => 'Report Permission'],
-        ['guard_name' => 'web', 'name' => 'laporan penjualan per store', 'group_name' => 'Report Permission'],
-        ['guard_name' => 'web', 'name' => 'laporan penjualan all store', 'group_name' => 'Report Permission'],
         ['guard_name' => 'web', 'name' => 'dashboard gsa', 'group_name' => 'Dashboard Permission'],
         ['guard_name' => 'web', 'name' => 'kota create', 'group_name' => 'Kota Permission'],
         ['guard_name' => 'web', 'name' => 'kota delete', 'group_name' => 'Kota Permission'],
@@ -109,6 +122,9 @@ function getArraySalesPermission()
         ['guard_name' => 'web', 'name' => 'range harga delete', 'group_name' => 'Range Harga Permission'],
         ['guard_name' => 'web', 'name' => 'range harga index', 'group_name' => 'Range Harga Permission'],
         ['guard_name' => 'web', 'name' => 'range harga update', 'group_name' => 'Range Harga Permission'],
+        ['guard_name' => 'web', 'name' => 'laporan penjualan per person', 'group_name' => 'Report Permission'],
+        ['guard_name' => 'web', 'name' => 'laporan penjualan per store', 'group_name' => 'Report Permission'],
+        ['guard_name' => 'web', 'name' => 'laporan penjualan all store', 'group_name' => 'Report Permission'],
     ];
 }
 
@@ -122,27 +138,27 @@ function setStatusText($status)
     return $status == 1 ? __('Aktif') : __('Tidak Aktif');
 }
 
-function setParamBadge($param_text)
-{
-    switch ($param_text) {
-        case "Lihat":
-            return 'primary';
-            break;
-        case "Tanya":
-            return 'warning';
-            break;
-        case "Coba":
-            return 'danger';
-            break;
-        case "Beli":
-            return 'success';
-            break;
-        default:
-            echo 'primary';
-    }
+// function setParamBadge($param_text)
+// {
+//     switch ($param_text) {
+//         case "Lihat":
+//             return 'primary';
+//             break;
+//         case "Tanya":
+//             return 'warning';
+//             break;
+//         case "Coba":
+//             return 'danger';
+//             break;
+//         case "Beli":
+//             return 'success';
+//             break;
+//         default:
+//             echo 'primary';
+//     }
 
-    return $status == 1 ? 'success' : 'danger';
-}
+//     return $status == 1 ? 'success' : 'danger';
+// }
 
 function saveDateTimeNow()
 {
@@ -212,7 +228,7 @@ function unformatAmount($str)
 function activePeriod(): ?String
 {
     $setting_system = SettingSystem::pluck('value', 'key')->toArray();
-    return $setting_system['tahun_periode_aktif_2'];
+    return $setting_system['tahun_periode_aktif'];
 }
 
 function left($text, $length)
@@ -243,11 +259,11 @@ function docNoCustomerVisit(): ?String
     return $setting_system['kode_dokumen_customer_visit'];
 }
 
-function paramCustomerVisit($param): ?String
-{
-    $params = array("Lihat", "Tanya", "Coba", "Beli");
-    return $params[$param];
-}
+// function paramCustomerVisit($param): ?String
+// {
+//     $params = array("Lihat", "Tanya", "Coba", "Beli");
+//     return $params[$param];
+// }
 
 function getSession($param): ?String
 {

@@ -1,20 +1,35 @@
-GSA, per 24 Januari 2025
+GSA, per 27 Januari 2025
 =============================
 1.  Request Update
     -   Menambahkan permission brand, tipe barang, dan range harga
     -   Mengubah template menjadi warna putih
+    -   Mengubah input data Customer Visit menjadi form wizard
 
 2.  File Update
     -   app\Helpers\helper.php
+    -   app\Http\Controllers\CustomerVisitController.php
+    -   app\Http\Controllers\DashboardController.php
+    -   app\Http\Controllers\LaporanController.php
     -   app\Http\Controllers\RangeHargaController.php
+    -   app\Http\Controllers\SettingController.php
+    -   app\Http\Requests\SettingGeneralUpdateRequest.php
+    -   app\Http\Requests\SettingOtherUpdateRequest.php
+    -   app\Models\CustomerVisit.php
+    -   app\Models\CustomerVisitDetail.php
     -   app\View\Components\BreadcrumbActive.php
     -   app\View\Components\BreadcrumbItem.php
+    -   database\migrations\ (semua file)
+    -   database\seeders\ (semua file)
     -   public\template\assets\css\styles.css
+    -   resources\views\auth (semua file)
     -   resources\views\brand (semua file)
+    -   resources\views\customer_visit (semua file)
+    -   resources\views\dashboard (semua file)
     -   resources\views\components\breadcrumb-active.blade.php
     -   resources\views\components\breadcrumb-item.blade.php
     -   resources\views\kota (semua file)
-    -   resources\views\layouts\partials\_header.blade.php
+    -   resources\views\layouts\partials (semua file)
+    -   resources\views\layouts\auth.blade.php
     -   resources\views\layouts\master.blade.php
     -   resources\views\permission (semua file)
     -   resources\views\profile (semua file)

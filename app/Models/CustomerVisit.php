@@ -26,6 +26,8 @@ class CustomerVisit extends Model
         'nama_customer',
         'parameter_1',
         'parameter_2',
+        'parameter_3',
+        'parameter_4',
         'id_sales_person',
         'kode_sales',
         'nama_sales',

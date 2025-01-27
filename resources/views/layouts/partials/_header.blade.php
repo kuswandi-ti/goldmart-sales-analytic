@@ -33,9 +33,9 @@
                         <li>
                             <a class="dropdown-item d-flex align-items-center">
                                 <input type="text"
-                                    class="form-control me-2 number-only default-number @error('tahun_periode_aktif_2') is-invalid @enderror"
-                                    name="tahun_periode_aktif_2" id="tahun_periode_aktif_2"
-                                    value="{{ old('tahun_periode_aktif_2') ?? (!empty(activePeriod()) ? activePeriod() : '0') }}"
+                                    class="form-control me-2 number-only default-number @error('tahun_periode_aktif') is-invalid @enderror"
+                                    name="tahun_periode_aktif" id="tahun_periode_aktif"
+                                    value="{{ old('tahun_periode_aktif') ?? (!empty(activePeriod()) ? activePeriod() : '0') }}"
                                     placeholder="{{ __('Tahun Periode Aktif') }}" aria-describedby="basic-addon2"
                                     size="4" required>
                                 <button class="btn btn-primary" type="submit">
@@ -60,7 +60,7 @@
             @can('customer visit create')
                 <div class="header-element">
                     <!-- Start::header-link|layout-setting -->
-                    <a aria-label="anchor" href="{{ route('customervisit.input') }}" class="header-link">
+                    <a aria-label="anchor" href="{{ route('customervisit.create') }}" class="header-link">
                         <!-- Start::header-link-icon -->
                         <i class="bx bx-category header-link-icon ionicon"></i>
                         <!-- End::header-link-icon -->

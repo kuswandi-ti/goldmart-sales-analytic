@@ -14,7 +14,10 @@
                             <div class="p-0 card-img-overlay d-flex align-items-center rounded-0">
                                 <div class="p-5 card-body rectangle3">
                                     <div class="text-center">
-                                        <img src="{{ !empty($setting_system['company_logo_2']) ? url(config('common.path_storage') . $setting_system['company_logo_2']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
+                                        {{-- <img src="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
+                                            alt="logo" class="desktop-dark img-fluid rounded" width="200"
+                                            height="200"> --}}
+                                        <img src="{{ !empty(url(config('common.path_template') . 'assets/images/logo-square.jpg')) ? url(config('common.path_template') . 'assets/images/logo-square.jpg') : url(config('common.path_template') . config('common.logo_company_main')) }}"
                                             alt="logo" class="desktop-dark img-fluid rounded" width="200"
                                             height="200">
                                     </div>
@@ -35,7 +38,7 @@
                             <img src="{{ url(config('common.path_template') . 'assets/images/sales-illustration.webp') }}"
                                 alt="logo" class="desktop-dark img-fluid rounded mb-2" width="250">
                             <p class="fw-semibold">
-                                {{ $setting_system['site_title_2'] ?? config('app.name') }}
+                                {{ $setting_system['site_title'] ?? config('app.name') }}
                             </p>
                         </div>
 

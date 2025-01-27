@@ -78,7 +78,7 @@ class LaporanController extends Controller
                             customer_visit
                             LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
                         WHERE
-                            customer_visit.parameter_1 = 'Beli'
+                            customer_visit_detail.parameter_main = 'Beli'
                             AND " . $where . "
                         GROUP BY id_sales_person
                     ) customer_visit ON sales_person.id = customer_visit.id_sales_person
@@ -183,7 +183,7 @@ class LaporanController extends Controller
                             customer_visit
                             LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
                         WHERE
-                            customer_visit.parameter_1 = 'Beli'
+                            customer_visit_detail.parameter_main = 'Beli'
                             AND " . $where . "
                         GROUP BY id_store
                     ) customer_visit ON store.id = customer_visit.id_store
@@ -274,7 +274,7 @@ class LaporanController extends Controller
             ->leftJoin('customer_visit_detail', 'customer_visit.id', '=', 'customer_visit_detail.id_visit')
             ->select(DB::raw('SUM(COALESCE(customer_visit_detail.qty, 0)) AS total_qty,
                 SUM(COALESCE(customer_visit_detail.nominal, 0)) AS total_nominal'))
-            ->whereRaw('customer_visit.parameter_1 = "Beli"
+            ->whereRaw('customer_visit_detail.parameter_main = "Beli"
                 AND ' . $where)
             ->get();
 

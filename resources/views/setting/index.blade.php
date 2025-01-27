@@ -84,11 +84,11 @@
                                                                 </div>
                                                                 <div class="col-xl-9">
                                                                     <input type="text"
-                                                                        class="form-control @error('site_title_2') is-invalid @enderror"
-                                                                        name="site_title_2" id="site_title_2"
-                                                                        value="{{ old('site_title_2') ?? ($setting_system['site_title_2'] ?? '') }}"
+                                                                        class="form-control @error('site_title') is-invalid @enderror"
+                                                                        name="site_title" id="site_title"
+                                                                        value="{{ old('site_title') ?? ($setting_system['site_title'] ?? '') }}"
                                                                         placeholder="{{ __('Nama Aplikasi') }}" required>
-                                                                    @error('site_title_2')
+                                                                    @error('site_title')
                                                                         <div class="invalid-feedback">
                                                                             {{ $message }}
                                                                         </div>
@@ -180,7 +180,7 @@
                                                                                             <div
                                                                                                 class="mb-2 file-format-icon">
                                                                                                 <div class="text-center">
-                                                                                                    <img src="{{ !empty($setting_system['company_logo_2']) ? url(config('common.path_storage') . $setting_system['company_logo_2']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
+                                                                                                    <img src="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
                                                                                                         class="rounded img-fluid preview-path_image_company_logo"
                                                                                                         width="200"
                                                                                                         height="200">
@@ -202,7 +202,7 @@
                                                                                                         onchange="preview('.preview-path_image_company_logo', this.files[0])">
                                                                                                     <input type="hidden"
                                                                                                         name="old_image_company_logo"
-                                                                                                        value="{{ $setting_system['company_logo_2'] ?? '' }}">
+                                                                                                        value="{{ $setting_system['company_logo'] ?? '' }}">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -220,7 +220,7 @@
                                                                                             <div
                                                                                                 class="mb-2 file-format-icon">
                                                                                                 <div class="text-center">
-                                                                                                    <img src="{{ !empty($setting_system['company_logo_desktop_2']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop_2']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
+                                                                                                    <img src="{{ !empty($setting_system['company_logo_desktop']) ? url(config('common.path_storage') . $setting_system['company_logo_desktop']) : url(config('common.path_template') . config('common.logo_company_desktop')) }}"
                                                                                                         class="rounded img-fluid preview-path_image_company_logo_desktop"
                                                                                                         width="125"
                                                                                                         height="33">
@@ -242,7 +242,7 @@
                                                                                                         onchange="preview('.preview-path_image_company_logo_desktop', this.files[0])">
                                                                                                     <input type="hidden"
                                                                                                         name="old_image_company_logo_desktop"
-                                                                                                        value="{{ $setting_system['company_logo_desktop_2'] ?? '' }}">
+                                                                                                        value="{{ $setting_system['company_logo_desktop'] ?? '' }}">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -260,7 +260,7 @@
                                                                                             <div
                                                                                                 class="mb-2 file-format-icon">
                                                                                                 <div class="text-center">
-                                                                                                    <img src="{{ !empty($setting_system['company_logo_toggle_2']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle_2']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
+                                                                                                    <img src="{{ !empty($setting_system['company_logo_toggle']) ? url(config('common.path_storage') . $setting_system['company_logo_toggle']) : url(config('common.path_template') . config('common.logo_company_toggle')) }}"
                                                                                                         class="rounded img-fluid preview-path_image_company_logo_toggle"
                                                                                                         width="38"
                                                                                                         height="33">
@@ -282,7 +282,7 @@
                                                                                                         onchange="preview('.preview-path_image_company_logo_toggle', this.files[0])">
                                                                                                     <input type="hidden"
                                                                                                         name="old_image_company_logo_toggle"
-                                                                                                        value="{{ $setting_system['company_logo_toggle_2'] ?? '' }}">
+                                                                                                        value="{{ $setting_system['company_logo_toggle'] ?? '' }}">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -333,13 +333,13 @@
                                                                 </div>
                                                                 <div class="col-xl-9">
                                                                     <input type="text"
-                                                                        class="form-control number-only default-number @error('tahun_periode_aktif_2') is-invalid @enderror"
-                                                                        name="tahun_periode_aktif_2"
-                                                                        id="tahun_periode_aktif_2"
-                                                                        value="{{ old('tahun_periode_aktif_2') ?? (!empty(activePeriod()) ? activePeriod() : '0') }}"
+                                                                        class="form-control number-only default-number @error('tahun_periode_aktif') is-invalid @enderror"
+                                                                        name="tahun_periode_aktif"
+                                                                        id="tahun_periode_aktif"
+                                                                        value="{{ old('tahun_periode_aktif') ?? (!empty(activePeriod()) ? activePeriod() : '0') }}"
                                                                         placeholder="{{ __('Tahun Periode Aktif') }}"
                                                                         aria-describedby="basic-addon2" required>
-                                                                    @error('tahun_periode_aktif_2')
+                                                                    @error('tahun_periode_aktif')
                                                                         <div class="invalid-feedback">
                                                                             {{ $message }}
                                                                         </div>

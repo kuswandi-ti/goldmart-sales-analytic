@@ -10,7 +10,8 @@
 
 @section('section_header_breadcrumb')
     @parent
-    <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Customer Visit') }}</li>
+    {{-- <li class="breadcrumb-item active" aria-current="page">{{ __('Daftar Data Customer Visit') }}</li> --}}
+    <x-breadcrumb-active title="{{ __('Daftar Data Customer Visit') }}" />
 @endsection
 
 @section('page_content')
@@ -28,7 +29,10 @@
                     </div>
                     @can('customer visit create')
                         <div class="d-flex" role="search">
-                            <a href="{{ route('customervisit.input') }}" class="btn btn-primary">
+                            {{-- <a href="{{ route('customervisit.input') }}" class="btn btn-primary">
+                                {{ __('Baru') }}
+                            </a> --}}
+                            <a href="{{ route('customervisit.create') }}" class="btn btn-primary">
                                 {{ __('Baru') }}
                             </a>
                         </div>
@@ -43,7 +47,7 @@
                                     <th scope="col" width="12%">{{ __('Aksi') }}</th>
                                     <th scope="col">{{ __('No Dokumen Visit') }}</th>
                                     <th scope="col">{{ __('Tgl Visit') }}</th>
-                                    <th scope="col">{{ __('Parameter') }}</th>
+                                    {{-- <th scope="col">{{ __('Parameter') }}</th> --}}
                                     <th scope="col">{{ __('Sales Person') }}</th>
                                     <th scope="col">{{ __('Store') }}</th>
                                     <th scope="col">{{ __('Kota') }}</th>
@@ -95,10 +99,10 @@
                 data: 'tgl_visit',
                 searchable: true,
                 sortable: true,
-            }, {
-                data: 'parameter_1',
-                searchable: true,
-                sortable: true,
+            // }, {
+            //     data: 'parameter_1',
+            //     searchable: true,
+            //     sortable: true,
             }, {
                 data: 'nama_sales',
                 searchable: true,

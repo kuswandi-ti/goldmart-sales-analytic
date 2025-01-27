@@ -23,7 +23,7 @@ class SettingGeneralUpdateRequest extends FormRequest
     {
         return [
             'company_name' => ['required', 'string', 'max:255'],
-            'site_title_2' => ['required', 'string', 'max:255'],
+            'site_title' => ['required', 'string', 'max:255'],
             'company_email' => ['required', 'string', 'max:255'],
         ];
     }

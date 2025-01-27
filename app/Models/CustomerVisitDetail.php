@@ -18,6 +18,7 @@ class CustomerVisitDetail extends Model
      */
     protected $fillable = [
         'id_visit',
+        'parameter_main',
         'parameter_1',
         'parameter_2',
         'parameter_3',
