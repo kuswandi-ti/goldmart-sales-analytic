@@ -40,6 +40,8 @@ GSA, per 27 Januari 2025
     -   resources\views\store (semua file)
     -   resources\views\tipe_barang (semua file)
     -   resources\views\user (semua file)
+    -   composer.json
+    -   composer.lock
 
 3.  Database
     -   Tambahkan data di tabel permissions menggunakan file permissions.sql
