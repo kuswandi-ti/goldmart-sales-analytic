@@ -96,8 +96,14 @@
                             </div>
 
                             <button type="submit"
-                                class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2">
+                                class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2"
+                                name="submit" value="search">
                                 {{ __('Submit') }}
+                            </button>
+                            <button type="submit"
+                                class="btn btn-sm btn-success btn-wave waves-effect waves-light d-flex align-items-center me-2"
+                                name="submit" value="export">
+                                {{ __('Export ke Excel') }}
                             </button>
                         </div>
                     </form>

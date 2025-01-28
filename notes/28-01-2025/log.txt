@@ -4,6 +4,7 @@ GSA, per 28 Januari 2025
     -   Menambahkan permission brand, tipe barang, dan range harga
     -   Mengubah template menjadi warna putih
     -   Mengubah input data Customer Visit menjadi form wizard
+    -   Export laporan ke format Excel
 
 2.  File Update
     -   app\Helpers\helper.php
@@ -18,6 +19,8 @@ GSA, per 28 Januari 2025
     -   app\Models\CustomerVisitDetail.php
     -   app\View\Components\BreadcrumbActive.php
     -   app\View\Components\BreadcrumbItem.php
+    -   config\app.php
+    -   config\excel.php
     -   database\migrations\ (semua file)
     -   database\seeders\ (semua file)
     -   public\template\assets\css\styles.css

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LaporanPenjualanAllStoreExport;
+use App\Exports\LaporanPenjualanPerStoreExport;
+use App\Exports\LaporanPenjualanPerPersonExport;
 
 class LaporanController extends Controller
 {
@@ -17,14 +22,21 @@ class LaporanController extends Controller
     public function laporanPenjualanPerPerson(Request $request)
     {
         $req = $request->f;
+        $type = '';
+        $filter = '';
+
         switch ($req) {
             case 'all':
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.tahun = ' . activePeriod();
+                $type = 'ALL';
+                $filter = 'Tahun ' . activePeriod();
                 break;
 
             case 'daily':
                 $where = 'customer_visit.tgl_visit = "' . $request->efd . '"';
+                $type = 'DAILY';
+                $filter = 'Tanggal ' . $request->efd;
                 break;
 
             case 'weekly':
@@ -32,6 +44,8 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.week = ' . $request->efw .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'WEEKLY';
+                $filter = 'Week ' . $request->efw . ', Tahun ' . activePeriod();
                 break;
 
             case 'monthly':
@@ -39,6 +53,8 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.bulan = ' . $request->efm .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'MONTHLY';
+                $filter = 'Bulan ' . Str::upper(formatMonth($request->efm)) . ', Tahun ' . activePeriod();
                 break;
 
             case 'quarterly':
@@ -46,16 +62,22 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.quarter = ' . $request->efq .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'QUARTERLY';
+                $filter = 'Quarter ' . $request->efq . ', Tahun ' . activePeriod();
                 break;
 
             case 'yearly':
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . $request->efy;
                 $where = 'customer_visit.tahun = ' . $request->efy;
+                $type = 'YEARLY';
+                $filter = 'Tahun ' . $request->efy;
                 break;
 
             default:
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.tahun = ' . activePeriod();
+                $type = '';
+                $filter = 'Tahun ' . activePeriod();
                 break;
         }
 
@@ -112,25 +134,36 @@ class LaporanController extends Controller
         }
         $data_nominal_graph = array_map('intval', $data_nominal_graph);
 
-        return view('laporan.penjualan_per_person', compact(
-            'data_table',
-            'data_sales_graph',
-            'data_qty_graph',
-            'data_nominal_graph',
-        ));
+        if (empty($request->submit) || $request->submit == 'search') {
+            return view('laporan.penjualan_per_person', compact(
+                'data_table',
+                'data_sales_graph',
+                'data_qty_graph',
+                'data_nominal_graph',
+            ));
+        } elseif ($request->submit == 'export') {
+            return Excel::download(new LaporanPenjualanPerPersonExport($sql, $type, $filter), 'laporan_penjualan_per_person.xlsx');
+        }
     }
 
     public function laporanPenjualanPerStore(Request $request)
     {
         $req = $request->f;
+        $type = '';
+        $filter = '';
+
         switch ($req) {
             case 'all':
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.tahun = ' . activePeriod();
+                $type = 'ALL';
+                $filter = 'Tahun ' . activePeriod();
                 break;
 
             case 'daily':
                 $where = 'customer_visit.tgl_visit = "' . $request->efd . '"';
+                $type = 'DAILY';
+                $filter = 'Tanggal ' . $request->efd;
                 break;
 
             case 'weekly':
@@ -138,6 +171,8 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.week = ' . $request->efw .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'WEEKLY';
+                $filter = 'Week ' . $request->efw . ', Tahun ' . activePeriod();
                 break;
 
             case 'monthly':
@@ -145,6 +180,8 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.bulan = ' . $request->efm .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'MONTHLY';
+                $filter = 'Bulan ' . Str::upper(formatMonth($request->efm)) . ', Tahun ' . activePeriod();
                 break;
 
             case 'quarterly':
@@ -152,16 +189,22 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.quarter = ' . $request->efq .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'QUARTERLY';
+                $filter = 'Quarter ' . $request->efq . ', Tahun ' . activePeriod();
                 break;
 
             case 'yearly':
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . $request->efy;
                 $where = 'customer_visit.tahun = ' . $request->efy;
+                $type = 'YEARLY';
+                $filter = 'Tahun ' . $request->efy;
                 break;
 
             default:
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.tahun = ' . activePeriod();
+                $type = '';
+                $filter = 'Tahun ' . activePeriod();
                 break;
         }
 
@@ -216,25 +259,36 @@ class LaporanController extends Controller
         }
         $data_nominal_graph = array_map('intval', $data_nominal_graph);
 
-        return view('laporan.penjualan_per_store', compact(
-            'data_table',
-            'data_store_graph',
-            'data_qty_graph',
-            'data_nominal_graph',
-        ));
+        if (empty($request->submit) || $request->submit == 'search') {
+            return view('laporan.penjualan_per_store', compact(
+                'data_table',
+                'data_store_graph',
+                'data_qty_graph',
+                'data_nominal_graph',
+            ));
+        } elseif ($request->submit == 'export') {
+            return Excel::download(new LaporanPenjualanPerStoreExport($sql, $type, $filter), 'laporan_penjualan_per_store.xlsx');
+        }
     }
 
     public function laporanPenjualanAllStore(Request $request)
     {
         $req = $request->f;
+        $type = '';
+        $filter = '';
+
         switch ($req) {
             case 'all':
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.tahun = ' . activePeriod();
+                $type = 'ALL';
+                $filter = 'Tahun ' . activePeriod();
                 break;
 
             case 'daily':
                 $where = 'customer_visit.tgl_visit = "' . $request->efd . '"';
+                $type = 'DAILY';
+                $filter = 'Tanggal ' . $request->efd;
                 break;
 
             case 'weekly':
@@ -242,6 +296,8 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.week = ' . $request->efw .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'WEEKLY';
+                $filter = 'Week ' . $request->efw . ', Tahun ' . activePeriod();
                 break;
 
             case 'monthly':
@@ -249,6 +305,8 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.bulan = ' . $request->efm .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'MONTHLY';
+                $filter = 'BULAN ' . Str::upper(formatMonth($request->efm)) . ', Tahun ' . activePeriod();
                 break;
 
             case 'quarterly':
@@ -256,27 +314,43 @@ class LaporanController extends Controller
                 //     ' AND YEAR(customer_visit . tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.quarter = ' . $request->efq .
                     ' AND customer_visit.tahun = ' . activePeriod();
+                $type = 'QUARTERLY';
+                $filter = 'Quarter ' . $request->efq . ', Tahun ' . activePeriod();
                 break;
 
             case 'yearly':
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . $request->efy;
                 $where = 'customer_visit.tahun = ' . $request->efy;
+                $type = 'YEARLY';
+                $filter = 'Tahun ' . $request->efy;
                 break;
 
             default:
                 // $where = 'YEAR(customer_visit.tgl_visit) = ' . activePeriod();
                 $where = 'customer_visit.tahun = ' . activePeriod();
+                $type = '';
+                $filter = 'Tahun ' . activePeriod();
                 break;
         }
 
+        $sql = "SELECT
+                    SUM(COALESCE(customer_visit_detail.qty, 0)) AS total_qty,
+                    SUM(COALESCE(customer_visit_detail.nominal, 0)) AS total_nominal
+                FROM
+                    customer_visit
+                    LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
+                WHERE
+                    customer_visit_detail.parameter_main = 'Beli' AND " . $where;
+
         // Untuk data yg tampil di tabel
-        $data_table = DB::table('customer_visit')
-            ->leftJoin('customer_visit_detail', 'customer_visit.id', '=', 'customer_visit_detail.id_visit')
-            ->select(DB::raw('SUM(COALESCE(customer_visit_detail.qty, 0)) AS total_qty,
-                SUM(COALESCE(customer_visit_detail.nominal, 0)) AS total_nominal'))
-            ->whereRaw('customer_visit_detail.parameter_main = "Beli"
-                AND ' . $where)
-            ->get();
+        $data_table = DB::select($sql);
+        // $data_table = DB::table('customer_visit')
+        //     ->leftJoin('customer_visit_detail', 'customer_visit.id', '=', 'customer_visit_detail.id_visit')
+        //     ->select(DB::raw('SUM(COALESCE(customer_visit_detail.qty, 0)) AS total_qty,
+        //         SUM(COALESCE(customer_visit_detail.nominal, 0)) AS total_nominal'))
+        //     ->whereRaw('customer_visit_detail.parameter_main = "Beli"
+        //         AND ' . $where)
+        //     ->get();
 
         // Untuk data di grafik
         $data_store_graph = array();
@@ -296,11 +370,15 @@ class LaporanController extends Controller
         }
         $data_nominal_graph = array_map('intval', $data_nominal_graph);
 
-        return view('laporan.penjualan_all_store', compact(
-            'data_table',
-            'data_store_graph',
-            'data_qty_graph',
-            'data_nominal_graph',
-        ));
+        if (empty($request->submit) || $request->submit == 'search') {
+            return view('laporan.penjualan_all_store', compact(
+                'data_table',
+                'data_store_graph',
+                'data_qty_graph',
+                'data_nominal_graph',
+            ));
+        } elseif ($request->submit == 'export') {
+            return Excel::download(new LaporanPenjualanAllStoreExport($sql, $type, $filter), 'laporan_penjualan_all_store.xlsx');
+        }
     }
 }
