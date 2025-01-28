@@ -41,11 +41,12 @@
                         </div>
                     </div>
                     <div class="card-body">
-                         <div class="mb-4 row gy-4">
+                        <div class="mb-4 row gy-4">
                             <div class="col-xl-12" style="text-align: center;">
                                 <div class="f1-steps">
                                     <div class="f1-progress">
-                                        <div class="f1-progress-line" data-now-value="25" data-number-of-steps="4" style="width: 25%;"></div>
+                                        <div class="f1-progress-line" data-now-value="25" data-number-of-steps="4"
+                                            style="width: 25%;"></div>
                                     </div>
                                     <div class="mb-3 f1-step active">
                                         <div class="mb-1 f1-step-icon">
@@ -80,8 +81,9 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Walk In Customer"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-walk-in-customer">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Walk In Customer" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-walk-in-customer">
                                                         <label class="form-check-label"
                                                             for="chk-lihat-walk-in-customer">{{ __('Walk In Customer') }}</label>
                                                     </div>
@@ -92,8 +94,9 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="By Invitation"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-by-invitation">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="By Invitation" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-by-invitation">
                                                         <label class="form-check-label"
                                                             for="chk-lihat-by-invitation">{{ __('By Invitation') }}</label>
                                                     </div>
@@ -117,8 +120,9 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="By Buy Back"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-by-buy-back">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="By Buy Back" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-by-buy-back">
                                                         <label class="form-check-label"
                                                             for="chk-lihat-by-buy-back">{{ __('By Buy Back') }}</label>
                                                     </div>
@@ -129,8 +133,9 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Reparation"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-reparation">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Reparation" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-reparation">
                                                         <label class="form-check-label"
                                                             for="chk-lihat-reparation">{{ __('Reparation') }}</label>
                                                     </div>
@@ -142,14 +147,18 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-2 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Others"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-others">
-                                                        <label class="form-check-label" for="chk-lihat-others">{{ __('Others') }}</label>
+                                                            type="checkbox" role="switch" name="param_lihat[]"
+                                                            id="chk-lihat-others">
+                                                        <label class="form-check-label"
+                                                            for="chk-lihat-others">{{ __('Others') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-8 mb-3" id="div-lihat-keterangan" style="display: none">
+                                                <div class="col-sm-8 mb-3" id="div-lihat-keterangan"
+                                                    style="display: none">
                                                     <input type="text"
                                                         class="form-control @error('keterangan') is-invalid @enderror"
-                                                        name="lihat_keterangan" id="lihat-keterangan" value="{{ old('lihat_keterangan') }}"
+                                                        name="lihat_keterangan" id="lihat-keterangan"
+                                                        value="{{ old('lihat_keterangan') }}"
                                                         placeholder="{{ __('Keterangan Others') }}">
                                                 </div>
                                             </div>
@@ -159,7 +168,7 @@
                                         <button type="button" class="btn btn-secondary btn-next">
                                             {{ __('Selanjutnya') }} <i class="fa fa-arrow-right"></i>
                                         </button>
-                                        @can('customervisit create')
+                                        @can('customer visit create')
                                             <button type="submit" class="btn btn-primary btn-submit">
                                                 {{ __('Simpan') }}
                                             </button>
@@ -175,8 +184,10 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Promo"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-promo">
-                                                        <label class="form-check-label" for="chk-tanya-promo">{{ __('Promo') }}</label>
+                                                            type="checkbox" role="switch" name="param_tanya[]"
+                                                            id="chk-tanya-promo">
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-promo">{{ __('Promo') }}</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,8 +197,10 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Barang"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-barang">
-                                                        <label class="form-check-label" for="chk-tanya-barang">{{ __('Barang') }}</label>
+                                                            type="checkbox" role="switch" name="param_tanya[]"
+                                                            id="chk-tanya-barang">
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-barang">{{ __('Barang') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 col-sm-8" id="div-tanya-brand" style="display: none">
@@ -244,14 +257,17 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Range Harga"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-range-harga">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Range Harga" type="checkbox" role="switch"
+                                                            name="param_tanya[]" id="chk-tanya-range-harga">
                                                         <label class="form-check-label"
                                                             for="chk-tanya-range-harga">{{ __('Range Harga') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="mb-4 col-sm-8" id="div-tanya-range-harga" style="display: none">
-                                                    <select class="js-example-placeholder-single js-states form-control select2"
+                                                <div class="mb-4 col-sm-8" id="div-tanya-range-harga"
+                                                    style="display: none">
+                                                    <select
+                                                        class="js-example-placeholder-single js-states form-control select2"
                                                         name="tanya_rangeharga[]" multiple="multiple">
                                                         @foreach ($range_harga as $data)
                                                             <option value="{{ $data->nama }}">
@@ -265,9 +281,11 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Buy Back"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-buy-back">
-                                                        <label class="form-check-label" for="chk-tanya-buy-back">{{ __('Buy Back') }}</label>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Buy Back" type="checkbox" role="switch"
+                                                            name="param_tanya[]" id="chk-tanya-buy-back">
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-buy-back">{{ __('Buy Back') }}</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -276,8 +294,9 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Reparasi"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-reparasi">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Reparasi" type="checkbox" role="switch"
+                                                            name="param_tanya[]" id="chk-tanya-reparasi">
                                                         <label class="form-check-label"
                                                             for="chk-tanya-reparasi">{{ __('Reparasi') }}</label>
                                                     </div>
@@ -289,14 +308,17 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Others"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-others">
-                                                        <label class="form-check-label" for="chk-tanya-others">{{ __('Others') }}</label>
+                                                            type="checkbox" role="switch" name="param_tanya[]"
+                                                            id="chk-tanya-others">
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-others">{{ __('Others') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-8 mb-3" id="div-tanya-others" style="display: none">
                                                     <input type="text"
                                                         class="form-control @error('tanya_keterangan') is-invalid @enderror"
-                                                        name="tanya_keterangan" id="tanya-keterangan" value="{{ old('tanya_keterangan') }}"
+                                                        name="tanya_keterangan" id="tanya-keterangan"
+                                                        value="{{ old('tanya_keterangan') }}"
                                                         placeholder="{{ __('Keterangan Others') }}">
                                                 </div>
                                             </div>
@@ -309,7 +331,7 @@
                                         <button type="button" class="btn btn-secondary btn-next">
                                             {{ __('Selanjutnya') }} <i class="fa fa-arrow-right"></i>
                                         </button>
-                                        @can('customervisit create')
+                                        @can('customer visit create')
                                             <button type="submit" class="btn btn-primary btn-submit">
                                                 {{ __('Simpan') }}
                                             </button>
@@ -324,9 +346,11 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmart"
-                                                            type="checkbox" role="switch" name="param_coba[]" id="chk-coba-goldmart">
-                                                        <label class="form-check-label" for="chk-coba-goldmart">{{ __('Goldmart') }}</label>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmart" type="checkbox" role="switch"
+                                                            name="param_coba[]" id="chk-coba-goldmart">
+                                                        <label class="form-check-label"
+                                                            for="chk-coba-goldmart">{{ __('Goldmart') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 col-sm-8" id="div-coba-goldmart" style="display: none">
@@ -360,13 +384,15 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmaster"
-                                                            type="checkbox" role="switch" name="param_coba[]" id="chk-coba-goldmaster">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmaster" type="checkbox" role="switch"
+                                                            name="param_coba[]" id="chk-coba-goldmaster">
                                                         <label class="form-check-label"
                                                             for="chk-coba-goldmaster">{{ __('Goldmaster') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="mb-4 col-sm-8" id="div-coba-goldmaster" style="display: none">
+                                                <div class="mb-4 col-sm-8" id="div-coba-goldmaster"
+                                                    style="display: none">
                                                     <div class="table-responsive mb-2">
                                                         <table width="100%">
                                                             <thead>
@@ -401,7 +427,7 @@
                                         <button type="button" class="btn btn-secondary btn-next">
                                             {{ __('Selanjutnya') }} <i class="fa fa-arrow-right"></i>
                                         </button>
-                                        @can('customervisit create')
+                                        @can('customer visit create')
                                             <button type="submit" class="btn btn-primary btn-submit">
                                                 {{ __('Simpan') }}
                                             </button>
@@ -416,9 +442,11 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmart"
-                                                            type="checkbox" role="switch" name="param_beli[]" id="chk-beli-goldmart">
-                                                        <label class="form-check-label" for="chk-beli-goldmart">{{ __('Goldmart') }}</label>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmart" type="checkbox" role="switch"
+                                                            name="param_beli[]" id="chk-beli-goldmart">
+                                                        <label class="form-check-label"
+                                                            for="chk-beli-goldmart">{{ __('Goldmart') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 col-sm-8" id="div-beli-goldmart" style="display: none">
@@ -447,7 +475,8 @@
                                                                         <td>
                                                                             <input type="text"
                                                                                 class="form-control number-only empty-default"
-                                                                                name="beli_nominal_goldmart[]" value="">
+                                                                                name="beli_nominal_goldmart[]"
+                                                                                value="">
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -461,13 +490,15 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmaster"
-                                                            type="checkbox" role="switch" name="param_beli[]" id="chk-beli-goldmaster">
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmaster" type="checkbox" role="switch"
+                                                            name="param_beli[]" id="chk-beli-goldmaster">
                                                         <label class="form-check-label"
                                                             for="chk-beli-goldmaster">{{ __('Goldmaster') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="mb-4 col-sm-8" id="div-beli-goldmaster" style="display: none">
+                                                <div class="mb-4 col-sm-8" id="div-beli-goldmaster"
+                                                    style="display: none">
                                                     <div class="table-responsive mb-2">
                                                         <table>
                                                             <thead>
@@ -488,12 +519,14 @@
                                                                         <td>
                                                                             <input type="text"
                                                                                 class="form-control number-only empty-default"
-                                                                                name="beli_qty_goldmaster[]" value="">
+                                                                                name="beli_qty_goldmaster[]"
+                                                                                value="">
                                                                         </td>
                                                                         <td>
                                                                             <input type="text"
                                                                                 class="form-control number-only empty-default"
-                                                                                name="beli_nominal_goldmaster[]" value="">
+                                                                                name="beli_nominal_goldmaster[]"
+                                                                                value="">
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -508,7 +541,7 @@
                                         <button type="button" class="btn btn-warning btn-previous">
                                             <i class="fa fa-arrow-left"></i> {{ __('Sebelumnya') }}
                                         </button>
-                                        @can('customervisit create')
+                                        @can('customer visit create')
                                             <button type="submit" class="btn btn-primary btn-submit">
                                                 {{ __('Simpan') }}
                                             </button>
@@ -516,7 +549,7 @@
                                     </div>
                                 </fieldset>
                             </div>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -605,4 +638,3 @@
         @include('layouts.partials._scripts_wizard')
     </script>
 @endpush
-
