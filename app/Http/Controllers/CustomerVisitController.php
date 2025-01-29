@@ -267,7 +267,7 @@ class CustomerVisitController extends Controller
 
             $params = array(
                 'transaction_details' => array(
-                    'order_id' => rand(),
+                    'order_id' => $store->id,
                     'gross_amount' => $total_nominal,
                 ),
                 'customer_details' => array(
