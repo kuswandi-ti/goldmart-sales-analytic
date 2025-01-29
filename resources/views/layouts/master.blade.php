@@ -126,7 +126,7 @@
             return rounded.replace(/\d(?=(\d{3})+\.)/g, '$&,');
         };
 
-        /*$(document).ready(function() {
+        $(document).ready(function() {
             const timeout = 300000; // 900000 ms = 15 minutes
             var idleTimer = null;
             $('*').bind(
@@ -139,7 +139,7 @@
                     }, timeout);
                 });
             $("body").trigger("mousemove");
-        });*/
+        });
 
         function IsEmail(email) {
             const regex =
