@@ -1,0 +1,12 @@
+<?php
+
+return [
+
+    'midtrans_merchant_id' => env('MIDTRANS_MERCHANT_ID'),
+    'midtrans_client_key' => env('MIDTRANS_CLIENT_KEY'),
+    'midtrans_server_key' => env('MIDTRANS_SERVER_KEY'),
+    'midtrans_is_production' => env('MIDTRANS_IS_PRODUCTION', false),
+    'midtrans_is_sanitized' => true,
+    'midtrans_is_3ds' => true,
+
+];

@@ -18,6 +18,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @stack('link_vendor')
+
     <!-- Favicon -->
     {{-- <link rel="icon"
         href="{{ !empty($setting_system['company_logo']) ? url(config('common.path_storage') . $setting_system['company_logo']) : url(config('common.path_template') . config('common.logo_company_main')) }}"
@@ -124,7 +126,7 @@
             return rounded.replace(/\d(?=(\d{3})+\.)/g, '$&,');
         };
 
-        $(document).ready(function() {
+        /*$(document).ready(function() {
             const timeout = 300000; // 900000 ms = 15 minutes
             var idleTimer = null;
             $('*').bind(
@@ -137,7 +139,7 @@
                     }, timeout);
                 });
             $("body").trigger("mousemove");
-        });
+        });*/
 
         function IsEmail(email) {
             const regex =

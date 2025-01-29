@@ -165,14 +165,14 @@
                                         </li>
                                     </ul>
                                     <div class="f1-buttons">
-                                        <button type="button" class="btn btn-secondary btn-next">
-                                            {{ __('Selanjutnya') }} <i class="fa fa-arrow-right"></i>
-                                        </button>
                                         @can('customer visit create')
                                             <button type="submit" class="btn btn-primary btn-submit">
                                                 {{ __('Simpan') }}
                                             </button>
                                         @endcan
+                                        <button type="button" class="btn btn-secondary btn-next">
+                                            {{ __('Selanjutnya') }} <i class="fa fa-arrow-right"></i>
+                                        </button>
                                     </div>
                                 </fieldset>
 
@@ -325,17 +325,17 @@
                                         </li>
                                     </ul>
                                     <div class="f1-buttons">
+                                        @can('customer visit create')
+                                            <button type="submit" class="btn btn-primary btn-submit">
+                                                {{ __('Simpan') }}
+                                            </button>
+                                        @endcan
                                         <button type="button" class="btn btn-warning btn-previous">
                                             <i class="fa fa-arrow-left"></i> {{ __('Sebelumnya') }}
                                         </button>
                                         <button type="button" class="btn btn-secondary btn-next">
                                             {{ __('Selanjutnya') }} <i class="fa fa-arrow-right"></i>
                                         </button>
-                                        @can('customer visit create')
-                                            <button type="submit" class="btn btn-primary btn-submit">
-                                                {{ __('Simpan') }}
-                                            </button>
-                                        @endcan
                                     </div>
                                 </fieldset>
 
@@ -421,17 +421,17 @@
                                         </li>
                                     </ul>
                                     <div class="f1-buttons">
+                                        @can('customer visit create')
+                                            <button type="submit" class="btn btn-primary btn-submit">
+                                                {{ __('Simpan') }}
+                                            </button>
+                                        @endcan
                                         <button type="button" class="btn btn-warning btn-previous">
                                             <i class="fa fa-arrow-left"></i> {{ __('Sebelumnya') }}
                                         </button>
                                         <button type="button" class="btn btn-secondary btn-next">
                                             {{ __('Selanjutnya') }} <i class="fa fa-arrow-right"></i>
                                         </button>
-                                        @can('customer visit create')
-                                            <button type="submit" class="btn btn-primary btn-submit">
-                                                {{ __('Simpan') }}
-                                            </button>
-                                        @endcan
                                     </div>
                                 </fieldset>
 
@@ -538,12 +538,17 @@
                                         </li>
                                     </ul>
                                     <div class="f1-buttons">
-                                        <button type="button" class="btn btn-warning btn-previous">
-                                            <i class="fa fa-arrow-left"></i> {{ __('Sebelumnya') }}
-                                        </button>
                                         @can('customer visit create')
                                             <button type="submit" class="btn btn-primary btn-submit">
                                                 {{ __('Simpan') }}
+                                            </button>
+                                        @endcan
+                                        <button type="button" class="btn btn-warning btn-previous">
+                                            <i class="fa fa-arrow-left"></i> {{ __('Sebelumnya') }}
+                                        </button>
+                                        @can('transaksi bayar')
+                                            <button type="submit" class="btn btn-danger btn-submit">
+                                                {{ __('Bayar') }}
                                             </button>
                                         @endcan
                                     </div>

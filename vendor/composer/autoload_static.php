@@ -147,6 +147,7 @@ class ComposerStaticInit4c8c75b884f4fdf8fe5a21ec6efef368
         array (
             'Monolog\\' => 8,
             'Mockery\\' => 8,
+            'Midtrans\\' => 9,
             'Matrix\\' => 7,
             'Maatwebsite\\Excel\\' => 18,
         ),
@@ -499,6 +500,10 @@ class ComposerStaticInit4c8c75b884f4fdf8fe5a21ec6efef368
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
         ),
+        'Midtrans\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans',
+        ),
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
@@ -695,6 +700,9 @@ class ComposerStaticInit4c8c75b884f4fdf8fe5a21ec6efef368
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Exports\\LaporanPenjualanAllStoreExport' => __DIR__ . '/../..' . '/app/Exports/LaporanPenjualanAllStoreExport.php',
+        'App\\Exports\\LaporanPenjualanPerPersonExport' => __DIR__ . '/../..' . '/app/Exports/LaporanPenjualanPerPersonExport.php',
+        'App\\Exports\\LaporanPenjualanPerStoreExport' => __DIR__ . '/../..' . '/app/Exports/LaporanPenjualanPerStoreExport.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/BrandController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -750,6 +758,7 @@ class ComposerStaticInit4c8c75b884f4fdf8fe5a21ec6efef368
         'App\\Models\\FormatDate' => __DIR__ . '/../..' . '/app/Models/FormatDate.php',
         'App\\Models\\FormatTime' => __DIR__ . '/../..' . '/app/Models/FormatTime.php',
         'App\\Models\\Kota' => __DIR__ . '/../..' . '/app/Models/Kota.php',
+        'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\RangeHarga' => __DIR__ . '/../..' . '/app/Models/RangeHarga.php',
         'App\\Models\\SalesPerson' => __DIR__ . '/../..' . '/app/Models/SalesPerson.php',
         'App\\Models\\Scopes\\ActiveScope' => __DIR__ . '/../..' . '/app/Models/Scopes/ActiveScope.php',
@@ -4017,6 +4026,14 @@ class ComposerStaticInit4c8c75b884f4fdf8fe5a21ec6efef368
         'Matrix\\Operators\\Multiplication' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Multiplication.php',
         'Matrix\\Operators\\Operator' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Operator.php',
         'Matrix\\Operators\\Subtraction' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Subtraction.php',
+        'Midtrans\\ApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/ApiRequestor.php',
+        'Midtrans\\Config' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Config.php',
+        'Midtrans\\CoreApi' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/CoreApi.php',
+        'Midtrans\\Notification' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Notification.php',
+        'Midtrans\\Sanitizer' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Sanitizer.php',
+        'Midtrans\\Snap' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Snap.php',
+        'Midtrans\\SnapApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/SnapApiRequestor.php',
+        'Midtrans\\Transaction' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Transaction.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',

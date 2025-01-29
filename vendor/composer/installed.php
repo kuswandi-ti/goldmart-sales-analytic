@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd040eee10acba08f1e4272782677605d1cc2f5b8',
+        'reference' => 'fbb502635157b899a16ff3920f66ff5f2d8d0adf',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -463,7 +463,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd040eee10acba08f1e4272782677605d1cc2f5b8',
+            'reference' => 'fbb502635157b899a16ff3920f66ff5f2d8d0adf',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -621,6 +621,15 @@
             'install_path' => __DIR__ . '/../maximebf/debugbar',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'midtrans/midtrans-php' => array(
+            'pretty_version' => '2.6.1',
+            'version' => '2.6.1.0',
+            'reference' => '737ddabeb0c4d40316c4db132f9ef5c8f7a1b3a6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../midtrans/midtrans-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'mockery/mockery' => array(
             'pretty_version' => '1.6.6',

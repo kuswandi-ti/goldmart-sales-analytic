@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Order;
 use App\Models\RangeHarga;
 use App\Models\TipeBarang;
 use Illuminate\Http\Request;
@@ -194,6 +195,9 @@ class CustomerVisitController extends Controller
         }
 
         /* Step 4 */
+        $total_qty = 0;
+        $total_nominal = 0;
+        $order = false;
         $beli_tipe_barang_goldmart = $request->beli_tipe_barang_goldmart;
         $beli_nominal_goldmart = $request->beli_nominal_goldmart;
         $beli_qty_goldmart = $request->beli_qty_goldmart;
@@ -210,6 +214,8 @@ class CustomerVisitController extends Controller
                             'nominal' => unformatAmount($beli_nominal_goldmart[$i]),
                             'created_by' => auth()->user()->name,
                         ]);
+                        $total_qty = $total_qty + $beli_qty_goldmart[$i];
+                        $total_nominal = $total_nominal + $beli_nominal_goldmart[$i];
                     }
                 }
             }
@@ -232,9 +238,47 @@ class CustomerVisitController extends Controller
                             'nominal' => unformatAmount($beli_nominal_goldmaster[$i]),
                             'created_by' => auth()->user()->name,
                         ]);
+                        $total_qty = $total_qty + $beli_qty_goldmaster[$i];
+                        $total_nominal = $total_nominal + $beli_nominal_goldmaster[$i];
                     }
                 }
             }
+        }
+
+        // Bayar
+        if (auth()->user()->hasRole('Super Admin')) {
+            $order = Order::create([
+                'no_dokumen' => $no_dokumen,
+                'nama_customer' => 'Walk In Customer',
+                'qty' => $total_qty,
+                'nominal' => $total_nominal,
+                'status_bayar' => 'pending',
+                'created_by' => auth()->user()->name,
+            ]);
+
+            // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = config('midtrans.midtrans_server_key');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = config('midtrans.midtrans_is_production');
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = config('midtrans.midtrans_is_sanitized');
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = config('midtrans.midtrans_is_3ds');
+
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => rand(),
+                    'gross_amount' => $total_nominal,
+                ),
+                'customer_details' => array(
+                    'first_name' => 'Walk In Customer',
+                    'last_name' => 'Walk In Customer',
+                    'email' => 'mail@mail.com',
+                    'phone' => '081298694640',
+                ),
+            );
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
         }
 
         // $params = $request->param;
@@ -394,7 +438,11 @@ class CustomerVisitController extends Controller
         // }
 
         if ($store) {
-            return redirect()->route('customervisit.index')->with('success', __('Data customer visit berhasil dibuat'));
+            if ($order) {
+                return view('customer_visit.checkout', compact('snapToken', 'order', 'total_nominal'));
+            } else {
+                return redirect()->route('customervisit.index')->with('success', __('Data customer visit berhasil dibuat'));
+            }
         } else {
             return redirect()->route('customervisit.index')->with('error', __('Data customer visit gagal dibuat'));
         }
