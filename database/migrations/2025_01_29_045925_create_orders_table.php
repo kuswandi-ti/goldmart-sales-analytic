@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama_customer')->nullable();
             $table->decimal('qty', 20, 2)->default(0);
             $table->decimal('nominal', 20, 2)->default(0);
-            $table->enum('status_bayar', ['paid', 'failed', 'pending']);
+            $table->enum('status_bayar', ['paid', 'failed', 'pending', 'cancel']);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('restored_at')->nullable();

@@ -168,6 +168,53 @@
             </form>
         </div>
     </div>
+
+    @can('transaksi bayar')
+        <div class="row">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            {{ __('Order') }}
+                            <p class="subtitle text-muted fs-12 fw-normal">
+                                {{ __('Menampilkan semua data order anda') }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{{ __('No. Invoice') }}</th>
+                                        <th scope="col">{{ __('Tgl Invoice') }}</th>
+                                        <th scope="col">{{ __('Total (Rp.)') }}</th>
+                                        <th scope="col">{{ __('Status Bayar') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($order as $row)
+                                        <tr>
+                                            <th scope="row">{{ $row->no_dokumen }}</th>
+                                            <td>{{ $row->created_at }}</td>
+                                            <td>{{ formatAmount($row->nominal) }}</td>
+                                            <td><span
+                                                    class="badge {{ setStatusBayarBadge($row->status_bayar) }}">{{ strtoupper($row->status_bayar) }}</span>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <div class="alert alert-danger">
+                                            Data Post belum Tersedia.
+                                        </div>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endcan
 @endsection
 
 <x-web-sweet-alert />

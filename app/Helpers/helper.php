@@ -160,6 +160,26 @@ function setStatusText($status)
 //     return $status == 1 ? 'success' : 'danger';
 // }
 
+function setStatusBayarBadge($param_text)
+{
+    switch ($param_text) {
+        case "paid":
+            return 'bg-success';
+            break;
+        case "failed":
+            return 'bg-danger';
+            break;
+        case "pending":
+            return 'bg-warning';
+            break;
+        case "cancel":
+            return 'bg-primary';
+            break;
+        default:
+            echo 'bg-primary';
+    }
+}
+
 function saveDateTimeNow()
 {
     return Carbon::now()->addHour(7)->format('Y-m-d H:i:s');

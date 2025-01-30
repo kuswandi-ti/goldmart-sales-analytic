@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @push('link_vendor')
-    <script type="text/javascript"
-		src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.midtrans_client_key') }}"></script>
+    <script type="text/javascript" src="{{ config('midtrans.midtrans_snap_url') }}"
+        data-client-key="{{ config('midtrans.midtrans_client_key') }}"></script>
 @endpush
 
 @push('styles_vendor')
@@ -75,22 +75,25 @@
     <script>
         // For example trigger on button clicked, or any time you need
         var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function () {
+        payButton.addEventListener('click', function() {
             // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
             window.snap.pay('{{ $snapToken }}', {
-                onSuccess: function(result){
+                onSuccess: function(result) {
                     /* You may add your own implementation here */
-                    alert("payment success!"); console.log(result);
+                    alert("payment success!");
+                    console.log(result);
                 },
-                onPending: function(result){
+                onPending: function(result) {
                     /* You may add your own implementation here */
-                    alert("wating your payment!"); console.log(result);
+                    alert("wating your payment!");
+                    console.log(result);
                 },
-                onError: function(result){
+                onError: function(result) {
                     /* You may add your own implementation here */
-                    alert("payment failed!"); console.log(result);
+                    alert("payment failed!");
+                    console.log(result);
                 },
-                onClose: function(){
+                onClose: function() {
                     /* You may add your own implementation here */
                     alert('you closed the popup without finishing the payment');
                 }
