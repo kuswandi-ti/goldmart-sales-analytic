@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('customer_visit_detail', function (Blueprint $table) {
-            $table->string('parameter_main')->nullable()->after('id_visit');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('nik')->nullable()->after('username');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('customer_visit_detail', function (Blueprint $table) {
-            $table->dropColumn('parameter_main');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('nik');
         });
     }
 };

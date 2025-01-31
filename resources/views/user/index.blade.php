@@ -42,7 +42,9 @@
                                 <tr>
                                     <th scope="col" width="5%">{{ __('Nomor') }}</th>
                                     <th scope="col" width="12%">{{ __('Aksi') }}</th>
+                                    <th scope="col">{{ __('NIK') }}</th>
                                     <th scope="col">{{ __('Nama') }}</th>
+                                    <th scope="col">{{ __('Email') }}</th>
                                     <th scope="col">{{ __('Role') }}</th>
                                     <th scope="col" width="10%">{{ __('Status Aktif') }}</th>
                                 </tr>
@@ -86,7 +88,15 @@
                 searchable: false,
                 sortable: false,
             }, {
+                data: 'nik',
+                searchable: true,
+                sortable: true,
+            }, {
                 data: 'name',
+                searchable: true,
+                sortable: true,
+            }, {
+                data: 'email',
                 searchable: true,
                 sortable: true,
             }, {

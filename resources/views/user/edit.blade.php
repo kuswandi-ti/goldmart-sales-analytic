@@ -22,8 +22,7 @@
 
 @section('page_content')
     <div class="row">
-        {{-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6"> --}}
-        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6">
             <form method="POST" action="{{ route('user.update', $user) }}">
                 @csrf
                 @method('PUT')
@@ -82,12 +81,28 @@
                         </div>
                         <div class="mb-4 row gy-4">
                             <div class="col-xl-12">
-                                <label for="email" class="form-label text-default">{{ __('Email') }}
+                                <label for="email"
+                                    class="form-label text-default">{{ __('Email (sebagai identifikasi saat login)') }}
                                     <x-all-not-null /></label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" id="email" value="{{ old('email') ?? ($user->email ?? '') }}"
-                                    placeholder="{{ __('Email') }}" required>
+                                    placeholder="{{ __('Email (sebagai identifikasi saat login)') }}" required>
                                 @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-4 row gy-4">
+                            <div class="col-xl-12">
+                                <label for="nik"
+                                    class="form-label text-default">{{ __('NIK (sebagai identifikasi saat login)') }}
+                                    <x-all-not-null /></label>
+                                <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"
+                                    id="email" value="{{ old('nik') ?? ($user->nik ?? '') }}"
+                                    placeholder="{{ __('NIK (sebagai identifikasi saat login)') }}" required>
+                                @error('nik')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -126,7 +141,7 @@
             </form>
         </div>
 
-        {{-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <form method="post" action="{{ route('user.password_update', $user->id) }}">
                 @csrf
                 @method('PUT')
@@ -170,12 +185,12 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Simpan') }}
+                            {{ __('Perbarui') }}
                         </button>
                     </div>
                 </div>
             </form>
-        </div> --}}
+        </div>
     </div>
 @endsection
 
@@ -186,25 +201,25 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            let email = $('#email').val();
-            if (IsEmail(email) === false) {
-                $('#email').attr('readonly', true);
-            } else {
-                $('#email').removeAttr("readonly");
-            }
+        /*$(document).ready(function() {
+                                    let email = $('#email').val();
+                                    if (IsEmail(email) === false) {
+                                        $('#email').attr('readonly', true);
+                                    } else {
+                                        $('#email').removeAttr("readonly");
+                                    }
 
-            $('#sales_person').change(function() {
-                var nik = $("#sales_person option:selected").data("nik");
-                if (nik.length > 0) {
-                    $('#email').val($.trim(nik));
-                    $('#email').attr('readonly', true);
-                } else {
-                    $('#email').val("");
-                    $('#email').removeAttr("readonly");
-                    $('#email').focus();
-                }
-            });
-        });
+                                    $('#sales_person').change(function() {
+                                        var nik = $("#sales_person option:selected").data("nik");
+                                        if (nik.length > 0) {
+                                            $('#email').val($.trim(nik));
+                                            $('#email').attr('readonly', true);
+                                        } else {
+                                            $('#email').val("");
+                                            $('#email').removeAttr("readonly");
+                                            $('#email').focus();
+                                        }
+                                    });
+                                });*/
     </script>
 @endpush

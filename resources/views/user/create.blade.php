@@ -81,12 +81,27 @@
                         <div class="mb-4 row gy-4">
                             <div class="col-xl-12">
                                 <label for="email"
-                                    class="form-label text-default">{{ __('Email / NIK (sebagai identifikasi saat login)') }}
+                                    class="form-label text-default">{{ __('Email (sebagai identifikasi saat login)') }}
                                     <x-all-not-null /></label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" id="email" value="{{ old('email') }}"
-                                    placeholder="{{ __('Email / NIK') }}" required>
+                                    placeholder="{{ __('Email ') }}" required>
                                 @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-4 row gy-4">
+                            <div class="col-xl-12">
+                                <label for="nik"
+                                    class="form-label text-default">{{ __('NIK (sebagai identifikasi saat login)') }}
+                                    <x-all-not-null /></label>
+                                <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"
+                                    id="nik" value="{{ old('nik') }}"
+                                    placeholder="{{ __('NIK (sebagai identifikasi saat login) ') }}" required>
+                                @error('nik')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -144,18 +159,18 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            $('#sales_person').change(function() {
-                var nik = $("#sales_person option:selected").data("nik");
-                if (nik.length > 0) {
-                    $('#email').val($.trim(nik));
-                    $('#email').attr('readonly', true);
-                } else {
-                    $('#email').val("");
-                    $('#email').removeAttr("readonly");
-                    $('#email').focus();
-                }
-            });
-        });
+        /*$(document).ready(function() {
+                $('#sales_person').change(function() {
+                    var nik = $("#sales_person option:selected").data("nik");
+                    if (nik.length > 0) {
+                        $('#email').val($.trim(nik));
+                        $('#email').attr('readonly', true);
+                    } else {
+                        $('#email').val("");
+                        $('#email').removeAttr("readonly");
+                        $('#email').focus();
+                    }
+                });
+            });*/
     </script>
 @endpush

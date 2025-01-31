@@ -90,6 +90,13 @@
                             </div>
 
                             <div class="col-xl-12">
+                                <label for="nik" class="form-label text-default">{{ __('NIK') }}</label>
+                                <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"
+                                    id="nik" value="{{ old('nik') ?? $user->nik }}"
+                                    placeholder="{{ __('NIK') }}" disabled>
+                            </div>
+
+                            <div class="col-xl-12">
                                 <label for="join_date" class="form-label text-default">{{ __('Tgl Bergabung') }}</label>
                                 <input type="text" class="form-control @error('join_date') is-invalid @enderror"
                                     name="join_date" id="join_date" value="{{ old('join_date') ?? $user->join_date }}"
@@ -169,7 +176,7 @@
         </div>
     </div>
 
-    @can('transaksi bayar')
+    {{-- @can('transaksi bayar')
         <div class="row">
             <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="card custom-card">
@@ -214,7 +221,7 @@
                 </div>
             </div>
         </div>
-    @endcan
+    @endcan --}}
 @endsection
 
 <x-web-sweet-alert />

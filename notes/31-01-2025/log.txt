@@ -1,0 +1,18 @@
+GSA, per 31 Januari 2025
+=============================
+1.  Request Update
+    -   Dibuatkan kolom nik di tabel user
+    -   Bisa update password dari dashboard
+    -   Bisa login menggunakan email atau nik
+
+2.  File Update
+    -   app\Http\Controllers\UserController.php
+    -   app\Http\Requests\AuthLoginRequest.php
+    -   app\Http\Requests\UserRequest.php
+    -   resources\views\profile (semua file)
+    -   resources\views\user (semua file)
+    -   composer.json
+    -   composer.lock
+
+3.  Database
+    -   Tambahkan kolom NIK bertipe string di tabel user, dan dilengkapi datanya, karena untuk keperluan login

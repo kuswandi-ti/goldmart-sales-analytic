@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
 class AuthLoginRequest extends FormRequest
@@ -59,7 +60,13 @@ class AuthLoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
-        if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $login_name = filter_var($this->input("email"), FILTER_VALIDATE_EMAIL) ? "email" : "nik";
+
+        $this->merge([
+            $login_name => $this->input("email")
+        ]);
+
+        if (! Auth::attempt($this->only($login_name, 'password'), $this->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
@@ -76,6 +83,20 @@ class AuthLoginRequest extends FormRequest
                 ->leftJoin('sales_person', 'users.id_sales_person', '=', 'sales_person.id')
                 ->where('users.email', $this->email)
                 ->first();
+            if (!$query) {
+                $query = User::select(
+                    'users.id_sales_person AS id_sales_person',
+                    'users.kode_sales AS kode_sales',
+                    'users.nama_sales AS nama_sales',
+                    'sales_person.id_store AS id_store',
+                    'sales_person.kode_store AS kode_store',
+                    'sales_person.nama_store AS nama_store',
+                    'sales_person.kota_store AS kota_store'
+                )
+                    ->leftJoin('sales_person', 'users.id_sales_person', '=', 'sales_person.id')
+                    ->where('users.nik', $this->email)
+                    ->first();
+            }
 
             Session::put([
                 'sess_id_sales_person' => $query['id_sales_person'],
@@ -87,5 +108,34 @@ class AuthLoginRequest extends FormRequest
                 'sess_kota_store' => $query['kota_store'],
             ]);
         }
+
+        // if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        //     throw ValidationException::withMessages([
+        //         'email' => trans('auth.failed'),
+        //     ]);
+        // } else {
+        //     $query = User::select(
+        //         'users.id_sales_person AS id_sales_person',
+        //         'users.kode_sales AS kode_sales',
+        //         'users.nama_sales AS nama_sales',
+        //         'sales_person.id_store AS id_store',
+        //         'sales_person.kode_store AS kode_store',
+        //         'sales_person.nama_store AS nama_store',
+        //         'sales_person.kota_store AS kota_store'
+        //     )
+        //         ->leftJoin('sales_person', 'users.id_sales_person', '=', 'sales_person.id')
+        //         ->where('users.email', $this->email)
+        //         ->first();
+
+        //     Session::put([
+        //         'sess_id_sales_person' => $query['id_sales_person'],
+        //         'sess_kode_sales' => $query['kode_sales'],
+        //         'sess_nama_sales' => $query['nama_sales'],
+        //         'sess_id_store' => $query['id_store'],
+        //         'sess_kode_store' => $query['kode_store'],
+        //         'sess_nama_store' => $query['nama_store'],
+        //         'sess_kota_store' => $query['kota_store'],
+        //     ]);
+        // }
     }
 }
