@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\SalesPerson;
 
@@ -175,6 +176,15 @@ class UserController extends Controller
         } else {
             return redirect()->route('user.index')->with('error', __('Data user gagal dipulihkan'));
         }
+    }
+
+    public function updatePassword(UserPasswordUpdateRequest $request, string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->back()->with('success', __('Data password berhasil diperbarui'));
     }
 
     public function data(Request $request)

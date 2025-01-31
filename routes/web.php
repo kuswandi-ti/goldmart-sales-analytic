@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::resource('profile', ProfileController::class);
 
     /** User Routes */
+    Route::put('user/password-update/{id}', [UserController::class, 'updatePassword'])->name('user.password_update');
     Route::get('user/data', [UserController::class, 'data'])->name('user.data');
     Route::get('user/restore/{user}', [UserController::class, 'restore'])->name('user.restore');
     Route::resource('user', UserController::class);

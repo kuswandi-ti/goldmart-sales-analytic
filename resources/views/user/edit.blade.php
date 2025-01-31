@@ -22,6 +22,7 @@
 
 @section('page_content')
     <div class="row">
+        {{-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6"> --}}
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <form method="POST" action="{{ route('user.update', $user) }}">
                 @csrf
@@ -124,8 +125,61 @@
                 </div>
             </form>
         </div>
+
+        {{-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <form method="post" action="{{ route('user.password_update', $user->id) }}">
+                @csrf
+                @method('PUT')
+
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            {{ __('Update Password') }}
+                            <p class="subtitle text-muted fs-12 fw-normal">
+                                {{ __('Silahkan update password akun anda') }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4 row gy-4">
+                            <div class="col-xl-12">
+                                <label for="password" class="form-label text-default">{{ __('Password Baru') }}
+                                    <x-all-not-null /></label>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                    name="password" placeholder="{{ __('Password Baru') }}">
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-xl-12">
+                                <label for="password_confirmation"
+                                    class="form-label text-default">{{ __('Konfirmasi Password Baru') }}
+                                    <x-all-not-null /></label>
+                                <input type="password"
+                                    class="form-control @error('password_confirmation') is-invalid @enderror"
+                                    name="password_confirmation" placeholder="{{ __('Konfirmasi Password Baru') }}">
+                                @error('password_confirmation')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Simpan') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div> --}}
     </div>
 @endsection
+
+<x-web-sweet-alert />
 
 @include('layouts.includes.select2')
 @include('layouts.includes.flatpickr')

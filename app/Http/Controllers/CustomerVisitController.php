@@ -246,41 +246,41 @@ class CustomerVisitController extends Controller
         }
 
         // Bayar
-        if (auth()->user()->hasRole('Super Admin')) {
-            $order = Order::create([
-                'no_dokumen' => $no_dokumen,
-                'nama_customer' => 'Walk In Customer',
-                'qty' => $total_qty,
-                'nominal' => $total_nominal,
-                'status_bayar' => 'pending',
-                'created_by' => auth()->user()->name,
-            ]);
+        // if (auth()->user()->hasRole('Super Admin')) {
+        //     $order = Order::create([
+        //         'no_dokumen' => $no_dokumen,
+        //         'nama_customer' => 'Walk In Customer',
+        //         'qty' => $total_qty,
+        //         'nominal' => $total_nominal,
+        //         'status_bayar' => 'pending',
+        //         'created_by' => auth()->user()->name,
+        //     ]);
 
-            // Set your Merchant Server Key
-            \Midtrans\Config::$serverKey = config('midtrans.midtrans_server_key');
-            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-            \Midtrans\Config::$isProduction = config('midtrans.midtrans_is_production');
-            // Set sanitization on (default)
-            \Midtrans\Config::$isSanitized = config('midtrans.midtrans_is_sanitized');
-            // Set 3DS transaction for credit card to true
-            \Midtrans\Config::$is3ds = config('midtrans.midtrans_is_3ds');
-            \Midtrans\Config::$overrideNotifUrl = config('global_url') . '/api/callback-payment';
+        //     // Set your Merchant Server Key
+        //     \Midtrans\Config::$serverKey = config('midtrans.midtrans_server_key');
+        //     // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        //     \Midtrans\Config::$isProduction = config('midtrans.midtrans_is_production');
+        //     // Set sanitization on (default)
+        //     \Midtrans\Config::$isSanitized = config('midtrans.midtrans_is_sanitized');
+        //     // Set 3DS transaction for credit card to true
+        //     \Midtrans\Config::$is3ds = config('midtrans.midtrans_is_3ds');
+        //     \Midtrans\Config::$overrideNotifUrl = config('global_url') . '/api/callback-payment';
 
-            $params = array(
-                'transaction_details' => array(
-                    'order_id' => $order->id,
-                    'gross_amount' => $total_nominal,
-                ),
-                'customer_details' => array(
-                    'first_name' => 'Walk In Customer',
-                    'last_name' => 'Walk In Customer',
-                    'email' => 'mail@mail.com',
-                    'phone' => '081298694640',
-                ),
-            );
+        //     $params = array(
+        //         'transaction_details' => array(
+        //             'order_id' => $order->id,
+        //             'gross_amount' => $total_nominal,
+        //         ),
+        //         'customer_details' => array(
+        //             'first_name' => 'Walk In Customer',
+        //             'last_name' => 'Walk In Customer',
+        //             'email' => 'mail@mail.com',
+        //             'phone' => '081298694640',
+        //         ),
+        //     );
 
-            $snapToken = \Midtrans\Snap::getSnapToken($params);
-        }
+        //     $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // }
 
         // $params = $request->param;
         // if ($choice_param == 'param1') {
@@ -439,11 +439,11 @@ class CustomerVisitController extends Controller
         // }
 
         if ($store) {
-            if ($order) {
-                return view('customer_visit.checkout', compact('snapToken', 'order', 'total_nominal'));
-            } else {
-                return redirect()->route('customervisit.index')->with('success', __('Data customer visit berhasil dibuat'));
-            }
+            // if ($order) {
+            // return view('customer_visit.checkout', compact('snapToken', 'order', 'total_nominal'));
+            // } else {
+            return redirect()->route('customervisit.index')->with('success', __('Data customer visit berhasil dibuat'));
+            // }
         } else {
             return redirect()->route('customervisit.index')->with('error', __('Data customer visit gagal dibuat'));
         }
