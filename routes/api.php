@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('customervisit/callback-payment', [CustomerVisitController::class, 'callbackPayment'])->name('customervisit.callback_payment');
+Route::post('customervisit/callback-payment', [CustomerVisitController::class, 'callbackPayment'])->name('callback_payment');
