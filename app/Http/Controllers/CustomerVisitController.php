@@ -268,7 +268,7 @@ class CustomerVisitController extends Controller
             \Midtrans\Config::$isSanitized = config('midtrans.midtrans_is_sanitized');
             // Set 3DS transaction for credit card to true
             \Midtrans\Config::$is3ds = config('midtrans.midtrans_is_3ds');
-            \Midtrans\Config::$overrideNotifUrl = config('global_url') . '/api/callback-payment';
+            // \Midtrans\Config::$overrideNotifUrl = config('global_url') . '/api/callback-payment';
 
             $params = array(
                 'transaction_details' => array(
