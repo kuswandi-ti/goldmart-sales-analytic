@@ -9,6 +9,7 @@ class OrderController extends Controller
 {
     public function callbackPayment(Request $request)
     {
+        $result_status = '';
         $serverKey = config('midtrans.midtrans_server_key');
 
         $signatureKey = hash(
@@ -33,12 +34,16 @@ class OrderController extends Controller
 
         if ($request->transaction_status == 'settlement' || $request->transaction_status == 'capture') {
             $order->status_bayar = 'paid'; // Status pembayaran berhasil
+            $result_status = 'sukses';
         } elseif ($request->transaction_status == 'expire') {
             $order->status_bayar = 'failed'; // Status pembayaran kadaluarsa
+            $result_status = 'failed';
         } elseif ($request->transaction_status == 'cancel') {
             $order->status_bayar = 'cancel'; // Status pembayaran gagal
+            $result_status = 'cancel';
         } elseif ($request->transaction_status == 'pending') {
             $order->status_bayar = 'pending'; // Status menunggu pembayaran
+            $result_status = 'pending';
         }
 
         $order->save();
@@ -50,7 +55,7 @@ class OrderController extends Controller
         // return redirect()->route('customervisit.index')->with('success', __('Pembayaran Berhasil'));
 
         $data = [
-            'status' => $request->transaction_statu,
+            'status' => $result_status,
         ];
 
         return response()->json($data, 200);

@@ -81,17 +81,18 @@
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
                     alert("payment success!");
-                    console.log(result);
+                    //console.log(result);
+                    document.location.href="{!! route('customervisit.index')->with('success', 'Pembayaran Berhasil'); !!}";
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */
                     alert("wating your payment!");
-                    console.log(result);
+                    //console.log(result);
                 },
                 onError: function(result) {
                     /* You may add your own implementation here */
                     alert("payment failed!");
-                    console.log(result);
+                    //console.log(result);
                 },
                 onClose: function() {
                     /* You may add your own implementation here */
