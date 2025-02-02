@@ -47,6 +47,6 @@ class OrderController extends Controller
 
         // return redirect()->route('customervisit.index')->with('success', __('Data customer visit berhasil diperbarui'));
 
-        // return redirect()->route('customervisit.index')->with('success', __('Pembayaran Berhasil'));
+        return redirect()->route('customervisit.index')->with('success', __('Pembayaran Berhasil'));
     }
 }
