@@ -546,11 +546,11 @@
                                         <button type="button" class="btn btn-warning btn-previous">
                                             <i class="fa fa-arrow-left"></i> {{ __('Sebelumnya') }}
                                         </button>
-                                        {{-- @can('transaksi bayar')
+                                        @can('transaksi bayar')
                                             <button type="submit" class="btn btn-danger btn-submit">
                                                 {{ __('Bayar') }}
                                             </button>
-                                        @endcan --}}
+                                        @endcan
                                     </div>
                                 </fieldset>
                             </div>

@@ -1,11 +1,13 @@
-GSA, per 31 Januari 2025
+GSA, per 02 Februari 2025
 =============================
 1.  Request Update
     -   Dibuatkan kolom nik di tabel user
     -   Bisa update password dari dashboard
     -   Bisa login menggunakan email atau nik
+    -   Error input customer visit
 
 2.  File Update
+    -   app\Http\Controllers\CustomerVisitController.php
     -   app\Http\Controllers\UserController.php
     -   app\Http\Requests\AuthLoginRequest.php
     -   app\Http\Requests\UserRequest.php
