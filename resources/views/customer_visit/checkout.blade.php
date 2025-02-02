@@ -80,18 +80,18 @@
             window.snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
-                    alert("payment success!");
+                    alert("Pembayaran Berhasil");
                     //console.log(result);
-                    document.location.href="{!! route('customervisit.index')->with('success', 'Pembayaran Berhasil'); !!}";
+                    document.location.href="{!! route('customervisit.index'); !!}";
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */
-                    alert("wating your payment!");
+                    alert("Pembayaran pending");
                     //console.log(result);
                 },
                 onError: function(result) {
                     /* You may add your own implementation here */
-                    alert("payment failed!");
+                    alert("Pembayaran gagal !");
                     //console.log(result);
                 },
                 onClose: function() {
