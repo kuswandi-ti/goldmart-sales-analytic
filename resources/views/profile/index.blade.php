@@ -176,7 +176,7 @@
         </div>
     </div>
 
-    @can('transaksi bayar')
+    {{-- @can('transaksi bayar')
         <div class="row">
             <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="card custom-card">
@@ -221,7 +221,7 @@
                 </div>
             </div>
         </div>
-    @endcan
+    @endcan --}}
 @endsection
 
 <x-web-sweet-alert />

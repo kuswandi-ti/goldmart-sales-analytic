@@ -11,6 +11,9 @@ GSA, per 02 Februari 2025
     -   app\Http\Controllers\UserController.php
     -   app\Http\Requests\AuthLoginRequest.php
     -   app\Http\Requests\UserRequest.php
+    -   resources\views\customer_visit\create.blade.php
+    -   resources\views\customer_visit\edit.blade.php
+    -   resources\views\customer_visit\index.blade.php
     -   resources\views\profile (semua file)
     -   resources\views\user (semua file)
     -   composer.json
