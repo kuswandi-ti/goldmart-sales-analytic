@@ -1,0 +1,12 @@
+GSA, per 04 Februari 2025
+=============================
+1.  Request Update
+    -   Input visit customer 'Melihat' diganti dengan 'Datang'
+
+2.  File Update
+    -   app\Http\Controllers\CustomerVisitController.php
+    -   resources\views\customer_visit\create.blade.php
+    -   resources\views\customer_visit\edit.blade.php
+    -   resources\views\customer_visit\show.blade.php
+
+3.  Database

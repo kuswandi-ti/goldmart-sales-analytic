@@ -109,7 +109,7 @@
                                         <div class="mb-1 f1-step-icon">
                                             <i class="fas fa-eye"></i>
                                         </div>
-                                        <p>{{ __('Melihat') }}</p>
+                                        <p>{{ __('Datang') }}</p>
                                     </div>
                                     <div class="mb-3 f1-step">
                                         <div class="mb-1 f1-step-icon">

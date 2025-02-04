@@ -77,7 +77,7 @@ class CustomerVisitController extends Controller
                 for ($i = 0; $i < count($params_lihat); $i++) {
                     CustomerVisitDetail::create([
                         'id_visit' => $store->id,
-                        'parameter_main' => 'Lihat',
+                        'parameter_main' => 'Datang',
                         'parameter_1' => $params_lihat[$i],
                         'parameter_2' => ($params_lihat[$i] == "Others" ? $request->lihat_keterangan : NULL),
                         'created_by' => auth()->user()->name,
@@ -350,7 +350,7 @@ class CustomerVisitController extends Controller
         // Lihat - Others
         $customer_visit_detail_parameter_2_oth_lihat = CustomerVisitDetail::select('parameter_2')
             ->where('id_visit', $id)
-            ->where('parameter_main', 'Lihat')
+            ->where('parameter_main', 'Datang')
             ->where('parameter_1', 'Others')
             ->first();
         // Tanya - Others
@@ -513,7 +513,7 @@ class CustomerVisitController extends Controller
         // Lihat - Others
         $customer_visit_detail_parameter_2_oth_lihat = CustomerVisitDetail::select('parameter_2')
             ->where('id_visit', $id)
-            ->where('parameter_main', 'Lihat')
+            ->where('parameter_main', 'Datang')
             ->where('parameter_1', 'Others')
             ->first();
         // Tanya - Others
@@ -638,7 +638,7 @@ class CustomerVisitController extends Controller
                 for ($i = 0; $i < count($params_lihat); $i++) {
                     CustomerVisitDetail::create([
                         'id_visit' => $id,
-                        'parameter_main' => 'Lihat',
+                        'parameter_main' => 'Datang',
                         'parameter_1' => $params_lihat[$i],
                         'parameter_2' => ($params_lihat[$i] == "Others" ? $request->lihat_keterangan : NULL),
                         'created_by' => auth()->user()->name,

@@ -99,13 +99,14 @@
                             <div class="col-xl-12" style="text-align: center;">
                                 <div class="f1-steps">
                                     <div class="f1-progress">
-                                        <div class="f1-progress-line" data-now-value="25" data-number-of-steps="4" style="width: 25%;"></div>
+                                        <div class="f1-progress-line" data-now-value="25" data-number-of-steps="4"
+                                            style="width: 25%;"></div>
                                     </div>
                                     <div class="mb-3 f1-step active">
                                         <div class="mb-1 f1-step-icon">
                                             <i class="fas fa-eye"></i>
                                         </div>
-                                        <p>{{ __('Melihat') }}</p>
+                                        <p>{{ __('Datang') }}</p>
                                     </div>
                                     <div class="mb-3 f1-step">
                                         <div class="mb-1 f1-step-icon">
@@ -134,9 +135,11 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Walk In Customer"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-walk-in-customer"
-                                                            {{ in_array('Walk In Customer', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Walk In Customer" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-walk-in-customer"
+                                                            {{ in_array('Walk In Customer', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-lihat-walk-in-customer">{{ __('Walk In Customer') }}</label>
                                                     </div>
@@ -147,9 +150,11 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="By Invitation"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-by-invitation"
-                                                            {{ in_array('By Invitation', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="By Invitation" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-by-invitation"
+                                                            {{ in_array('By Invitation', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-lihat-by-invitation">{{ __('By Invitation') }}</label>
                                                     </div>
@@ -161,9 +166,11 @@
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger"
-                                                            value="By Social Media Campaign" type="checkbox" role="switch"
-                                                            name="param_lihat[]" id="chk-lihat-by-social-media-campaign"
-                                                            {{ in_array('By Social Media Campaign', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
+                                                            value="By Social Media Campaign" type="checkbox"
+                                                            role="switch" name="param_lihat[]"
+                                                            id="chk-lihat-by-social-media-campaign"
+                                                            {{ in_array('By Social Media Campaign', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-lihat-by-social-media-campaign">{{ __('By Social Media Campaign') }}</label>
                                                     </div>
@@ -174,9 +181,11 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="By Buy Back"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-by-buy-back"
-                                                            {{ in_array('By Buy Back', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="By Buy Back" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-by-buy-back"
+                                                            {{ in_array('By Buy Back', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-lihat-by-buy-back">{{ __('By Buy Back') }}</label>
                                                     </div>
@@ -187,9 +196,11 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-2 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Reparation"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-reparation"
-                                                            {{ in_array('Reparation', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Reparation" type="checkbox" role="switch"
+                                                            name="param_lihat[]" id="chk-lihat-reparation"
+                                                            {{ in_array('Reparation', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-lihat-reparation">{{ __('Reparation') }}</label>
                                                     </div>
@@ -201,15 +212,20 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-2 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Others"
-                                                            type="checkbox" role="switch" name="param_lihat[]" id="chk-lihat-others"
-                                                            {{ in_array('Others', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
-                                                        <label class="form-check-label" for="chk-lihat-others">{{ __('Others') }}</label>
+                                                            type="checkbox" role="switch" name="param_lihat[]"
+                                                            id="chk-lihat-others"
+                                                            {{ in_array('Others', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
+                                                        <label class="form-check-label"
+                                                            for="chk-lihat-others">{{ __('Others') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-8 mb-3" id="div-lihat-keterangan" style="display: none">
+                                                <div class="col-sm-8 mb-3" id="div-lihat-keterangan"
+                                                    style="display: none">
                                                     <input type="text"
                                                         class="form-control @error('keterangan') is-invalid @enderror"
-                                                        name="lihat_keterangan" id="lihat-keterangan" value="{{ old('lihat_keterangan') ?? ($customer_visit_detail_parameter_2_oth_lihat->parameter_2 ?? '') }}"
+                                                        name="lihat_keterangan" id="lihat-keterangan"
+                                                        value="{{ old('lihat_keterangan') ?? ($customer_visit_detail_parameter_2_oth_lihat->parameter_2 ?? '') }}"
                                                         placeholder="{{ __('Keterangan Others') }}" disabled>
                                                 </div>
                                             </div>
@@ -230,9 +246,12 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Promo"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-promo"
-                                                            {{ in_array('Promo', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
-                                                        <label class="form-check-label" for="chk-tanya-promo">{{ __('Promo') }}</label>
+                                                            type="checkbox" role="switch" name="param_tanya[]"
+                                                            id="chk-tanya-promo"
+                                                            {{ in_array('Promo', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-promo">{{ __('Promo') }}</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -242,9 +261,12 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Barang"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-barang"
-                                                            {{ in_array('Barang', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
-                                                        <label class="form-check-label" for="chk-tanya-barang">{{ __('Barang') }}</label>
+                                                            type="checkbox" role="switch" name="param_tanya[]"
+                                                            id="chk-tanya-barang"
+                                                            {{ in_array('Barang', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-barang">{{ __('Barang') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 col-sm-8" id="div-tanya-brand" style="display: none">
@@ -303,15 +325,19 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Range Harga"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-range-harga"
-                                                            {{ in_array('Range Harga', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Range Harga" type="checkbox" role="switch"
+                                                            name="param_tanya[]" id="chk-tanya-range-harga"
+                                                            {{ in_array('Range Harga', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-tanya-range-harga">{{ __('Range Harga') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="mb-4 col-sm-8" id="div-tanya-range-harga" style="display: none">
-                                                    <select class="js-example-placeholder-single js-states form-control select2"
+                                                <div class="mb-4 col-sm-8" id="div-tanya-range-harga"
+                                                    style="display: none">
+                                                    <select
+                                                        class="js-example-placeholder-single js-states form-control select2"
                                                         name="tanya_rangeharga[]" multiple="multiple" disabled>
                                                         @foreach ($range_harga as $data)
                                                             <option value="{{ $data->nama }}"
@@ -326,10 +352,13 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Buy Back"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-buy-back"
-                                                            {{ in_array('Buy Back', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
-                                                        <label class="form-check-label" for="chk-tanya-buy-back">{{ __('Buy Back') }}</label>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Buy Back" type="checkbox" role="switch"
+                                                            name="param_tanya[]" id="chk-tanya-buy-back"
+                                                            {{ in_array('Buy Back', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-buy-back">{{ __('Buy Back') }}</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -338,9 +367,11 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Reparasi"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-reparasi"
-                                                            {{ in_array('Reparasi', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Reparasi" type="checkbox" role="switch"
+                                                            name="param_tanya[]" id="chk-tanya-reparasi"
+                                                            {{ in_array('Reparasi', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-tanya-reparasi">{{ __('Reparasi') }}</label>
                                                     </div>
@@ -352,15 +383,19 @@
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
                                                         <input class="form-check-input form-checked-danger" value="Others"
-                                                            type="checkbox" role="switch" name="param_tanya[]" id="chk-tanya-others"
-                                                            {{ in_array('Others', $customer_visit_detail_parameter_1) ? 'checked' : '' }} disabled>
-                                                        <label class="form-check-label" for="chk-tanya-others">{{ __('Others') }}</label>
+                                                            type="checkbox" role="switch" name="param_tanya[]"
+                                                            id="chk-tanya-others"
+                                                            {{ in_array('Others', $customer_visit_detail_parameter_1) ? 'checked' : '' }}
+                                                            disabled>
+                                                        <label class="form-check-label"
+                                                            for="chk-tanya-others">{{ __('Others') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-8 mb-3" id="div-tanya-others" style="display: none">
                                                     <input type="text"
                                                         class="form-control @error('tanya_keterangan') is-invalid @enderror"
-                                                        name="tanya_keterangan" id="tanya-keterangan" value="{{ old('tanya_keterangan') ?? ($customer_visit_detail_parameter_2_oth_tanya->parameter_2 ?? '') }}"
+                                                        name="tanya_keterangan" id="tanya-keterangan"
+                                                        value="{{ old('tanya_keterangan') ?? ($customer_visit_detail_parameter_2_oth_tanya->parameter_2 ?? '') }}"
                                                         placeholder="{{ __('Keterangan Others') }}" disabled>
                                                 </div>
                                             </div>
@@ -383,10 +418,13 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmart"
-                                                            type="checkbox" role="switch" name="param_coba[]" id="chk-coba-goldmart"
-                                                            {{ in_array('Goldmart', $customer_visit_detail_parameter_1_goldmart_coba) ? 'checked' : '' }} disabled>
-                                                        <label class="form-check-label" for="chk-coba-goldmart">{{ __('Goldmart') }}</label>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmart" type="checkbox" role="switch"
+                                                            name="param_coba[]" id="chk-coba-goldmart"
+                                                            {{ in_array('Goldmart', $customer_visit_detail_parameter_1_goldmart_coba) ? 'checked' : '' }}
+                                                            disabled>
+                                                        <label class="form-check-label"
+                                                            for="chk-coba-goldmart">{{ __('Goldmart') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 col-sm-8" id="div-coba-goldmart" style="display: none">
@@ -402,7 +440,8 @@
                                                                     <td width="50%">
                                                                         <select
                                                                             class="js-example-placeholder-single js-states form-control select2"
-                                                                            name="coba_goldmart[]" multiple="multiple" disabled>
+                                                                            name="coba_goldmart[]" multiple="multiple"
+                                                                            disabled>
                                                                             @foreach ($tipe_barang->where('id_brand', 1) as $data)
                                                                                 <option value="{{ $data->nama }}"
                                                                                     {{ in_array($data->nama, $customer_visit_detail_parameter_2_goldmart_coba) ? 'selected' : '' }}>
@@ -421,14 +460,17 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmaster"
-                                                            type="checkbox" role="switch" name="param_coba[]" id="chk-coba-goldmaster"
-                                                            {{ in_array('Goldmaster', $customer_visit_detail_parameter_1_goldmaster_coba) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmaster" type="checkbox" role="switch"
+                                                            name="param_coba[]" id="chk-coba-goldmaster"
+                                                            {{ in_array('Goldmaster', $customer_visit_detail_parameter_1_goldmaster_coba) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-coba-goldmaster">{{ __('Goldmaster') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="mb-4 col-sm-8" id="div-coba-goldmaster" style="display: none">
+                                                <div class="mb-4 col-sm-8" id="div-coba-goldmaster"
+                                                    style="display: none">
                                                     <div class="table-responsive mb-2">
                                                         <table width="100%">
                                                             <thead>
@@ -441,7 +483,8 @@
                                                                     <td width="50%">
                                                                         <select
                                                                             class="js-example-placeholder-single js-states form-control select2"
-                                                                            name="coba_goldmaster[]" multiple="multiple" disabled>
+                                                                            name="coba_goldmaster[]" multiple="multiple"
+                                                                            disabled>
                                                                             @foreach ($tipe_barang->where('id_brand', 2) as $data)
                                                                                 <option value="{{ $data->nama }}"
                                                                                     {{ in_array($data->nama, $customer_visit_detail_parameter_2_goldmaster_coba) ? 'selected' : '' }}>
@@ -474,10 +517,13 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmart"
-                                                            type="checkbox" role="switch" name="param_beli[]" id="chk-beli-goldmart"
-                                                            {{ in_array('Goldmart', $customer_visit_detail_parameter_1_goldmart_beli) ? 'checked' : '' }} disabled>
-                                                        <label class="form-check-label" for="chk-beli-goldmart">{{ __('Goldmart') }}</label>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmart" type="checkbox" role="switch"
+                                                            name="param_beli[]" id="chk-beli-goldmart"
+                                                            {{ in_array('Goldmart', $customer_visit_detail_parameter_1_goldmart_beli) ? 'checked' : '' }}
+                                                            disabled>
+                                                        <label class="form-check-label"
+                                                            for="chk-beli-goldmart">{{ __('Goldmart') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4 col-sm-8" id="div-beli-goldmart" style="display: none">
@@ -504,12 +550,14 @@
                                                                                     <input type="text"
                                                                                         class="form-control number-only empty-default"
                                                                                         name="beli_qty_goldmart[]"
-                                                                                        value="{{ formatAmount($row->qty) ?? '' }}" readonly>
+                                                                                        value="{{ formatAmount($row->qty) ?? '' }}"
+                                                                                        readonly>
                                                                                 @endforeach
                                                                             @else
                                                                                 <input type="text"
                                                                                     class="form-control number-only empty-default"
-                                                                                    name="beli_qty_goldmart[]" value="" readonly>
+                                                                                    name="beli_qty_goldmart[]"
+                                                                                    value="" readonly>
                                                                             @endif
                                                                         </td>
                                                                         <td>
@@ -518,12 +566,14 @@
                                                                                     <input type="text"
                                                                                         class="form-control number-only empty-default"
                                                                                         name="beli_nominal_goldmart[]"
-                                                                                        value="{{ formatAmount($row->nominal) ?? '' }}" readonly>
+                                                                                        value="{{ formatAmount($row->nominal) ?? '' }}"
+                                                                                        readonly>
                                                                                 @endforeach
                                                                             @else
                                                                                 <input type="text"
                                                                                     class="form-control number-only empty-default"
-                                                                                    name="beli_nominal_goldmart[]" value="" readonly>
+                                                                                    name="beli_nominal_goldmart[]"
+                                                                                    value="" readonly>
                                                                             @endif
                                                                         </td>
                                                                     </tr>
@@ -538,14 +588,17 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="mb-3 form-check-lg form-switch">
-                                                        <input class="form-check-input form-checked-danger" value="Goldmaster"
-                                                            type="checkbox" role="switch" name="param_beli[]" id="chk-beli-goldmaster"
-                                                            {{ in_array('Goldmaster', $customer_visit_detail_parameter_1_goldmaster_beli) ? 'checked' : '' }} disabled>
+                                                        <input class="form-check-input form-checked-danger"
+                                                            value="Goldmaster" type="checkbox" role="switch"
+                                                            name="param_beli[]" id="chk-beli-goldmaster"
+                                                            {{ in_array('Goldmaster', $customer_visit_detail_parameter_1_goldmaster_beli) ? 'checked' : '' }}
+                                                            disabled>
                                                         <label class="form-check-label"
                                                             for="chk-beli-goldmaster">{{ __('Goldmaster') }}</label>
                                                     </div>
                                                 </div>
-                                                <div class="mb-4 col-sm-8" id="div-beli-goldmaster" style="display: none">
+                                                <div class="mb-4 col-sm-8" id="div-beli-goldmaster"
+                                                    style="display: none">
                                                     <div class="table-responsive mb-2">
                                                         <table>
                                                             <thead>
@@ -569,12 +622,14 @@
                                                                                     <input type="text"
                                                                                         class="form-control number-only empty-default"
                                                                                         name="beli_qty_goldmaster[]"
-                                                                                        value="{{ formatAmount($row->qty) ?? '' }}" readonly>
+                                                                                        value="{{ formatAmount($row->qty) ?? '' }}"
+                                                                                        readonly>
                                                                                 @endforeach
                                                                             @else
                                                                                 <input type="text"
                                                                                     class="form-control number-only empty-default"
-                                                                                    name="beli_qty_goldmaster[]" value="" readonly>
+                                                                                    name="beli_qty_goldmaster[]"
+                                                                                    value="" readonly>
                                                                             @endif
                                                                         </td>
                                                                         <td>
@@ -583,12 +638,14 @@
                                                                                     <input type="text"
                                                                                         class="form-control number-only empty-default"
                                                                                         name="beli_nominal_goldmaster[]"
-                                                                                        value="{{ formatAmount($row->nominal) ?? '' }}" readonly>
+                                                                                        value="{{ formatAmount($row->nominal) ?? '' }}"
+                                                                                        readonly>
                                                                                 @endforeach
                                                                             @else
                                                                                 <input type="text"
                                                                                     class="form-control number-only empty-default"
-                                                                                    name="beli_nominal_goldmaster[]" value="" readonly>
+                                                                                    name="beli_nominal_goldmaster[]"
+                                                                                    value="" readonly>
                                                                             @endif
                                                                         </td>
                                                                     </tr>
@@ -607,7 +664,7 @@
                                     </div>
                                 </fieldset>
                             </div>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -721,4 +778,3 @@
         }
     </script>
 @endpush
-
