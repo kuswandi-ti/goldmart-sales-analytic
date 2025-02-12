@@ -159,18 +159,20 @@
 
 @push('scripts')
     <script>
-        /*$(document).ready(function() {
-                $('#sales_person').change(function() {
-                    var nik = $("#sales_person option:selected").data("nik");
-                    if (nik.length > 0) {
-                        $('#email').val($.trim(nik));
-                        $('#email').attr('readonly', true);
-                    } else {
-                        $('#email').val("");
-                        $('#email').removeAttr("readonly");
-                        $('#email').focus();
-                    }
-                });
-            });*/
+        $(document).ready(function() {
+            $('#sales_person').change(function() {
+                var nik = $("#sales_person option:selected").data("nik");
+                if (nik.length > 0) {
+                    $('#nik').val($.trim(nik));
+                    $('#nik').attr('readonly', true);
+                } else {
+                    /*$('#email').val("");
+                    $('#email').removeAttr("readonly");
+                    $('#email').focus();*/
+                    $('#nik').val('');
+                    $('#nik').attr('readonly', true);
+                }
+            });
+        });
     </script>
 @endpush

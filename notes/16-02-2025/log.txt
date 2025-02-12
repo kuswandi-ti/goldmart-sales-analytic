@@ -1,0 +1,18 @@
+GSA, per 16 Februari 2025
+=============================
+1.  Request Update
+    -   https://docs.google.com/document/d/1OR0JqZhfcMLaciNFxYPNTmjwNKd6-wNxauc4fLlzV1o/edit?tab=t.0
+
+2.  File Update
+    -   app\Exports (semua file)
+    -   app\Http\Controllers\DashboardController.php
+    -   app\Http\Controllers\LaporanController.php
+    -   resources\views\dashboard\index.blade.php
+    -   resources\views\laporan (semua file)
+    -   resources\views\laporan\exports (semua file)
+    -   resources\views\layouts\partials\_sidebar.blade.php
+    -   resources\views\user (semua file)
+    -   routes\web.php
+
+3.  Database
+    -   Run file permissions.sql

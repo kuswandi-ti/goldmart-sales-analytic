@@ -195,14 +195,103 @@
                 {{-- LAPORAN - BEGIN --}}
                 {{-- ======================================================================================================= --}}
                 <!-- Start::slide__category -->
-                @if (canAccess(['laporan penjualan per person', 'laporan penjualan per store', 'laporan penjualan all store']))
+                @if (canAccess([
+                        'laporan penjualan per person',
+                        'laporan penjualan per store',
+                        'laporan penjualan all store',
+                        'laporan kunjungan per person',
+                        'laporan kunjungan per store',
+                        'laporan kunjungan detail',
+                    ]))
                     <li class="mt-4 slide__category"><span class="category-name">{{ __('Laporan') }}</span>
                     </li>
                 @endif
                 <!-- End::slide__category -->
 
                 <!-- Start::slide -->
-                @if (canAccess(['laporan penjualan per person']))
+                @if (canAccess(['laporan penjualan per person', 'laporan penjualan per store']))
+                    <li
+                        class="slide has-sub {{ setSidebarActive(['laporan.penjualan*']) }} {{ setSidebarOpen(['laporan.penjualan*']) }}">
+                        <a href="javascript:void(0);"
+                            class="side-menu__item {{ setSidebarActive(['laporan.penjualan*']) }}">
+                            <span class=" side-menu__icon">
+                                <i class='bx bx-file'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Laporan Penjualan') }}</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul
+                            class="slide-menu child1 {{ setSidebarActive(['laporan.penjualanperperson.*', 'laporan.penjualanperstore.*']) }}">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">{{ __('Laporan Penjualan') }}</a>
+                            </li>
+                            @if (canAccess(['laporan penjualan per person']))
+                                <li class="slide {{ setSidebarActive(['laporan.penjualanperperson']) }}">
+                                    <a href="{{ route('laporan.penjualanperperson') }}"
+                                        class="side-menu__item {{ setSidebarActive(['laporan.penjualanperperson']) }}">
+                                        <span class="side-menu__label">{{ __('Penjualan Per Person') }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if (canAccess(['laporan penjualan per store']))
+                                <li class="slide {{ setSidebarActive(['laporan.penjualanperstore']) }}">
+                                    <a href="{{ route('laporan.penjualanperstore') }}"
+                                        class="side-menu__item {{ setSidebarActive(['laporan.penjualanperstore']) }}">
+                                        <span class="side-menu__label">{{ __('Penjualan Per Store') }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+
+                @if (canAccess(['laporan kunjungan per person', 'laporan kunjungan per store', 'laporan kunjungan detail']))
+                    <li
+                        class="slide has-sub {{ setSidebarActive(['laporan.kunjungan*']) }} {{ setSidebarOpen(['laporan.kunjungan*']) }}">
+                        <a href="javascript:void(0);"
+                            class="side-menu__item {{ setSidebarActive(['laporan.kunjungan*']) }}">
+                            <span class=" side-menu__icon">
+                                <i class='bx bx-file'></i>
+                            </span>
+                            <span class="side-menu__label">{{ __('Laporan Kunjungan') }}</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul
+                            class="slide-menu child1 {{ setSidebarActive(['laporan.kunjunganperperson.*', 'laporan.kunjunganperstore.*', 'laporan.kunjungandetail.*']) }}">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">{{ __('Laporan Kunjungan') }}</a>
+                            </li>
+                            @if (canAccess(['laporan kunjungan per person']))
+                                <li class="slide {{ setSidebarActive(['laporan.kunjunganperperson']) }}">
+                                    <a href="{{ route('laporan.kunjunganperperson') }}"
+                                        class="side-menu__item {{ setSidebarActive(['laporan.kunjunganperperson']) }}">
+                                        <span class="side-menu__label">{{ __('Kunjungan Per Person') }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if (canAccess(['laporan kunjungan per store']))
+                                <li class="slide {{ setSidebarActive(['laporan.kunjunganperstore']) }}">
+                                    <a href="{{ route('laporan.kunjunganperstore') }}"
+                                        class="side-menu__item {{ setSidebarActive(['laporan.kunjunganperstore']) }}">
+                                        <span class="side-menu__label">{{ __('Kunjungan Per Store') }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if (canAccess(['laporan kunjungan detail']))
+                                <li class="slide {{ setSidebarActive(['laporan.kunjungandetail']) }}">
+                                    <a href="{{ route('laporan.kunjungandetail') }}"
+                                        class="side-menu__item {{ setSidebarActive(['laporan.kunjungandetail']) }}">
+                                        <span class="side-menu__label">{{ __('Kunjungan Detail') }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+                <!-- End::slide -->
+
+                <!-- Start::slide -->
+                {{-- @if (canAccess(['laporan penjualan per person']))
                     <li class="slide {{ setSidebarActive(['laporan.penjualanperperson']) }}">
                         <a href="{{ route('laporan.penjualanperperson') }}"
                             class="side-menu__item {{ setSidebarActive(['laporan.penjualanperperson']) }}">
@@ -235,7 +324,7 @@
                             <span class="side-menu__label">{{ __('Penjualan All Store') }}</span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
                 <!-- End::slide -->
                 {{-- ======================================================================================================= --}}
                 {{-- LAPORAN - END --}}

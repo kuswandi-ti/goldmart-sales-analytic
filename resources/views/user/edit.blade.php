@@ -100,7 +100,7 @@
                                     class="form-label text-default">{{ __('NIK (sebagai identifikasi saat login)') }}
                                     <x-all-not-null /></label>
                                 <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"
-                                    id="email" value="{{ old('nik') ?? ($user->nik ?? '') }}"
+                                    id="nik" value="{{ old('nik') ?? ($user->nik ?? '') }}"
                                     placeholder="{{ __('NIK (sebagai identifikasi saat login)') }}" required>
                                 @error('nik')
                                     <div class="invalid-feedback">
@@ -201,25 +201,27 @@
 
 @push('scripts')
     <script>
-        /*$(document).ready(function() {
-                                    let email = $('#email').val();
-                                    if (IsEmail(email) === false) {
-                                        $('#email').attr('readonly', true);
-                                    } else {
-                                        $('#email').removeAttr("readonly");
-                                    }
+        $(document).ready(function() {
+            // let email = $('#email').val();
+            // if (IsEmail(email) === false) {
+            //     $('#email').attr('readonly', true);
+            // } else {
+            //     $('#email').removeAttr("readonly");
+            // }
 
-                                    $('#sales_person').change(function() {
-                                        var nik = $("#sales_person option:selected").data("nik");
-                                        if (nik.length > 0) {
-                                            $('#email').val($.trim(nik));
-                                            $('#email').attr('readonly', true);
-                                        } else {
-                                            $('#email').val("");
-                                            $('#email').removeAttr("readonly");
-                                            $('#email').focus();
-                                        }
-                                    });
-                                });*/
+            $('#sales_person').change(function() {
+                var nik = $("#sales_person option:selected").data("nik");
+                if (nik.length > 0) {
+                    $('#nik').val($.trim(nik));
+                    $('#nik').attr('readonly', true);
+                } else {
+                    // $('#email').val("");
+                    // $('#email').removeAttr("readonly");
+                    // $('#email').focus();
+                    $('#nik').val('');
+                    $('#nik').attr('readonly', true);
+                }
+            });
+        });
     </script>
 @endpush

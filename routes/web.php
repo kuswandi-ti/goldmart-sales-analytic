@@ -106,6 +106,9 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
     Route::get('laporan/salesperperson', [LaporanController::class, 'laporanPenjualanPerPerson'])->name('laporan.penjualanperperson');
     Route::get('laporan/salesperstore', [LaporanController::class, 'laporanPenjualanPerStore'])->name('laporan.penjualanperstore');
     Route::get('laporan/salesallstore', [LaporanController::class, 'laporanPenjualanAllStore'])->name('laporan.penjualanallstore');
+    Route::get('laporan/kunjunganperperson', [LaporanController::class, 'laporanKunjunganPerPerson'])->name('laporan.kunjunganperperson');
+    Route::get('laporan/kunjunganperstore', [LaporanController::class, 'laporanKunjunganPerStore'])->name('laporan.kunjunganperstore');
+    Route::get('laporan/kunjungandetail', [LaporanController::class, 'laporanKunjunganDetail'])->name('laporan.kunjungandetail');
 
     /** Setting Routes */
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');

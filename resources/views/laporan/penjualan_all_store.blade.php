@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="card custom-card">
-                <div class="card-header  justify-content-between">
+                <div class="card-header justify-content-between">
                     <div class="card-title">
                         {{ __('Daftar Data Laporan Penjualan All Store') }}
                         <p class="subtitle text-muted fs-12 fw-normal">

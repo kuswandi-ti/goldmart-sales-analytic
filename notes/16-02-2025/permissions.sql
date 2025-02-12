@@ -1,0 +1,3 @@
+INSERT INTO `permissions` (`name`, `guard_name`, `group_name`, `created_at`, `updated_at`) VALUES ('laporan kunjungan per person', 'web', 'Report Permission', '2025-02-10 07:09:34', '2025-02-10 07:09:34');
+INSERT INTO `permissions` (`name`, `guard_name`, `group_name`, `created_at`, `updated_at`) VALUES ('laporan kunjungan per store', 'web', 'Report Permission', '2025-02-10 07:09:45', '2025-02-10 07:09:45');
+INSERT INTO `permissions` (`name`, `guard_name`, `group_name`, `created_at`, `updated_at`) VALUES ('laporan kunjungan detail', 'web', 'Report Permission', '2025-02-10 07:09:45', '2025-02-10 07:09:45');

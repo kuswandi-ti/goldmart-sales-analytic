@@ -13,15 +13,14 @@
 @endsection
 
 @section('page_content')
-
     <div class="row">
-        <div class="col-xxl-3 col-sm-12">
+        <div class="col-xxl-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
-                                <p class="fw-medium mb-1 text-muted">{{ __('Total Semua Penjualan (Rp.)') }}</p>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Penjualan (Rp.)') }}</p>
                                 <h3 class="mb-0">{{ formatAmount($total_sales_value->total_sales_value ?? 0) }}</h3>
                             </div>
                             <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
@@ -41,16 +40,16 @@
             </div>
         </div>
 
-        <div class="col-xxl-3 col-sm-12">
+        <div class="col-xxl-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
-                                <p class="fw-medium mb-1 text-muted">{{ __('Total Semua Penjualan (Qty)') }}</p>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Penjualan (Qty)') }}</p>
                                 <h3 class="mb-0">{{ formatAmount($total_sales_pcs->total_sales_pcs ?? 0) }}</h3>
                             </div>
-                            <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
+                            <div class="avatar avatar-md br-4 bg-warning-transparent ms-auto">
                                 <i class="bx bx-package fs-20"></i>
                             </div>
                         </div>
@@ -67,16 +66,16 @@
             </div>
         </div>
 
-        <div class="col-xxl-3 col-sm-12">
+        <div class="col-xxl-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
-                                <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Visit') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_visit->total_customer_visit ?? 0 }}</h3>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Datang') }}</p>
+                                <h3 class="mb-0">{{ $total_customer_datang->count() ?? 0 }}</h3>
                             </div>
-                            <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
+                            <div class="avatar avatar-md br-4 bg-danger-transparent ms-auto">
                                 <i class="bx bx-category fs-20"></i>
                             </div>
                         </div>
@@ -93,17 +92,17 @@
             </div>
         </div>
 
-        <div class="col-xxl-3 col-sm-12">
+        <div class="col-xxl-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
-                                <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Beli') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_beli->total_customer_beli ?? 0 }}</h3>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Tanya') }}</p>
+                                <h3 class="mb-0">{{ $total_customer_tanya->count() ?? 0 }}</h3>
                             </div>
                             <div class="avatar avatar-md br-4 bg-success-transparent ms-auto">
-                                <i class="bx bxs-cart fs-20"></i>
+                                <i class="bx bx-chat fs-20"></i>
                             </div>
                         </div>
                         <div class="d-flex mt-2">
@@ -118,23 +117,167 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    @can('dashboard gsa')
-        <div class="row">
-            <div class="col-xxl-12 col-xl-12 col-lg-12">
-                <div class="card custom-card overflow-hidden">
-                    <div class="card-body p-0">
-                        <div class="card-title">
-                            &nbsp;
+        <div class="col-xxl-2 col-sm-12">
+            <div class="col card-background">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Coba') }}</p>
+                                <h3 class="mb-0">{{ $total_customer_coba->count() ?? 0 }}</h3>
+                            </div>
+                            <div class="avatar avatar-md br-4 bg-info-transparent ms-auto">
+                                <i class="bx bx-closet fs-20"></i>
+                            </div>
                         </div>
-                        <div id="graph1"></div>
+                        <div class="d-flex mt-2">
+                            <span class="badge bg-info-transparent rounded-pill">{{ __('Tahun') }}
+                                {{ activePeriod() }}
+                            </span>
+                            {{-- <a href="javascript:void(0);"
+                                    class="text-muted fs-11 ms-auto text-decoration-underline mt-auto">{{ __('Lihat Detail') }}
+                                </a> --}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="col-xxl-2 col-sm-12">
+            <div class="col card-background">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div>
+                                <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Beli') }}</p>
+                                <h3 class="mb-0">{{ $total_customer_beli->count() ?? 0 }}</h3>
+                            </div>
+                            <div class="avatar avatar-md br-4 bg-secondary-transparent ms-auto">
+                                <i class="bx bxs-cart fs-20"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <span class="badge bg-secondary-transparent rounded-pill">{{ __('Tahun') }}
+                                {{ activePeriod() }}
+                            </span>
+                            {{-- <a href="javascript:void(0);"
+                                    class="text-muted fs-11 ms-auto text-decoration-underline mt-auto">{{ __('Lihat Detail') }}
+                                </a> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- @can('dashboard gsa') --}}
+    <div class="row">
+        <div class="col-xxl-12 col-xl-12 col-lg-12">
+            <div class="card custom-card overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="card-title">
+                        &nbsp;
+                    </div>
+                    <div id="graph0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xxl-12 col-xl-12 col-lg-12">
+            <div class="card custom-card overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="card-title">
+                        &nbsp;
+                    </div>
+                    <div id="graph1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xxl-5 col-xl-5 col-lg-12">
+            <div class="card custom-card overflow-hidden">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        {{ __('Data Kunjungan Per Store') }}
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table text-nowrap table-striped table-hover">
+                            <thead class="table-primary">
+                                <tr>
+                                    <td scope="col" class="fw-semibold">{{ __('Store') }}</td>
+                                    <td scope="col" align="right" class="fw-semibold">{{ __('Datang') }}
+                                    <td scope="col" align="right" class="fw-semibold">{{ __('Tanya') }}
+                                    <td scope="col" align="right" class="fw-semibold">{{ __('Coba') }}
+                                    <td scope="col" align="right" class="fw-semibold">{{ __('Beli') }}
+                                </tr>
+                            </thead>
+                            <tbody class="top-selling">
+                                @if (count($data_kunjungan) > 0)
+                                    @foreach ($data_kunjungan as $row)
+                                        <tr>
+                                            <td>
+                                                <span>{{ $row->nama_store }}</span>
+                                            </td>
+                                            <td align="right">
+                                                <span>{{ formatAmount($row->datang) }}</span>
+                                            </td>
+                                            <td align="right">
+                                                <span>{{ formatAmount($row->tanya) }}</span>
+                                            </td>
+                                            <td align="right">
+                                                <span>{{ formatAmount($row->coba) }}</span>
+                                            </td>
+                                            <td align="right">
+                                                <span>{{ formatAmount($row->beli) }}</span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="5" align="center">
+                                            <span class="fw-semibold text-danger">{{ __('Tidak ada data') }}</span>
+                                        </td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                            <tfoot class="table-primary">
+                                {{-- <tr>
+                                    <td colspan="3">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="fw-semibold mb-0">{{ __('TOTAL') }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td align="right" class="fw-semibold">{{ formatAmount($sum_qty) }}</td>
+                                    <td align="right" class="fw-semibold">{{ formatAmount($sum_nominal) }}</td>
+                                </tr> --}}
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-7 col-xl-7 col-lg-12">
+            <div class="card custom-card overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="card-title">
+                        &nbsp;
+                    </div>
+                    <div id="graph2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="row">
             <div class="col-xxl-6 col-xl-6 col-lg-6">
                 <div class="row">
                     <div class="col-xxl-12 col-xl-12 col-lg-12">
@@ -194,7 +337,8 @@
                                             @else
                                                 <tr>
                                                     <td colspan="5" align="center">
-                                                        <span class="fw-semibold text-danger">{{ __('Tidak ada data') }}</span>
+                                                        <span
+                                                            class="fw-semibold text-danger">{{ __('Tidak ada data') }}</span>
                                                     </td>
                                                 </tr>
                                             @endif
@@ -608,9 +752,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    @else
-        <div class="row">
+        </div> --}}
+    {{-- @else --}}
+    {{-- <div class="row">
             <div class="col-xxl-12 col-xl-12 col-lg-12">
                 <div class="card custom-card overflow-hidden">
                     <div class="card-header justify-content-between">
@@ -845,8 +989,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    @endcan
+        </div> --}}
+    {{-- @endcan --}}
 @endsection
 
 <x-web-sweet-alert />
@@ -859,8 +1003,120 @@
 
 @push('scripts')
     <script>
+        var data_store_graph = {{ Js::from($data_store_graph) }};
+        var total_datang_graph = {{ Js::from($total_datang_graph) }};
+        var total_tanya_graph = {{ Js::from($total_tanya_graph) }};
+        var total_coba_graph = {{ Js::from($total_coba_graph) }};
+        var total_beli_graph = {{ Js::from($total_beli_graph) }};
+
         var total_nominal_goldmart_graph = {{ Js::from($total_nominal_goldmart_graph) }};
         var total_nominal_goldmaster_graph = {{ Js::from($total_nominal_goldmaster_graph) }};
+
+        Highcharts.chart('graph0', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Grafik Data Kunjungan'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: data_store_graph,
+                crosshair: true,
+                accessibility: {
+                    description: 'Store'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'x'
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true
+                    },
+                },
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: true
+                }
+            },
+            series: [{
+                name: 'Datang',
+                data: total_datang_graph
+            }, {
+                name: 'Tanya',
+                data: total_tanya_graph
+            }, {
+                name: 'Coba',
+                data: total_coba_graph
+            }, {
+                name: 'Beli',
+                data: total_beli_graph
+            }]
+        });
+
+        Highcharts.chart('graph2', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Grafik Data Kunjungan Per Store'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: data_store_graph,
+                crosshair: true,
+                accessibility: {
+                    description: 'Store'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'x'
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true
+                    },
+                },
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: true
+                }
+            },
+            series: [{
+                name: 'Datang',
+                data: total_datang_graph
+            }, {
+                name: 'Tanya',
+                data: total_tanya_graph
+            }, {
+                name: 'Coba',
+                data: total_coba_graph
+            }, {
+                name: 'Beli',
+                data: total_beli_graph
+            }]
+        });
 
         Highcharts.chart('graph1', {
             chart: {
@@ -903,13 +1159,12 @@
                 }
             },
             series: [{
-                    name: 'Goldmart',
-                    data: total_nominal_goldmart_graph
-                },{
-                    name: 'Goldmaster',
-                    data: total_nominal_goldmaster_graph
-                },
-            ]
+                name: 'Goldmart',
+                data: total_nominal_goldmart_graph
+            }, {
+                name: 'Goldmaster',
+                data: total_nominal_goldmaster_graph
+            }]
         });
     </script>
 @endpush
