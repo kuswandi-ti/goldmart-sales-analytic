@@ -199,6 +199,71 @@
     </div>
 
     <div class="row">
+        <div class="col-xxl-12 col-xl-12 col-lg-12">
+            <div class="card custom-card overflow-hidden">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        {{ __('Data Kunjungan Per Store') }}
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-xxl-5 col-xl-5 col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table text-nowrap table-striped table-hover">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <td scope="col" class="fw-semibold">{{ __('Store') }}</td>
+                                            <td scope="col" align="right" class="fw-semibold">{{ __('Datang') }}
+                                            <td scope="col" align="right" class="fw-semibold">{{ __('Tanya') }}
+                                            <td scope="col" align="right" class="fw-semibold">{{ __('Coba') }}
+                                            <td scope="col" align="right" class="fw-semibold">{{ __('Beli') }}
+                                        </tr>
+                                    </thead>
+                                    <tbody class="top-selling">
+                                        @if (count($data_kunjungan) > 0)
+                                            @foreach ($data_kunjungan as $row)
+                                                <tr>
+                                                    <td>
+                                                        <span>{{ $row->nama_store }}</span>
+                                                    </td>
+                                                    <td align="right">
+                                                        <span>{{ formatAmount($row->datang) }}</span>
+                                                    </td>
+                                                    <td align="right">
+                                                        <span>{{ formatAmount($row->tanya) }}</span>
+                                                    </td>
+                                                    <td align="right">
+                                                        <span>{{ formatAmount($row->coba) }}</span>
+                                                    </td>
+                                                    <td align="right">
+                                                        <span>{{ formatAmount($row->beli) }}</span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="5" align="center">
+                                                    <span
+                                                        class="fw-semibold text-danger">{{ __('Tidak ada data') }}</span>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-7 col-xl-7 col-lg-12">
+                            <div id="graph2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="row">
         <div class="col-xxl-5 col-xl-5 col-lg-12">
             <div class="card custom-card overflow-hidden">
                 <div class="card-header justify-content-between">
@@ -248,7 +313,7 @@
                                 @endif
                             </tbody>
                             <tfoot class="table-primary">
-                                {{-- <tr>
+                                <tr>
                                     <td colspan="3">
                                         <div class="d-flex align-items-center">
                                             <div>
@@ -258,7 +323,7 @@
                                     </td>
                                     <td align="right" class="fw-semibold">{{ formatAmount($sum_qty) }}</td>
                                     <td align="right" class="fw-semibold">{{ formatAmount($sum_nominal) }}</td>
-                                </tr> --}}
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
@@ -275,7 +340,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- <div class="row">
             <div class="col-xxl-6 col-xl-6 col-lg-6">
