@@ -584,41 +584,46 @@ class LaporanController extends Controller
                     LEFT OUTER JOIN
                     (
                     SELECT
-                    query_1.id_sales_person,
-                    query_1.id_store,
-                    CASE
-                        WHEN query_1.parameter_main = 'Datang' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS datang,
-                    CASE
-                        WHEN query_1.parameter_main = 'Tanya' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS tanya,
-                    CASE
-                        WHEN query_1.parameter_main = 'Coba' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS coba,
-                    CASE
-                        WHEN query_1.parameter_main = 'Beli' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS beli
+                        query_1.id_sales_person,
+                        query_1.id_store,
+                        query_1.id,
+                        CASE
+                            WHEN query_1.parameter_main = 'Datang' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS datang,
+                        CASE
+                            WHEN query_1.parameter_main = 'Tanya' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS tanya,
+                        CASE
+                            WHEN query_1.parameter_main = 'Coba' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS coba,
+                        CASE
+                            WHEN query_1.parameter_main = 'Beli' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS beli
                     FROM
-                    (SELECT
-                        customer_visit.id_sales_person,
-                        customer_visit.id_store,
-                        customer_visit_detail.parameter_main
-                    FROM
-                        customer_visit
-                        LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
-                    WHERE
-                        " . $where . "
-                        AND customer_visit_detail.parameter_main IN ('Datang', 'Tanya', 'Coba', 'Beli')
-                    GROUP BY
-                        customer_visit.id,
-                        customer_visit_detail.parameter_main) AS query_1
+                        (SELECT
+                            customer_visit.id_sales_person,
+                            customer_visit.id_store,
+                            customer_visit_detail.id,
+                            customer_visit_detail.parameter_main
+                        FROM
+                            customer_visit
+                            LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
+                        WHERE
+                            " . $where . "
+                            AND customer_visit_detail.parameter_main IN ('Datang', 'Tanya', 'Coba', 'Beli')
+                        GROUP BY
+                            customer_visit.id_sales_person,
+                            customer_visit.id_store,
+                            customer_visit_detail.id,
+                            customer_visit_detail.parameter_main) AS query_1
                     GROUP BY
                         query_1.id_sales_person,
                         query_1.id_store,
+                        query_1.id,
                         query_1.parameter_main) AS query_2 ON sales_person.id = query_2.id_sales_person
                     LEFT OUTER JOIN
                         store ON sales_person.id_store = store.id
@@ -763,38 +768,42 @@ class LaporanController extends Controller
                     LEFT OUTER JOIN
                     (
                     SELECT
-                    query_1.id_store,
-                    CASE
-                        WHEN query_1.parameter_main = 'Datang' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS datang,
-                    CASE
-                        WHEN query_1.parameter_main = 'Tanya' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS tanya,
-                    CASE
-                        WHEN query_1.parameter_main = 'Coba' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS coba,
-                    CASE
-                        WHEN query_1.parameter_main = 'Beli' THEN COUNT(query_1.parameter_main)
-                        ELSE 0
-                    END AS beli
+                        query_1.id_store,
+                        query_1.id,
+                        CASE
+                            WHEN query_1.parameter_main = 'Datang' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS datang,
+                        CASE
+                            WHEN query_1.parameter_main = 'Tanya' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS tanya,
+                        CASE
+                            WHEN query_1.parameter_main = 'Coba' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS coba,
+                        CASE
+                            WHEN query_1.parameter_main = 'Beli' THEN COUNT(query_1.parameter_main)
+                            ELSE 0
+                        END AS beli
                     FROM
-                    (SELECT
-                        customer_visit.id_store,
-                        customer_visit_detail.parameter_main
-                    FROM
-                        customer_visit
-                        LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
-                    WHERE
-                        " . $where . "
-                        AND customer_visit_detail.parameter_main IN ('Datang', 'Tanya', 'Coba', 'Beli')
-                    GROUP BY
-                        customer_visit.id,
-                        customer_visit_detail.parameter_main) AS query_1
+                        (SELECT
+                            customer_visit.id_store,
+                            customer_visit_detail.id,
+                            customer_visit_detail.parameter_main
+                        FROM
+                            customer_visit
+                            LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
+                        WHERE
+                            " . $where . "
+                            AND customer_visit_detail.parameter_main IN ('Datang', 'Tanya', 'Coba', 'Beli')
+                        GROUP BY
+                            customer_visit.id_store,
+                            customer_visit_detail.id,
+                            customer_visit_detail.parameter_main) AS query_1
                     GROUP BY
                         query_1.id_store,
+                        query_1.id,
                         query_1.parameter_main) AS query_2 ON store.id = query_2.id_store
                 WHERE
                     " . $where_kota . "
@@ -892,8 +901,9 @@ class LaporanController extends Controller
                                     WHEN query_1.parameter_main = 'Datang' AND query_1.parameter_1 = 'Walk In Customer' THEN COUNT(query_1.parameter_1)
                                     ELSE 0
                                 END AS 'Walk In Customer'
-                                FROM
+                            FROM
                                 (SELECT
+                                    customer_visit_detail.id,
                                     customer_visit_detail.parameter_main,
                                     customer_visit_detail.parameter_1
                                 FROM
@@ -904,15 +914,16 @@ class LaporanController extends Controller
                                     AND customer_visit_detail.parameter_main IN ('Datang')
                                     AND customer_visit_detail.parameter_1 IN ('By Buy Back', 'By Invitation', 'By Social Media Campaign', 'Others', 'Reparation', 'Walk In Customer')
                                 GROUP BY
-                                    customer_visit.id,
+                                    customer_visit_detail.id,
                                     customer_visit_detail.parameter_main,
                                     customer_visit_detail.parameter_1
                                 ORDER BY
                                     customer_visit_detail.parameter_main,
                                     customer_visit_detail.parameter_1) AS query_1
-                            GROUP BY
-                                query_1.parameter_main,
-                                query_1.parameter_1) AS query_2";
+                        GROUP BY
+                            query_1.id,
+                            query_1.parameter_main,
+                            query_1.parameter_1) AS query_2";
 
         // Untuk data yg tampil di tabel
         $data_table_datang = DB::select($sql_datang);
@@ -931,57 +942,59 @@ class LaporanController extends Controller
 
         /* Tanya - Start */
         $sql_tanya = "SELECT
-                    SUM(COALESCE(query_2.`Barang`, 0)) AS Barang,
-                    SUM(COALESCE(query_2.`Buy Back`, 0)) AS Buy_Back,
-                    SUM(COALESCE(query_2.`Others`, 0)) AS Others,
-                    SUM(COALESCE(query_2.`Promo`, 0)) AS Promo,
-                    SUM(COALESCE(query_2.`Range Harga`, 0)) AS Range_Harga,
-                    SUM(COALESCE(query_2.`Reparasi`, 0)) AS Reparasi
-                FROM
-                    (SELECT
-                        CASE
-                            WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Barang' THEN COUNT(query_1.parameter_1)
-                            ELSE 0
-                        END AS 'Barang',
-                        CASE
-                            WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Buy Back' THEN COUNT(query_1.parameter_1)
-                            ELSE 0
-                        END AS 'Buy Back',
-                        CASE
-                            WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Others' THEN COUNT(query_1.parameter_1)
-                            ELSE 0
-                        END AS 'Others',
-                        CASE
-                            WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Promo' THEN COUNT(query_1.parameter_1)
-                            ELSE 0
-                        END AS 'Promo',
-                        CASE
-                            WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Range Harga' THEN COUNT(query_1.parameter_1)
-                            ELSE 0
-                        END AS 'Range Harga',
-                        CASE
-                            WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Reparasi' THEN COUNT(query_1.parameter_1)
-                            ELSE 0
-                        END AS 'Reparasi'
-                        FROM
+                        SUM(COALESCE(query_2.`Barang`, 0)) AS Barang,
+                        SUM(COALESCE(query_2.`Buy Back`, 0)) AS Buy_Back,
+                        SUM(COALESCE(query_2.`Others`, 0)) AS Others,
+                        SUM(COALESCE(query_2.`Promo`, 0)) AS Promo,
+                        SUM(COALESCE(query_2.`Range Harga`, 0)) AS Range_Harga,
+                        SUM(COALESCE(query_2.`Reparasi`, 0)) AS Reparasi
+                    FROM
                         (SELECT
-                            customer_visit_detail.parameter_main,
-                            customer_visit_detail.parameter_1
+                            CASE
+                                WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Barang' THEN COUNT(query_1.parameter_1)
+                                ELSE 0
+                            END AS 'Barang',
+                            CASE
+                                WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Buy Back' THEN COUNT(query_1.parameter_1)
+                                ELSE 0
+                            END AS 'Buy Back',
+                            CASE
+                                WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Others' THEN COUNT(query_1.parameter_1)
+                                ELSE 0
+                            END AS 'Others',
+                            CASE
+                                WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Promo' THEN COUNT(query_1.parameter_1)
+                                ELSE 0
+                            END AS 'Promo',
+                            CASE
+                                WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Range Harga' THEN COUNT(query_1.parameter_1)
+                                ELSE 0
+                            END AS 'Range Harga',
+                            CASE
+                                WHEN query_1.parameter_main = 'Tanya' AND query_1.parameter_1 = 'Reparasi' THEN COUNT(query_1.parameter_1)
+                                ELSE 0
+                            END AS 'Reparasi'
                         FROM
-                            customer_visit
-                            LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
-                        WHERE
-                            customer_visit.tahun = " . activePeriod() . "
-                            AND customer_visit_detail.parameter_main IN ('Tanya')
-                            AND customer_visit_detail.parameter_1 IN ('Barang', 'Buy Back', 'Others', 'Promo', 'Range Harga', 'Reparasi')
-                        GROUP BY
-                            customer_visit.id,
-                            customer_visit_detail.parameter_main,
-                            customer_visit_detail.parameter_1
-                        ORDER BY
-                            customer_visit_detail.parameter_main,
-                            customer_visit_detail.parameter_1) AS query_1
+                            (SELECT
+                                customer_visit_detail.id,
+                                customer_visit_detail.parameter_main,
+                                customer_visit_detail.parameter_1
+                            FROM
+                                customer_visit
+                                LEFT OUTER JOIN customer_visit_detail ON customer_visit.id = customer_visit_detail.id_visit
+                            WHERE
+                                customer_visit.tahun = " . activePeriod() . "
+                                AND customer_visit_detail.parameter_main IN ('Tanya')
+                                AND customer_visit_detail.parameter_1 IN ('Barang', 'Buy Back', 'Others', 'Promo', 'Range Harga', 'Reparasi')
+                            GROUP BY
+                                customer_visit_detail.id,
+                                customer_visit_detail.parameter_main,
+                                customer_visit_detail.parameter_1
+                            ORDER BY
+                                customer_visit_detail.parameter_main,
+                                customer_visit_detail.parameter_1) AS query_1
                     GROUP BY
+                        query_1.id,
                         query_1.parameter_main,
                         query_1.parameter_1) AS query_2";
 
@@ -1029,8 +1042,9 @@ class LaporanController extends Controller
                                         WHEN query_1.parameter_main = 'Coba' AND query_1.parameter_1 = 'Goldmart' AND query_1.parameter_2 = 'Ring' THEN COUNT(query_1.parameter_2)
                                         ELSE 0
                                     END AS 'Ring'
-                                    FROM
+                                FROM
                                     (SELECT
+                                        customer_visit_detail.id,
                                         customer_visit_detail.parameter_main,
                                         customer_visit_detail.parameter_1,
                                         customer_visit_detail.parameter_2
@@ -1043,7 +1057,7 @@ class LaporanController extends Controller
                                         AND customer_visit_detail.parameter_1 IN ('Goldmart')
                                         AND customer_visit_detail.parameter_2 IN ('Bracelet', 'Earring', 'Necklace', 'Pendant', 'Ring')
                                     GROUP BY
-                                        customer_visit.id,
+                                        customer_visit_detail.id,
                                         customer_visit_detail.parameter_main,
                                         customer_visit_detail.parameter_1,
                                         customer_visit_detail.parameter_2
@@ -1051,10 +1065,11 @@ class LaporanController extends Controller
                                         customer_visit_detail.parameter_main,
                                         customer_visit_detail.parameter_1,
                                         customer_visit_detail.parameter_2) AS query_1
-                                GROUP BY
-                                    query_1.parameter_main,
-                                    query_1.parameter_1,
-                                    query_1.parameter_2) AS query_2";
+                            GROUP BY
+                                query_1.id,
+                                query_1.parameter_main,
+                                query_1.parameter_1,
+                                query_1.parameter_2) AS query_2";
 
         // Untuk data yg tampil di tabel
         $data_table_coba_goldmart = DB::select($sql_coba_goldmart);
@@ -1124,8 +1139,9 @@ class LaporanController extends Controller
                                             WHEN query_1.parameter_main = 'Coba' AND query_1.parameter_1 = 'Goldmaster' AND query_1.parameter_2 = 'Tietack' THEN COUNT(query_1.parameter_2)
                                             ELSE 0
                                         END AS 'Tietack'
-                                        FROM
+                                    FROM
                                         (SELECT
+                                            customer_visit_detail.id,
                                             customer_visit_detail.parameter_main,
                                             customer_visit_detail.parameter_1,
                                             customer_visit_detail.parameter_2
@@ -1138,7 +1154,7 @@ class LaporanController extends Controller
                                             AND customer_visit_detail.parameter_1 IN ('Goldmaster')
                                             AND customer_visit_detail.parameter_2 IN ('Bangle', 'Bracelet', 'Brooch', 'Charm', 'Collier', 'Earring', 'Necklace', 'Pendant', 'Ring', 'Tietack')
                                         GROUP BY
-                                            customer_visit.id,
+                                            customer_visit_detail.id,
                                             customer_visit_detail.parameter_main,
                                             customer_visit_detail.parameter_1,
                                             customer_visit_detail.parameter_2
@@ -1146,10 +1162,11 @@ class LaporanController extends Controller
                                             customer_visit_detail.parameter_main,
                                             customer_visit_detail.parameter_1,
                                             customer_visit_detail.parameter_2) AS query_1
-                                    GROUP BY
-                                        query_1.parameter_main,
-                                        query_1.parameter_1,
-                                        query_1.parameter_2) AS query_2";
+                                GROUP BY
+                                    query_1.id,
+                                    query_1.parameter_main,
+                                    query_1.parameter_1,
+                                    query_1.parameter_2) AS query_2";
 
         // Untuk data yg tampil di tabel
         $data_table_coba_goldmaster = DB::select($sql_coba_goldmaster);
@@ -1199,8 +1216,9 @@ class LaporanController extends Controller
                                         WHEN query_1.parameter_main = 'Beli' AND query_1.parameter_1 = 'Goldmart' AND query_1.parameter_2 = 'Ring' THEN COUNT(query_1.parameter_2)
                                         ELSE 0
                                     END AS 'Ring'
-                                    FROM
+                                FROM
                                     (SELECT
+                                        customer_visit_detail.id,
                                         customer_visit_detail.parameter_main,
                                         customer_visit_detail.parameter_1,
                                         customer_visit_detail.parameter_2
@@ -1213,7 +1231,7 @@ class LaporanController extends Controller
                                         AND customer_visit_detail.parameter_1 IN ('Goldmart')
                                         AND customer_visit_detail.parameter_2 IN ('Bracelet', 'Earring', 'Necklace', 'Pendant', 'Ring')
                                     GROUP BY
-                                        customer_visit.id,
+                                        customer_visit_detail.id,
                                         customer_visit_detail.parameter_main,
                                         customer_visit_detail.parameter_1,
                                         customer_visit_detail.parameter_2
@@ -1221,10 +1239,11 @@ class LaporanController extends Controller
                                         customer_visit_detail.parameter_main,
                                         customer_visit_detail.parameter_1,
                                         customer_visit_detail.parameter_2) AS query_1
-                                GROUP BY
-                                    query_1.parameter_main,
-                                    query_1.parameter_1,
-                                    query_1.parameter_2) AS query_2";
+                            GROUP BY
+                                query_1.id,
+                                query_1.parameter_main,
+                                query_1.parameter_1,
+                                query_1.parameter_2) AS query_2";
 
         // Untuk data yg tampil di tabel
         $data_table_beli_goldmart = DB::select($sql_beli_goldmart);
@@ -1294,8 +1313,9 @@ class LaporanController extends Controller
                                             WHEN query_1.parameter_main = 'Beli' AND query_1.parameter_1 = 'Goldmaster' AND query_1.parameter_2 = 'Tietack' THEN COUNT(query_1.parameter_2)
                                             ELSE 0
                                         END AS 'Tietack'
-                                        FROM
+                                    FROM
                                         (SELECT
+                                            customer_visit_detail.id,
                                             customer_visit_detail.parameter_main,
                                             customer_visit_detail.parameter_1,
                                             customer_visit_detail.parameter_2
@@ -1308,7 +1328,7 @@ class LaporanController extends Controller
                                             AND customer_visit_detail.parameter_1 IN ('Goldmaster')
                                             AND customer_visit_detail.parameter_2 IN ('Bangle', 'Bracelet', 'Brooch', 'Charm', 'Collier', 'Earring', 'Necklace', 'Pendant', 'Ring', 'Tietack')
                                         GROUP BY
-                                            customer_visit.id,
+                                            customer_visit_detail.id,
                                             customer_visit_detail.parameter_main,
                                             customer_visit_detail.parameter_1,
                                             customer_visit_detail.parameter_2
@@ -1316,10 +1336,11 @@ class LaporanController extends Controller
                                             customer_visit_detail.parameter_main,
                                             customer_visit_detail.parameter_1,
                                             customer_visit_detail.parameter_2) AS query_1
-                                    GROUP BY
-                                        query_1.parameter_main,
-                                        query_1.parameter_1,
-                                        query_1.parameter_2) AS query_2";
+                                GROUP BY
+                                    query_1.id,
+                                    query_1.parameter_main,
+                                    query_1.parameter_1,
+                                    query_1.parameter_2) AS query_2";
 
         // Untuk data yg tampil di tabel
         $data_table_beli_goldmaster = DB::select($sql_beli_goldmaster);
