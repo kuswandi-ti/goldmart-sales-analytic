@@ -302,6 +302,8 @@ class LaporanController extends Controller
                             AND " . $where . "
                         GROUP BY id_store
                     ) customer_visit ON store.id = customer_visit.id_store
+                WHERE
+                    store.status_aktif = 1
                 GROUP BY
                     store.id,
                     store.kode,
@@ -807,6 +809,7 @@ class LaporanController extends Controller
                         query_1.parameter_main) AS query_2 ON store.id = query_2.id_store
                 WHERE
                     " . $where_kota . "
+                    AND store.status_aktif = 1
                 GROUP BY
                     store.id,
                     store.nama,

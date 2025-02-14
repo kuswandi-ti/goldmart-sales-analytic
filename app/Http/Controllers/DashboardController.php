@@ -39,6 +39,8 @@ class DashboardController extends Controller
                         GROUP BY
                             query_1.id_store,
                             query_1.id) AS query_2 ON store.id = query_2.id_store
+                    WHERE
+                        store.status_aktif = 1
                     GROUP BY
                         store.nama
                     ORDER BY

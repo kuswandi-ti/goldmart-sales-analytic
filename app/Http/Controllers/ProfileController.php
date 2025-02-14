@@ -21,9 +21,11 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $order = Order::all();
+        // $order = Order::all();
 
-        return view('profile.index', compact('user', 'order'));
+        // return view('profile.index', compact('user', 'order'));
+
+        return view('profile.index', compact('user'));
     }
 
     /**
