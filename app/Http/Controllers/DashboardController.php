@@ -39,8 +39,6 @@ class DashboardController extends Controller
                         GROUP BY
                             query_1.id_store,
                             query_1.id) AS query_2 ON store.id = query_2.id_store
-                    WHERE
-                        store.status_aktif = 1
                     GROUP BY
                         store.nama
                     ORDER BY
@@ -138,7 +136,8 @@ class DashboardController extends Controller
             /* Widget - End */
 
             /* Grafik 1 - Start */
-            $sql = "SELECT nama FROM store WHERE status_aktif = 1 ORDER BY nama";
+            // $sql = "SELECT nama FROM store WHERE status_aktif = 1 ORDER BY nama";
+            $sql = "SELECT nama FROM store ORDER BY nama";
             $data_store = DB::select($sql);
             $data_store_graph = array();
             foreach ($data_store as $key) {
@@ -522,7 +521,8 @@ class DashboardController extends Controller
             /* Widget - End */
 
             /* Grafik 1 - Start */
-            $sql = "SELECT nama FROM store WHERE status_aktif = 1 AND id = " . getSession(3) . " ORDER BY nama";
+            // $sql = "SELECT nama FROM store WHERE status_aktif = 1 AND id = " . getSession(3) . " ORDER BY nama";
+            $sql = "SELECT nama FROM store WHERE id = " . getSession(3) . " ORDER BY nama";
             $data_store = DB::select($sql);
             $data_store_graph = array();
             foreach ($data_store as $key) {

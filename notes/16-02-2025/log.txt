@@ -4,6 +4,8 @@ GSA, per 14 Februari 2025
     -   Halaman Profil
 
 2.  File Update
+    -   app\Http\Controllers\DashboardController.php
+    -   app\Http\Controllers\LaporanController.php
     -   app\Http\Controllers\ProfileController.php
 
 3.  Database
