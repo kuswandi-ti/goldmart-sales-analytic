@@ -11,12 +11,14 @@ class LaporanPenjualanPerStoreExport implements FromView
     private $query;
     private $type;
     private $filter;
+    private $kota;
 
-    public function __construct(string $query, string $type, string $filter)
+    public function __construct(string $query, string $type, string $filter, string $kota)
     {
         $this->query = $query;
         $this->type = $type;
         $this->filter = $filter;
+        $this->kota = $kota;
     }
 
     public function view(): View
@@ -25,6 +27,7 @@ class LaporanPenjualanPerStoreExport implements FromView
             'data' => DB::select($this->query),
             'type' => $this->type,
             'filter' => $this->filter,
+            'kota' => $this->kota,
         ]);
     }
 }

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    function queryKunjungan($parameter_main, $id_store = '')
+    function queryKunjungan($parameter_main, $id_store = '', $status_toko)
     {
         if ($id_store == '') {
             $sql = "SELECT
@@ -39,6 +40,8 @@ class DashboardController extends Controller
                         GROUP BY
                             query_1.id_store,
                             query_1.id) AS query_2 ON store.id = query_2.id_store
+                    WHERE
+                        store.status_aktif " . $status_toko . "
                     GROUP BY
                         store.nama
                     ORDER BY
@@ -84,8 +87,17 @@ class DashboardController extends Controller
         return $sql;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $status_toko = $request->status_toko;
+        if (!isset($status_toko) || $status_toko == 'all') {
+            $status_toko = 'IS NOT NULL';
+        } elseif ($status_toko == 'aktif') {
+            $status_toko = '= 1';
+        } elseif ($status_toko == 'tidak-aktif') {
+            $status_toko = '= 0';
+        }
+
         if (auth()->user()->can('dashboard gsa')) {
             /* Widget - Start */
             $total_sales_value = DB::table('customer_visit')
@@ -136,8 +148,7 @@ class DashboardController extends Controller
             /* Widget - End */
 
             /* Grafik 1 - Start */
-            // $sql = "SELECT nama FROM store WHERE status_aktif = 1 ORDER BY nama";
-            $sql = "SELECT nama FROM store ORDER BY nama";
+            $sql = "SELECT nama FROM store WHERE status_aktif " . $status_toko . " ORDER BY nama";
             $data_store = DB::select($sql);
             $data_store_graph = array();
             foreach ($data_store as $key) {
@@ -145,7 +156,7 @@ class DashboardController extends Controller
             }
 
             // Datang
-            $sql = $this->queryKunjungan('Datang', '');
+            $sql = $this->queryKunjungan('Datang', '', $status_toko);
             $data_datang = DB::select($sql);
             $total_datang_graph = array();
             foreach ($data_datang as $key) {
@@ -154,7 +165,7 @@ class DashboardController extends Controller
             $total_datang_graph = array_map('intval', $total_datang_graph);
 
             // Tanya
-            $sql = $this->queryKunjungan('Tanya', '');
+            $sql = $this->queryKunjungan('Tanya', '', $status_toko);
             $data_tanya = DB::select($sql);
             $total_tanya_graph = array();
             foreach ($data_tanya as $key) {
@@ -163,7 +174,7 @@ class DashboardController extends Controller
             $total_tanya_graph = array_map('intval', $total_tanya_graph);
 
             // Coba
-            $sql = $this->queryKunjungan('Coba', '');
+            $sql = $this->queryKunjungan('Coba', '', $status_toko);
             $data_coba = DB::select($sql);
             $total_coba_graph = array();
             foreach ($data_coba as $key) {
@@ -172,7 +183,7 @@ class DashboardController extends Controller
             $total_coba_graph = array_map('intval', $total_coba_graph);
 
             // Beli
-            $sql = $this->queryKunjungan('Beli', '');
+            $sql = $this->queryKunjungan('Beli', '', $status_toko);
             $data_beli = DB::select($sql);
             $total_beli_graph = array();
             foreach ($data_beli as $key) {
@@ -263,6 +274,8 @@ class DashboardController extends Controller
                             query_1.id_store,
                             query_1.id,
                             query_1.parameter_main) AS query_2 ON store.id = query_2.id_store
+                    WHERE
+                        store.status_aktif " . $status_toko . "
                     GROUP BY
                         store.id,
                         store.nama
@@ -530,7 +543,7 @@ class DashboardController extends Controller
             }
 
             // Datang
-            $sql = $this->queryKunjungan("Datang", getSession(3));
+            $sql = $this->queryKunjungan("Datang", getSession(3), $status_toko);
             $data_datang = DB::select($sql);
             $total_datang_graph = array();
             foreach ($data_datang as $key) {
@@ -539,7 +552,7 @@ class DashboardController extends Controller
             $total_datang_graph = array_map('intval', $total_datang_graph);
 
             // Tanya
-            $sql = $this->queryKunjungan("Tanya", getSession(3));
+            $sql = $this->queryKunjungan("Tanya", getSession(3), $status_toko);
             $data_tanya = DB::select($sql);
             $total_tanya_graph = array();
             foreach ($data_tanya as $key) {
@@ -548,7 +561,7 @@ class DashboardController extends Controller
             $total_tanya_graph = array_map('intval', $total_tanya_graph);
 
             // Coba
-            $sql = $this->queryKunjungan("Coba", getSession(3));
+            $sql = $this->queryKunjungan("Coba", getSession(3), $status_toko);
             $data_coba = DB::select($sql);
             $total_coba_graph = array();
             foreach ($data_coba as $key) {
@@ -557,7 +570,7 @@ class DashboardController extends Controller
             $total_coba_graph = array_map('intval', $total_coba_graph);
 
             // Beli
-            $sql = $this->queryKunjungan("Beli", getSession(3));
+            $sql = $this->queryKunjungan("Beli", getSession(3), $status_toko);
             $data_beli = DB::select($sql);
             $total_beli_graph = array();
             foreach ($data_beli as $key) {

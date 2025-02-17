@@ -113,6 +113,9 @@
                 searchable: true,
                 sortable: true,
             }],
+            order: [
+                [3, 'asc']
+            ]
         });
     </script>
 @endpush

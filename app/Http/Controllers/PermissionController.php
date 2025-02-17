@@ -108,7 +108,7 @@ class PermissionController extends Controller
 
     public function data(Request $request)
     {
-        $query = Permission::orderBy('name', 'ASC')->get();
+        $query = Permission::where('id', '<>', 0)->get();
 
         return datatables($query)
             ->addIndexColumn()

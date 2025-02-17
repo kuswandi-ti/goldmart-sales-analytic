@@ -14,14 +14,14 @@
 
 @section('page_content')
     <div class="row">
-        <div class="col-xxl-2 col-sm-12">
+        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Penjualan (Rp.)') }}</p>
-                                <h3 class="mb-0">{{ formatAmount($total_sales_value->total_sales_value ?? 0) }}</h3>
+                                <h4 class="mb-0">{{ formatAmount($total_sales_value->total_sales_value ?? 0) }}</h4>
                             </div>
                             <div class="avatar avatar-md br-4 bg-primary-transparent ms-auto">
                                 <i class="bx bxs-dollar-circle fs-20"></i>
@@ -40,14 +40,14 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-sm-12">
+        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Penjualan (Qty)') }}</p>
-                                <h3 class="mb-0">{{ formatAmount($total_sales_pcs->total_sales_pcs ?? 0) }}</h3>
+                                <h4 class="mb-0">{{ formatAmount($total_sales_pcs->total_sales_pcs ?? 0) }}</h4>
                             </div>
                             <div class="avatar avatar-md br-4 bg-warning-transparent ms-auto">
                                 <i class="bx bx-package fs-20"></i>
@@ -66,14 +66,14 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-sm-12">
+        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Datang') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_datang->count() ?? 0 }}</h3>
+                                <h4 class="mb-0">{{ $total_customer_datang->count() ?? 0 }}</h4>
                             </div>
                             <div class="avatar avatar-md br-4 bg-danger-transparent ms-auto">
                                 <i class="bx bx-category fs-20"></i>
@@ -92,14 +92,14 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-sm-12">
+        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Tanya') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_tanya->count() ?? 0 }}</h3>
+                                <h4 class="mb-0">{{ $total_customer_tanya->count() ?? 0 }}</h4>
                             </div>
                             <div class="avatar avatar-md br-4 bg-success-transparent ms-auto">
                                 <i class="bx bx-chat fs-20"></i>
@@ -118,14 +118,14 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-sm-12">
+        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Coba') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_coba->count() ?? 0 }}</h3>
+                                <h4 class="mb-0">{{ $total_customer_coba->count() ?? 0 }}</h4>
                             </div>
                             <div class="avatar avatar-md br-4 bg-info-transparent ms-auto">
                                 <i class="bx bx-closet fs-20"></i>
@@ -144,14 +144,14 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-sm-12">
+        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
                                 <p class="fw-medium mb-1 text-muted">{{ __('Total Customer Beli') }}</p>
-                                <h3 class="mb-0">{{ $total_customer_beli->count() ?? 0 }}</h3>
+                                <h4 class="mb-0">{{ $total_customer_beli->count() ?? 0 }}</h4>
                             </div>
                             <div class="avatar avatar-md br-4 bg-secondary-transparent ms-auto">
                                 <i class="bx bxs-cart fs-20"></i>
@@ -174,15 +174,81 @@
     {{-- @can('dashboard gsa') --}}
     <div class="row">
         <div class="col-xxl-12 col-xl-12 col-lg-12">
+            <div class="card custom-card">
+                {{-- <div class="card-body p-0">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            <form action="{{ route('dashboard.index') }}" method="GET" id="form-search">
+                                @csrf
+
+                                <div class="dropdown d-flex mt-3">
+                                    <div class="me-2" style="width: 150px;">
+                                        <select class = "form-select" name='status-toko' style="height: 100%;">
+                                            <option value="aktif-all"
+                                                {{ request()->get('status-toko') == 'aktif-all' ? 'selected' : '' }}
+                                                id="filter-aktif-all">{{ __('Toko Aktif') }}</option>
+                                            <option value="tidak-aktif-all"
+                                                {{ request()->get('status-toko') == 'tidak-aktif-all' ? 'selected' : '' }}
+                                                id="filter-tidak-aktif-all">{{ __('Toko Tidak Aktif') }}</option>
+                                        </select>
+                                    </div>
+
+                                    <button type="submit"
+                                        class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2"
+                                        name="submit" value="search">
+                                        {{ __('Submit') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        &nbsp;
+                    </div>
+                    <form action="{{ route('dashboard.index') }}" method="GET" id="form-search">
+                        @csrf
+
+                        <div class="dropdown d-flex mt-3">
+                            <div class="me-2" style="width: 150px;">
+                                <select class = "form-select" name='status_toko' style="height: 100%;">
+                                    <option value="all" {{ request()->get('status_toko') == 'all' ? 'selected' : '' }}
+                                        id="filter-all">{{ __('Semua Toko') }}</option>
+                                    <option value="aktif" {{ request()->get('status_toko') == 'aktif' ? 'selected' : '' }}
+                                        id="filter-aktif-all">{{ __('Toko Aktif') }}</option>
+                                    <option value="tidak-aktif"
+                                        {{ request()->get('status_toko') == 'tidak-aktif' ? 'selected' : '' }}
+                                        id="filter-tidak-aktif-all">{{ __('Toko Tidak Aktif') }}</option>
+                                </select>
+                            </div>
+
+                            <button type="submit"
+                                class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2"
+                                name="submit" value="search">
+                                {{ __('Submit') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xxl-12 col-xl-12 col-lg-12">
             <div class="card custom-card overflow-hidden">
                 <div class="card-body p-0">
                     <div class="card-title">
                         &nbsp;
                     </div>
+                </div>
+                <div class="card-body">
                     <div id="graph0"></div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="row">
@@ -1066,6 +1132,8 @@
     <script src="{{ asset(config('common.path_template') . 'assets/libs/highcharts/offline-exporting.js') }}"></script>
 @endpush
 
+@include('layouts.includes.select2')
+
 @push('scripts')
     <script>
         var data_store_graph = {{ Js::from($data_store_graph) }};
@@ -1097,7 +1165,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {
@@ -1150,7 +1218,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {

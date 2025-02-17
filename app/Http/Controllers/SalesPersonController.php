@@ -170,7 +170,7 @@ class SalesPersonController extends Controller
 
     public function data(Request $request)
     {
-        $query = SalesPerson::orderBy('nama', 'ASC');
+        $query = SalesPerson::where('id', '<>', 0);
 
         return datatables($query)
             ->addIndexColumn()

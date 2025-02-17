@@ -287,7 +287,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {

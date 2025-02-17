@@ -103,7 +103,10 @@
                     return formatAmount(data);
                 },
                 'targets': [3, 4]
-            }]
+            }],
+            order: [
+                [2, 'asc']
+            ]
         });
     </script>
 @endpush

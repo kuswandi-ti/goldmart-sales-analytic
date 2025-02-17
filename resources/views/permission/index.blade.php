@@ -93,6 +93,10 @@
                 searchable: true,
                 sortable: true,
             }],
+            "aaSorting": [
+                [3, 'asc'],
+                [2, 'asc']
+            ],
         });
     </script>
 @endpush

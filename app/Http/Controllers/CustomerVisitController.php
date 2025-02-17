@@ -843,7 +843,11 @@ class CustomerVisitController extends Controller
 
     public function data(Request $request)
     {
-        $query = CustomerVisit::periodeaktif()->orderBy('tgl_visit', 'DESC');
+        if (getSession(2) == 'Non Sales') {
+            $query = CustomerVisit::periodeaktif();
+        } else {
+            $query = CustomerVisit::where('id_store', getSession(3))->periodeaktif();
+        }
 
         return datatables($query)
             ->addIndexColumn()

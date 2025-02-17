@@ -191,10 +191,9 @@ class UserController extends Controller
 
     public function data(Request $request)
     {
-        $query = User::orderBy('name', 'ASC')
-            ->get()->filter(
-                fn($user) => $user->roles->where('name', '!=', 'Super Admin')->toArray()
-            );
+        $query = User::get()->filter(
+            fn($user) => $user->roles->where('name', '!=', 'Super Admin')->toArray()
+        );
 
         return datatables($query)
             ->addIndexColumn()

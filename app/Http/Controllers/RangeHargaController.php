@@ -99,7 +99,7 @@ class RangeHargaController extends Controller
 
     public function data(Request $request)
     {
-        $query = RangeHarga::orderBy('id', 'ASC');
+        $query = RangeHarga::where('id', '<>', 0);
 
         return datatables($query)
             ->addIndexColumn()

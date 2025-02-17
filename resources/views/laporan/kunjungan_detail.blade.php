@@ -572,7 +572,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {
@@ -615,7 +615,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {
@@ -656,7 +656,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {
@@ -699,7 +699,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {
@@ -740,7 +740,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {
@@ -783,7 +783,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'x'
+                    text: 'Total'
                 }
             },
             plotOptions: {

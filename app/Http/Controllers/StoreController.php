@@ -143,7 +143,7 @@ class StoreController extends Controller
 
     public function data(Request $request)
     {
-        $query = Store::orderBy('nama', 'ASC');
+        $query = Store::where('id', '<>', 0);
 
         return datatables($query)
             ->addIndexColumn()

@@ -1,0 +1,40 @@
+GSA, per 17 Februari 2025
+=============================
+1.  Request Update
+    -   https://docs.google.com/document/d/1OR0JqZhfcMLaciNFxYPNTmjwNKd6-wNxauc4fLlzV1o/edit?tab=t.0
+    -   Halaman Profil
+
+2.  File Update
+    -   app\Exports\LaporanPenjualasanPerPersonExport.php
+    -   app\Exports\LaporanPenjualasanPerStoreExport.php
+    -   app\Http\Controllers\BrandController.php
+    -   app\Http\Controllers\CustomerVisitController.php
+    -   app\Http\Controllers\DashboardController.php
+    -   app\Http\Controllers\KotaController.php
+    -   app\Http\Controllers\LaporanController.php
+    -   app\Http\Controllers\PermissionController.php
+    -   app\Http\Controllers\ProfileController.php
+    -   app\Http\Controllers\RangeHargaController.php
+    -   app\Http\Controllers\RoleController.php
+    -   app\Http\Controllers\SalesPersonController.php
+    -   app\Http\Controllers\StoreController.php
+    -   app\Http\Controllers\TipeBarangController.php
+    -   app\Http\Controllers\UserController.php
+    -   resources\views\brand\index.blade.php
+    -   resources\views\customer_visit\index.blade.php
+    -   resources\views\dashboard\index.blade.php
+    -   resources\views\kota\index.blade.php
+    -   resources\views\laporan\kunjungan_detail.blade.php
+    -   resources\views\laporan\kunjungan_per_person.blade.php
+    -   resources\views\laporan\kunjungan_per_store.blade.php
+    -   resources\views\laporan\penjualan_per_person.blade.php
+    -   resources\views\laporan\penjualan_per_store.blade.php
+    -   resources\views\permission\index.blade.php
+    -   resources\views\range_harga\index.blade.php
+    -   resources\views\role\index.blade.php
+    -   resources\views\sales_person\index.blade.php
+    -   resources\views\store\index.blade.php
+    -   resources\views\tipe_barang\index.blade.php
+    -   resources\views\user\index.blade.php
+
+3.  Database

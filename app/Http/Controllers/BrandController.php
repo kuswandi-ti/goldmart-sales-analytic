@@ -95,7 +95,7 @@ class BrandController extends Controller
 
     public function data(Request $request)
     {
-        $query = Brand::orderBy('nama', 'ASC');
+        $query = Brand::where('id', '<>', 0);
 
         return datatables($query)
             ->addIndexColumn()

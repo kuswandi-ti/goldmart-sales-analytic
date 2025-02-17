@@ -92,6 +92,18 @@ class LaporanController extends Controller
                 break;
         }
 
+        $store = $request->store;
+        if (!isset($store) || $store == 'all-store') {
+            $where_store = 'sales_person.id_store IS NOT NULL';
+            $nama_store = 'Semua Toko';
+        } else {
+            $where_store = 'sales_person.id_store = ' . $store;
+            $query = Store::select('nama')
+                ->where('id', $store)
+                ->first();
+            $nama_store =  $query['nama'];
+        }
+
         $sql = "SELECT
                     sales_person.kode AS kode_sales_person,
                     sales_person.nama AS nama_sales_person,
@@ -115,6 +127,8 @@ class LaporanController extends Controller
                             AND " . $where . "
                         GROUP BY id_sales_person
                     ) customer_visit ON sales_person.id = customer_visit.id_sales_person
+                WHERE
+                    " . $where_store . "
                 GROUP BY
                     sales_person.kode,
                     sales_person.nama,
@@ -203,8 +217,12 @@ class LaporanController extends Controller
             ])
             ->get();
 
+        $store = Store::orderBy('nama')->get();
+
         if (empty($request->submit) || $request->submit == 'search') {
             return view('laporan.penjualan_per_person', compact(
+                'store',
+                'nama_store',
                 'data_table',
                 'data_sales_graph',
                 'data_qty_graph',
@@ -214,7 +232,7 @@ class LaporanController extends Controller
                 'penjualan_tahun_ini_per_person',
             ));
         } elseif ($request->submit == 'export') {
-            return Excel::download(new LaporanPenjualanPerPersonExport($sql, $type, $filter), 'laporan_penjualan_per_person.xlsx');
+            return Excel::download(new LaporanPenjualanPerPersonExport($sql, $type, $filter, $nama_store), 'laporan_penjualan_per_person.xlsx');
         }
     }
 
@@ -280,6 +298,15 @@ class LaporanController extends Controller
                 break;
         }
 
+        $kota = $request->kota;
+        if (!isset($kota) || $kota == 'all-kota') {
+            $where_kota = 'store.kota IS NOT NULL';
+            $nama_kota = 'Semua Kota';
+        } else {
+            $where_kota = "store.kota = '" . $kota . "'";
+            $nama_kota =  $kota;
+        }
+
         $sql = "SELECT
                     store.id AS id_store,
                     store.kode AS kode_store,
@@ -302,6 +329,8 @@ class LaporanController extends Controller
                             AND " . $where . "
                         GROUP BY id_store
                     ) customer_visit ON store.id = customer_visit.id_store
+                WHERE
+                    " . $where_kota . "
                 GROUP BY
                     store.id,
                     store.kode,
@@ -377,8 +406,12 @@ class LaporanController extends Controller
             ])
             ->get();
 
+        $kota = Kota::orderBy('nama')->get();
+
         if (empty($request->submit) || $request->submit == 'search') {
             return view('laporan.penjualan_per_store', compact(
+                'kota',
+                'nama_kota',
                 'data_table',
                 'data_store_graph',
                 'data_qty_graph',
@@ -388,7 +421,7 @@ class LaporanController extends Controller
                 'penjualan_tahun_ini_per_store',
             ));
         } elseif ($request->submit == 'export') {
-            return Excel::download(new LaporanPenjualanPerStoreExport($sql, $type, $filter), 'laporan_penjualan_per_store.xlsx');
+            return Excel::download(new LaporanPenjualanPerStoreExport($sql, $type, $filter, $nama_kota), 'laporan_penjualan_per_store.xlsx');
         }
     }
 
@@ -673,9 +706,7 @@ class LaporanController extends Controller
         }
         $data_beli_graph = array_map('intval', $data_beli_graph);
 
-        $store = Store::active()
-            ->orderBy('nama')
-            ->get();
+        $store = Store::orderBy('nama')->get();
 
         if (empty($request->submit) || $request->submit == 'search') {
             return view('laporan.kunjungan_per_person', compact(

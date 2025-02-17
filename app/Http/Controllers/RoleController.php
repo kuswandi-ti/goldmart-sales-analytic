@@ -116,7 +116,7 @@ class RoleController extends Controller
 
     public function data(Request $request)
     {
-        $query = Role::where('name', '!=', 'Super Admin')->orderBy('name', 'ASC')->get();
+        $query = Role::where('name', '!=', 'Super Admin')->get();
 
         return datatables($query)
             ->addIndexColumn()

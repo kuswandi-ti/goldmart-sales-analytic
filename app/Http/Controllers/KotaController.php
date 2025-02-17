@@ -95,7 +95,7 @@ class KotaController extends Controller
 
     public function data(Request $request)
     {
-        $query = Kota::orderBy('nama', 'ASC');
+        $query = Kota::where('id', '<>', 0);
 
         return datatables($query)
             ->addIndexColumn()

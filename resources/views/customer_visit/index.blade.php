@@ -99,10 +99,10 @@
                 data: 'tgl_visit',
                 searchable: true,
                 sortable: true,
-            // }, {
-            //     data: 'parameter_1',
-            //     searchable: true,
-            //     sortable: true,
+                // }, {
+                //     data: 'parameter_1',
+                //     searchable: true,
+                //     sortable: true,
             }, {
                 data: 'nama_sales',
                 searchable: true,
@@ -115,7 +115,10 @@
                 data: 'kota_store',
                 searchable: true,
                 sortable: true,
-            }]
+            }],
+            order: [
+                [3, 'desc']
+            ]
         });
     </script>
 @endpush

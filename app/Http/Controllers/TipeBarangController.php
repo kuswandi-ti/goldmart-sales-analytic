@@ -99,10 +99,13 @@ class TipeBarangController extends Controller
 
     public function data(Request $request)
     {
+        // $query = TipeBarang::select('tipe_barang.id AS id', 'tipe_barang.nama AS nama_tipe_barang', 'brand.nama AS nama_brand')
+        //     ->leftJoin('brand', 'tipe_barang.id_brand', '=', 'brand.id')
+        //     ->orderBy('brand.nama','ASC')
+        //     ->orderBy('tipe_barang.nama','ASC');
+
         $query = TipeBarang::select('tipe_barang.id AS id', 'tipe_barang.nama AS nama_tipe_barang', 'brand.nama AS nama_brand')
-            ->leftJoin('brand', 'tipe_barang.id_brand', '=', 'brand.id')
-            ->orderBy('brand.nama','ASC')
-            ->orderBy('tipe_barang.nama','ASC');
+            ->leftJoin('brand', 'tipe_barang.id_brand', '=', 'brand.id');
 
         return datatables($query)
             ->addIndexColumn()

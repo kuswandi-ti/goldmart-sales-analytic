@@ -93,6 +93,9 @@
                 searchable: true,
                 sortable: true,
             }],
+            order: [
+                [2, 'asc']
+            ]
         });
     </script>
 @endpush

@@ -30,6 +30,19 @@
                             @csrf
 
                             <div class="dropdown d-flex mt-3">
+                                <div class="me-2" style="width: 250px;">
+                                    <select class="js-example-placeholder-single js-states form-control select2"
+                                        name="store" id="store">
+                                        <option value="all-store" {{ request()->get('s') == 'all-store' ? 'selected' : '' }}
+                                            id="filter-all-store">{{ __('Semua Toko') }}</option>
+                                        @foreach ($store as $data)
+                                            <option value="{{ $data->id }}"
+                                                {{ request()->get('store') == $data->id ? 'selected' : '' }}>
+                                                {{ $data->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
                                 <div class="me-2" id="div-filter">
                                     <div class="input-group" id="div-filter-daily"
                                         style="width: 200px; display: {{ request()->get('f') == 'daily' ? '' : 'none' }};">
@@ -471,6 +484,7 @@
 
 @push('scripts')
     <script>
+        var nama_store = {{ Js::from($nama_store) }};
         var data_sales_graph = {{ Js::from($data_sales_graph) }};
         var data_qty_graph = {{ Js::from($data_qty_graph) }};
         var data_nominal_graph = {{ Js::from($data_nominal_graph) }};
@@ -479,17 +493,17 @@
         var e = '';
 
         if (f == 'all' || !f) {
-            e = 'Semua Data';
+            e = 'Semua Data, ' + nama_store;
         } else if (f == 'daily') {
-            e = 'Tanggal ' + {{ Js::from(request()->get('efd')) }};
+            e = 'Tanggal ' + {{ Js::from(request()->get('efd')) }} + ', ' + nama_store;
         } else if (f == 'weekly') {
-            e = 'Minggu ke ' + {{ Js::from(request()->get('efw')) }};
+            e = 'Minggu ke ' + {{ Js::from(request()->get('efw')) }} + ', ' + nama_store;
         } else if (f == 'monthly') {
-            e = 'Bulan ' + months[{{ Js::from(request()->get('efm')) }} - 1];
+            e = 'Bulan ' + months[{{ Js::from(request()->get('efm')) }} - 1] + ', ' + nama_store;
         } else if (f == 'quarterly') {
-            e = 'Quarter ke ' + {{ Js::from(request()->get('efq')) }};
+            e = 'Quarter ke ' + {{ Js::from(request()->get('efq')) }} + ', ' + nama_store;
         } else if (f == 'yearly') {
-            e = 'Tahun ' + {{ Js::from(request()->get('efy')) }};
+            e = 'Tahun ' + {{ Js::from(request()->get('efy')) }} + ', ' + nama_store;
         }
 
         Highcharts.chart('kreditstatistic1', {
