@@ -14,7 +14,7 @@
 
 @section('page_content')
     <div class="row">
-        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
+        <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
+        <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
+        <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
+        <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
+        <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
@@ -144,7 +144,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-2 col-xl-2 col-md-2 col-sm-12">
+        <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-12">
             <div class="col card-background">
                 <div class="card custom-card">
                     <div class="card-body">
