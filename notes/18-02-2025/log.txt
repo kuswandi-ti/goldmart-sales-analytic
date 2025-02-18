@@ -1,0 +1,19 @@
+GSA, per 18 Februari 2025
+=============================
+1.  Request Update
+    -   https://docs.google.com/document/d/1OR0JqZhfcMLaciNFxYPNTmjwNKd6-wNxauc4fLlzV1o/edit?tab=t.0
+
+2.  File Update
+    -   app\Http\Controllers\LaporanController.php
+    -   app\Http\Controllers\TipeBarangController.php
+    -   app\Models\TipeBarang.php
+    -   resources\views\dashboard\index.blade.php
+    -   resources\views\laporan\penjualan_per_person.blade.php
+    -   resources\views\laporan\penjualan_per_store.blade.php
+    -   resources\views\laporan\exports\penjualan_per_person.blade.php
+    -   resources\views\laporan\exports\penjualan_per_store.blade.php
+    -   resources\views\tipe_barang\index.blade.php
+    -
+
+3.  Database
+    -   Tambahkan kolom status_aktif di tabel tipe_barang, tipe data TINYINT, default 1

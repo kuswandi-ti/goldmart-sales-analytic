@@ -135,22 +135,31 @@
                                         <td scope="col" class="fw-semibold">{{ __('Sales Person') }}</td>
                                         <td scope="col" class="fw-semibold">{{ __('Nama Store') }}</td>
                                         <td scope="col" class="fw-semibold">{{ __('Kota Store') }}</td>
+                                        <td scope="col" align="right" class="fw-semibold">{{ __('Beli') }}</td>
                                         <td scope="col" align="right" class="fw-semibold">{{ __('Total (Qty)') }}</td>
                                         <td scope="col" align="right" class="fw-semibold">{{ __('Total (Rp.)') }}</td>
+                                        <td scope="col" align="right" class="fw-semibold">{{ __('%Beli-Qty') }}</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                         $no = 0;
+                                        $sum_beli = 0;
                                         $sum_qty = 0;
                                         $sum_nominal = 0;
+                                        $persentase_beli = 0;
                                     @endphp
                                     @if (count($data_table) > 0)
                                         @foreach ($data_table as $row)
                                             @php
                                                 $no = $no + 1;
+                                                $sum_beli = $sum_beli + $row->total_beli;
                                                 $sum_qty = $sum_qty + $row->total_qty;
                                                 $sum_nominal = $sum_nominal + $row->total_nominal;
+                                                $persentase_beli =
+                                                    $row->total_qty == 0
+                                                        ? 0
+                                                        : ($row->total_beli / $row->total_qty) * 100;
                                             @endphp
                                             <tr>
                                                 <td class="text-center">
@@ -166,16 +175,22 @@
                                                     <span>{{ $row->kota_store }}</span>
                                                 </td>
                                                 <td align="right">
+                                                    <span>{{ formatAmount($row->total_beli) }}</span>
+                                                </td>
+                                                <td align="right">
                                                     <span>{{ formatAmount($row->total_qty) }}</span>
                                                 </td>
                                                 <td align="right">
                                                     <span>{{ formatAmount($row->total_nominal) }}</span>
                                                 </td>
+                                                <td align="right">
+                                                    <span>{{ formatAmount($persentase_beli) }}%</span>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="6" align="center">
+                                            <td colspan="8" align="center">
                                                 <span class="fw-semibold text-danger">{{ __('Tidak ada data') }}</span>
                                             </td>
                                         </tr>
@@ -190,8 +205,10 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        <td align="right" class="fw-semibold">{{ formatAmount($sum_beli) }}</td>
                                         <td align="right" class="fw-semibold">{{ formatAmount($sum_qty) }}</td>
                                         <td align="right" class="fw-semibold">{{ formatAmount($sum_nominal) }}</td>
+                                        <td></td>
                                     </tr>
                                 </tfoot>
                             </table>

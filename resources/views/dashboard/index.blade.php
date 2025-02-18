@@ -171,11 +171,11 @@
         </div>
     </div>
 
-    {{-- @can('dashboard gsa') --}}
-    <div class="row">
-        <div class="col-xxl-12 col-xl-12 col-lg-12">
-            <div class="card custom-card">
-                {{-- <div class="card-body p-0">
+    @can('dashboard gsa')
+        <div class="row">
+            <div class="col-xxl-12 col-xl-12 col-lg-12">
+                <div class="card custom-card">
+                    {{-- <div class="card-body p-0">
                     <div class="card-header justify-content-between">
                         <div class="card-title">
                             <form action="{{ route('dashboard.index') }}" method="GET" id="form-search">
@@ -203,37 +203,38 @@
                         </div>
                     </div>
                 </div> --}}
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        &nbsp;
-                    </div>
-                    <form action="{{ route('dashboard.index') }}" method="GET" id="form-search">
-                        @csrf
-
-                        <div class="dropdown d-flex mt-3">
-                            <div class="me-2" style="width: 150px;">
-                                <select class = "form-select" name='status_toko' style="height: 100%;">
-                                    <option value="all" {{ request()->get('status_toko') == 'all' ? 'selected' : '' }}
-                                        id="filter-all">{{ __('Semua Toko') }}</option>
-                                    <option value="aktif" {{ request()->get('status_toko') == 'aktif' ? 'selected' : '' }}
-                                        id="filter-aktif-all">{{ __('Toko Aktif') }}</option>
-                                    <option value="tidak-aktif"
-                                        {{ request()->get('status_toko') == 'tidak-aktif' ? 'selected' : '' }}
-                                        id="filter-tidak-aktif-all">{{ __('Toko Tidak Aktif') }}</option>
-                                </select>
-                            </div>
-
-                            <button type="submit"
-                                class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2"
-                                name="submit" value="search">
-                                {{ __('Submit') }}
-                            </button>
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            &nbsp;
                         </div>
-                    </form>
+                        <form action="{{ route('dashboard.index') }}" method="GET" id="form-search">
+                            @csrf
+
+                            <div class="dropdown d-flex mt-3">
+                                <div class="me-2" style="width: 150px;">
+                                    <select class = "form-select" name='status_toko' style="height: 100%;">
+                                        <option value="all" {{ request()->get('status_toko') == 'all' ? 'selected' : '' }}
+                                            id="filter-all">{{ __('Semua Toko') }}</option>
+                                        <option value="aktif" {{ request()->get('status_toko') == 'aktif' ? 'selected' : '' }}
+                                            id="filter-aktif-all">{{ __('Toko Aktif') }}</option>
+                                        <option value="tidak-aktif"
+                                            {{ request()->get('status_toko') == 'tidak-aktif' ? 'selected' : '' }}
+                                            id="filter-tidak-aktif-all">{{ __('Toko Tidak Aktif') }}</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit"
+                                    class="btn btn-sm btn-primary-light btn-wave waves-effect waves-light d-flex align-items-center me-2"
+                                    name="submit" value="search">
+                                    {{ __('Submit') }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endcan
 
     <div class="row">
         <div class="col-xxl-12 col-xl-12 col-lg-12">

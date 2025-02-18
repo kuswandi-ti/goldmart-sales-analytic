@@ -44,6 +44,7 @@
                                     <th scope="col" width="12%">{{ __('Aksi') }}</th>
                                     <th scope="col">{{ __('Nama') }}</th>
                                     <th scope="col">{{ __('Brand') }}</th>
+                                    <th scope="col" width="10%">{{ __('Status Aktif') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +91,10 @@
                 sortable: true,
             }, {
                 data: 'nama_brand',
+                searchable: true,
+                sortable: true,
+            }, {
+                data: 'status_aktif',
                 searchable: true,
                 sortable: true,
             }],

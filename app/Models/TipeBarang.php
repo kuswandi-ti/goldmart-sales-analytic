@@ -12,6 +12,11 @@ class TipeBarang extends Model
 
     protected $table = 'tipe_barang';
 
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +25,7 @@ class TipeBarang extends Model
     protected $fillable = [
         'id_brand',
         'nama',
+        'status_aktif',
         'created_by',
         'updated_by',
         'deleted_by',

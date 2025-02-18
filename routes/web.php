@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth_check', 'prevent_back_history']], function 
 
     /** Tipe Barang Routes */
     Route::get('tipebarang/data', [TipeBarangController::class, 'data'])->name('tipebarang.data');
+    Route::get('tipebarang/restore/{tipebarang}', [TipeBarangController::class, 'restore'])->name('tipebarang.restore');
     Route::resource('tipebarang', TipeBarangController::class);
 
     /** Range Harga Routes */

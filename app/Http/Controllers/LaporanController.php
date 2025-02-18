@@ -110,12 +110,17 @@ class LaporanController extends Controller
                     sales_person.kode_store,
                     sales_person.nama_store,
                     sales_person.kota_store,
+                    SUM(COALESCE(customer_visit.beli, 0)) AS total_beli,
                     SUM(COALESCE(customer_visit.qty, 0)) AS total_qty,
                     SUM(COALESCE(customer_visit.nominal, 0)) AS total_nominal
                 FROM
                     sales_person
                     LEFT OUTER JOIN (
                         SELECT
+                            CASE
+                                WHEN customer_visit_detail.parameter_main = 'Beli' THEN COUNT(customer_visit.id)
+                                ELSE 0
+                            END AS beli,
                             customer_visit.id_sales_person,
                             SUM(customer_visit_detail.qty) AS qty,
                             SUM(customer_visit_detail.nominal) AS nominal
@@ -125,7 +130,9 @@ class LaporanController extends Controller
                         WHERE
                             customer_visit_detail.parameter_main = 'Beli'
                             AND " . $where . "
-                        GROUP BY id_sales_person
+                        GROUP BY
+                            customer_visit.id,
+                            customer_visit.id_sales_person
                     ) customer_visit ON sales_person.id = customer_visit.id_sales_person
                 WHERE
                     " . $where_store . "
@@ -312,12 +319,17 @@ class LaporanController extends Controller
                     store.kode AS kode_store,
                     store.nama AS nama_store,
                     store.kota AS kota_store,
+                    SUM(COALESCE(customer_visit.beli, 0)) AS total_beli,
                     SUM(COALESCE(customer_visit.qty, 0)) AS total_qty,
                     SUM(COALESCE(customer_visit.nominal, 0)) AS total_nominal
                 FROM
                     store
                     LEFT OUTER JOIN (
                         SELECT
+                            CASE
+                                WHEN customer_visit_detail.parameter_main = 'Beli' THEN COUNT(customer_visit.id)
+                                ELSE 0
+                            END AS beli,
                             customer_visit.id_store,
                             SUM(customer_visit_detail.qty) AS qty,
                             SUM(customer_visit_detail.nominal) AS nominal
@@ -327,7 +339,9 @@ class LaporanController extends Controller
                         WHERE
                             customer_visit_detail.parameter_main = 'Beli'
                             AND " . $where . "
-                        GROUP BY id_store
+                        GROUP BY
+                            customer_visit.id,
+                            customer_visit.id_store
                     ) customer_visit ON store.id = customer_visit.id_store
                 WHERE
                     " . $where_kota . "
