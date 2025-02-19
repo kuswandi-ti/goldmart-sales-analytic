@@ -28,6 +28,11 @@ use App\Http\Controllers\CustomerVisitController;
 |
 */
 
+Route::get('/generate-storage-link', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    echo 'ok';
+});
+
 Route::get('/', [AuthController::class, 'login'])->name('login');
 
 /** Auth Routes */
